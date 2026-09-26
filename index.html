@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voto Sem Filtro DF</title>
+<meta name="description" content="Guia apartidário das Eleições 2026 no DF: candidatos a Governador e Senado com foto, número, propostas, Instagram e site; pesquisas do TSE atualizadas todo dia; Presidente; o que cada cargo faz e colinha pro dia 4/10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F6F7F3; --surface:#FFFFFF; --soft:#EEF1EB; --ink:#18201B; --ink-2:#56625B; --ink-3:#8A958E;
+    --line:#E2E6DF; --accent:#0B7F45; --accent-soft:#E1F1E7; --sun:#E9B616; --sun-soft:#FBF1CF;
+    --bar:#18201B; --warn:#8A5A00; --warn-soft:#FBF1CF;
+    --display:"Bricolage Grotesque",ui-rounded,"Segoe UI",sans-serif;
+    --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101512; --surface:#171E1A; --soft:#1E2621; --ink:#E7ECE8; --ink-2:#A8B3AC; --ink-3:#77837C;
+      --line:#27302B; --accent:#5ACF8F; --accent-soft:#1B3326; --sun:#F2C94C; --sun-soft:#352C10;
+      --bar:#E7ECE8; --warn:#F2C94C; --warn-soft:#352C10; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101512; --surface:#171E1A; --soft:#1E2621; --ink:#E7ECE8; --ink-2:#A8B3AC; --ink-3:#77837C;
+    --line:#27302B; --accent:#5ACF8F; --accent-soft:#1B3326; --sun:#F2C94C; --sun-soft:#352C10;
+    --bar:#E7ECE8; --warn:#F2C94C; --warn-soft:#352C10; color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;font-weight:700;letter-spacing:-.015em}
+  .wrap{max-width:880px;margin:0 auto;padding-inline:20px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .muted{color:var(--ink-2)}
+  .tiny{font-size:.78rem;color:var(--ink-3)}
+
+  /* topo */
+  header{padding-block:22px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .brand{font:700 1rem/1 var(--display);text-decoration:none;display:flex;align-items:center;gap:8px}
+  .brand i{width:10px;height:10px;border-radius:3px;background:var(--accent);transform:rotate(45deg);box-shadow:0 0 0 3px var(--sun-soft)}
+  .status{font-size:.78rem;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  .hero{padding-block:56px 36px}
+  .hero h1{font-size:clamp(2.4rem,7vw,4rem);max-width:15ch}
+  .hero h1 span{color:var(--accent)}
+  .hero p{margin:18px 0 0;max-width:60ch;color:var(--ink-2);font-size:1.05rem;line-height:1.65}
+  .count{margin-top:28px;display:inline-flex;align-items:baseline;gap:10px;padding:12px 18px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+  .count b{font:700 1.6rem/1 var(--display);font-variant-numeric:tabular-nums}
+  .count span{font-size:.9rem;color:var(--ink-2)}
+
+  nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
+  nav.jump a{flex:0 0 auto;font-size:.88rem;text-decoration:none;color:var(--ink-2);padding:.45rem .8rem;border-radius:999px}
+  nav.jump a:hover,nav.jump a.on{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+
+  section{padding-block:64px 0;scroll-margin-top:60px}
+  .sh{margin-bottom:24px;display:grid;gap:8px}
+  .sh h2{font-size:clamp(1.7rem,4.5vw,2.3rem)}
+  .sh p{margin:0;color:var(--ink-2);max-width:56ch}
+  .eyebrow{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.02em}
+
+  /* resumo */
+  .sum{display:grid;gap:10px}
+  .sum a{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;transition:border-color .2s}
+  .sum a:hover{border-color:var(--accent)}
+  .sum small{grid-column:1/-1;font-size:.78rem;color:var(--ink-3)}
+  .sum strong{font:600 1.08rem/1.35 var(--display)}
+  .pill{font-size:.72rem;font-weight:600;padding:.3rem .6rem;border-radius:999px;white-space:nowrap}
+  .pill.tie{background:var(--sun-soft);color:var(--warn)}
+  .pill.lead{background:var(--accent-soft);color:var(--accent)}
+
+  /* abas */
+  .tabs{display:inline-flex;gap:4px;padding:4px;background:var(--soft);border-radius:999px;margin-bottom:22px;flex-wrap:wrap}
+  .tabs button{font:500 .9rem/1 var(--body);border:0;background:transparent;color:var(--ink-2);padding:.6rem 1rem;border-radius:999px;cursor:pointer}
+  .tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .tabs button:disabled{opacity:.4;cursor:default}
+
+  /* candidatos */
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .person{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+  .person .top{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:16px}
+  .person img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 18%;background:var(--soft)}
+  .person h3{font-size:1.1rem}
+  .person .meta{font-size:.8rem;color:var(--ink-3);margin-top:3px}
+  .person .num{font-weight:600;color:var(--ink)}
+  .person .poll{display:flex;align-items:center;gap:10px;padding:0 16px 14px;font-size:.78rem;color:var(--ink-3)}
+  .person .poll .m{flex:1;height:4px;border-radius:2px;background:var(--soft);overflow:hidden}
+  .person .poll .m i{display:block;height:100%;background:var(--accent);border-radius:2px}
+  .person .poll b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;margin:0 16px 12px;font-size:.74rem;padding:.3rem .6rem;border-radius:8px;background:var(--warn-soft);color:var(--warn)}
+  .person details{border-top:1px solid var(--line)}
+  .person summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:.86rem;font-weight:500;color:var(--accent);display:flex;justify-content:space-between}
+  .person summary::-webkit-details-marker{display:none}
+  .person summary::after{content:"+";font-size:1.1rem;line-height:1}
+  .person details[open] summary::after{content:"–"}
+  .person ul{margin:0;padding:0 16px 8px 34px;display:grid;gap:6px;font-size:.88rem;color:var(--ink-2)}
+  .links{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px 16px}
+  .links a{font-size:.8rem;text-decoration:none;padding:.4rem .7rem;border-radius:999px;border:1px solid var(--line);color:var(--ink);display:inline-flex;gap:6px;align-items:center}
+  .links a:hover{border-color:var(--accent);color:var(--accent)}
+  .links svg{width:14px;height:14px}
+  .note{margin:16px 0 0;font-size:.84rem;color:var(--ink-3);max-width:70ch}
+
+  /* pesquisas */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}
+  .card-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;margin-bottom:16px}
+  .card-h h3{font-size:1.05rem}
+  .bars{display:grid;gap:10px}
+  .row{display:grid;grid-template-columns:minmax(110px,170px) 1fr 3rem;gap:12px;align-items:center;font-size:.88rem}
+  .row .t{height:8px;border-radius:4px;background:var(--soft);position:relative;overflow:visible}
+  .row .f{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--bar);transition:width .5s ease}
+  .row .e{position:absolute;top:-4px;height:16px;border-inline:1.5px solid var(--ink-3);opacity:.7;transition:left .5s,width .5s}
+  .row .e::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1.5px solid var(--ink-3)}
+  .row.o .f{background:var(--ink-3);opacity:.45}
+  .row .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+  .duels{display:grid;gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .duel{display:grid;gap:6px;font-size:.86rem}
+  .duel .l{display:flex;justify-content:space-between;gap:10px}
+  .duel .s{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--soft)}
+  .duel .s i:first-child{background:var(--bar)} .duel .s i:last-child{background:var(--accent);margin-left:auto}
+  .duel small{color:var(--ink-3);font-size:.76rem}
+
+  /* 101 */
+  .cargos{display:grid;gap:10px}
+  .cargo{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+  .cargo .d{font:700 1.3rem/1 var(--display);color:var(--accent);min-width:48px;font-variant-numeric:tabular-nums}
+  .cargo .d small{display:block;font:500 .66rem var(--body);color:var(--ink-3);margin-top:4px}
+  .cargo h3{font-size:1.02rem}
+  .cargo p{margin:4px 0 0;font-size:.9rem;color:var(--ink-2)}
+  .faq{margin-top:22px;display:grid;gap:8px}
+  .faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 18px}
+  .faq summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:500;display:flex;align-items:baseline;gap:10px}
+  .faq summary .tiny{margin-right:auto}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--ink-3);margin-left:auto}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin:0 0 14px;font-size:.92rem;color:var(--ink-2)}
+
+  /* colinha */
+  .cola{display:grid;gap:8px;max-width:520px}
+  .cola .f{display:grid;grid-template-columns:1fr 110px;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px 10px 16px}
+  .cola label{font-size:.9rem}
+  .cola label small{display:block;font-size:.74rem;color:var(--ink-3)}
+  .cola input{font:600 1.05rem var(--body);letter-spacing:.18em;text-align:center;background:var(--soft);border:1px solid transparent;border-radius:10px;color:var(--ink);padding:.5rem .3rem;width:100%}
+  .cola input:focus{outline:none;border-color:var(--accent)}
+  .btn{justify-self:start;font:600 .92rem/1 var(--body);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.85rem 1.3rem;cursor:pointer;margin-top:6px}
+  .toast{font-size:.84rem;color:var(--accent);min-height:1.3em}
+  #cola-txt{width:100%;min-height:110px;font:500 .82rem ui-monospace,monospace;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:10px}
+
+  /* fontes */
+  .src{display:grid;gap:6px;margin:0;padding-left:1.1rem;font-size:.86rem;color:var(--ink-2)}
+  .src a{color:var(--accent)}
+
+  footer{margin-top:80px;border-top:1px solid var(--line);padding-block:36px 48px}
+  .author{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+  .author p{margin:0;font-size:.95rem}
+  .author b{font-family:var(--display)}
+  .author a.ig{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;padding:.6rem 1rem;border-radius:999px;background:var(--ink);color:var(--bg)}
+  .author a.ig svg{width:16px;height:16px}
+  .fine{margin-top:20px;font-size:.78rem;color:var(--ink-3);max-width:70ch}
+
+  @media (max-width:560px){
+    .row{grid-template-columns:96px 1fr 2.6rem;gap:8px;font-size:.8rem}
+    .cola .f{grid-template-columns:1fr 92px}
+    .status .long{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#topo"><i aria-hidden="true"></i>Voto Sem Filtro DF</a>
+    <span class="status"><i aria-hidden="true"></i><span class="long">atualiza todo dia · </span><span id="upd">—</span></span>
+  </div>
+</header>
+
+<div class="wrap hero" id="topo">
+  <h1>Eleição 2026 no DF, <span>sem enrolação</span>.</h1>
+  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador e ao Senado, com foto, número de urna, propostas, Instagram e site oficial. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
+  <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
+</div>
+
+<nav class="jump" aria-label="Seções">
+  <div class="wrap">
+    <a href="#resumo">Resumo</a>
+    <a href="#candidatos">Candidatos do DF</a>
+    <a href="#pesquisas">Pesquisas</a>
+    <a href="#presidente">Presidente</a>
+    <a href="#basico">O básico</a>
+    <a href="#colinha">Colinha</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section id="resumo">
+    <div class="sh"><span class="eyebrow">Hoje, em 20 segundos</span><h2>Como tá a disputa</h2></div>
+    <div class="sum" id="sum"></div>
+  </section>
+
+  <section id="candidatos">
+    <div class="sh"><span class="eyebrow">Governo e Senado</span><h2>Candidatos do DF</h2><p>Toca em "propostas" pra ver o resumo. O site de cada candidato tem o plano completo.</p></div>
+    <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
+    <div class="people" id="people"></div>
+    <p class="note" id="c-note"></p>
+  </section>
+
+  <section id="pesquisas">
+    <div class="sh"><span class="eyebrow">Registradas no TSE</span><h2>Pesquisas</h2><p>A linha fina em cada barra é a margem de erro. Se as linhas de dois candidatos se cruzam, é empate técnico.</p></div>
+    <div class="tabs" id="p-race" role="group" aria-label="Cargo"></div>
+    <div class="card">
+      <div class="card-h"><h3 id="p-title"></h3><span class="tiny" id="p-meta"></span></div>
+      <div class="tabs" id="p-inst" role="group" aria-label="Instituto" style="margin-bottom:18px"></div>
+      <div id="p-bars"></div>
+      <div class="duels" id="p-2t"></div>
+      <p class="note" id="p-note"></p>
+    </div>
+  </section>
+
+  <section id="presidente">
+    <div class="sh"><span class="eyebrow">Brasil</span><h2>Presidente</h2><p>Os principais nomes e o que cada um propõe. Os números da pesquisa estão na seção acima.</p></div>
+    <div class="faq" id="pres" style="margin-top:0"></div>
+  </section>
+
+  <section id="basico">
+    <div class="sh"><span class="eyebrow">O básico</span><h2>O que você vota em 4/10</h2><p>São 6 votos pra 5 cargos, nessa ordem na urna.</p></div>
+    <div class="cargos" id="cargos"></div>
+    <div class="faq" id="faq"></div>
+  </section>
+
+  <section id="colinha">
+    <div class="sh"><span class="eyebrow">Pro dia</span><h2>Monta tua colinha</h2><p>Celular não entra na cabine. Anota os números e copia, fica salvo só no teu aparelho.</p></div>
+    <form class="cola" id="cola" autocomplete="off">
+      <div class="f"><label for="v-df">Deputado(a) federal<small>4 dígitos</small></label><input id="v-df" inputmode="numeric" maxlength="4"></div>
+      <div class="f"><label for="v-dd">Deputado(a) distrital<small>5 dígitos</small></label><input id="v-dd" inputmode="numeric" maxlength="5"></div>
+      <div class="f"><label for="v-s1">Senado · 1º voto<small>3 dígitos</small></label><input id="v-s1" inputmode="numeric" maxlength="3"></div>
+      <div class="f"><label for="v-s2">Senado · 2º voto<small>3 dígitos, outra pessoa</small></label><input id="v-s2" inputmode="numeric" maxlength="3"></div>
+      <div class="f"><label for="v-gv">Governador(a)<small>2 dígitos</small></label><input id="v-gv" inputmode="numeric" maxlength="2"></div>
+      <div class="f"><label for="v-pr">Presidente<small>2 dígitos</small></label><input id="v-pr" inputmode="numeric" maxlength="2"></div>
+      <button class="btn" type="submit">Copiar colinha</button>
+      <span class="toast" id="cola-toast" role="status"></span>
+      <textarea id="cola-txt" readonly hidden aria-label="Texto da colinha"></textarea>
+    </form>
+  </section>
+
+  <section id="fontes">
+    <div class="faq" style="margin-top:0">
+      <details><summary>De onde vêm os dados</summary>
+        <p>As pesquisas têm registro no TSE, e o site é atualizado automaticamente uma vez por dia. As fotos oficiais e as redes sociais são as que cada candidato registrou no TSE. As propostas vêm dos planos de governo, de sabatinas e da imprensa.</p>
+        <ul class="src" id="src" style="margin-bottom:14px"></ul>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="author">
+      <p>Criado por <b>Oliver</b>, de forma autoral.</p>
+      <a class="ig" href="https://www.instagram.com/oliver.calvt/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@oliver.calvt</a>
+    </div>
+    <p class="fine">Projeto informativo e apartidário. Pesquisa mostra um retrato do momento, não prevê o resultado. As propostas foram resumidas e não substituem o plano completo de cada candidato. Fotos: divulgação oficial dos candidatos no Tribunal Superior Eleitoral.</p>
+  </div>
+</footer>
+
+<!-- DADOS: este bloco é atualizado automaticamente. Mantenha JSON válido. -->
+<script type="application/json" id="dados">
+{
+  "meta": {
+    "atualizadoEm": "2026-09-26T21:00:00-03:00",
+    "verificadoEm": "2026-09-26T21:00:00-03:00",
+    "marcos": [
+      {"label": "até o 1º turno · 4/10", "iso": "2026-10-04T08:00:00-03:00"},
+      {"label": "até o 2º turno · 25/10", "iso": "2026-10-25T08:00:00-03:00"}
+    ],
+    "historico": [
+      {"data": "2026-09-26", "nota": "Versão minimalista, com fotos oficiais e redes dos candidatos do DF. Arruda barrado pelo TSE em 24/9."}
+    ]
+  },
+  "resumo": [
+    {"cargo": "presidente", "rotulo": "Presidente", "status": "tie", "statusTxt": "Empate técnico", "titulo": "Lula 40% × Flávio Bolsonaro 36% (Datafolha). A diferença tá dentro da margem, e no 2º turno também dá empate.", "ticker": ""},
+    {"cargo": "governador", "rotulo": "Governo do DF", "status": "lead", "statusTxt": "Liderança", "titulo": "Celina Leão tem 42% e Leandro Grass, 23%, no cenário sem Arruda, que foi barrado pelo TSE.", "ticker": ""},
+    {"cargo": "senado", "rotulo": "Senado DF · 2 vagas", "status": "tie", "statusTxt": "2ª vaga aberta", "titulo": "Michelle Bolsonaro na frente. Leila, Bia Kicis e Erika Kokay empatam pela outra vaga.", "ticker": ""}
+  ],
+  "corridas": {
+    "presidente": {
+      "nome": "Presidente",
+      "alerta": "",
+      "pesquisas": [
+        {"instituto": "Datafolha", "campo": "22–23/9", "amostra": "2.002", "margem": 2, "registro": "BR-00304/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
+         "cenarios": {"Estimulado": {"total": [["Lula","PT",40],["Flávio Bolsonaro","PL",36],["Augusto Cury","Avante",5],["Ronaldo Caiado","PSD",4],["Renan Santos","Missão",3],["Romeu Zema","Novo",1],["Samara Martins","UP",1]], "outros": [["Branco / nulo",5],["Indecisos",2]], "validos": null}},
+         "segundoTurno": [["Lula",47,"Flávio Bolsonaro",45,8],["Lula",46,"Ronaldo Caiado",44,10],["Lula",46,"Augusto Cury",43,10]]},
+        {"instituto": "Quaest", "campo": "17–20/9", "amostra": "2.004", "margem": 2, "registro": "BR-06004/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
+         "cenarios": {"Estimulado": {"total": [["Lula","PT",37],["Flávio Bolsonaro","PL",33],["Augusto Cury","Avante",6],["Ronaldo Caiado","PSD",4],["Renan Santos","Missão",3],["Romeu Zema","Novo",1],["Samara Martins","UP",1]], "outros": [["Branco / nulo",7],["Indecisos",8]], "validos": null}},
+         "segundoTurno": [["Flávio Bolsonaro",42,"Lula",41,17],["Lula",41,"Ronaldo Caiado",39,20],["Lula",39,"Augusto Cury",35,26]]}
+      ]
+    },
+    "governador": {
+      "nome": "Governo do DF",
+      "alerta": "O TSE manteve, em 24/9, a decisão que barrou a candidatura de Arruda. Por isso o cenário que vale é o sem Arruda.",
+      "pesquisas": [
+        {"instituto": "Datafolha", "campo": "22–24/9", "amostra": "910", "margem": 3, "registro": "DF-01888/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
+         "cenarios": {"Sem Arruda": {"total": [["Celina Leão","PP",42],["Leandro Grass","PT",23],["Paula Belmonte","PSDB",7],["Ricardo Cappelli","PSB",5],["Samara Mineiro","UP",2],["Professor Robson","PSTU",1],["Kiko Caputo","Novo",1]], "outros": [["Branco / nulo",11],["Não sabe",6]], "validos": [["Celina Leão","PP",51],["Leandro Grass","PT",27],["Paula Belmonte","PSDB",9],["Ricardo Cappelli","PSB",6],["Samara Mineiro","UP",3],["Professor Robson","PSTU",2],["Kiko Caputo","Novo",2]]}},
+         "segundoTurno": [["Celina Leão",53,"Leandro Grass",34,13]]},
+        {"instituto": "Quaest", "campo": "19–22/9", "amostra": "1.104", "margem": 3, "registro": "DF-02596/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+         "cenarios": {"Sem Arruda": {"total": [["Celina Leão","PP",34],["Leandro Grass","PT",23],["Paula Belmonte","PSDB",7],["Kiko Caputo","Novo",3],["Ricardo Cappelli","PSB",2],["Samara Mineiro","UP",1]], "outros": [["Branco / nulo",15],["Indecisos",15]], "validos": null}},
+         "segundoTurno": [["Celina Leão",48,"Leandro Grass",30,22]]}
+      ]
+    },
+    "senado": {
+      "nome": "Senado DF",
+      "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno.",
+      "pesquisas": [
+        {"instituto": "Datafolha", "campo": "22–24/9", "amostra": "910", "margem": 3, "registro": "DF-01888/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
+         "cenarios": {"1º + 2º voto": {"total": [["Michelle Bolsonaro","PL",22],["Leila do Vôlei","PDT",19],["Bia Kicis","PL",15],["Erika Kokay","PT",15],["Sebastião Coelho","Novo",2],["Ronaldo Fonseca","PSD",2]], "outros": [["Branco / nulo",10],["Não sabe",10]], "validos": null}},
+         "segundoTurno": []},
+        {"instituto": "Quaest", "campo": "19–22/9", "amostra": "1.104", "margem": 3, "registro": "DF-02596/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+         "cenarios": {"1º + 2º voto": {"total": [["Michelle Bolsonaro","PL",26],["Leila do Vôlei","PDT",19],["Bia Kicis","PL",15],["Erika Kokay","PT",15],["Sebastião Coelho","Novo",2],["Ronaldo Fonseca","PSD",1]], "outros": [["Branco / nulo",9],["Indecisos",11]], "validos": null}},
+         "segundoTurno": []}
+      ]
+    }
+  },
+  "candidatos": {
+    "governador": [
+      {"n":"Celina Leão","p":"PP","num":"11","foto":"70002553055","poll":42,"status":"",
+       "props":["Novo Hospital de Ceilândia e mais UPAs","Metrô em Ceilândia e Samambaia e Linha 2 até o Gama","Mais escolas em tempo integral","Regularização fundiária mais rápida"],
+       "ig":"celinaleao","site":"https://celina11.com","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478141-celina-reconhece-avancos-mas-critica-gestao-anterior.html"},
+      {"n":"Leandro Grass","p":"PT","num":"13","foto":"70002552496","poll":23,"status":"",
+       "props":["Ampliar a escola em tempo integral","Priorizar metrô e transporte sobre trilhos","Brasília como polo de tecnologia","Auditoria e transparência no BRB"],
+       "ig":"leandrograss","site":"https://leandrograss.com/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477822-brasilia-precisa-de-um-governo-a-altura-da-capital-do-pais-defende-grass.html"},
+      {"n":"Paula Belmonte","p":"PSDB","num":"45","foto":"70002552965","poll":7,"status":"",
+       "props":["Tempo integral com educação financeira e tecnologia","Gabinete anticorrupção desde o 1º dia","Governo digital e participativo"],
+       "ig":"paulabelmonteoficial","site":"https://www.paulabelmonte.com.br","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478118-paula-belmonte-psdb-propoe-governo-participativo-e-transparente.html"},
+      {"n":"Ricardo Cappelli","p":"PSB","num":"40","foto":"70002551557","poll":5,"status":"",
+       "props":["\"Fila Zero\" na saúde, com contratação emergencial","\"Tolerância Zero\" e mais de 7 mil policiais","Aumento do salário dos professores","Recuperar os desvios do BRB"],
+       "ig":"cappelli.ricardo","site":"https://www.cappelli40.com/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478144-ricardo-cappelli-psb-defende-choque-de-ordem-na-gestao.html"},
+      {"n":"Samara Mineiro","p":"UP","num":"80","foto":"70002537111","poll":2,"status":"",
+       "props":["Política ampla para mulheres: moradia, emprego e transporte","Mais profissionais na educação","Fundo Constitucional direcionado para saúde e educação"],
+       "ig":"","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477845-samara-mineiro-up-promete-ampliar-quadro-de-profissionais-da-educacao.html"},
+      {"n":"Professor Robson","p":"PSTU","num":"16","foto":"70002535930","poll":1,"status":"",
+       "props":["Fim do Iges-DF, com saúde 100% pública","Reestatizar a CEB e a Rodoviária","Fim dos cargos comissionados"],
+       "ig":"prof_robson_pstu","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478026-robson-raymundo-pstu-defende-modelo-de-armamento-coletivo.html"},
+      {"n":"Kiko Caputo","p":"Novo","num":"30","foto":"70002547775","poll":1,"status":"",
+       "props":["Menos secretarias e menos cargos comissionados","Valorizar os servidores de carreira","Metrô revitalizado e transporte sobre trilhos"],
+       "ig":"kiko_caputo","site":"http://www.kikocaputo.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478053-kiko-caputo-defende-choque-de-gestao-na-administracao-do-distrito-federal.html"},
+      {"n":"Expedito Mendonça","p":"PCO","num":"29","foto":"70002552341","poll":0,"status":"",
+       "props":["Estatizar setores estratégicos","Administradores regionais eleitos pelo voto","Orçamento com participação popular"],
+       "ig":"mexpedito","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477695-expedito-mendonca-rejeita-uso-de-terras-para-sanar-divida-do-brb.html"},
+      {"n":"Elisson","p":"Agir","num":"36","foto":"70002551298","poll":0,"status":"Candidatura indeferida, com recurso",
+       "props":["Governo com \"100% de transparência\"","Planejamento de Brasília até 2060"],
+       "ig":"souelisson36","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478117-elisson-ferreira-agir-promete-governo-com-100-de-transparencia.html"},
+      {"n":"Rico Pinheiro","p":"PRTB","num":"28","foto":"70002553982","poll":0,"status":"Candidatura indeferida, com recurso",
+       "props":["Mais suporte à saúde mental","Concursos na saúde","Solução para o transporte público"],
+       "ig":"","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477818-rico-pinheiro-prtb-o-transporte-publico-precisa-de-solucao.html"},
+      {"n":"José Roberto Arruda","p":"PSD","num":"55","foto":"70002552586","poll":null,"status":"Barrado pelo TSE em 24/9",
+       "props":["Faixa azul para motos e nova licitação dos ônibus","Metrô por PPP e via Interbairros","Hospital em Ceilândia/Sol Nascente"],
+       "ig":"arruda.df","site":"https://arrudagovernador2026.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477804-jose-roberto-arruda-psd-diz-que-volta-a-disputa-para-resgatar-brasilia.html"}
+    ],
+    "senado": [
+      {"n":"Michelle Bolsonaro","p":"PL","num":"222","foto":"70002552936","poll":22,"status":"",
+       "props":["Um \"Senado forte\" diante do STF","Atuação pelos presos do 8 de janeiro","Pautas de mulheres e pessoas com deficiência"],
+       "ig":"michellebolsonaro","site":"https://michellebolsonaro222.com.br/","sabatina":"https://ncnews.com.br/2026/08/30/michelle-bolsonaro-promete-lutar-por-presos-do-8-de-janeiro-caso-seja-eleita-ao-senado/"},
+      {"n":"Leila do Vôlei","p":"PDT","num":"123","foto":"70002552492","poll":19,"status":"",
+       "props":["Proteger o Fundo Constitucional do DF","Hospitais em São Sebastião e Ceilândia","Lei Maria da Penha mais forte e delegacias 24h","Metrô expandido e integrado ao Entorno"],
+       "ig":"leiladovolei","site":"https://leiladovolei.com/propostas/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/09/7499674-o-foco-do-meu-trabalho-e-brasilia-diz-leila-do-volei.html"},
+      {"n":"Bia Kicis","p":"PL","num":"223","foto":"70002552934","poll":15,"status":"",
+       "props":["Fortalecer o Legislativo frente ao STF","Liberdade de expressão","Segurança e saúde no DF como prioridade"],
+       "ig":"biakicis","site":"http://www.biakicis.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477256-bia-kicis-fala-sobre-prioridades-caso-seja-eleita-senadora.html"},
+      {"n":"Erika Kokay","p":"PT","num":"131","foto":"70002552490","poll":15,"status":"",
+       "props":["Fim da escala 6x1","Isenção de IR até R$ 5 mil","Proibir parentes como suplentes no Senado"],
+       "ig":"erikakokay","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/09/7502387-erika-kokay-defende-fim-da-escala-6x1-e-reforca-pautas-trabalhistas.html"},
+      {"n":"Sebastião Coelho","p":"Novo","num":"300","foto":"70002548624","poll":2,"status":"","props":[],"ig":"","site":"","sabatina":""},
+      {"n":"Ronaldo Fonseca","p":"PSD","num":"555","foto":"70002553751","poll":2,"status":"","props":[],"ig":"ronaldofonseca.oficial","site":"https://www.ronaldofonseca.com.br/","sabatina":""},
+      {"n":"Professor Guilherme Amorim","p":"UP","num":"800","foto":"70002537112","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
+      {"n":"Marley","p":"Avante","num":"700","foto":"70002552582","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
+      {"n":"Zanata","p":"PSTU","num":"161","foto":"70002536445","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
+      {"n":"Tiago","p":"Agir","num":"360","foto":"70002551323","poll":1,"status":"Candidatura indeferida, com recurso","props":[],"ig":"tiago360_senador_df","site":"","sabatina":""},
+      {"n":"Guto Felício dos Santos","p":"PSDB","num":"456","foto":"70002553296","poll":0,"status":"","props":[],"ig":"gutofeliciodossantos","site":"","sabatina":""},
+      {"n":"David Horn","p":"PCO","num":"290","foto":"70002551426","poll":0,"status":"","props":[],"ig":"","site":"https://candidatos.pco.org.br","sabatina":""}
+    ],
+    "presidente": [
+      {"n":"Lula","p":"PT","props":["Salário mínimo sempre acima da inflação","Isenção de impostos da cesta básica","Criar o Ministério da Segurança Pública","Farmácia Popular com exames gratuitos","Mais institutos federais e creches"],"site":"https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo","entrevista":"https://tvtnews.com.br/lula-na-globo-sabatina-no-jornal-nacional/"},
+      {"n":"Flávio Bolsonaro","p":"PL","props":["Facções tratadas como narcoterroristas","Maioridade penal de 14 anos para crimes hediondos","Corte de gastos e menos imposto em energia e combustível","Cortar 10 ministérios","Vouchers para creches e escolas cívico-militares"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca","entrevista":"https://tvtnews.com.br/acompanhe-a-entrevista-de-flavio-bolsonaro-na-globo/"},
+      {"n":"Augusto Cury","p":"Avante","props":["Semipresidencialismo","Ministério do Empreendedorismo","Programa nacional de prevenção ao suicídio","Gestão da emoção no currículo escolar"],"site":"https://www.band.com.br/politica/eleicoes/eleicoes-2026-conheca-as-propostas-e-o-perfil-de-augusto-cury-avante","entrevista":"https://www.agencialupa.org/checagem/2026/08/29/ao-vivo-checagem-da-entrevista-de-augusto-cury-ao-jornal-nacional/"},
+      {"n":"Ronaldo Caiado","p":"PSD","props":["Ministério da Segurança Pública","Facções tratadas como grupos terroristas","Investimento de 17% para 25% do PIB","Toda criança lendo e fazendo contas até o 2º ano"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/caiado-promete-governo-transformador-e-reformas-estruturais","entrevista":"https://www.agencialupa.org/checagem/2026/08/25/ao-vivo-checagem-da-entrevista-de-ronaldo-caiado-ao-jornal-nacional/"},
+      {"n":"Renan Santos","p":"Missão","props":["Nova reforma da Previdência","Bolsa Família substituído por trabalho comunitário pago","Fim das cotas","Ferrovias de 30 mil para 40 mil km"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/renan-propoe-cortes-na-previdencia-e-alterar-pisos-da-saude-e-educacao","entrevista":"https://www.agencialupa.org/checagem/2026/08/26/ao-vivo-checagem-da-entrevista-de-renan-santos-ao-jornal-nacional/"},
+      {"n":"Romeu Zema","p":"Novo","props":["Privatizar todas as estatais, incluindo a Petrobras","Limitar os poderes do STF","Sair do Brics e entrar na OCDE","R$ 1 mil para cada recém-nascido"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/zema-propoe-saida-do-brics-e-reducao-de-supersalarios-e-de-impostos","entrevista":"https://www.agencialupa.org/checagem/2026/08/24/ao-vivo-checagem-da-entrevista-de-romeu-zema-ao-jornal-nacional/"}
+    ]
+  },
+  "notas": {
+    "governador": "Arruda aparece por último porque teve a candidatura barrada. Elisson e Rico Pinheiro ainda recorrem.",
+    "senado": "Números da pesquisa: Datafolha 22–24/9. Candidatos sem propostas detalhadas na imprensa: veja o perfil no TSE.",
+    "presidente": "Também concorrem Samara Martins (UP), Hertz Dias (PSTU), Leonardo Avalanche (PRTB), Rui Costa Pimenta (PCO), Wilson Grassi (Democrata), Edmilson Costa (PCB) e Clariana Barão (DC)."
+  }
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const pc = v => v==null ? "—" : String(v).replace(".",",")+"%";
+  const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  let D; try{ D = JSON.parse($("dados").textContent); }catch(e){ return; }
+
+  const IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>';
+  const WEB = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+  const MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+  const TSE = "https://divulgacandcontas.tse.jus.br/";
+
+  /* status + contagem */
+  const d = new Date(D.meta.verificadoEm || D.meta.atualizadoEm);
+  $("upd").textContent = isNaN(d) ? "—" : "checado " + d.toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}).replace(",", " ·");
+  function tick(){
+    const m = (D.meta.marcos||[]).find(x=>new Date(x.iso).getTime() > Date.now() - 9*36e5);
+    if(!m){ $("cd").textContent="✓"; $("cd-l").textContent="eleição encerrada"; return; }
+    const diff = new Date(m.iso) - Date.now();
+    if(diff <= 0){ $("cd").textContent="Hoje"; $("cd-l").textContent="é dia de votar · 8h às 17h"; return; }
+    const dd = Math.floor(diff/864e5), hh = Math.floor(diff%864e5/36e5);
+    $("cd").textContent = dd>0 ? `${dd} dia${dd>1?"s":""}` : `${hh}h`;
+    $("cd-l").textContent = m.label;
+  }
+  tick(); setInterval(tick, 60000);
+
+  /* resumo */
+  $("sum").innerHTML = D.resumo.map(r=>`<a href="#pesquisas" data-race="${esc(r.cargo)}"><small>${esc(r.rotulo)}</small><strong>${esc(r.titulo)}</strong><span class="pill ${r.status==="lead"?"lead":"tie"}">${esc(r.statusTxt)}</span></a>`).join("");
+  $("sum").addEventListener("click",e=>{const a=e.target.closest("[data-race]"); if(a) setRace(a.dataset.race);});
+
+  function tabs(el, items, cur, fn){
+    el.innerHTML = items.map(([v,l])=>`<button type="button" data-v="${esc(v)}" aria-pressed="${v===cur}">${esc(l)}</button>`).join("");
+    el.onclick = e=>{const b=e.target.closest("button"); if(!b) return; el.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); fn(b.dataset.v);};
+  }
+
+  /* candidatos do DF */
+  let CR = store.get("vsf-cargo")==="senado" ? "senado" : "governador";
+  function people(){
+    tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
+    const list = D.candidatos[CR]; const max = Math.max(...list.map(c=>c.poll||0), 1);
+    $("people").innerHTML = list.map(c=>{
+      const links = [];
+      if(c.ig) links.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}@${esc(c.ig)}</a>`);
+      links.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Plano no TSE</a>`);
+      if(c.sabatina) links.push(`<a href="${esc(c.sabatina)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
+      return `<article class="person">
+        <div class="top"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" loading="lazy" width="64" height="64">
+          <div><h3>${esc(c.n)}</h3><div class="meta">${esc(c.p)} · <span class="num">${esc(c.num)}</span></div></div></div>
+        ${c.poll!=null?`<div class="poll"><span>pesquisa</span><span class="m"><i style="width:${(c.poll/max)*100}%"></i></span><b>${pc(c.poll)}</b></div>`:""}
+        ${c.status?`<span class="tag">${esc(c.status)}</span>`:""}
+        ${c.props.length?`<details><summary>Propostas</summary><ul>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></details>`:""}
+        <div class="links">${links.join("")}</div></article>`;
+    }).join("");
+    $("c-note").textContent = (D.notas||{})[CR] || "";
+  }
+  people();
+
+  /* pesquisas */
+  const RACES = [["governador","Governo DF"],["senado","Senado DF"],["presidente","Presidente"]];
+  const P = {race:"governador", i:0};
+  function setRace(r){ P.race=r; P.i=0; poll(); }
+  function poll(){
+    tabs($("p-race"), RACES, P.race, v=>setRace(v));
+    const race = D.corridas[P.race];
+    tabs($("p-inst"), race.pesquisas.map((p,i)=>[String(i),p.instituto]), String(P.i), v=>{P.i=+v; poll();});
+    const q = race.pesquisas[P.i]; const [scName, sc] = Object.entries(q.cenarios)[0];
+    $("p-title").textContent = P.race==="senado" ? "Intenção de voto" : "1º turno · " + scName;
+    $("p-meta").textContent = `${q.instituto} · ${q.campo} · ±${q.margem} pontos`;
+    const rows = sc.total.map(r=>({n:r[0],v:r[2],o:false})).concat((sc.outros||[]).map(r=>({n:r[0],v:r[1],o:true})));
+    const top = Math.max(10, Math.ceil(Math.max(...rows.map(r=>r.v+(r.o?0:q.margem)))/10)*10);
+    $("p-bars").innerHTML = `<div class="bars">${rows.map(r=>{const lo=Math.max(0,r.v-q.margem);return `<div class="row ${r.o?"o":""}"><span>${esc(r.n)}</span><span class="t"><span class="f" style="width:${r.v/top*100}%"></span>${!r.o&&r.v>0?`<span class="e" style="left:${lo/top*100}%;width:${(r.v+q.margem-lo)/top*100}%"></span>`:""}</span><span class="v">${pc(r.v)}</span></div>`;}).join("")}</div>`;
+    const t2 = q.segundoTurno||[];
+    $("p-2t").hidden = !t2.length;
+    $("p-2t").innerHTML = t2.length ? `<span class="tiny">Se tiver 2º turno</span>` + t2.map(([a,va,b,vb,rest])=>{const tie=Math.abs(va-vb)<=2*q.margem;return `<div class="duel"><div class="l"><span>${esc(a)} <b>${pc(va)}</b></span><span><b>${pc(vb)}</b> ${esc(b)}</span></div><div class="s" aria-hidden="true"><i style="width:${va}%"></i><i style="width:${vb}%"></i></div><small>${tie?"empate técnico":esc(a)+" à frente"} · brancos, nulos e indecisos: ${rest}%</small></div>`;}).join("") : "";
+    let note = race.alerta || "";
+    if(sc.validos){ const l=sc.validos[0]; note += (note?" ":"") + (l[2]>50 ? `Nos votos válidos, ${l[0]} tem ${pc(l[2])}. Se isso se repetir na urna, a eleição acaba no 1º turno, mas a margem de erro ainda deixa a disputa em aberto.` : `Ninguém passa de 50% dos votos válidos, então teria 2º turno.`); }
+    $("p-note").textContent = note;
+  }
+  poll();
+
+  /* presidente */
+  $("pres").innerHTML = D.candidatos.presidente.map(c=>`<details><summary>${esc(c.n)}<span class="tiny">${esc(c.p)}</span></summary><ul style="margin:0 0 10px;padding-left:1.1rem;display:grid;gap:5px;font-size:.9rem;color:var(--ink-2)">${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ul><div class="links" style="padding:0 0 14px"><a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Plano / propostas</a>${c.entrevista?`<a href="${esc(c.entrevista)}" target="_blank" rel="noopener">${MIC}Sabatina no JN</a>`:""}</div></details>`).join("") + `<p class="note">${esc((D.notas||{}).presidente||"")}</p>`;
+
+  /* o básico */
+  const CARGOS = [
+    ["4","dígitos","Deputado(a) federal","Faz as leis do país na Câmara. O DF elege 8, pra mandato de 4 anos."],
+    ["5","dígitos","Deputado(a) distrital","Faz as leis do DF na Câmara Legislativa. Só existe aqui, porque o DF não tem vereador. São 24 vagas."],
+    ["3","dígitos ×2","Senador(a)","Aprova leis, sabatina ministros do STF e julga impeachment. Mandato de 8 anos. Esse ano você vota em 2 pessoas diferentes."],
+    ["2","dígitos","Governador(a)","Comanda o GDF: hospitais, escolas, polícia, metrô e ônibus. Mandato de 4 anos, pode ter 2º turno."],
+    ["2","dígitos","Presidente","Comanda o governo federal, a economia, o SUS nacional e os programas sociais. Mandato de 4 anos, pode ter 2º turno."]
+  ];
+  $("cargos").innerHTML = CARGOS.map(([n,s,t,p])=>`<div class="cargo"><span class="d">${n}<small>${s}</small></span><div><h3>${t}</h3><p>${p}</p></div></div>`).join("");
+  const FAQ = [
+    ["Voto nulo anula a eleição?","Não. Branco e nulo são descartados e não contam pra ninguém, nem se forem maioria."],
+    ["Posso levar colinha?","Pode, em papel. O que não entra na cabine é o celular."],
+    ["Preciso levar documento?","Leva documento oficial com foto ou usa o e-Título, se ele tiver a sua foto. Local e seção também aparecem no app."],
+    ["Quem é obrigado a votar?","Quem tem de 18 a 69 anos. Com 16 ou 17, ou com 70 ou mais, é opcional. Quem não vota justifica pelo e-Título em até 60 dias."],
+    ["Como funciona o voto de deputado?","É proporcional. Primeiro as vagas são divididas entre os partidos pelo total de votos, e depois entram os mais votados de cada um. Digitar só os 2 primeiros números é voto no partido."],
+    ["Quando tomam posse?","Presidente em 5/1/2027, Governador em 6/1/2027, e deputados e senadores em 1/2/2027."]
+  ];
+  $("faq").innerHTML = FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+
+  /* colinha */
+  const CAMPOS = [["v-df","Deputado(a) federal"],["v-dd","Deputado(a) distrital"],["v-s1","Senado 1º voto"],["v-s2","Senado 2º voto"],["v-gv","Governador(a)"],["v-pr","Presidente"]];
+  CAMPOS.forEach(([id])=>{const el=$(id); el.value=store.get("vsf-"+id)||""; el.addEventListener("input",()=>{el.value=el.value.replace(/\D/g,""); store.set("vsf-"+id,el.value);});});
+  $("cola").addEventListener("submit", async e=>{
+    e.preventDefault();
+    const txt = "Minha colinha · Eleições 2026 (DF)\n" + CAMPOS.map(([id,l])=>`${l}: ${$(id).value||"____"}`).join("\n");
+    const ta = $("cola-txt"); ta.value = txt;
+    try{ await navigator.clipboard.writeText(txt); ta.hidden=true; $("cola-toast").textContent="Copiado. Agora passa pro papel."; }
+    catch(err){ ta.hidden=false; ta.select(); $("cola-toast").textContent="Não deu pra copiar automático. O texto tá selecionado aqui embaixo."; }
+  });
+
+  /* fontes */
+  const seen=new Set(), src=[];
+  Object.values(D.corridas).forEach(r=>r.pesquisas.forEach(p=>{const k=p.instituto+p.registro; if(!seen.has(k)){seen.add(k); src.push(p);}}));
+  $("src").innerHTML = src.map(p=>`<li>${esc(p.instituto)} · ${esc(p.campo)} · ${esc(p.amostra)} entrevistas · TSE ${esc(p.registro)} · <a href="${esc(p.fonte)}" target="_blank" rel="noopener">ver</a></li>`).join("") + `<li>Resultados oficiais a partir de 4/10: <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>`;
+
+  /* chip ativo */
+  const chips=[...document.querySelectorAll("nav.jump a")];
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting) chips.forEach(c=>c.classList.toggle("on",c.getAttribute("href")==="#"+en.target.id));}),{rootMargin:"-40% 0px -55% 0px"});
+    document.querySelectorAll("main section[id]").forEach(s=>io.observe(s));
+  }
+})();
+</script>
+
+</body>
+</html>
