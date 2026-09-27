@@ -267,12 +267,32 @@
   .faq p{margin:0 0 14px;font-size:.92rem;color:var(--ink-2)}
 
   /* colinha */
-  .cola{display:grid;gap:8px;max-width:520px}
-  .cola .f{display:grid;grid-template-columns:1fr 110px;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px 10px 16px}
-  .cola label{font-size:.9rem}
-  .cola label small{display:block;font-size:.74rem;color:var(--ink-3)}
-  .cola input{font:600 1.05rem var(--body);letter-spacing:.18em;text-align:center;background:var(--soft);border:1px solid transparent;border-radius:10px;color:var(--ink);padding:.5rem .3rem;width:100%}
-  .cola input:focus{outline:none;border-color:var(--accent)}
+  .cola{position:relative;display:grid;gap:0;max-width:560px;background:var(--stk-bg);color:#fff;border-radius:22px;padding:22px 20px 20px;box-shadow:5px 5px 0 var(--stk-fg);
+    background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(255,255,255,.07) 31px 32px);transform:rotate(-.6deg)}
+  .cola::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:24px;margin-left:-45px;background:rgba(249,207,0,.85);transform:rotate(2deg);border-radius:3px;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+  .cola-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:4px;border-bottom:2px dashed rgba(255,255,255,.35)}
+  .cola-h b{font:400 1.8rem/1 var(--poster);text-transform:uppercase;color:var(--stk-fg);letter-spacing:.02em}
+  .cola-h span{font-size:.78rem;color:#D6E3FA}
+  .cola .f{display:grid;grid-template-columns:1fr 118px;gap:8px 12px;align-items:center;padding:14px 0;border-bottom:1px dashed rgba(255,255,255,.25)}
+  .cola label{font-weight:600;font-size:.92rem;color:#fff}
+  .cola label small{display:block;font-weight:400;font-size:.74rem;color:#BFD3F5}
+  .cola input{font:400 1.5rem/1 var(--poster);letter-spacing:.14em;text-align:center;background:#FFFDF6;border:2px solid transparent;border-radius:10px;color:#2A1712;padding:.45rem .2rem .4rem;width:100%;box-shadow:inset 0 -3px 0 rgba(42,23,18,.12)}
+  .cola input::placeholder{color:#CFC4B6}
+  .cola input:focus{outline:none;border-color:var(--stk-fg)}
+  .pick{grid-column:1/-1;display:none}
+  .pick.on{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:center;background:rgba(255,255,255,.1);border-radius:14px;padding:8px 12px 8px 8px}
+  .pick img,.pick .ph{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 18%;background:#DCE7FA;border:2px solid var(--stk-fg)}
+  .pick .ph{display:grid;place-items:center;font:400 1rem var(--poster);color:var(--stk-bg)}
+  .pick b{display:block;font-weight:700;font-size:.98rem;line-height:1.2;color:#fff}
+  .pick small{font-size:.8rem;color:#D6E3FA}
+  .pick small strong{color:var(--stk-fg);font-weight:700;letter-spacing:.04em}
+  .pick.warn{grid-template-columns:1fr;font-size:.84rem;color:#FFE9A8;background:rgba(0,0,0,.14)}
+  .cola-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .cola .btn{margin-top:0;background:var(--stk-fg);color:#2A1712}
+  .cola .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+  .cola .toast{color:var(--stk-fg);margin-top:10px}
+  .cola #cola-txt{margin-top:10px}
+  @media (max-width:560px){ .cola{padding:20px 16px 18px;transform:none} .cola .f{grid-template-columns:1fr 104px} }
   .btn{justify-self:start;font:700 .92rem/1 var(--body);background:var(--stk-bg);color:var(--stk-fg);border:0;border-radius:999px;padding:.85rem 1.3rem;cursor:pointer;margin-top:6px}
   .toast{font-size:.84rem;color:var(--accent);min-height:1.3em}
   #cola-txt{width:100%;min-height:110px;font:500 .82rem ui-monospace,monospace;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:10px}
@@ -341,7 +361,6 @@
   @media (max-width:560px){
     #c-tabs button{padding:.6rem .75rem;font-size:.86rem}
     .row{grid-template-columns:96px 1fr 2.6rem;gap:8px;font-size:.8rem}
-    .cola .f{grid-template-columns:1fr 92px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -448,15 +467,43 @@
   </section>
 
   <section id="colinha">
-    <div class="sh"><span class="eyebrow">Pro dia</span><h2>Monte sua colinha</h2><p>Celular não entra na cabine. Anote os números e copie. Fica salvo só no seu aparelho.</p></div>
+    <div class="sh"><span class="eyebrow">Pro dia</span><h2>Monte sua colinha</h2><p>Celular não entra na cabine. Digite os números (ou use "Anotar na colinha" nas fichas) e veja quem é cada um. Depois copie e passe pro papel. Fica salvo só no seu aparelho.</p></div>
     <form class="cola" id="cola" autocomplete="off">
-      <div class="f"><label for="v-df">Deputado(a) federal<small>4 dígitos</small></label><input id="v-df" inputmode="numeric" maxlength="4"></div>
-      <div class="f"><label for="v-dd">Deputado(a) distrital<small>5 dígitos</small></label><input id="v-dd" inputmode="numeric" maxlength="5"></div>
-      <div class="f"><label for="v-s1">Senado · 1º voto<small>3 dígitos</small></label><input id="v-s1" inputmode="numeric" maxlength="3"></div>
-      <div class="f"><label for="v-s2">Senado · 2º voto<small>3 dígitos, outra pessoa</small></label><input id="v-s2" inputmode="numeric" maxlength="3"></div>
-      <div class="f"><label for="v-gv">Governador(a)<small>2 dígitos</small></label><input id="v-gv" inputmode="numeric" maxlength="2"></div>
-      <div class="f"><label for="v-pr">Presidente<small>2 dígitos</small></label><input id="v-pr" inputmode="numeric" maxlength="2"></div>
-      <button class="btn" type="submit">Copiar colinha</button>
+      <div class="cola-h"><b>Minha colinha</b><span>Eleições 2026 · DF · 4/10</span></div>
+      <div class="f">
+        <label for="v-df">Deputado(a) federal<small>4 dígitos</small></label>
+        <input id="v-df" inputmode="numeric" maxlength="4" placeholder="0000" aria-describedby="v-df-c">
+        <div class="pick" id="v-df-c" aria-live="polite"></div>
+      </div>
+      <div class="f">
+        <label for="v-dd">Deputado(a) distrital<small>5 dígitos</small></label>
+        <input id="v-dd" inputmode="numeric" maxlength="5" placeholder="00000" aria-describedby="v-dd-c">
+        <div class="pick" id="v-dd-c" aria-live="polite"></div>
+      </div>
+      <div class="f">
+        <label for="v-s1">Senado · 1º voto<small>3 dígitos</small></label>
+        <input id="v-s1" inputmode="numeric" maxlength="3" placeholder="000" aria-describedby="v-s1-c">
+        <div class="pick" id="v-s1-c" aria-live="polite"></div>
+      </div>
+      <div class="f">
+        <label for="v-s2">Senado · 2º voto<small>3 dígitos, outra pessoa</small></label>
+        <input id="v-s2" inputmode="numeric" maxlength="3" placeholder="000" aria-describedby="v-s2-c">
+        <div class="pick" id="v-s2-c" aria-live="polite"></div>
+      </div>
+      <div class="f">
+        <label for="v-gv">Governador(a)<small>2 dígitos</small></label>
+        <input id="v-gv" inputmode="numeric" maxlength="2" placeholder="00" aria-describedby="v-gv-c">
+        <div class="pick" id="v-gv-c" aria-live="polite"></div>
+      </div>
+      <div class="f">
+        <label for="v-pr">Presidente<small>2 dígitos</small></label>
+        <input id="v-pr" inputmode="numeric" maxlength="2" placeholder="00" aria-describedby="v-pr-c">
+        <div class="pick" id="v-pr-c" aria-live="polite"></div>
+      </div>
+      <div class="cola-foot">
+        <button class="btn" type="submit">Copiar colinha</button>
+        <button class="btn ghost" type="button" id="cola-limpa">Limpar</button>
+      </div>
       <span class="toast" id="cola-toast" role="status"></span>
       <textarea id="cola-txt" readonly hidden aria-label="Texto da colinha"></textarea>
     </form>
@@ -2138,7 +2185,7 @@
       if(s1===num||s2===num) return "Esse número já tá na sua colinha.";
       if(!s1){ id="v-s1"; lbl="Senado 1º voto"; } else { id="v-s2"; lbl="Senado 2º voto"; } }
     else [id,lbl] = COLA[k];
-    $(id).value = num; store.set("vsf-"+id, num);
+    $(id).value = num; store.set("vsf-"+id, num); colaUpd(id);
     return `Anotado em ${lbl}. Dá pra mudar lá na Colinha.`;
   }
   FICHA.addEventListener("close", ()=>{ document.documentElement.classList.remove("lock"); const t=document.querySelector(`.thumb[data-k="${FK}"][data-i="${FI}"]`); if(t) t.focus({preventScroll:true}); });
@@ -2222,11 +2269,35 @@
   $("faq").innerHTML = FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
 
   /* colinha */
-  const CAMPOS = [["v-df","Deputado(a) federal"],["v-dd","Deputado(a) distrital"],["v-s1","Senado 1º voto"],["v-s2","Senado 2º voto"],["v-gv","Governador(a)"],["v-pr","Presidente"]];
-  CAMPOS.forEach(([id])=>{const el=$(id); el.value=store.get("vsf-"+id)||""; el.addEventListener("input",()=>{el.value=el.value.replace(/\D/g,""); store.set("vsf-"+id,el.value);});});
+  const CAMPOS = [["v-df","Deputado(a) federal","federal"],["v-dd","Deputado(a) distrital","distrital"],["v-s1","Senado 1º voto","senado"],["v-s2","Senado 2º voto","senado"],["v-gv","Governador(a)","governador"],["v-pr","Presidente","presidente"]];
+  const CAND = {};
+  function addC(k, n, p, num, foto){ CAND[k+":"+num] = {n, p, num:String(num), foto}; }
+  ["governador","senado","presidente","federal","distrital"].forEach(k=>(D.candidatos[k]||[]).forEach(c=>addC(k,c.n,c.p,c.num,c.foto)));
+  ["federal","distrital"].forEach(k=>((BUSCA[k]||{}).l||[]).forEach(r=>{ if(!CAND[k+":"+r[2]]) addC(k,r[0],r[1],r[2],String(r[3]).split("-").pop()); }));
+  const LEGENDA = {};
+  Object.values(CAND).forEach(c=>{ if(c.num.length>=4) LEGENDA[c.num.slice(0,2)] = c.p; });
+  function quem(k, v){
+    if(!v) return null;
+    const c = CAND[k+":"+v]; if(c) return {c};
+    const need = {federal:4,distrital:5,senado:3,governador:2,presidente:2}[k];
+    if((k==="federal"||k==="distrital") && v.length===2 && LEGENDA[v]) return {msg:`Voto na legenda: vai pro partido ${LEGENDA[v]} (${v}).`};
+    if(v.length<need) return {msg: need-v.length>1 ? `Faltam ${need-v.length} dígitos.` : "Falta 1 dígito."};
+    return {msg:"Nenhum candidato com esse número. Confira de novo, senão o voto é anulado."};
+  }
+  function colaUpd(id){
+    const cfg = CAMPOS.find(x=>x[0]===id); if(!cfg) return;
+    const box = $(id+"-c"), v = $(id).value, r = quem(cfg[2], v);
+    if(!r){ box.className="pick"; box.innerHTML=""; return; }
+    if(r.c){ const c=r.c, ini=c.n.split(/\s+/).map(w=>w[0]).slice(0,2).join("");
+      box.className="pick on";
+      box.innerHTML = `${c.foto?`<img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" width="46" height="46" loading="lazy" onerror="this.outerHTML='<span class=&quot;ph&quot;>${esc(ini)}</span>'">`:`<span class="ph">${esc(ini)}</span>`}<span><b>${esc(c.n)}</b><small>${esc(c.p)} · <strong>${esc(c.num)}</strong></small></span>`;
+    } else { box.className="pick on warn"; box.textContent=r.msg; }
+  }
+  CAMPOS.forEach(([id])=>{const el=$(id); el.value=store.get("vsf-"+id)||""; colaUpd(id); el.addEventListener("input",()=>{el.value=el.value.replace(/\D/g,""); store.set("vsf-"+id,el.value); colaUpd(id);});});
+  $("cola-limpa").addEventListener("click",()=>{ CAMPOS.forEach(([id])=>{ $(id).value=""; store.set("vsf-"+id,""); colaUpd(id); }); $("cola-toast").textContent="Colinha zerada."; });
   $("cola").addEventListener("submit", async e=>{
     e.preventDefault();
-    const txt = "Minha colinha · Eleições 2026 (DF)\n" + CAMPOS.map(([id,l])=>`${l}: ${$(id).value||"____"}`).join("\n");
+    const txt = "Minha colinha · Eleições 2026 (DF) · 4/10\n" + CAMPOS.map(([id,l,k])=>{ const v=$(id).value, r=quem(k,v); return `${l}: ${v||"____"}${r&&r.c?` · ${r.c.n} (${r.c.p})`:""}`; }).join("\n");
     const ta = $("cola-txt"); ta.value = txt;
     try{ await navigator.clipboard.writeText(txt); ta.hidden=true; $("cola-toast").textContent="Copiado. Agora passe pro papel."; }
     catch(err){ ta.hidden=false; ta.select(); $("cola-toast").textContent="Não deu pra copiar automático. O texto tá selecionado aqui embaixo."; }
