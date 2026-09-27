@@ -7,8 +7,17 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <meta name="theme-color" content="#0A53C4">
-<meta property="og:image" content="img/logo.png">
-<meta name="description" content="Guia apartidário das Eleições 2026 no DF: candidatos a Governador e Senado com foto, número, propostas, Instagram e site; pesquisas do TSE atualizadas todo dia; Presidente; o que cada cargo faz e colinha pro dia 4/10.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voto Sem Filtro DF">
+<meta property="og:title" content="Voto Sem Filtro DF · Eleição 2026 sem enrolação">
+<meta property="og:description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos com foto, número e propostas, pesquisas do TSE e colinha pro dia 4/10.">
+<meta property="og:url" content="https://votosemfiltrodf.netlify.app/">
+<meta property="og:image" content="https://votosemfiltrodf.netlify.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://votosemfiltrodf.netlify.app/">
+<meta name="description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos, do Presidente ao deputado distrital, com foto, número e propostas; pesquisas do TSE atualizadas todo dia; primeiro voto, datas e colinha pro dia 4/10.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
@@ -289,6 +298,8 @@
   .pick.warn{grid-template-columns:1fr;font-size:.84rem;color:#FFE9A8;background:rgba(0,0,0,.14)}
   .cola-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
   .cola .btn{margin-top:0;background:var(--stk-fg);color:#2A1712}
+  .cola .btn.wa{background:#25D366;color:#073B1C;display:inline-flex;align-items:center;gap:8px}
+  .cola .btn.wa svg{width:18px;height:18px}
   .cola .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
   .cola .toast{color:var(--stk-fg);margin-top:10px}
   .cola #cola-txt{margin-top:10px}
@@ -501,7 +512,9 @@
         <div class="pick" id="v-pr-c" aria-live="polite"></div>
       </div>
       <div class="cola-foot">
-        <button class="btn" type="button" id="cola-img">Baixar imagem</button>
+        <button class="btn" type="button" id="cola-img" data-fmt="feed">Baixar imagem</button>
+        <button class="btn" type="button" id="cola-story" data-fmt="story">Baixar pro Stories</button>
+        <button class="btn wa" type="button" id="cola-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Mandar no WhatsApp</button>
         <button class="btn ghost" type="submit">Copiar texto</button>
         <button class="btn ghost" type="button" id="cola-limpa">Limpar</button>
       </div>
@@ -2308,68 +2321,73 @@
   function loadImg(src){ return new Promise(res=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=()=>res(null); i.src=src; }); }
   function rr(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
   function fit(ctx,txt,font,size,max){ let s=size; do{ ctx.font=font.replace("S",s); if(ctx.measureText(txt).width<=max) break; s-=2; }while(s>18); return s; }
-  async function colaImagem(){
-    const btn=$("cola-img"); btn.disabled=true; const old=btn.textContent; btn.textContent="Gerando…";
+  const SITE = "https://votosemfiltrodf.netlify.app/";
+  const LAYOUT = {
+    story:{H:1920, logoW:330, logoY:70, cy:290, ch:1330, t:92, tY:130, sub:32, subY:182, lineY:215, rowTop:235, rowH:180, pr:52, bw:230, bh:112, num:76, lab:28, name:40, party:30, f:[90,170,222,262], fs:[32,54,32,24], file:"minha-colinha-stories.png"},
+    feed:{H:1350, logoW:210, logoY:34, cy:196, ch:950, t:70, tY:98, sub:26, subY:140, lineY:166, rowTop:178, rowH:125, pr:40, bw:190, bh:86, num:60, lab:22, name:32, party:25, f:[62,112,150,0], fs:[0,46,28,0], file:"minha-colinha.png"}
+  };
+  async function colaImagem(fmt, btn){
+    const L = LAYOUT[fmt]; btn.disabled=true; const old=btn.textContent; btn.textContent="Gerando…";
     try{
       await Promise.all(["400 90px Anton","700 36px Onest","500 30px Onest"].map(f=>document.fonts&&document.fonts.load(f).catch(()=>{})));
-      const W=1080,H=1920, cv=document.createElement("canvas"); cv.width=W; cv.height=H; const x=cv.getContext("2d");
+      const W=1080,H=L.H, cv=document.createElement("canvas"); cv.width=W; cv.height=H; const x=cv.getContext("2d");
       const BLUE="#0A53C4", YEL="#FFD60A", BROWN="#2A1712", CREAM="#FBF7EC";
       x.fillStyle=CREAM; x.fillRect(0,0,W,H);
-      x.fillStyle="#FFF3BD"; x.beginPath(); x.arc(90,210,150,0,7); x.fill();
-      x.fillStyle="#E2EBFA"; x.beginPath(); x.arc(1010,1790,210,0,7); x.fill();
+      x.fillStyle="#FFF3BD"; x.beginPath(); x.arc(90,L.logoY+140,150,0,7); x.fill();
+      x.fillStyle="#E2EBFA"; x.beginPath(); x.arc(1010,H-130,210,0,7); x.fill();
       const logo=await loadImg("img/wordmark.png");
-      if(logo){ const lw=330, lh=lw*logo.height/logo.width; x.drawImage(logo,(W-lw)/2,70,lw,lh); }
-      // cartão
-      const cx=70, cy=290, cw=W-140, ch=1330;
+      if(logo){ const lw=L.logoW, lh=lw*logo.height/logo.width; x.drawImage(logo,(W-lw)/2,L.logoY,lw,lh); }
+      const cx=70, cy=L.cy, cw=W-140, ch=L.ch;
       x.save(); x.fillStyle=YEL; rr(x,cx+10,cy+12,cw,ch,40); x.fill();
       x.fillStyle=BLUE; rr(x,cx,cy,cw,ch,40); x.fill(); x.clip();
       x.strokeStyle="rgba(255,255,255,.07)"; x.lineWidth=2; for(let yy=cy+40; yy<cy+ch; yy+=44){ x.beginPath(); x.moveTo(cx,yy); x.lineTo(cx+cw,yy); x.stroke(); }
       x.restore();
-      x.save(); x.translate(W/2,cy-4); x.rotate(.03); x.fillStyle="rgba(249,207,0,.9)"; x.fillRect(-80,-22,160,44); x.restore();
+      x.save(); x.translate(W/2,cy-4); x.rotate(.03); x.fillStyle="rgba(249,207,0,.9)"; x.fillRect(-80,-20,160,40); x.restore();
       x.textBaseline="alphabetic"; x.textAlign="left";
-      x.fillStyle=YEL; x.font="400 92px Anton"; x.fillText("MINHA COLINHA", cx+50, cy+130);
-      x.fillStyle="#D6E3FA"; x.font="500 32px Onest"; x.fillText("Eleições 2026 · Distrito Federal · 4 de outubro", cx+52, cy+182);
-      x.strokeStyle="rgba(255,255,255,.4)"; x.setLineDash([16,12]); x.lineWidth=3; x.beginPath(); x.moveTo(cx+50,cy+215); x.lineTo(cx+cw-50,cy+215); x.stroke(); x.setLineDash([]);
-      const rowH=180, top=cy+235;
+      x.fillStyle=YEL; x.font=`400 ${L.t}px Anton`; x.fillText("MINHA COLINHA", cx+50, cy+L.tY);
+      x.fillStyle="#D6E3FA"; x.font=`500 ${L.sub}px Onest`; x.fillText("Eleições 2026 · Distrito Federal · 4 de outubro", cx+52, cy+L.subY);
+      x.strokeStyle="rgba(255,255,255,.4)"; x.setLineDash([16,12]); x.lineWidth=3; x.beginPath(); x.moveTo(cx+50,cy+L.lineY); x.lineTo(cx+cw-50,cy+L.lineY); x.stroke(); x.setLineDash([]);
+      const rowH=L.rowH, top=cy+L.rowTop;
       for(let i=0;i<CAMPOS.length;i++){
         const [id,label,k]=CAMPOS[i], v=$(id).value, r=quem(k,v), y0=top+i*rowH;
-        if(i) { x.strokeStyle="rgba(255,255,255,.22)"; x.setLineDash([8,8]); x.lineWidth=2; x.beginPath(); x.moveTo(cx+50,y0); x.lineTo(cx+cw-50,y0); x.stroke(); x.setLineDash([]); }
-        const py=y0+rowH/2, pr=52, px=cx+50+pr;
-        // foto
+        if(i){ x.strokeStyle="rgba(255,255,255,.22)"; x.setLineDash([8,8]); x.lineWidth=2; x.beginPath(); x.moveTo(cx+50,y0); x.lineTo(cx+cw-50,y0); x.stroke(); x.setLineDash([]); }
+        const py=y0+rowH/2, pr=L.pr, px=cx+50+pr;
         x.save(); x.beginPath(); x.arc(px,py,pr,0,7); x.closePath(); x.fillStyle="#DCE7FA"; x.fill(); x.clip();
         let drew=false;
         if(r&&r.c&&r.c.foto){ const im=await loadImg(`img/${r.c.foto}.jpg`); if(im){ const sc=Math.max(2*pr/im.width,2*pr/im.height), iw=im.width*sc, ih=im.height*sc; x.drawImage(im,px-iw/2,py-pr-(ih-2*pr)*.18,iw,ih); drew=true; } }
-        if(!drew){ x.fillStyle=BLUE; x.font="400 44px Anton"; x.textAlign="center"; x.fillText(r&&r.c ? r.c.n.split(/\s+/).map(w=>w[0]).slice(0,2).join("") : "?", px, py+16); x.textAlign="left"; }
+        if(!drew){ x.fillStyle=BLUE; x.font=`400 ${Math.round(pr*.85)}px Anton`; x.textAlign="center"; x.fillText(r&&r.c ? r.c.n.split(/\s+/).map(w=>w[0]).slice(0,2).join("") : "?", px, py+pr*.3); x.textAlign="left"; }
         x.restore(); x.lineWidth=5; x.strokeStyle=YEL; x.beginPath(); x.arc(px,py,pr,0,7); x.stroke();
-        // textos
-        const tx=px+pr+28, maxw=cx+cw-50-260-tx;
-        x.fillStyle="#BFD3F5"; x.font="600 28px Onest"; x.fillText(label.toUpperCase(), tx, py-34);
-        if(r&&r.c){ x.fillStyle="#FFFFFF"; fit(x,r.c.n,"700 Spx Onest",40,maxw); x.fillText(r.c.n, tx, py+12);
-          x.fillStyle=YEL; x.font="600 30px Onest"; x.fillText(r.c.p, tx, py+54); }
-        else { x.fillStyle="#FFE9A8"; const msg = !v ? "Em branco na colinha" : (r&&r.msg)||""; fit(x,msg,"500 Spx Onest",30,maxw); x.fillText(msg, tx, py+14); }
-        // número
-        const bw=230, bh=112, bx=cx+cw-50-bw, by=py-bh/2;
-        x.fillStyle="rgba(0,0,0,.14)"; rr(x,bx,by+6,bw,bh,22); x.fill();
-        x.fillStyle="#FFFDF6"; rr(x,bx,by,bw,bh,22); x.fill();
-        x.fillStyle=v?BROWN:"#CFC4B6"; x.textAlign="center"; x.font="400 76px Anton"; x.fillText(v || "_".repeat({federal:4,distrital:5,senado:3,governador:2,presidente:2}[k]), bx+bw/2, by+bh/2+27); x.textAlign="left";
+        const tx=px+pr+26, maxw=cx+cw-50-L.bw-24-tx;
+        x.fillStyle="#BFD3F5"; x.font=`600 ${L.lab}px Onest`; x.fillText(label.toUpperCase(), tx, py-L.name*.85);
+        if(r&&r.c){ x.fillStyle="#FFFFFF"; fit(x,r.c.n,"700 Spx Onest",L.name,maxw); x.fillText(r.c.n, tx, py+L.name*.3);
+          x.fillStyle=YEL; x.font=`600 ${L.party}px Onest`; x.fillText(r.c.p, tx, py+L.name*.3+L.party*1.35); }
+        else { x.fillStyle="#FFE9A8"; const msg = !v ? "Em branco na colinha" : (r&&r.msg)||""; fit(x,msg,"500 Spx Onest",L.party,maxw); x.fillText(msg, tx, py+L.party*.45); }
+        const bw=L.bw, bh=L.bh, bx=cx+cw-50-bw, by=py-bh/2;
+        x.fillStyle="rgba(0,0,0,.14)"; rr(x,bx,by+6,bw,bh,20); x.fill();
+        x.fillStyle="#FFFDF6"; rr(x,bx,by,bw,bh,20); x.fill();
+        x.fillStyle=v?BROWN:"#CFC4B6"; x.textAlign="center"; x.font=`400 ${L.num}px Anton`; x.fillText(v || "_".repeat({federal:4,distrital:5,senado:3,governador:2,presidente:2}[k]), bx+bw/2, by+bh/2+L.num*.36); x.textAlign="left";
       }
-      // rodapé
-      x.textAlign="center";
-      x.fillStyle=BROWN; x.font="600 32px Onest"; x.fillText("Celular não entra na cabine: leve no papel.", W/2, cy+ch+90);
-      x.fillStyle=BLUE; x.font="400 54px Anton"; x.fillText("VOTOSEMFILTRODF.NETLIFY.APP", W/2, cy+ch+170);
-      x.fillStyle=BROWN; x.font="500 32px Onest"; x.fillText("Criado por Oliver · @oliver.calvt", W/2, cy+ch+222);
-      x.fillStyle="#8C7B72"; x.font="500 24px Onest"; x.fillText("Guia apartidário · fotos oficiais do TSE", W/2, cy+ch+262);
+      x.textAlign="center"; const fy=cy+ch;
+      if(L.fs[0]){ x.fillStyle=BROWN; x.font=`600 ${L.fs[0]}px Onest`; x.fillText("Celular não entra na cabine: leve no papel.", W/2, fy+L.f[0]); }
+      x.fillStyle=BLUE; x.font=`400 ${L.fs[1]}px Anton`; x.fillText("VOTOSEMFILTRODF.NETLIFY.APP", W/2, fy+L.f[1]);
+      x.fillStyle=BROWN; x.font=`500 ${L.fs[2]}px Onest`; x.fillText("Criado por Oliver · @oliver.calvt", W/2, fy+L.f[2]);
+      if(L.fs[3]){ x.fillStyle="#8C7B72"; x.font=`500 ${L.fs[3]}px Onest`; x.fillText("Guia apartidário · fotos oficiais do TSE", W/2, fy+L.f[3]); }
       const blob = await new Promise(res=>cv.toBlob(res,"image/png"));
-      const file = new File([blob],"minha-colinha-2026.png",{type:"image/png"});
+      const file = new File([blob],L.file,{type:"image/png"});
       if(navigator.canShare && navigator.canShare({files:[file]}) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)){
-        try{ await navigator.share({files:[file], title:"Minha colinha", text:"Minha colinha pro dia 4/10 · votosemfiltrodf.netlify.app"}); $("cola-toast").textContent="Pronto! Salve a imagem ou mande pra quem quiser."; return; }catch(e){ if(e && e.name==="AbortError") return; }
+        try{ await navigator.share({files:[file], title:"Minha colinha", text:`Monte a sua colinha: ${SITE}`}); $("cola-toast").textContent = fmt==="story" ? "Pronto! Salve e poste nos Stories marcando o link do site." : "Pronto! Salve a imagem ou mande pra quem quiser."; return; }catch(e){ if(e && e.name==="AbortError") return; }
       }
-      const url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download="minha-colinha-2026.png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),4000);
+      const url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download=L.file; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),4000);
       $("cola-toast").textContent="Imagem baixada. Confira na pasta de downloads.";
     } catch(e){ $("cola-toast").textContent="Não deu pra gerar a imagem agora. Tente de novo."; }
     finally{ btn.disabled=false; btn.textContent=old; }
   }
-  $("cola-img").addEventListener("click", colaImagem);
+  ["cola-img","cola-story"].forEach(id=>$(id).addEventListener("click", e=>colaImagem(e.currentTarget.dataset.fmt, e.currentTarget)));
+  $("cola-wa").addEventListener("click", ()=>{
+    const linhas = CAMPOS.map(([id,l,k])=>{ const v=$(id).value, r=quem(k,v); return v ? `• ${l}: *${v}*${r&&r.c?` (${r.c.n}, ${r.c.p})`:(r&&/legenda/.test(r.msg||"")?" (voto na legenda)":"")}` : ""; }).filter(Boolean);
+    const msg = (linhas.length ? `Minha colinha pro dia 4/10:\n${linhas.join("\n")}\n\n` : "") + `Monte a sua no Voto Sem Filtro DF, guia apartidário das eleições no DF:\n${SITE}`;
+    window.open("https://wa.me/?text="+encodeURIComponent(msg), "_blank", "noopener");
+  });
 
   /* primeiro voto */
   const CHK = [
