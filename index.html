@@ -166,6 +166,53 @@
   .author a.ig svg{width:16px;height:16px}
   .fine{margin-top:20px;font-size:.78rem;color:var(--ink-3);max-width:70ch}
 
+  /* primeiro voto */
+  .prog{display:flex;align-items:center;gap:12px;font-size:.84rem;color:var(--ink-2);margin-bottom:12px;max-width:620px}
+  .prog .m{flex:1;height:6px;border-radius:3px;background:var(--soft);overflow:hidden}
+  .prog .m i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+  .check{display:grid;gap:8px;max-width:620px}
+  .check label{display:grid;grid-template-columns:24px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer}
+  .check input{appearance:none;-webkit-appearance:none;width:22px;height:22px;margin:1px 0 0;border:2px solid var(--ink-3);border-radius:7px;display:grid;place-content:center;cursor:pointer}
+  .check input:checked{background:var(--accent);border-color:var(--accent)}
+  .check input:checked::after{content:"";width:6px;height:11px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+  .check b{display:block;font-weight:600}
+  .check span span{display:block;font-size:.88rem;color:var(--ink-2);margin-top:2px}
+  .check a{color:var(--accent)}
+  .check label:has(input:checked) b{color:var(--ink-3);text-decoration:line-through}
+  .decide{margin:18px 0 0;font:700 1.3rem/1.2 var(--display);color:var(--ink-3);transition:color .3s}
+  .decide.ok{color:var(--accent)}
+
+  /* agenda */
+  .ag{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:620px}
+  .ag li{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+  .ag .dt{font:700 1.15rem/1 var(--display);font-variant-numeric:tabular-nums}
+  .ag .dt small{display:block;font:500 .68rem var(--body);color:var(--ink-3);margin-top:4px}
+  .ag p{margin:0;font-size:.9rem;color:var(--ink-2)}
+  .ag b{color:var(--ink);font-weight:600}
+  .ag li.past{opacity:.5}
+  .ag li.next{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .ag .nx{display:inline-block;font-size:.68rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:.15rem .5rem;border-radius:999px;margin-left:6px;vertical-align:1px}
+
+  /* como funciona */
+  .rules{margin:0 0 14px;padding-left:1.1rem;display:grid;gap:6px;font-size:.9rem;color:var(--ink-2)}
+  .hist{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px;font-size:.88rem;color:var(--ink-2)}
+  .hist time{display:block;font-size:.74rem;color:var(--ink-3)}
+  .order{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-8px 0 16px;font-size:.8rem;color:var(--ink-3)}
+  .order .tabs{margin:0}
+  .order .tabs button{padding:.4rem .75rem;font-size:.8rem}
+
+  /* barra de baixo (celular) */
+  .bnav{display:none}
+  @media (max-width:720px){
+    nav.jump{display:none}
+    body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+    section{scroll-margin-top:16px}
+    .bnav{display:flex;justify-content:space-around;position:fixed;left:0;right:0;bottom:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+    .bnav a{flex:1;display:grid;justify-items:center;gap:2px;font-size:.68rem;font-weight:500;text-decoration:none;color:var(--ink-3);padding:5px 2px;border-radius:12px}
+    .bnav a.on{color:var(--accent)}
+    .bnav svg{width:22px;height:22px}
+  }
+
   @media (max-width:560px){
     .row{grid-template-columns:96px 1fr 2.6rem;gap:8px;font-size:.8rem}
     .cola .f{grid-template-columns:1fr 92px}
@@ -184,8 +231,9 @@
 </header>
 
 <div class="wrap hero" id="topo">
-  <h1>Eleição 2026 no DF, <span>sem enrolação</span>.</h1>
-  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador e ao Senado, com foto, número de urna, propostas, Instagram e site oficial. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
+  <span class="eyebrow">A gente explica. Você decide.</span>
+  <h1 style="margin-top:12px">Eleição 2026 no DF, <span>sem enrolação</span>.</h1>
+  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador e ao Senado, com foto, número de urna, propostas, Instagram e site oficial. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
   <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
 </div>
 
@@ -196,7 +244,10 @@
     <a href="#pesquisas">Pesquisas</a>
     <a href="#presidente">Presidente</a>
     <a href="#basico">O básico</a>
+    <a href="#primeiro-voto">1º voto</a>
+    <a href="#agenda">Agenda</a>
     <a href="#colinha">Colinha</a>
+    <a href="#como-funciona">Como funciona</a>
   </div>
 </nav>
 
@@ -209,6 +260,7 @@
   <section id="candidatos">
     <div class="sh"><span class="eyebrow">Governo e Senado</span><h2>Candidatos do DF</h2><p>Toca em "propostas" pra ver o resumo. O site de cada candidato tem o plano completo.</p></div>
     <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
+    <div class="order"><div class="tabs" id="c-ord" role="group" aria-label="Ordem"></div><span id="c-ord-t"></span></div>
     <div class="people" id="people"></div>
     <p class="note" id="c-note"></p>
   </section>
@@ -236,6 +288,19 @@
     <div class="faq" id="faq"></div>
   </section>
 
+  <section id="primeiro-voto">
+    <div class="sh"><span class="eyebrow">Primeira vez?</span><h2>Primeiro voto, passo a passo</h2><p>Marca o que já fez. Fica salvo só no teu aparelho.</p></div>
+    <div class="prog"><span class="m"><i id="chk-bar"></i></span><span id="chk-n">0 de 0</span></div>
+    <div class="check" id="chk"></div>
+    <p class="decide" id="decide">Agora a decisão é sua.</p>
+  </section>
+
+  <section id="agenda">
+    <div class="sh"><span class="eyebrow">Calendário do TSE</span><h2>Datas que importam</h2><p>O que muda até o dia da votação.</p></div>
+    <ul class="ag" id="ag"></ul>
+    <p class="note">Fonte: <a href="https://www.tse.jus.br/eleicoes/calendario-eleitoral" target="_blank" rel="noopener" style="color:var(--accent)">calendário eleitoral do TSE</a>. Horários de Brasília.</p>
+  </section>
+
   <section id="colinha">
     <div class="sh"><span class="eyebrow">Pro dia</span><h2>Monta tua colinha</h2><p>Celular não entra na cabine. Anota os números e copia, fica salvo só no teu aparelho.</p></div>
     <form class="cola" id="cola" autocomplete="off">
@@ -251,8 +316,23 @@
     </form>
   </section>
 
-  <section id="fontes">
+  <section id="como-funciona">
+    <div class="sh"><span class="eyebrow">Transparência</span><h2>Como o site funciona</h2></div>
     <div class="faq" style="margin-top:0">
+      <details><summary>As regras que a gente segue</summary>
+        <ul class="rules">
+          <li>O site informa. Não diz em quem votar, não dá nota pra candidato e não tem teste de "com quem você combina".</li>
+          <li>Todo mundo aparece no mesmo formato de card, com a foto oficial do TSE.</li>
+          <li>A ordem dos candidatos é sorteada a cada visita. Só vai pro fim quem teve a candidatura barrada.</li>
+          <li>Só entram pesquisas registradas no TSE, sempre com instituto, data, número de entrevistas e margem de erro.</li>
+          <li>As propostas são resumos. O link do site ou do plano de governo leva pro texto completo.</li>
+          <li>Nada de dado inventado: se não tem fonte, não entra.</li>
+        </ul>
+      </details>
+      <details><summary>Atualizações e correções</summary>
+        <ul class="hist" id="hist"></ul>
+        <p>Viu algo errado ou desatualizado? Manda mensagem no <a href="https://www.instagram.com/oliver.calvt/" target="_blank" rel="noopener" style="color:var(--accent)">@oliver.calvt</a> com o link da fonte. A correção entra aqui, com data.</p>
+      </details>
       <details><summary>De onde vêm os dados</summary>
         <p>As pesquisas têm registro no TSE, e o site é atualizado automaticamente uma vez por dia. As fotos oficiais e as redes sociais são as que cada candidato registrou no TSE. As propostas vêm dos planos de governo, de sabatinas e da imprensa.</p>
         <ul class="src" id="src" style="margin-bottom:14px"></ul>
@@ -270,6 +350,14 @@
     <p class="fine">Projeto informativo e apartidário. Pesquisa mostra um retrato do momento, não prevê o resultado. As propostas foram resumidas e não substituem o plano completo de cada candidato. Fotos: divulgação oficial dos candidatos no Tribunal Superior Eleitoral.</p>
   </div>
 </footer>
+
+<nav class="bnav" aria-label="Menu">
+  <a href="#topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Início</a>
+  <a href="#candidatos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg>Candidatos</a>
+  <a href="#pesquisas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Pesquisas</a>
+  <a href="#primeiro-voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>1º voto</a>
+  <a href="#colinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Colinha</a>
+</nav>
 
 <!-- DADOS: este bloco é atualizado automaticamente. Mantenha JSON válido. -->
 <script type="application/json" id="dados">
@@ -442,9 +530,22 @@
 
   /* candidatos do DF */
   let CR = store.get("vsf-cargo")==="senado" ? "senado" : "governador";
+  let ORD = store.get("vsf-ordem")==="az" ? "az" : "sorteio";
+  const FORA = /barrad|cassad|renunci|desist/i;
+  const SORTE = {};
+  function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+  function ordered(){
+    const all = D.candidatos[CR], dentro = all.filter(c=>!FORA.test(c.status||"")), fora = all.filter(c=>FORA.test(c.status||""));
+    let l;
+    if(ORD==="az") l = dentro.slice().sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
+    else { const key = dentro.map(c=>c.n).join("|"); if(!SORTE[CR] || SORTE[CR].key!==key) SORTE[CR] = {key, l:shuffle(dentro)}; l = SORTE[CR].l; }
+    return l.concat(fora);
+  }
   function people(){
     tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
-    const list = D.candidatos[CR]; const max = Math.max(...list.map(c=>c.poll||0), 1);
+    tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people();});
+    $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
+    const list = ordered();
     $("people").innerHTML = list.map(c=>{
       const links = [];
       if(c.ig) links.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}@${esc(c.ig)}</a>`);
@@ -453,7 +554,7 @@
       return `<article class="person">
         <div class="top"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" loading="lazy" width="64" height="64">
           <div><h3>${esc(c.n)}</h3><div class="meta">${esc(c.p)} · <span class="num">${esc(c.num)}</span></div></div></div>
-        ${c.poll!=null?`<div class="poll"><span>pesquisa</span><span class="m"><i style="width:${(c.poll/max)*100}%"></i></span><b>${pc(c.poll)}</b></div>`:""}
+        ${c.poll!=null?`<div class="poll"><span>pesquisa</span><span class="m"><i style="width:${Math.min(100,c.poll)}%"></i></span><b>${pc(c.poll)}</b></div>`:""}
         ${c.status?`<span class="tag">${esc(c.status)}</span>`:""}
         ${c.props.length?`<details><summary>Propostas</summary><ul>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></details>`:""}
         <div class="links">${links.join("")}</div></article>`;
@@ -518,16 +619,51 @@
     catch(err){ ta.hidden=false; ta.select(); $("cola-toast").textContent="Não deu pra copiar automático. O texto tá selecionado aqui embaixo."; }
   });
 
+  /* primeiro voto */
+  const CHK = [
+    ["titulo","Confere se teu título tá regular",'No app e-Título ou no <a href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral" target="_blank" rel="noopener">autoatendimento do TSE</a>. O prazo pra tirar ou transferir título já fechou, agora é só conferir.'],
+    ["local","Descobre onde você vota","Local e seção aparecem no e-Título e no autoatendimento do TSE. Vale olhar o caminho antes do dia."],
+    ["etitulo","Baixa o e-Título","É o app oficial da Justiça Eleitoral. Se tiver a tua foto, ele serve de documento."],
+    ["doc","Separa um documento com foto","RG, CNH, passaporte, carteira de trabalho ou de categoria profissional. Título de papel sozinho não basta."],
+    ["cand","Conhece os candidatos",'Lê as propostas e abre o site de cada um em <a href="#candidatos">Candidatos do DF</a> e <a href="#presidente">Presidente</a>.'],
+    ["dep","Escolhe teus deputados",'São centenas de candidatos a deputado federal e distrital no DF. Pesquisa pelo nome ou número no <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener">DivulgaCandContas</a>.'],
+    ["cola","Monta a colinha",'Anota os números em <a href="#colinha">Colinha</a> e passa pro papel. Celular não entra na cabine.'],
+    ["dia","Vai votar dia 4/10","Das 8h às 17h, horário de Brasília. A urna pede os votos nesta ordem: federal, distrital, senado (2 votos), governador e presidente."]
+  ];
+  $("chk").innerHTML = CHK.map(([k,t,p])=>`<label><input type="checkbox" data-k="${k}"${store.get("vsf-chk-"+k)==="1"?" checked":""}><span><b>${t}</b><span>${p}</span></span></label>`).join("");
+  function prog(){
+    const n = $("chk").querySelectorAll("input:checked").length;
+    $("chk-n").textContent = `${n} de ${CHK.length}`; $("chk-bar").style.width = (n/CHK.length*100)+"%";
+    $("decide").classList.toggle("ok", n===CHK.length);
+  }
+  $("chk").addEventListener("change", e=>{ const i=e.target; if(i.dataset.k){ store.set("vsf-chk-"+i.dataset.k, i.checked?"1":"0"); prog(); } });
+  prog();
+
+  /* agenda */
+  const AG = [
+    ["2026-09-29","ter","A partir de hoje, <b>nenhum eleitor pode ser preso</b>, salvo em flagrante, até 48h depois da votação."],
+    ["2026-10-01","qui","Último dia do <b>horário eleitoral</b> no rádio e na TV e de <b>comícios</b>."],
+    ["2026-10-03","sáb","Último dia de <b>carreata, caminhada</b> e distribuição de santinho, até 22h."],
+    ["2026-10-04","dom","<b>1º turno.</b> Votação das 8h às 17h. A apuração começa logo depois, em resultados.tse.jus.br."],
+    ["2026-10-25","dom","<b>2º turno</b>, se houver, pra Presidente e Governador. Mesmo horário."]
+  ];
+  const hoje = new Date().toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"});
+  const prox = (AG.find(a=>a[0]>=hoje)||[])[0];
+  $("ag").innerHTML = AG.map(([iso,w,t])=>{const [,m,dd]=iso.split("-"); const cls = iso<hoje?"past":iso===prox?"next":""; return `<li class="${cls}"><span class="dt">${+dd}/${+m}<small>${w}</small></span><p>${t}${iso===prox?`<span class="nx">${iso===hoje?"hoje":"próximo"}</span>`:""}</p></li>`;}).join("");
+
+  /* histórico */
+  $("hist").innerHTML = (D.meta.historico||[]).slice().reverse().map(h=>{const [y,m,dd]=String(h.data).split("-"); return `<li><time datetime="${esc(h.data)}">${dd}/${m}/${y}</time>${esc(h.nota)}</li>`;}).join("");
+
   /* fontes */
   const seen=new Set(), src=[];
   Object.values(D.corridas).forEach(r=>r.pesquisas.forEach(p=>{const k=p.instituto+p.registro; if(!seen.has(k)){seen.add(k); src.push(p);}}));
   $("src").innerHTML = src.map(p=>`<li>${esc(p.instituto)} · ${esc(p.campo)} · ${esc(p.amostra)} entrevistas · TSE ${esc(p.registro)} · <a href="${esc(p.fonte)}" target="_blank" rel="noopener">ver</a></li>`).join("") + `<li>Resultados oficiais a partir de 4/10: <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>`;
 
   /* chip ativo */
-  const chips=[...document.querySelectorAll("nav.jump a")];
+  const chips=[...document.querySelectorAll("nav.jump a, .bnav a")];
   if("IntersectionObserver" in window){
     const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting) chips.forEach(c=>c.classList.toggle("on",c.getAttribute("href")==="#"+en.target.id));}),{rootMargin:"-40% 0px -55% 0px"});
-    document.querySelectorAll("main section[id]").forEach(s=>io.observe(s));
+    document.querySelectorAll("main section[id], #topo").forEach(s=>io.observe(s));
   }
 })();
 </script>
