@@ -99,7 +99,7 @@
 
   /* busca distrital */
   .busca{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
-  .busca label{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:.92rem;margin-bottom:10px}
+  .busca label{display:grid;gap:2px;font-size:.92rem;margin-bottom:10px}
   .busca label span{font-size:.76rem;color:var(--ink-3)}
   .busca input{width:100%;font:500 1rem var(--body);color:var(--ink);background:var(--soft);border:1px solid transparent;border-radius:12px;padding:.75rem .9rem}
   .busca input:focus{outline:none;border-color:var(--accent)}
@@ -278,6 +278,7 @@
   }
 
   @media (max-width:560px){
+    #c-tabs button{padding:.6rem .75rem;font-size:.86rem}
     .row{grid-template-columns:96px 1fr 2.6rem;gap:8px;font-size:.8rem}
     .cola .f{grid-template-columns:1fr 92px}
     .status .long{display:none}
@@ -322,14 +323,14 @@
   </section>
 
   <section id="candidatos">
-    <div class="sh"><span class="eyebrow">Governo, Senado e Câmara Legislativa</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
+    <div class="sh"><span class="eyebrow">Governo, Senado, Câmara e Câmara Legislativa</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
     <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
     <div class="order"><div class="tabs" id="c-ord" role="group" aria-label="Ordem"></div><span id="c-ord-t"></span></div>
     <div class="people" id="people"></div>
     <p class="legend">Toca na foto pra abrir a ficha. O contorno usa as cores oficiais de cada partido, só pra identificar.</p>
     <p class="note" id="c-note"></p>
     <div class="busca" id="d-busca" hidden>
-      <label for="d-q"><b>Procura qualquer candidato a distrital</b><span id="d-tot"></span></label>
+      <label for="d-q"><b id="d-tit">Procura qualquer candidato</b><span id="d-tot"></span></label>
       <input id="d-q" type="search" placeholder="Nome, partido ou número" autocomplete="off" inputmode="search">
       <ul class="res" id="d-res" aria-live="polite"></ul>
     </div>
@@ -1526,7 +1527,8 @@
     "site": "https://chicovigilante.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/chico-vigilante-70002540503/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/chico-vigilante-70002540503/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Max Maciel",
@@ -1537,7 +1539,8 @@
     "site": "https://www.maxmaciel50100.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/max-maciel-70002533394/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/max-maciel-70002533394/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Martins Machado",
@@ -1548,7 +1551,8 @@
     "site": "https://www.martinsmachado.com.br",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/martins-machado-70002540817/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/martins-machado-70002540817/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Robério Negreiros",
@@ -1559,7 +1563,8 @@
     "site": "https://www.roberionegreiros.com",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roberio-negreiros-70002541286/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roberio-negreiros-70002541286/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Jorge Vianna",
@@ -1570,7 +1575,8 @@
     "site": "https://www.jorgevianna.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jorge-vianna-70002546972/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jorge-vianna-70002546972/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Jaqueline Silva",
@@ -1581,7 +1587,8 @@
     "site": "https://jaquelinesilva.com.br",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jaqueline-silva-70002538800/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jaqueline-silva-70002538800/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Eduardo Pedrosa",
@@ -1592,7 +1599,8 @@
     "site": "https://eduardopedrosa.com.br",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/eduardo-pedrosa-70002538493/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/eduardo-pedrosa-70002538493/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Joaquim Roriz Neto",
@@ -1603,7 +1611,8 @@
     "site": "https://joaquimroriz.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joaquim-roriz-neto-70002550019/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joaquim-roriz-neto-70002550019/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Iolando",
@@ -1614,7 +1623,8 @@
     "site": "https://iolando.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/iolando-70002538799/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/iolando-70002538799/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Pastor Daniel de Castro",
@@ -1625,7 +1635,8 @@
     "site": "https://www.pastordanieldecastro.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pastor-daniel-de-castro-70002538488/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pastor-daniel-de-castro-70002538488/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Hermeto",
@@ -1636,7 +1647,8 @@
     "site": "",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/hermeto-70002538796/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/hermeto-70002538796/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Roosevelt Vilela",
@@ -1647,7 +1659,8 @@
     "site": "https://www.rooseveltvilela.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roosevelt-vilela-70002550009/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roosevelt-vilela-70002550009/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Delegada Doutora Jane",
@@ -1658,7 +1671,8 @@
     "site": "http://www.doutorajanedf.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/delegada-doutora-jane-70002540813/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/delegada-doutora-jane-70002540813/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Gabriel Magno",
@@ -1669,7 +1683,8 @@
     "site": "https://gabrielmagno.com.br",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/gabriel-magno-70002540525/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/gabriel-magno-70002540525/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "João Cardoso",
@@ -1680,7 +1695,8 @@
     "site": "https://joaocardoso.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joao-cardoso-70002550000/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joao-cardoso-70002550000/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Ricardo Vale",
@@ -1691,7 +1707,8 @@
     "site": "",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/ricardo-vale-70002540512/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/ricardo-vale-70002540512/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Wellington Luiz",
@@ -1702,7 +1719,8 @@
     "site": "https://wellingtonluiz.com.br",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/wellington-luiz-70002538797/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/wellington-luiz-70002538797/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Dayse Amarilio",
@@ -1713,7 +1731,8 @@
     "site": "https://dayseamarilio.com",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/dayse-amarilio-70002542507/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/dayse-amarilio-70002542507/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Rogério Morro da Cruz",
@@ -1724,7 +1743,8 @@
     "site": "https://rogeriomorrodacruz.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/rogerio-morro-da-cruz-70002537382/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/rogerio-morro-da-cruz-70002537382/",
+    "mandato": "Tenta a reeleição"
    },
    {
     "n": "Pepa",
@@ -1735,7 +1755,130 @@
     "site": "https://deputadopepa.com.br/",
     "props": [],
     "status": "",
-    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pepa-70002538486/"
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pepa-70002538486/",
+    "mandato": "Tenta a reeleição"
+   }
+  ],
+  "federal": [
+   {
+    "n": "Alberto Fraga",
+    "p": "PL",
+    "num": 2222,
+    "foto": "70002550322",
+    "ig": "dep_albertofraga",
+    "site": "",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/alberto-fraga-70002550322/"
+   },
+   {
+    "n": "Daniel Donizet",
+    "p": "MDB",
+    "num": 1500,
+    "foto": "70002538938",
+    "ig": "danieldonizet",
+    "site": "http://www.danieldonizetfederal.com.br/",
+    "props": [],
+    "status": "",
+    "mandato": "Hoje é distrital",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/daniel-donizet-70002538938/"
+   },
+   {
+    "n": "Fred Linhares",
+    "p": "Republicanos",
+    "num": 1020,
+    "foto": "70002538521",
+    "ig": "fredlinharesbrasilia",
+    "site": "https://fredlinhares.com",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/fred-linhares-70002538521/"
+   },
+   {
+    "n": "Fábio Felix",
+    "p": "PSOL",
+    "num": 5050,
+    "foto": "70002533381",
+    "ig": "fabiofelixdf",
+    "site": "",
+    "props": [],
+    "status": "",
+    "mandato": "Hoje é distrital",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/fabio-felix-70002533381/"
+   },
+   {
+    "n": "Gilvan Patrulha do Consumidor",
+    "p": "Republicanos",
+    "num": 1011,
+    "foto": "70002538523",
+    "ig": "gilvanmaximooficial",
+    "site": "https://gilvanmaximo.com.br/links",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/gilvan-patrulha-do-consumidor-70002538523/"
+   },
+   {
+    "n": "Julio Cesar",
+    "p": "Republicanos",
+    "num": 1010,
+    "foto": "70002538527",
+    "ig": "juliocesarribeiro",
+    "site": "http://www.juliocesarribeiro.com.br/",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/julio-cesar-70002538527/"
+   },
+   {
+    "n": "Prof. Reginaldo Veras",
+    "p": "PV",
+    "num": 4343,
+    "foto": "70002539533",
+    "ig": "reginaldo.veras",
+    "site": "https://www.reginaldoveras.com.br/",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/prof-reginaldo-veras-70002539533/"
+   },
+   {
+    "n": "Rafael Prudente",
+    "p": "MDB",
+    "num": 1515,
+    "foto": "70002538935",
+    "ig": "rafaelprudentedep",
+    "site": "",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/rafael-prudente-70002538935/"
+   },
+   {
+    "n": "Rollemberg",
+    "p": "PSB",
+    "num": 4040,
+    "foto": "70002542519",
+    "ig": "rollembergbsb",
+    "site": "https://www.rollemberg4040.com",
+    "props": [],
+    "status": "",
+    "mandato": "Federal, tenta a reeleição",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/rollemberg-70002542519/"
+   },
+   {
+    "n": "Thiago Manzoni",
+    "p": "PL",
+    "num": 2233,
+    "foto": "70002550319",
+    "ig": "thiago.manzoni",
+    "site": "https://thiagomanzoni.com.br/",
+    "props": [],
+    "status": "",
+    "mandato": "Hoje é distrital",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/thiago-manzoni-70002550319/"
    }
   ]
  },
@@ -1743,13 +1886,17 @@
   "governador": "Arruda aparece por último porque teve a candidatura barrada. Elisson e Rico Pinheiro ainda recorrem.",
   "senado": "Números da pesquisa: Datafolha 22–24/9. Candidatos sem propostas detalhadas na imprensa: veja o perfil no TSE.",
   "presidente": "Os 13 candidatos à Presidência, todos no mesmo formato. Propostas resumidas dos planos de governo registrados no TSE e de reportagens da Agência Brasil. Instagram e site são os que cada um registrou no TSE.",
-  "distrital": "Aqui estão os 20 deputados distritais eleitos em 2022 que concorrem de novo à Câmara Legislativa. O critério é só esse: estar aqui não é recomendação. Os outros candidatos estão na busca abaixo."
+  "distrital": "Aqui estão os 20 deputados distritais eleitos em 2022 que concorrem de novo à Câmara Legislativa. Fábio Felix, Daniel Donizet e Thiago Manzoni agora disputam vaga federal (aba Federal). O critério é só esse: estar aqui não é recomendação. Os outros candidatos estão na busca abaixo.",
+  "federal": "Aqui estão os 10 candidatos que já têm mandato de deputado: 7 deputados federais do DF que tentam a reeleição e 3 deputados distritais que agora disputam uma vaga federal (Fábio Felix, Daniel Donizet e Thiago Manzoni). O critério é só esse: estar aqui não é recomendação. Os outros estão na busca abaixo."
  }
 }
 </script>
 
 <!-- Todos os candidatos a deputado distrital no DF (fonte: TSE via Nexo Jornal). -->
 <script type="application/json" id="distritais">[["Abel Santos","PSOL",50444,"abel-santos-70002533406"],["Adalberto Carvalho","PSDB",45190,"adalberto-carvalho-70002550878"],["Aderval","Solidariedade",77123,"aderval-70002538126"],["Agenildo Neri","Mobiliza",33733,"agenildo-neri-70002542546"],["Ailude Máximo","NOVO",30777,"ailude-maximo-70002531346"],["Akilla Marinho","PSD",55033,"akilla-marinho-70002536813"],["Alcivânio Bomfim","Democrata",35100,"alcivanio-bomfim-70002546952"],["Alessandro Cardoso","PSD",55055,"alessandro-cardoso-70002536811"],["Alessandro Mito","PODE",20022,"alessandro-mito-70002541279"],["Alessandro Paiva","PL",22123,"alessandro-paiva-70002550007"],["Alex Galvão","PODE",20100,"alex-galvao-70002541288"],["Alex Oliveira","NOVO",30456,"alex-oliveira-70002531328"],["Alexa","NOVO",30230,"alexa-70002531327"],["Alexandre Oliver","DC",27222,"alexandre-oliver-70002543434"],["Aline Sá","PDT",12777,"aline-sa-70002546910"],["Aline Vesely","PSD",55575,"aline-vesely-70002553995"],["Amanda Camargo","Missão",14714,"amanda-camargo-70002545057"],["Ana Maria","PP",11022,"ana-maria-70002538489"],["Ana Paula Marra","PODE",20123,"ana-paula-marra-70002541298"],["Anderson Guiné","Avante",70777,"anderson-guine-70002546743"],["Anderson Vieira","PSDB",45200,"anderson-vieira-70002550996"],["Andrea Espanha","Republicanos",10110,"andrea-espanha-70002540814"],["Andrea Pontes","PL",22001,"andrea-pontes-70002550018"],["Andreia Bombom","Democrata",35017,"andreia-bombom-70002546961"],["Andreia Salles","PSD",55200,"andreia-salles-70002553994"],["Andrey Lemos","PT",13012,"andrey-lemos-70002540514"],["André Kubitschek","PL",22022,"andre-kubitschek-70002550001"],["André Pilla","PRD",25190,"andre-pilla-70002554148"],["André Pires","PDT",12110,"andre-pires-70002546919"],["Andréia Moura","PL",22333,"andreia-moura-70002550010"],["Angelica","Avante",70022,"angelica-70002546723"],["Angelina Nardelli","REDE",18018,"angelina-nardelli-70002533397"],["Anna Sebba","PL",22061,"anna-sebba-70002549999"],["Anthony Ribas","Missão",14321,"anthony-ribas-70002545058"],["Arcanjo Magalhães","Democrata",35111,"arcanjo-magalhaes-70002546969"],["Arilson de Oliveira","PDT",12333,"arilson-de-oliveira-70002547153"],["Arthur Gurgel","Missão",14014,"arthur-gurgel-70002545056"],["Artur Cezar","PODE",20001,"artur-cezar-70002541291"],["Bartiria Coletivo Nossa Gente","REDE",18123,"bartiria-coletivo-nossa-gente-70002533409"],["Bartolomeu Bartô Rodrigues","PSB",40023,"bartolomeu-barto-rodrigues-70002542510"],["Bebeto","Mobiliza",33033,"bebeto-70002542532"],["Benedito da Vozinha","PSDB",45222,"benedito-da-vozinha-70002550877"],["Bernardo Moreira","PSB",40100,"bernardo-moreira-70002542504"],["Berê Darc","Pcdob",65180,"bere-darc-70002540516"],["Bethania Kelly","Solidariedade",77000,"bethania-kelly-70002548153"],["Betinho Guariroba","REDE",18180,"betinho-guariroba-70002536167"],["Bispo Renato Andrade","Republicanos",10100,"bispo-renato-andrade-70002540821"],["Bispo Weldon","DC",27012,"bispo-weldon-70002543439"],["Bito Ramos","DC",27391,"bito-ramos-70002543427"],["Brunelli","PRD",25444,"brunelli-70002554468"],["Bárbara Calista","UP",80110,"barbara-calista-70002537108"],["Cabo Vitorio","Avante",70190,"cabo-vitorio-70002546742"],["Caiafa","DC",27027,"caiafa-70002543445"],["Camargo Minha Capital","Mobiliza",33333,"camargo-minha-capital-70002542535"],["Capitão Aderivaldo Cardoso","PODE",20333,"capitao-aderivaldo-cardoso-70002541284"],["Carlos Penna","PSDB",45000,"carlos-penna-70002550983"],["Carlos Sá","PSD",55333,"carlos-sa-70002553992"],["Carlos Xavier","DC",27127,"carlos-xavier-70002543440"],["Carlão Reclamão","Democrata",35180,"carlao-reclamao-70002546956"],["Carol Força da Mulher","Mobiliza",33003,"carol-forca-da-mulher-70002542543"],["Carol Kalil","PL",22122,"carol-kalil-70002550017"],["Carvalho Rio Melchior","PSDB",45888,"carvalho-rio-melchior-70002550879"],["Castelo","PRD",25555,"castelo-70002538119"],["Caçuleci Pacheco","NOVO",30700,"caculeci-pacheco-70002531340"],["Chico Vigilante","PT",13100,"chico-vigilante-70002540503"],["Christian Rodrigues Sena","UP",80123,"christian-rodrigues-sena-70002537109"],["Claudeci Luart","DC",27321,"claudeci-luart-70002543436"],["Claudio Abrantes","União",44123,"claudio-abrantes-70002538504"],["Clea Torres","PSDB",45155,"clea-torres-70002550993"],["Cleber Df Aguasclaras","PSD",55888,"cleber-df-aguasclaras-70002536808"],["Cleia Araújo","Mobiliza",33337,"cleia-araujo-70002542527"],["Cleidiane Vitalino","PODE",20456,"cleidiane-vitalino-70002541281"],["Clemilton","Avante",70456,"clemilton-70002546722"],["Cláudia Lapa","PODE",20111,"claudia-lapa-70002541300"],["Cláudio Borcem","PODE",20061,"claudio-borcem-70002541296"],["Cláudio Ferreira Domingues","Democrata",35456,"claudio-ferreira-domingues-70002546954"],["Comandante Alan","PODE",20193,"comandante-alan-70002541289"],["Conceição da Agricultura","PSOL",50257,"conceicao-da-agricultura-70002533411"],["Conceição do Maranhão","MDB",15888,"conceicao-do-maranhao-70002538807"],["Conde","Republicanos",10101,"conde-70002540823"],["Coronel Michello","PODE",20122,"coronel-michello-70002541292"],["Coronel Neviton Sangue Bom","DC",27190,"coronel-neviton-sangue-bom-70002543425"],["Corretor Nogueira","Mobiliza",33007,"corretor-nogueira-70002542545"],["Cricia Cantora de Pentecostes","Mobiliza",33777,"cricia-cantora-de-pentecostes-70002542540"],["Cris Mourão","NOVO",30303,"cris-mourao-70002531345"],["Cris Nardes","Republicanos",10987,"cris-nardes-70002540815"],["Cristiane Carvalho","Solidariedade",77810,"cristiane-carvalho-70002538114"],["Cristiano Araújo","MDB",15015,"cristiano-araujo-70002538805"],["Cristiano Severo","União",44070,"cristiano-severo-70002538495"],["Daiane dos Santos","NOVO",30500,"daiane-dos-santos-70002531341"],["Daniel Barros","PT",13197,"daniel-barros-70002540526"],["Daniel Radar","Avante",70000,"daniel-radar-70002546726"],["Daniela Ciriaco","PSDB",45555,"daniela-ciriaco-70002550876"],["Dataniel Duarte","PSDB",45045,"dataniel-duarte-70002550874"],["Dayse Amarilio","PSB",40222,"dayse-amarilio-70002542507"],["Dayse Hansa","PT",13056,"dayse-hansa-70002540504"],["Defensor Kleber","NOVO",30030,"defensor-kleber-70002531332"],["Deise Andrade","Mobiliza",33180,"deise-andrade-70002542538"],["Delegada Doutora Jane","Republicanos",10555,"delegada-doutora-jane-70002540813"],["Delegada Karen","União",44180,"delegada-karen-70002538500"],["Delegado Fernando Fernandes","Republicanos",10190,"delegado-fernando-fernandes-70002540822"],["Delegado Jonatas","MDB",15777,"delegado-jonatas-70002538810"],["Delegado Laercio","Avante",70255,"delegado-laercio-70002546738"],["Delegado Pablo Aguiar","PSD",55000,"delegado-pablo-aguiar-70002536809"],["Delmasso","Republicanos",10456,"delmasso-70002540827"],["Denise Franco","Republicanos",10888,"denise-franco-70002540819"],["Dennis Web","PSB",40567,"dennis-web-70002542503"],["Deo do Mandala","PODE",20002,"deo-do-mandala-70002541295"],["Deusdete Filho","Solidariedade",77111,"deusdete-filho-70002538112"],["Dhiogo Bacurau","PDT",12344,"dhiogo-bacurau-70002546917"],["Diego Locutor","Solidariedade",77077,"diego-locutor-70002538122"],["Diolan Rocha","Democrata",35353,"diolan-rocha-70002546958"],["Diógenes Bastos","Republicanos",10111,"diogenes-bastos-70002554039"],["Donny Silva","DC",27022,"donny-silva-70002543432"],["Dr Caio Gracco","Avante",70999,"dr-caio-gracco-70002546730"],["Dr Jacinto","NOVO",30007,"dr-jacinto-70002531344"],["Dr Wendel Moreira","Mobiliza",33192,"dr-wendel-moreira-70002542533"],["Dr. Candido Teles","MDB",15678,"dr-candido-teles-70002538794"],["Dr. Carolina Maia","Missão",14100,"dr-carolina-maia-70002545063"],["Dr. Eric Gustavo","NOVO",30022,"dr-eric-gustavo-70002531337"],["Dr. Gutemberg","DC",27123,"dr-gutemberg-70002543442"],["Dr. Helio Gomes","Avante",70122,"dr-helio-gomes-70002546737"],["Dr. Klebes Rezende","PODE",20033,"dr-klebes-rezende-70002541294"],["Dr. Lucimir","Democrata",35355,"dr-lucimir-70002546968"],["Dr. Petrus","NOVO",30111,"dr-petrus-70002531343"],["Dr. Vicenzo","PSD",55678,"dr-vicenzo-70002536812"],["Dra Cris","PL",22221,"dra-cris-70002550005"],["Dra Suzana Lima","União",44101,"dra-suzana-lima-70002538490"],["Dra. Angélica Caraíba","Democrata",35678,"dra-angelica-caraiba-70002546949"],["Dra. Atena Oliveira","NOVO",30026,"dra-atena-oliveira-70002554355"],["Dra. Fabi","União",44222,"dra-fabi-70002538509"],["Dra. Kellen Guerra","PL",22010,"dra-kellen-guerra-70002550013"],["Dra. Lucilene Fernandes","PSDB",45755,"dra-lucilene-fernandes-70002550986"],["Dra. Mônica","Democrata",35888,"dra-monica-70002546967"],["Dra. Natália Matias","PSOL",50500,"dra-natalia-matias-70002533396"],["Dra.tânia Soster","NOVO",30555,"dra-tania-soster-70002531347"],["Edem Alexandre","Solidariedade",77777,"edem-alexandre-70002538115"],["Edison Ceilândia","PSOL",50133,"edison-ceilandia-70002533413"],["Edson Cordeiro","Solidariedade",77222,"edson-cordeiro-70002538113"],["Edson Sol Nascente","MDB",15551,"edson-sol-nascente-70002538801"],["Edu Santos","Missão",14123,"edu-santos-70002545067"],["Eduardo Brandão","PV",43000,"eduardo-brandao-70002540522"],["Eduardo Pedrosa","União",44000,"eduardo-pedrosa-70002538493"],["Eduardo Torres","PL",22222,"eduardo-torres-70002550003"],["Eliana Emerick","PODE",20555,"eliana-emerick-70002541297"],["Eliana Veterinária","REDE",18486,"eliana-veterinaria-70002533404"],["Elias Santos","Democrata",35800,"elias-santos-70002546964"],["Elisson Franklin","DC",27024,"elisson-franklin-70002543438"],["Elizeu Síndico","Democrata",35250,"elizeu-sindico-70002546966"],["Elke Pimentel","PV",43123,"elke-pimentel-70002540506"],["Emanuel S.o.s","Republicanos",10505,"emanuel-s-o-s-70002540826"],["Emanuell Resolve","Mobiliza",33088,"emanuell-resolve-70002542539"],["Emanuelle","Missão",14149,"emanuelle-70002545066"],["Enfermeira Lidia","PSD",55655,"enfermeira-lidia-70002537377"],["Engenheiro Valter Saboia","NOVO",30300,"engenheiro-valter-saboia-70002531334"],["Ericka Filippelli","NOVO",30100,"ericka-filippelli-70002531330"],["Ericson Gomes","Republicanos",10193,"ericson-gomes-70002540818"],["Erivelton","PSD",55444,"erivelton-70002537380"],["Estefane Sampaio","Republicanos",10222,"estefane-sampaio-70002540832"],["Esteffany","Democrata",35333,"esteffany-70002546973"],["Eugênio Magalhães","Solidariedade",77023,"eugenio-magalhaes-70002538123"],["Evaldo Lobato","Avante",70555,"evaldo-lobato-70002546739"],["Evandro Araujo","PL",22522,"evandro-araujo-70002549997"],["Fabiano Trompetista","PT",13007,"fabiano-trompetista-70002540511"],["Fabio de Morais","Solidariedade",77007,"fabio-de-morais-70002538125"],["Fatima Có","PSD",55500,"fatima-co-70002537375"],["Fernanda França","NOVO",30530,"fernanda-franca-70002531326"],["Fernanda Mateus","MDB",15156,"fernanda-mateus-70002538804"],["Fernando Caixeta","PL",22321,"fernando-caixeta-70002550014"],["Fernando Freitas","PSB",40123,"fernando-freitas-70002542500"],["Fernando do Resgate","DC",27777,"fernando-do-resgate-70002543446"],["Flavinha Ceilandia","Solidariedade",77122,"flavinha-ceilandia-70002538117"],["Flavio Potiguar","Avante",70369,"flavio-potiguar-70002546725"],["Francimar Nava","Mobiliza",33323,"francimar-nava-70002542523"],["Francisca Côrte","PDT",12122,"francisca-corte-70002547145"],["Fátima Rôla","PT",13321,"fatima-rola-70002540505"],["Gabriel Luna","PSDB",45345,"gabriel-luna-70002550880"],["Gabriel Magno","PT",13131,"gabriel-magno-70002540525"],["Gabriela Freire","Avante",70100,"gabriela-freire-70002546729"],["Gaby","PDT",12321,"gaby-70002547146"],["Gigante da Federal","PRD",25123,"gigante-da-federal-70002538116"],["Gilberto Eliazario de Camargos","Avante",70333,"gilberto-eliazario-de-camargos-70002551996"],["Giulianno Cartaxo","Republicanos",10020,"giulianno-cartaxo-70002540831"],["Giza Tea","Mobiliza",33133,"giza-tea-70002542544"],["Glória Vale","PSDB",45456,"gloria-vale-70002550995"],["Guarda Janio","Democrata",35000,"guarda-janio-70002546957"],["Guilherme Carvalho Emanar","PSB",40800,"guilherme-carvalho-emanar-70002542501"],["Gustavo Aires","MDB",15133,"gustavo-aires-70002538798"],["Gutemberg Rios","Mobiliza",33700,"gutemberg-rios-70002542541"],["Hamilton Tatu","PL",22555,"hamilton-tatu-70002550002"],["Helvídio Nunes","PRD",25001,"helvidio-nunes-70002538118"],["Henrique Durães","Missão",14141,"henrique-duraes-70002545061"],["Hermeto","MDB",15190,"hermeto-70002538796"],["Igor Saraiva","Democrata",35444,"igor-saraiva-70002546970"],["Ilene Almeida","PRD",25025,"ilene-almeida-70002538124"],["Inês Armand","DC",27272,"ines-armand-70002543424"],["Iolando","MDB",15000,"iolando-70002538799"],["Ipaminona dos Inquilinos","Solidariedade",77200,"ipaminona-dos-inquilinos-70002554142"],["Iracema Durão","PRD",25500,"iracema-durao-70002538128"],["Isa Lustosa","Democrata",35007,"isa-lustosa-70002546951"],["Israel Presença","PP",11123,"israel-presenca-70002538496"],["Issa","Avante",70007,"issa-70002546736"],["Italo Miranda","Mobiliza",33456,"italo-miranda-70002542530"],["Iuri Marques","PP",11410,"iuri-marques-70002538501"],["Izadora Coimbra","PSD",55026,"izadora-coimbra-70002537385"],["Izaquiel Souza","DC",27700,"izaquiel-souza-70002543444"],["Jabá Arruda","PSD",55190,"jaba-arruda-70002537379"],["Jacy Afonso","PT",13001,"jacy-afonso-70002540519"],["Jadiel da Construção","PSD",55255,"jadiel-da-construcao-70002553993"],["Jair dos Aplicativos","PDT",12112,"jair-dos-aplicativos-70002547144"],["James Mayner","PSDB",45678,"james-mayner-70002550994"],["Japa da Bike","Democrata",35777,"japa-da-bike-70002546971"],["Jaqueline Silva","MDB",15900,"jaqueline-silva-70002538800"],["Jean da Cultura","PV",43222,"jean-da-cultura-70002540507"],["Joaquim Roriz Neto","PL",22000,"joaquim-roriz-neto-70002550019"],["Joe Valle da Malunga","PDT",12345,"joe-valle-da-malunga-70002547149"],["Jonathan Araújo","PSD",55661,"jonathan-araujo-70002553991"],["Jorge Farias Rodoviário","Mobiliza",33111,"jorge-farias-rodoviario-70002542526"],["Jorge Vianna","Democrata",35192,"jorge-vianna-70002546972"],["Joseflay Josias","PDT",12022,"joseflay-josias-70002547148"],["Jovita Rosa","PDT",12000,"jovita-rosa-70002546913"],["João Alexandre","PL",22224,"joao-alexandre-70002550016"],["João Cardoso","PL",22888,"joao-cardoso-70002550000"],["João Dito","DC",27500,"joao-dito-70002543437"],["João Favorito","PT",13061,"joao-favorito-70002540513"],["João Terra","PSDB",45300,"joao-terra-70002554511"],["Julia Lucy","PL",22190,"julia-lucy-70002550015"],["Juliana Cândida","PSDB",45100,"juliana-candida-70002550989"],["Jézer Júnior","NOVO",30061,"jezer-junior-70002531336"],["Jô Assistente Social","MDB",15444,"jo-assistente-social-70002542494"],["Keka Bagno","PSOL",50123,"keka-bagno-70002533401"],["Kevin Vem","Democrata",35222,"kevin-vem-70002546950"],["Lací Marinho","União",44197,"laci-marinho-70002538508"],["Lau de Paula","Avante",70700,"lau-de-paula-70002546746"],["Laureano de Faria","PT",13193,"laureano-de-faria-70002540508"],["Lauricio Radiosaude","Avante",70234,"lauricio-radiosaude-70002546744"],["Lenne Evangelista","PSB",40044,"lenne-evangelista-70002542508"],["Letícia Sampaio","Mobiliza",33122,"leticia-sampaio-70002542536"],["Lgm","NOVO",30000,"lgm-70002531329"],["Lorruana Medeiros","DC",27100,"lorruana-medeiros-70002543426"],["Luciana Lima","PSDB",45123,"luciana-lima-70002550982"],["Luciana Mendina","NOVO",30321,"luciana-mendina-70002531349"],["Luciene Daniel da Segurança","Solidariedade",77190,"luciene-daniel-da-seguranca-70002538120"],["Lucijaine Vilar","União",44007,"lucijaine-vilar-70002538502"],["Luís Miranda","Democrata",35555,"luis-miranda-70002546959"],["Luíza do Clezão","PL",22822,"luiza-do-clezao-70002550006"],["Lyly do Avante","Avante",70707,"lyly-do-avante-70002546731"],["Léo Goleiro","PP",11010,"leo-goleiro-70002538494"],["Léo Rezende","PSD",55321,"leo-rezende-70002537386"],["Lúcia Carvalho","PT",13111,"lucia-carvalho-70002540523"],["Lúcia Lucimar","PDT",12369,"lucia-lucimar-70002547141"],["Madu K","PSOL",50700,"madu-k-70002533400"],["Maggie Margarida Chaulet","DC",27333,"maggie-margarida-chaulet-70002543443"],["Mano Lima","PSOL",50060,"mano-lima-70002533392"],["Manuela Andrade","PODE",20101,"manuela-andrade-70002541282"],["Mara Marçal","PDT",12126,"mara-marcal-70002547142"],["Marcel Uber Black","Democrata",35035,"marcel-uber-black-70002546960"],["Marcela Passamani","MDB",15555,"marcela-passamani-70002538806"],["Marcele Mama","Avante",70789,"marcele-mama-70002546740"],["Marcelinho Carioca","Republicanos",10777,"marcelinho-carioca-70002540812"],["Marcelinho Nunes","PP",11777,"marcelinho-nunes-70002538491"],["Marcelo Izidoro","PL",22777,"marcelo-izidoro-70002549998"],["Marcelo Trator","Republicanos",10000,"marcelo-trator-70002540811"],["Marcos Marshal","MDB",15151,"marcos-marshal-70002542493"],["Marcos Porto","Republicanos",10722,"marcos-porto-70002553398"],["Mari Jow","PSB",40233,"mari-jow-70002542497"],["Mari Teixeira","Avante",70870,"mari-teixeira-70002546733"],["Maria Duclerio","PSDB",45130,"maria-duclerio-70002550872"],["Maria Jose","PSDB",45525,"maria-jose-70002550873"],["Mariana Rosa","PT",13333,"mariana-rosa-70002540517"],["Marlene","Solidariedade",77137,"marlene-70002538129"],["Marquim do Tropa","PDT",12071,"marquim-do-tropa-70002546918"],["Martha Eliene","PP",11112,"martha-eliene-70002538499"],["Martins Machado","Republicanos",10123,"martins-machado-70002540817"],["Matheus Fernandes","NOVO",30033,"matheus-fernandes-70002531333"],["Matheus Marques","Missão",14114,"matheus-marques-70002545059"],["Max Maciel","PSOL",50100,"max-maciel-70002533394"],["Mc Jenny","Republicanos",10010,"mc-jenny-70002540820"],["Mercione","PDT",12061,"mercione-70002547152"],["Michel Platini","PSOL",50000,"michel-platini-70002533402"],["Miguel da 26","Republicanos",10026,"miguel-da-26-70002540829"],["Miranda Gomes","REDE",18081,"miranda-gomes-70002533408"],["Missionária Eudes","Mobiliza",33000,"missionaria-eudes-70002542525"],["Moustafa","PSOL",50511,"moustafa-70002533414"],["Múcio","PSB",40061,"mucio-70002542499"],["Nanda Batista","Democrata",35500,"nanda-batista-70002546953"],["Natal Furucho","PODE",20777,"natal-furucho-70002541283"],["Natanry Osorio","PSDB",45617,"natanry-osorio-70002550992"],["Natty Vieira","PSOL",50180,"natty-vieira-70002533403"],["Natália Reis","PP",11211,"natalia-reis-70002538498"],["Nay do Acarajé","PSB",40333,"nay-do-acaraje-70002542512"],["Nelson Neto","PSD",55155,"nelson-neto-70002536810"],["Nery Charlie","Solidariedade",77135,"nery-charlie-70002538110"],["Neto Rodrigues","PODE",20020,"neto-rodrigues-70002541280"],["Newton dos Esportes","Solidariedade",77321,"newton-dos-esportes-70002538109"],["Noemia T Bispo","NOVO",30888,"noemia-t-bispo-70002531339"],["Orion Oliveira","Solidariedade",77843,"orion-oliveira-70002538121"],["Pablo Feitosa","PSB",40420,"pablo-feitosa-70002542509"],["Pardim","PT",13405,"pardim-70002540510"],["Pastor Anderson Silva","PSD",55111,"pastor-anderson-silva-70002537378"],["Pastor Daniel de Castro","PP",11133,"pastor-daniel-de-castro-70002538488"],["Pastor Dácio Cordeiro","MDB",15153,"pastor-dacio-cordeiro-70002542496"],["Pastor Leiber","União",44190,"pastor-leiber-70002538497"],["Pastor Rafael","DC",27000,"pastor-rafael-70002543431"],["Pastor Roberto","Solidariedade",77277,"pastor-roberto-70002538111"],["Pastora Allana","Democrata",35999,"pastora-allana-70002546962"],["Pastora Luzinete","PT",13556,"pastora-luzinete-70002540520"],["Pastora Márcia","Republicanos",10060,"pastora-marcia-70002540828"],["Patricia da Feira","Avante",70077,"patricia-da-feira-70002546741"],["Patrícia Helena","PODE",20028,"patricia-helena-70002541299"],["Patty Ramiro","PSOL",50050,"patty-ramiro-70002533393"],["Paulinho Campello","PDT",12105,"paulinho-campello-70002546914"],["Paulo César (pc)","PSOL",50321,"paulo-cesar-pc-70002533399"],["Paulo Mineiro","NOVO",30123,"paulo-mineiro-70002531338"],["Pedro Mecânico Coletivo","Mobiliza",33789,"pedro-mecanico-coletivo-70002542537"],["Pedro Oliveira","União",44555,"pedro-oliveira-70002538492"],["Pedro Payne","NOVO",30444,"pedro-payne-70002531348"],["Pedro do Ovo","União",44044,"pedro-do-ovo-70002538507"],["Pepa","PP",11011,"pepa-70002538486"],["Perita Tirotti","Missão",14444,"perita-tirotti-70002545068"],["Pikineia","PSOL",50200,"pikineia-70002533410"],["Pinho","Republicanos",10022,"pinho-70002540816"],["Policial João Renato","PL",22422,"policial-joao-renato-70002550012"],["Pr. João de Deus","PODE",20700,"pr-joao-de-deus-70002541277"],["Pr. Sidney","PDT",12101,"pr-sidney-70002546915"],["Preta Praiana","Democrata",35135,"preta-praiana-70002546965"],["Priscila Baccile","PODE",20088,"priscila-baccile-70002541293"],["Prof Wesley","Avante",70222,"prof-wesley-70002546724"],["Prof. Altaci Kokama","PT",13133,"prof-altaci-kokama-70002540524"],["Prof. Cristiano Luz","PDT",12012,"prof-cristiano-luz-70002546912"],["Prof. Nilvan de Vasconcellos","PDT",12456,"prof-nilvan-de-vasconcellos-70002546920"],["Profa. Keila Sanches","PT",13613,"profa-keila-sanches-70002540509"],["Professor Aharom","PSB",40120,"professor-aharom-70002542506"],["Professor Diego Gomes","PSDB",45145,"professor-diego-gomes-70002550985"],["Professor Douglas Gomes/o Divo","PSB",40109,"professor-douglas-gomes-o-divo-70002542513"],["Professor Elias","Pcdob",65123,"professor-elias-70002540518"],["Professor Fernando Moura","PDT",12123,"professor-fernando-moura-70002547147"],["Professor Fernando Sousa","PDT",12361,"professor-fernando-sousa-70002547151"],["Professor Gustavo Salles","PSDB",45013,"professor-gustavo-salles-70002550981"],["Professor Ivan Moraes","PSD",55777,"professor-ivan-moraes-70002537383"],["Professor Jairon","PDT",12555,"professor-jairon-70002547143"],["Professor Jordenes","PSD",55555,"professor-jordenes-70002537384"],["Professor Willian Comunidade","DC",27277,"professor-willian-comunidade-70002543441"],["Professor Álvaro Domingues","NOVO",30999,"professor-alvaro-domingues-70002531350"],["Professora Godoi","PSDB",45321,"professora-godoi-70002550990"],["Professora Jéssica Motta","PSB",40140,"professora-jessica-motta-70002542502"],["Professora Ray","PSOL",50020,"professora-ray-70002533405"],["Raad","Mobiliza",33100,"raad-70002542547"],["Rachel Doces","DC",27999,"rachel-doces-70002543430"],["Raphael Sebba","PSB",40200,"raphael-sebba-70002542505"],["Regis Machado","NOVO",30333,"regis-machado-70002531342"],["Reinaldo Araujo","DC",27300,"reinaldo-araujo-70002543435"],["Rejane Costa","PP",11001,"rejane-costa-70002538510"],["Renata Daguiar","Republicanos",10789,"renata-daguiar-70002540824"],["Renato Silveira Barbosa","Avante",70193,"renato-silveira-barbosa-70002546734"],["Rhailler Santos","Missão",14040,"rhailler-santos-70002545060"],["Ricardo Castanheira","PL",22002,"ricardo-castanheira-70002550008"],["Ricardo Castro","NOVO",30222,"ricardo-castro-70002531331"],["Ricardo Vale","PT",13013,"ricardo-vale-70002540512"],["Robério Melo Tx","Democrata",35123,"roberio-melo-tx-70002546955"],["Robério Negreiros","PODE",20000,"roberio-negreiros-70002541286"],["Rodrigo Dantas","PL",22100,"rodrigo-dantas-70002550021"],["Rodrigo Dias","PSB",40400,"rodrigo-dias-70002542511"],["Rogerio Morro da Cruz","PSD",55123,"rogerio-morro-da-cruz-70002537382"],["Rogério Ulysses","Avante",70321,"rogerio-ulysses-70002546727"],["Romário Leal","PSOL",50777,"romario-leal-70002533398"],["Roosevelt Vilela","PL",22193,"roosevelt-vilela-70002550009"],["Rosi Costa","PT",13000,"rosi-costa-70002540521"],["Rôney Nemer","PP",11111,"roney-nemer-70002538503"],["Salvador Castro","Democrata",35026,"salvador-castro-70002546963"],["Samara Brito","MDB",15100,"samara-brito-70002538802"],["Sami Yassine","REDE",18222,"sami-yassine-70002533395"],["Samuel Gaúcho","PL",22722,"samuel-gaucho-70002550011"],["Sandra Bacelar","PSD",55100,"sandra-bacelar-70002537381"],["Sandra Silva","Avante",70770,"sandra-silva-70002546728"],["Sandro Bilks","PSD",55533,"sandro-bilks-70002553990"],["Saphira","PSDB",45777,"saphira-70002550984"],["Sardinha","Mobiliza",33123,"sardinha-70002542534"],["Sargento Elizalda","Solidariedade",77330,"sargento-elizalda-70002548154"],["Sargento Paulo Roberto","PODE",20226,"sargento-paulo-roberto-70002541278"],["Scooby Ube","Republicanos",10061,"scooby-ube-70002540830"],["Sgt Roksinaidy","Mobiliza",33001,"sgt-roksinaidy-70002542542"],["Sgt. Luciano Baglogui","PODE",20090,"sgt-luciano-baglogui-70002541285"],["Silene da Saúde","Avante",70111,"silene-da-saude-70002546735"],["Silvinho Almeida","União",44567,"silvinho-almeida-70002538487"],["Simone Magalhães","PSD",55855,"simone-magalhaes-70002537376"],["Soraya Costa","PSDB",45451,"soraya-costa-70002550991"],["Sorriso","PDT",12307,"sorriso-70002546909"],["Subtenente Geraldo Alves","PODE",20190,"subtenente-geraldo-alves-70002541301"],["Sueli Líder Guerreira","PDT",12331,"sueli-lider-guerreira-70002547150"],["Suzele Veloso","PODE",20200,"suzele-veloso-70002541287"],["Tabanez","Mobiliza",33222,"tabanez-70002542529"],["Taniel Macedo","Missão",14777,"taniel-macedo-70002545065"],["Telma Rufino","PODE",20222,"telma-rufino-70002541290"],["Thays Mãe do Gabriel","Mobiliza",33663,"thays-mae-do-gabriel-70002542524"],["Tia Lu","DC",27727,"tia-lu-70002543429"],["Tia Maria","DC",27555,"tia-maria-70002543423"],["Tomaz","PSD",55222,"tomaz-70002537374"],["Ulisses Dias","Mobiliza",33190,"ulisses-dias-70002542531"],["Valdecy Líder Comunitário","PSDB",45163,"valdecy-lider-comunitario-70002550875"],["Valdelino Barcelos","PP",11234,"valdelino-barcelos-70002538506"],["Victor Jansen","PL",22322,"victor-jansen-70002550004"],["Virgílio Neto","PP",11122,"virgilio-neto-70002538505"],["Weila Almeida","PDT",12222,"weila-almeida-70002546911"],["Wellington Campos","Missão",14001,"wellington-campos-70002545062"],["Wellington Luiz","MDB",15123,"wellington-luiz-70002538797"],["Wellington Mega","DC",27888,"wellington-mega-70002543428"],["Wilson Amigão","Avante",70123,"wilson-amigao-70002546732"],["Xandão Leleco","PL",22478,"xandao-leleco-70002550020"],["Xandão do Povão","Mobiliza",33355,"xandao-do-povao-70002542528"],["Yuri Kaioli","Missão",14000,"yuri-kaioli-70002545069"],["Zaqueu Engraxate","PDT",12300,"zaqueu-engraxate-70002546916"],["Zuleika do Blog","DC",27234,"zuleika-do-blog-70002543447"],["Zé Alencar","MDB",15166,"ze-alencar-70002538795"],["Zé do Coco","PT",13123,"ze-do-coco-70002540515"],["Ágatha Lopes","DC",27111,"agatha-lopes-70002543433"],["Ândrea Estevam","MDB",15222,"andrea-estevam-70002538803"]]</script>
+
+<!-- Todos os candidatos a deputado federal no DF (fonte: TSE via Nexo Jornal). -->
+<script type="application/json" id="federais">[["Abadia","PSD",5566,"abadia-70002537009"],["Adila Maria","PSD",5500,"adila-maria-70002537008"],["Adriano Amaral","PSD",5522,"adriano-amaral-70002537007"],["Adriano Animal","DC",2727,"adriano-animal-70002541499"],["Adriano Fiúza","PSOL",5001,"adriano-fiuza-70002533388"],["Agaciel Maia","PL",2220,"agaciel-maia-70002550321"],["Agnelo Queiroz","PT",1310,"agnelo-queiroz-70002539540"],["Aguida Maria","PCO",2900,"aguida-maria-70002553649"],["Alberto Fraga","PL",2222,"alberto-fraga-70002550322"],["Ale Chianelli","NOVO",3022,"ale-chianelli-70002532001"],["Alvaro Mozini","Missão",1411,"alvaro-mozini-70002545070"],["Ana Ferola","Avante",7052,"ana-ferola-70002544462"],["Ana Schramm","PCO",2999,"ana-schramm-70002553647"],["Antonio Siriano","Mobiliza",3300,"antonio-siriano-70002543822"],["Camila Corrêa","Missão",1441,"camila-correa-70002545075"],["Capitão Davi","PL",2238,"capitao-davi-70002550315"],["Carine Teixeira","NOVO",3030,"carine-teixeira-70002532004"],["Carla Gehlen","PSB",4007,"carla-gehlen-70002542520"],["Carlos Dalvan","União",4411,"carlos-dalvan-70002538513"],["Carlos Macedo","PODE",2022,"carlos-macedo-70002554509"],["Carlos Vinícius","PCO",2929,"carlos-vinicius-70002553648"],["Carol Fleury","PSD",5555,"carol-fleury-70002537006"],["Carol Furlan","Republicanos",1086,"carol-furlan-70002538526"],["Carol Ribeiro","PODE",2088,"carol-ribeiro-70002540849"],["Cida Villas Bôas","NOVO",3036,"cida-villas-boas-70002532008"],["Coronel Aviador Luiz Gama","NOVO",3001,"coronel-aviador-luiz-gama-70002532007"],["Coronel Moreno","PP",1190,"coronel-moreno-70002538517"],["Costa Neto","MDB",1516,"costa-neto-70002538940"],["Cris Britto","Republicanos",1022,"cris-britto-70002538528"],["Cris Caiado","Missão",1400,"cris-caiado-70002545072"],["Cristovam Buarque","PSB",4023,"cristovam-buarque-70002542518"],["Dani Freitas","PSB",4008,"dani-freitas-70002542516"],["Dani Solta O Verbo","PSB",4022,"dani-solta-o-verbo-70002542521"],["Daniel Donizet","MDB",1500,"daniel-donizet-70002538938"],["Defensor Celestino","Republicanos",1050,"defensor-celestino-70002553989"],["Delegado Nugoli","PSD",5551,"delegado-nugoli-70002537013"],["Diego Costa","Solidariedade",7707,"diego-costa-70002553954"],["Dr. Carlos","Avante",7000,"dr-carlos-70002544468"],["Dr. João Luiz","PSD",5544,"dr-joao-luiz-70002537011"],["Dra Raquel Ferreira","PSOL",5040,"dra-raquel-ferreira-70002533385"],["Dra. Gardenia","União",4456,"dra-gardenia-70002554528"],["Dra. Marina Noronha","PP",1117,"dra-marina-noronha-70002538519"],["Durval","UP",8080,"durval-70002537106"],["Edilson Pardals","DC",2789,"edilson-pardals-70002541498"],["Elaine Pink","PSDB",4577,"elaine-pink-70002551192"],["Elianildo Nascimento","REDE",1818,"elianildo-nascimento-70002533386"],["Elizeu Costa do Uber","DC",2700,"elizeu-costa-do-uber-70002541500"],["Emilio Kerber","NOVO",3010,"emilio-kerber-70002532005"],["Enfermeira Karine","PSOL",5080,"enfermeira-karine-70002533382"],["Ester Carvalho","União",4455,"ester-carvalho-70002538514"],["Felipe Rodrigues","PSDB",4522,"felipe-rodrigues-70002551187"],["Flavio Fleury","NOVO",3004,"flavio-fleury-70002532003"],["Flavio Werneck","PDT",1212,"flavio-werneck-70002547156"],["Flávia Portela","PSDB",4567,"flavia-portela-70002551185"],["França","PODE",2020,"franca-70002540848"],["Fred Linhares","Republicanos",1020,"fred-linhares-70002538521"],["Fábio Felix","PSOL",5050,"fabio-felix-70002533381"],["Gabriel Portella","Solidariedade",7733,"gabriel-portella-70002538108"],["Garcia do Povo","Mobiliza",3310,"garcia-do-povo-70002543819"],["Gerciane","Solidariedade",7777,"gerciane-70002538101"],["Gilson Amorim","PRD",2522,"gilson-amorim-70002538103"],["Gilvan Patrulha do Consumidor","Republicanos",1011,"gilvan-patrulha-do-consumidor-70002538523"],["Glaucia do Arruda","Avante",7055,"glaucia-do-arruda-70002544467"],["Gordinho da Farmácia","PODE",2033,"gordinho-da-farmacia-70002540845"],["Guilherme Jaganu","REDE",1819,"guilherme-jaganu-70002533384"],["Hélvia Paranaguá","MDB",1522,"helvia-paranagua-70002538939"],["Iara Nardia","Democrata",3522,"iara-nardia-70002546415"],["Isanil","PDT",1216,"isanil-70002547162"],["Isaura Barbosa","Mobiliza",3332,"isaura-barbosa-70002543815"],["Ismael Almeida","PODE",2000,"ismael-almeida-70002540843"],["Ivone Lopes","DC",2777,"ivone-lopes-70002541495"],["Izalci Lucas","PL",2200,"izalci-lucas-70002550316"],["Jair Marinho","Solidariedade",7722,"jair-marinho-70002538102"],["Jean Victor","Avante",7007,"jean-victor-70002544463"],["Joel Matos Defensor Ambiental","Mobiliza",3355,"joel-matos-defensor-ambiental-70002543820"],["Josy Jacob","MDB",1551,"josy-jacob-70002538937"],["Ju dos Tigrados","PV",4300,"ju-dos-tigrados-70002539538"],["Julio Cesar","Republicanos",1010,"julio-cesar-70002538527"],["Juscelino Kubitschek","Avante",7077,"juscelino-kubitschek-70002546557"],["Jô Abreu","PDT",1221,"jo-abreu-70002547155"],["Júlio Isidro","PSD",5577,"julio-isidro-70002553949"],["Karla Vinhas","PSDB",4500,"karla-vinhas-70002551188"],["Larissa Schmidt","PDT",1270,"larissa-schmidt-70002547158"],["Leandro Barroso","Mobiliza",3396,"leandro-barroso-70002543821"],["Leia Xavier","PSDB",4566,"leia-xavier-70002551189"],["Leonardo Bear","DC",2712,"leonardo-bear-70002541497"],["Leticia Leal","Solidariedade",7710,"leticia-leal-70002538106"],["Liza Lopes","Republicanos",1001,"liza-lopes-70002538524"],["Lucas Brasileiro","Missão",1444,"lucas-brasileiro-70002545071"],["Ludmila Suaid","PSOL",5005,"ludmila-suaid-70002533383"],["Luiz Eduardo","Republicanos",1000,"luiz-eduardo-70002538520"],["Marcos Wesley","PP",1177,"marcos-wesley-70002538515"],["Maria Amélia","PL",2223,"maria-amelia-70002550317"],["Maria Cleudes","REDE",1801,"maria-cleudes-70002533387"],["Mariana Naime","PL",2201,"mariana-naime-70002550931"],["Mariana de Paula","Cidadania",2311,"mariana-de-paula-70002554435"],["Marivaldo Pereira","PT",1300,"marivaldo-pereira-70002539534"],["Marta Lima","Missão",1456,"marta-lima-70002545073"],["Mauro Lopes","Mobiliza",3390,"mauro-lopes-70002543818"],["Max Ferramentas","Solidariedade",7778,"max-ferramentas-70002538107"],["Mayara Noronha","PODE",2027,"mayara-noronha-70002540844"],["Milena Sousa","DC",2770,"milena-sousa-70002541493"],["Milena do Mlb","UP",8000,"milena-do-mlb-70002537107"],["Moacir Coletivo Trabalhista","PDT",1233,"moacir-coletivo-trabalhista-70002547161"],["Márcia Abrahão","PT",1331,"marcia-abrahao-70002539539"],["Nana","NOVO",3033,"nana-70002532009"],["Neiva Lopes","PSOL",5000,"neiva-lopes-70002533389"],["Noely Coletivo Coragem","Democrata",3535,"noely-coletivo-coragem-70002554416"],["Oscar Silva","PSDB",4555,"oscar-silva-70002551184"],["Pablo Valente","PRD",2525,"pablo-valente-70002538104"],["Pamela Águia","MDB",1505,"pamela-aguia-70002538936"],["Pastor Ismael Lopes","PDT",1213,"pastor-ismael-lopes-70002547159"],["Pastor Lima Neto","Democrata",3590,"pastor-lima-neto-70002546417"],["Pastora Ana Lima","Avante",7033,"pastora-ana-lima-70002544466"],["Paulo Echebarria","NOVO",3012,"paulo-echebarria-70002532002"],["Paulo Sa","Avante",7088,"paulo-sa-70002544464"],["Paulo Tavares","PDT",1214,"paulo-tavares-70002547160"],["Policarpo","PT",1313,"policarpo-70002539541"],["Prof. Reginaldo Veras","PV",4343,"prof-reginaldo-veras-70002539533"],["Profa. Fátima Sousa","PDT",1230,"profa-fatima-sousa-70002547154"],["Professor Anthony Couto","Democrata",3500,"professor-anthony-couto-70002546413"],["Professor Francelino","União",4400,"professor-francelino-70002538511"],["Professor Gadelha","PSB",4080,"professor-gadelha-70002542514"],["Professor Israel","PSB",4004,"professor-israel-70002542515"],["Professor Léo Matos","PSDB",4545,"professor-leo-matos-70002551191"],["Professor Rafael Parente","PDT",1234,"professor-rafael-parente-70002547157"],["Professora Juliana Alves","Mobiliza",3344,"professora-juliana-alves-70002543817"],["Rafael Prudente","MDB",1515,"rafael-prudente-70002538935"],["Raposão Ds","Mobiliza",3322,"raposao-ds-70002543816"],["Raquel Medeiros","PSB",4000,"raquel-medeiros-70002542522"],["Ravan Leão","Republicanos",1015,"ravan-leao-70002538522"],["Reis Coletivo Segurançaprivada","Democrata",3577,"reis-coletivo-segurancaprivada-70002546411"],["Renato Machado","DC",2733,"renato-machado-70002541501"],["Richard Banhara","Democrata",3510,"richard-banhara-70002546412"],["Rita Ballock","Mobiliza",3333,"rita-ballock-70002543823"],["Roberto Freire","Cidadania",2323,"roberto-freire-70002554386"],["Rodolpho Hoth Hoth","Avante",7070,"rodolpho-hoth-hoth-70002544465"],["Rogerio Arapoanga","Avante",7022,"rogerio-arapoanga-70002544461"],["Rollemberg","PSB",4040,"rollemberg-70002542519"],["Rosilene Corrêa","PT",1333,"rosilene-correa-70002539536"],["Ruth Venceremos","PT",1361,"ruth-venceremos-70002539537"],["Salve Jorge","PODE",2026,"salve-jorge-70002540842"],["Sanchez","Democrata",3550,"sanchez-70002546419"],["Sandra Faraj","PL",2277,"sandra-faraj-70002550318"],["Sandro Avelar","União",4444,"sandro-avelar-70002538518"],["Sargento Eliomar","PSD",5545,"sargento-eliomar-70002537010"],["Sargento Maurício Pardal","PODE",2030,"sargento-mauricio-pardal-70002540846"],["Serralheiro Rono Pinheiro","DC",2755,"serralheiro-rono-pinheiro-70002541496"],["Silva Fotografo - O Corno","AGIR",3636,"silva-fotografo-o-corno-70002540501"],["Socorro Martins","DC",2750,"socorro-martins-70002541494"],["Stephanie Alves","Democrata",3525,"stephanie-alves-70002546414"],["Subtenente Cintya","PRD",2523,"subtenente-cintya-70002538105"],["Subtenente Vera","PODE",2090,"subtenente-vera-70002540850"],["Thiago Manzoni","PL",2233,"thiago-manzoni-70002550319"],["Tia Nega","AGIR",3600,"tia-nega-70002540502"],["Ulissis Lima","PL",2211,"ulissis-lima-70002550320"],["Valdirene Tavares","PP",1111,"valdirene-tavares-70002538512"],["Vanessa É O Bicho","PT",1324,"vanessa-e-o-bicho-70002539535"],["Victor Rattes","Missão",1414,"victor-rattes-70002545074"],["Washington Coração Valente","MDB",1599,"washington-coracao-valente-70002538934"],["Wender","PSB",4061,"wender-70002542517"],["Wesley Amaral","MDB",1501,"wesley-amaral-70002538693"],["Wilker Leão","NOVO",3000,"wilker-leao-70002532006"],["Zé Humberto","MDB",1555,"ze-humberto-70002538941"]]</script>
 
 <script>
 (function(){
@@ -1791,17 +1938,18 @@
   }
 
   /* candidatos (DF e Presidente) */
-  const CRS = ["governador","senado","distrital"];
+  const CRS = ["governador","senado","federal","distrital"];
   let CR = CRS.includes(store.get("vsf-cargo")) ? store.get("vsf-cargo") : "governador";
   const CTX = {
     governador:{cargo:"Governo do DF", race:"governador", grid:"people"},
     senado:{cargo:"Senado · DF", race:"senado", grid:"people"},
+    federal:{cargo:"Deputado(a) federal · DF", race:null, grid:"people"},
     distrital:{cargo:"Deputado(a) distrital · DF", race:null, grid:"people"},
     presidente:{cargo:"Presidência da República", race:"presidente", grid:"pres-grid"}
   };
   const LISTS = {};
   /* cores oficiais dos partidos (fonte: ficha de cada partido na Wikipédia). Só identificação. */
-  const CORES = {PP:["#2E4E77","#54B8EA"],PT:["#C0122D"],PSDB:["#0F2BC5","#F0BC36"],PSB:["#FFCC00"],UP:["#000000"],PSTU:["#C92127","#FFFF00"],Novo:["#EC671C","#1A2644"],PCO:["#CE1920","#FEED01"],Agir:["#01369E"],PRTB:["#0047AB"],PSD:["#002F6C","#64A70B","#FFA300"],PL:["#015AAA","#00A54F","#FED304"],PDT:["#0C3F7E","#E70641"],Avante:["#2EABB1"],PSOL:["#FBE106","#E2202A","#68018D"],MDB:["#50B747","#F5D709","#D21E25"],Republicanos:["#009E3D","#FDC300","#005CA9"],PODE:["#00D663","#0097FD","#673796"],Podemos:["#00D663","#0097FD","#673796"],Democrata:["#3DA564"],"União":["#1A428A","#00A0DF","#FAD209"],PCB:["#A8231C","#E6CE2E"],DC:["#0065CB","#0009A8","#C89721"],"Missão":["#000000","#FDBF35"]};
+  const CORES = {PP:["#2E4E77","#54B8EA"],PT:["#C0122D"],PSDB:["#0F2BC5","#F0BC36"],PSB:["#FFCC00"],UP:["#000000"],PSTU:["#C92127","#FFFF00"],Novo:["#EC671C","#1A2644"],PCO:["#CE1920","#FEED01"],Agir:["#01369E"],PRTB:["#0047AB"],PSD:["#002F6C","#64A70B","#FFA300"],PL:["#015AAA","#00A54F","#FED304"],PDT:["#0C3F7E","#E70641"],Avante:["#2EABB1"],PSOL:["#FBE106","#E2202A","#68018D"],MDB:["#50B747","#F5D709","#D21E25"],Republicanos:["#009E3D","#FDC300","#005CA9"],PODE:["#00D663","#0097FD","#673796"],Podemos:["#00D663","#0097FD","#673796"],Democrata:["#3DA564"],"União":["#1A428A","#00A0DF","#FAD209"],PCB:["#A8231C","#E6CE2E"],DC:["#0065CB","#0009A8","#C89721"],"Missão":["#000000","#FDBF35"],PV:["#01652F"]};
   function cvars(p){
     const k = Object.keys(CORES).find(x=>x.toLowerCase()===String(p).toLowerCase());
     const c = k ? CORES[k] : ["#8A958E"];
@@ -1832,12 +1980,13 @@
     }).join("");
   }
   function people(){
-    tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"],["distrital","Distrital"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
+    tabs($("c-tabs"), [["governador","Governo"],["senado","Senado"],["federal","Federal"],["distrital","Distrital"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
     tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people(); grid("presidente");});
     $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
     grid(CR);
     $("c-note").textContent = (D.notas||{})[CR] || "";
-    $("d-busca").hidden = CR!=="distrital";
+    $("d-busca").hidden = !BUSCA[CR];
+    if(BUSCA[CR]) busca();
   }
   function onThumb(e){ const t=e.target.closest(".thumb"); if(t) ficha(t.dataset.k, +t.dataset.i); }
   $("people").addEventListener("click", onThumb);
@@ -1852,7 +2001,7 @@
     const q = ctx.race ? ((D.corridas[ctx.race]||{}).pesquisas||[])[0] : null;
     const props = c.props||[];
     const acts = [];
-    if(props.length || k!=="distrital") acts.push(`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`);
+    if(props.length || CTX[k].race) acts.push(`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`);
     if(c.ig) acts.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}Instagram</a>`);
     if(k==="presidente"){
       if(c.oficial) acts.push(`<a href="${esc(c.oficial)}" target="_blank" rel="noopener">${WEB}Site oficial</a>`);
@@ -1863,7 +2012,7 @@
     if(c.perfil) acts.push(`<a href="${esc(c.perfil)}" target="_blank" rel="noopener">${WEB}Ficha completa</a>`);
     if(!out) acts.push(`<button type="button" data-a="cola">${PEN}Anotar na colinha</button>`);
     let third, pv;
-    if(k==="distrital"){ third = `<div><small>Mandato</small><b class="sm">Tenta a reeleição</b></div>`; pv = "Eleito(a) distrital em 2022. Candidatos a deputado não têm pesquisa registrada no DF."; }
+    if(!ctx.race){ third = `<div><small>Mandato</small><b class="sm">${esc(c.mandato||"")}</b></div>`; pv = k==="distrital" ? "Eleito(a) distrital em 2022. Candidatos a deputado não têm pesquisa registrada no DF." : (/distrital/i.test(c.mandato||"") ? "Eleito(a) distrital em 2022, agora disputa a Câmara dos Deputados. Candidatos a deputado não têm pesquisa registrada no DF." : "Deputado(a) federal pelo DF. Candidatos a deputado não têm pesquisa registrada no DF."); }
     else { third = `<div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b></div>`;
       pv = c.poll!=null&&q ? `Pesquisa ${esc(q.instituto)}, ${esc(q.campo)}. Detalhes e margem de erro em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.` : out ? "Fora das pesquisas por ter a candidatura barrada." : "Não aparece com número próprio na pesquisa mais recente."; }
     $("fx").setAttribute("style", cvars(c.p));
@@ -1885,7 +2034,7 @@
     FICHA.scrollTop = 0; $("fx").focus({preventScroll:true});
   }
   function closeFicha(){ if(FICHA.close) FICHA.close(); else FICHA.removeAttribute("open"); }
-  const COLA = {governador:["v-gv","Governador(a)"], presidente:["v-pr","Presidente"], distrital:["v-dd","Deputado(a) distrital"]};
+  const COLA = {governador:["v-gv","Governador(a)"], presidente:["v-pr","Presidente"], distrital:["v-dd","Deputado(a) distrital"], federal:["v-df","Deputado(a) federal"]};
   function anotar(k, num){
     num = String(num); let id, lbl;
     if(k==="senado"){ const s1=$("v-s1").value, s2=$("v-s2").value;
@@ -1907,24 +2056,30 @@
     else if(a==="cola") $("f-toast").textContent = anotar(FK, LISTS[FK][FI].num);
   });
   FICHA.addEventListener("keydown", e=>{ if(e.key==="ArrowRight") ficha(FK, FI+1); if(e.key==="ArrowLeft") ficha(FK, FI-1); });
-  people(); grid("presidente");
+  grid("presidente");
   $("pres-note").textContent = (D.notas||{}).presidente || "";
 
-  /* busca de distritais */
-  let TODOS = []; try{ TODOS = JSON.parse($("distritais").textContent); }catch(e){}
+  /* busca de deputados (federal e distrital) */
   const norm = x => String(x).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
-  const IDX = TODOS.map(([n,p,num])=>norm(n+" "+p+" "+num));
-  $("d-tot").textContent = TODOS.length ? `${TODOS.length} candidatos · dados do TSE` : "";
+  const BUSCA = {};
+  [["federal","federais",8,"federal"],["distrital","distritais",24,"distrital"]].forEach(([k,id,vagas,nome])=>{
+    let l=[]; try{ l = JSON.parse($(id).textContent); }catch(e){}
+    BUSCA[k] = {l, idx:l.map(([n,p,num])=>norm(n+" "+p+" "+num)), vagas, nome};
+  });
   function busca(){
+    const B = BUSCA[CR]; if(!B) return;
+    $("d-tit").textContent = `Procura qualquer candidato a ${B.nome}`;
+    $("d-tot").textContent = `${B.l.length} candidatos · dados do TSE`;
     const q = norm($("d-q").value.trim());
-    if(q.length<2){ $("d-res").innerHTML = `<li class="hint">Digita pelo menos 2 letras ou números. Tem ${TODOS.length} candidatos disputando 24 vagas.</li>`; return; }
+    if(q.length<2){ $("d-res").innerHTML = `<li class="hint">Digita pelo menos 2 letras ou números. Tem ${B.l.length} candidatos disputando ${B.vagas} vagas.</li>`; return; }
     const ws = q.split(/\s+/), hits = [];
-    for(let i=0;i<TODOS.length && hits.length<40;i++) if(ws.every(w=>IDX[i].includes(w))) hits.push(TODOS[i]);
+    for(let i=0;i<B.l.length && hits.length<40;i++) if(ws.every(w=>B.idx[i].includes(w))) hits.push(B.l[i]);
     $("d-res").innerHTML = hits.length ? hits.map(([n,p,num,slug])=>`<li><span class="who"><b>${esc(n)}</b><small>${esc(p)} · ${esc(num)}</small></span><span class="ra"><a href="https://candidatos.nexojornal.com.br/2026/df/${esc(slug)}/" target="_blank" rel="noopener">Perfil</a><button type="button" data-num="${esc(num)}">Anotar</button></span></li>`).join("") + (hits.length===40?`<li class="hint">Mostrando os 40 primeiros. Refina a busca.</li>`:"")
       : `<li class="hint">Nada encontrado. Tenta outro nome ou o número.</li>`;
   }
-  $("d-q").addEventListener("input", busca); busca();
-  $("d-res").addEventListener("click", e=>{ const b=e.target.closest("button[data-num]"); if(!b) return; anotar("distrital", b.dataset.num); b.textContent="Anotado ✓"; setTimeout(()=>{b.textContent="Anotar";},2200); });
+  $("d-q").addEventListener("input", busca);
+  people();
+  $("d-res").addEventListener("click", e=>{ const b=e.target.closest("button[data-num]"); if(!b) return; anotar(CR, b.dataset.num); b.textContent="Anotado ✓"; setTimeout(()=>{b.textContent="Anotar";},2200); });
 
   /* pesquisas */
   const RACES = [["governador","Governo DF"],["senado","Senado DF"],["presidente","Presidente"]];
