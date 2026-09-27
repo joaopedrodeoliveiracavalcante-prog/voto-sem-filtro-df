@@ -26,8 +26,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
 <style>
   :root{
-    --bg:#F8F3FF; --surface:#FFFFFF; --soft:#EFE6FB; --ink:#160622; --ink-2:#4A3C5E; --ink-3:#7D6F91;
-    --line:#E3D7F4; --accent:#5D35AD; --accent-soft:#ECE3FA; --sun:#FFC942; --sun-soft:#FFF1CC;
+    --bg:#FBF7EC; --surface:#FFFFFF; --soft:#F3EDDD; --ink:#160622; --ink-2:#4A3C5E; --ink-3:#7D6F91;
+    --line:#E8DFCB; --accent:#5D35AD; --accent-soft:#ECE3FA; --sun:#FFC942; --sun-soft:#FFF1CC;
     --olive:#C366CE; --bar:#160622; --warn:#6E4A00; --warn-soft:#FFF1CC;
     --stk-bg:#5D35AD; --stk-fg:#FFC942; --screen:#201842; --deep:#4C1265;
     --poster:"Anton",Impact,"Arial Narrow Bold",sans-serif;
@@ -2333,7 +2333,7 @@
     try{
       await Promise.all(["400 90px Anton","700 36px Onest","500 30px Onest"].map(f=>document.fonts&&document.fonts.load(f).catch(()=>{})));
       const W=1080,H=L.H, cv=document.createElement("canvas"); cv.width=W; cv.height=H; const x=cv.getContext("2d");
-      const BLUE="#5D35AD", YEL="#FFC942", BROWN="#160622", CREAM="#F8F3FF";
+      const BLUE="#5D35AD", YEL="#FFC942", BROWN="#160622", CREAM="#FBF7EC";
       x.fillStyle=CREAM; x.fillRect(0,0,W,H);
       x.fillStyle="#FFF1CC"; x.beginPath(); x.arc(90,L.logoY+140,150,0,7); x.fill();
       x.fillStyle="#ECE3FA"; x.beginPath(); x.arc(1010,H-130,210,0,7); x.fill();
