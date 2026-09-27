@@ -501,7 +501,8 @@
         <div class="pick" id="v-pr-c" aria-live="polite"></div>
       </div>
       <div class="cola-foot">
-        <button class="btn" type="submit">Copiar colinha</button>
+        <button class="btn" type="button" id="cola-img">Baixar imagem</button>
+        <button class="btn ghost" type="submit">Copiar texto</button>
         <button class="btn ghost" type="button" id="cola-limpa">Limpar</button>
       </div>
       <span class="toast" id="cola-toast" role="status"></span>
@@ -2302,6 +2303,73 @@
     try{ await navigator.clipboard.writeText(txt); ta.hidden=true; $("cola-toast").textContent="Copiado. Agora passe pro papel."; }
     catch(err){ ta.hidden=false; ta.select(); $("cola-toast").textContent="Não deu pra copiar automático. O texto tá selecionado aqui embaixo."; }
   });
+
+  /* colinha em imagem (1080x1920, formato story) */
+  function loadImg(src){ return new Promise(res=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=()=>res(null); i.src=src; }); }
+  function rr(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  function fit(ctx,txt,font,size,max){ let s=size; do{ ctx.font=font.replace("S",s); if(ctx.measureText(txt).width<=max) break; s-=2; }while(s>18); return s; }
+  async function colaImagem(){
+    const btn=$("cola-img"); btn.disabled=true; const old=btn.textContent; btn.textContent="Gerando…";
+    try{
+      await Promise.all(["400 90px Anton","700 36px Onest","500 30px Onest"].map(f=>document.fonts&&document.fonts.load(f).catch(()=>{})));
+      const W=1080,H=1920, cv=document.createElement("canvas"); cv.width=W; cv.height=H; const x=cv.getContext("2d");
+      const BLUE="#0A53C4", YEL="#FFD60A", BROWN="#2A1712", CREAM="#FBF7EC";
+      x.fillStyle=CREAM; x.fillRect(0,0,W,H);
+      x.fillStyle="#FFF3BD"; x.beginPath(); x.arc(90,210,150,0,7); x.fill();
+      x.fillStyle="#E2EBFA"; x.beginPath(); x.arc(1010,1790,210,0,7); x.fill();
+      const logo=await loadImg("img/wordmark.png");
+      if(logo){ const lw=330, lh=lw*logo.height/logo.width; x.drawImage(logo,(W-lw)/2,70,lw,lh); }
+      // cartão
+      const cx=70, cy=290, cw=W-140, ch=1330;
+      x.save(); x.fillStyle=YEL; rr(x,cx+10,cy+12,cw,ch,40); x.fill();
+      x.fillStyle=BLUE; rr(x,cx,cy,cw,ch,40); x.fill(); x.clip();
+      x.strokeStyle="rgba(255,255,255,.07)"; x.lineWidth=2; for(let yy=cy+40; yy<cy+ch; yy+=44){ x.beginPath(); x.moveTo(cx,yy); x.lineTo(cx+cw,yy); x.stroke(); }
+      x.restore();
+      x.save(); x.translate(W/2,cy-4); x.rotate(.03); x.fillStyle="rgba(249,207,0,.9)"; x.fillRect(-80,-22,160,44); x.restore();
+      x.textBaseline="alphabetic"; x.textAlign="left";
+      x.fillStyle=YEL; x.font="400 92px Anton"; x.fillText("MINHA COLINHA", cx+50, cy+130);
+      x.fillStyle="#D6E3FA"; x.font="500 32px Onest"; x.fillText("Eleições 2026 · Distrito Federal · 4 de outubro", cx+52, cy+182);
+      x.strokeStyle="rgba(255,255,255,.4)"; x.setLineDash([16,12]); x.lineWidth=3; x.beginPath(); x.moveTo(cx+50,cy+215); x.lineTo(cx+cw-50,cy+215); x.stroke(); x.setLineDash([]);
+      const rowH=180, top=cy+235;
+      for(let i=0;i<CAMPOS.length;i++){
+        const [id,label,k]=CAMPOS[i], v=$(id).value, r=quem(k,v), y0=top+i*rowH;
+        if(i) { x.strokeStyle="rgba(255,255,255,.22)"; x.setLineDash([8,8]); x.lineWidth=2; x.beginPath(); x.moveTo(cx+50,y0); x.lineTo(cx+cw-50,y0); x.stroke(); x.setLineDash([]); }
+        const py=y0+rowH/2, pr=52, px=cx+50+pr;
+        // foto
+        x.save(); x.beginPath(); x.arc(px,py,pr,0,7); x.closePath(); x.fillStyle="#DCE7FA"; x.fill(); x.clip();
+        let drew=false;
+        if(r&&r.c&&r.c.foto){ const im=await loadImg(`img/${r.c.foto}.jpg`); if(im){ const sc=Math.max(2*pr/im.width,2*pr/im.height), iw=im.width*sc, ih=im.height*sc; x.drawImage(im,px-iw/2,py-pr-(ih-2*pr)*.18,iw,ih); drew=true; } }
+        if(!drew){ x.fillStyle=BLUE; x.font="400 44px Anton"; x.textAlign="center"; x.fillText(r&&r.c ? r.c.n.split(/\s+/).map(w=>w[0]).slice(0,2).join("") : "?", px, py+16); x.textAlign="left"; }
+        x.restore(); x.lineWidth=5; x.strokeStyle=YEL; x.beginPath(); x.arc(px,py,pr,0,7); x.stroke();
+        // textos
+        const tx=px+pr+28, maxw=cx+cw-50-260-tx;
+        x.fillStyle="#BFD3F5"; x.font="600 28px Onest"; x.fillText(label.toUpperCase(), tx, py-34);
+        if(r&&r.c){ x.fillStyle="#FFFFFF"; fit(x,r.c.n,"700 Spx Onest",40,maxw); x.fillText(r.c.n, tx, py+12);
+          x.fillStyle=YEL; x.font="600 30px Onest"; x.fillText(r.c.p, tx, py+54); }
+        else { x.fillStyle="#FFE9A8"; const msg = !v ? "Em branco na colinha" : (r&&r.msg)||""; fit(x,msg,"500 Spx Onest",30,maxw); x.fillText(msg, tx, py+14); }
+        // número
+        const bw=230, bh=112, bx=cx+cw-50-bw, by=py-bh/2;
+        x.fillStyle="rgba(0,0,0,.14)"; rr(x,bx,by+6,bw,bh,22); x.fill();
+        x.fillStyle="#FFFDF6"; rr(x,bx,by,bw,bh,22); x.fill();
+        x.fillStyle=v?BROWN:"#CFC4B6"; x.textAlign="center"; x.font="400 76px Anton"; x.fillText(v || "_".repeat({federal:4,distrital:5,senado:3,governador:2,presidente:2}[k]), bx+bw/2, by+bh/2+27); x.textAlign="left";
+      }
+      // rodapé
+      x.textAlign="center";
+      x.fillStyle=BROWN; x.font="600 32px Onest"; x.fillText("Celular não entra na cabine: leve no papel.", W/2, cy+ch+90);
+      x.fillStyle=BLUE; x.font="400 54px Anton"; x.fillText("VOTOSEMFILTRODF.NETLIFY.APP", W/2, cy+ch+170);
+      x.fillStyle=BROWN; x.font="500 32px Onest"; x.fillText("Criado por Oliver · @oliver.calvt", W/2, cy+ch+222);
+      x.fillStyle="#8C7B72"; x.font="500 24px Onest"; x.fillText("Guia apartidário · fotos oficiais do TSE", W/2, cy+ch+262);
+      const blob = await new Promise(res=>cv.toBlob(res,"image/png"));
+      const file = new File([blob],"minha-colinha-2026.png",{type:"image/png"});
+      if(navigator.canShare && navigator.canShare({files:[file]}) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)){
+        try{ await navigator.share({files:[file], title:"Minha colinha", text:"Minha colinha pro dia 4/10 · votosemfiltrodf.netlify.app"}); $("cola-toast").textContent="Pronto! Salve a imagem ou mande pra quem quiser."; return; }catch(e){ if(e && e.name==="AbortError") return; }
+      }
+      const url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download="minha-colinha-2026.png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),4000);
+      $("cola-toast").textContent="Imagem baixada. Confira na pasta de downloads.";
+    } catch(e){ $("cola-toast").textContent="Não deu pra gerar a imagem agora. Tente de novo."; }
+    finally{ btn.disabled=false; btn.textContent=old; }
+  }
+  $("cola-img").addEventListener("click", colaImagem);
 
   /* primeiro voto */
   const CHK = [
