@@ -83,29 +83,69 @@
   .tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .tabs button:disabled{opacity:.4;cursor:default}
 
-  /* candidatos */
-  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-  .person{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
-  .person .top{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:16px}
-  .person img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 18%;background:var(--soft)}
-  .person h3{font-size:1.1rem}
-  .person .meta{font-size:.8rem;color:var(--ink-3);margin-top:3px}
-  .person .num{font-weight:600;color:var(--ink)}
-  .person .poll{display:flex;align-items:center;gap:10px;padding:0 16px 14px;font-size:.78rem;color:var(--ink-3)}
-  .person .poll .m{flex:1;height:4px;border-radius:2px;background:var(--soft);overflow:hidden}
-  .person .poll .m i{display:block;height:100%;background:var(--accent);border-radius:2px}
-  .person .poll b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-  .tag{display:inline-block;margin:0 16px 12px;font-size:.74rem;padding:.3rem .6rem;border-radius:8px;background:var(--warn-soft);color:var(--warn)}
-  .person details{border-top:1px solid var(--line)}
-  .person summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:.86rem;font-weight:500;color:var(--accent);display:flex;justify-content:space-between}
-  .person summary::-webkit-details-marker{display:none}
-  .person summary::after{content:"+";font-size:1.1rem;line-height:1}
-  .person details[open] summary::after{content:"–"}
-  .person ul{margin:0;padding:0 16px 8px 34px;display:grid;gap:6px;font-size:.88rem;color:var(--ink-2)}
-  .links{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px 16px}
-  .links a{font-size:.8rem;text-decoration:none;padding:.4rem .7rem;border-radius:999px;border:1px solid var(--line);color:var(--ink);display:inline-flex;gap:6px;align-items:center}
-  .links a:hover{border-color:var(--accent);color:var(--accent)}
-  .links svg{width:14px;height:14px}
+  /* candidatos: miniaturas */
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+  .thumb{all:unset;box-sizing:border-box;cursor:pointer;display:grid;justify-items:center;text-align:center;gap:2px;padding:16px 8px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--line);transition:transform .15s,border-color .15s}
+  .thumb:hover{border-color:var(--c1);transform:translateY(-2px)}
+  .thumb:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .ring{display:block;width:78px;height:78px;border-radius:50%;padding:3px;background:var(--ring);margin-bottom:8px;box-shadow:0 0 0 1px var(--line)}
+  .ring img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 18%;border:3px solid var(--surface);background:var(--soft)}
+  .thumb b{font:600 .92rem/1.2 var(--display)}
+  .thumb small{font-size:.74rem;color:var(--ink-3)}
+  .thumb small strong{color:var(--ink);font-weight:600}
+  .thumb em{font-style:normal;font-size:.66rem;font-weight:600;margin-top:5px;padding:.15rem .45rem;border-radius:6px;background:var(--warn-soft);color:var(--warn)}
+  .thumb.out{opacity:.6}
+  .legend{margin:14px 0 0;font-size:.8rem;color:var(--ink-3)}
+
+  /* ficha técnica */
+  html.lock{overflow:hidden}
+  dialog.ficha{border:0;padding:0;margin:auto;width:min(460px,calc(100vw - 32px));max-height:88vh;overflow:auto;overscroll-behavior:contain;background:var(--surface);color:var(--ink);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+  dialog.ficha[open]{animation:up .25s cubic-bezier(.2,.8,.2,1)}
+  dialog.ficha::backdrop{background:rgba(8,12,10,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+  @keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+  .fx{position:relative;padding:0 20px 20px}
+  .band{height:74px;margin:0 -20px;background:var(--band);opacity:.9}
+  .fclose{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
+  .fh{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:end;margin-top:-42px}
+  .fh .ring{width:96px;height:96px;margin:0}
+  .fh h3{font-size:1.45rem;margin-top:4px}
+  .fh .eyebrow{display:block;margin-bottom:2px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px}
+  .facts div{background:var(--soft);border-radius:14px;padding:10px 12px}
+  .facts small{display:block;font-size:.7rem;color:var(--ink-3)}
+  .facts b{font:700 1.35rem/1.15 var(--display);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+  .facts b i{width:10px;height:10px;border-radius:50%;background:var(--band);flex:none}
+  .facts .pv{font-size:.68rem;color:var(--ink-3);display:block;margin-top:2px}
+  .ftag{display:inline-block;font-size:.8rem;padding:.35rem .7rem;border-radius:8px;background:var(--warn-soft);color:var(--warn);margin-bottom:12px}
+  .acts{display:flex;flex-wrap:wrap;gap:8px}
+  .acts a,.acts button{font:500 .86rem/1 var(--body);text-decoration:none;display:inline-flex;align-items:center;gap:7px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+  .acts a:hover,.acts button:hover{border-color:var(--accent);color:var(--accent)}
+  .acts .pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .acts .pri:hover{color:var(--bg);opacity:.9}
+  .acts svg{width:16px;height:16px}
+  .plist{margin:14px 0 0;background:var(--soft);border-radius:16px;padding:14px 16px}
+  .plist ol{margin:0;padding-left:1.2rem;display:grid;gap:8px;font-size:.9rem;color:var(--ink-2)}
+  .plist small{display:block;margin-top:10px;font-size:.76rem;color:var(--ink-3)}
+  .ftoast{font-size:.82rem;color:var(--accent);min-height:1.2em;margin:10px 0 0}
+  .fnav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-3)}
+  .fnav button{font:500 .85rem var(--body);background:none;border:0;color:var(--ink-2);cursor:pointer;padding:.4rem .2rem}
+  .fnav button:hover{color:var(--accent)}
+  @media (max-width:560px){
+    dialog.ficha{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:90vh}
+    dialog.ficha[open]{animation:sheet .3s cubic-bezier(.2,.8,.2,1)}
+    .fx{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+    .people{grid-template-columns:repeat(3,1fr);gap:8px}
+    .ring{width:66px;height:66px}
+    .thumb{padding:14px 4px 12px}
+    .thumb b{font-size:.84rem}
+  }
+  @keyframes sheet{from{transform:translateY(100%)}to{transform:none}}
+
+  /* selo da Netlify: vai pro topo e rola junto com a página */
+  #nl-badge-frame{position:absolute!important;top:0!important;bottom:auto!important}
+  html:has(#nl-badge-frame) header .wrap{flex-direction:column;align-items:flex-start;gap:6px}
+  html:has(#nl-badge-frame) header{padding-top:18px}
+
   .note{margin:16px 0 0;font-size:.84rem;color:var(--ink-3);max-width:70ch}
 
   /* pesquisas */
@@ -258,11 +298,13 @@
   </section>
 
   <section id="candidatos">
-    <div class="sh"><span class="eyebrow">Governo e Senado</span><h2>Candidatos do DF</h2><p>Toca em "propostas" pra ver o resumo. O site de cada candidato tem o plano completo.</p></div>
+    <div class="sh"><span class="eyebrow">Governo e Senado</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
     <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
     <div class="order"><div class="tabs" id="c-ord" role="group" aria-label="Ordem"></div><span id="c-ord-t"></span></div>
     <div class="people" id="people"></div>
+    <p class="legend">Toca na foto pra abrir a ficha. O contorno usa as cores oficiais de cada partido, só pra identificar.</p>
     <p class="note" id="c-note"></p>
+    <dialog class="ficha" id="ficha" aria-labelledby="f-nome"><div class="fx" id="fx"></div></dialog>
   </section>
 
   <section id="pesquisas">
@@ -334,7 +376,7 @@
         <p>Viu algo errado ou desatualizado? Manda mensagem no <a href="https://www.instagram.com/oliver.calvt/" target="_blank" rel="noopener" style="color:var(--accent)">@oliver.calvt</a> com o link da fonte. A correção entra aqui, com data.</p>
       </details>
       <details><summary>De onde vêm os dados</summary>
-        <p>As pesquisas têm registro no TSE, e o site é atualizado automaticamente uma vez por dia. As fotos oficiais e as redes sociais são as que cada candidato registrou no TSE. As propostas vêm dos planos de governo, de sabatinas e da imprensa.</p>
+        <p>As pesquisas têm registro no TSE, e o site é atualizado automaticamente uma vez por dia. As fotos oficiais e as redes sociais são as que cada candidato registrou no TSE. As propostas vêm dos planos de governo, de sabatinas e da imprensa. As cores de cada partido seguem a ficha oficial do partido na Wikipédia e servem só pra identificar.</p>
         <ul class="src" id="src" style="margin-bottom:14px"></ul>
       </details>
     </div>
@@ -504,6 +546,8 @@
   const WEB = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
   const MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
   const TSE = "https://divulgacandcontas.tse.jus.br/";
+  const LIST_I = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>';
+  const PEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>';
 
   /* status + contagem */
   const d = new Date(D.meta.verificadoEm || D.meta.atualizadoEm);
@@ -530,6 +574,16 @@
 
   /* candidatos do DF */
   let CR = store.get("vsf-cargo")==="senado" ? "senado" : "governador";
+  let LIST = [];
+  /* cores oficiais dos partidos (fonte: ficha de cada partido na Wikipédia). Só identificação. */
+  const CORES = {PP:["#2E4E77","#54B8EA"],PT:["#C0122D"],PSDB:["#0F2BC5","#F0BC36"],PSB:["#FFCC00"],UP:["#000000"],PSTU:["#C92127","#FFFF00"],Novo:["#EC671C","#1A2644"],PCO:["#CE1920","#FEED01"],Agir:["#01369E"],PRTB:["#0047AB"],PSD:["#002F6C","#64A70B","#FFA300"],PL:["#015AAA","#00A54F","#FED304"],PDT:["#0C3F7E","#E70641"],Avante:["#2EABB1"]};
+  function cvars(p){
+    const k = Object.keys(CORES).find(x=>x.toLowerCase()===String(p).toLowerCase());
+    const c = k ? CORES[k] : ["#8A958E"];
+    const ring = c.length===1 ? c[0] : `conic-gradient(${c.map((x,i)=>`${x} ${i/c.length*360}deg ${(i+1)/c.length*360}deg`).join(",")})`;
+    const band = c.length===1 ? c[0] : `linear-gradient(90deg,${c.join(",")})`;
+    return `--c1:${c[0]};--ring:${ring};--band:${band}`;
+  }
   let ORD = store.get("vsf-ordem")==="az" ? "az" : "sorteio";
   const FORA = /barrad|cassad|renunci|desist/i;
   const SORTE = {};
@@ -545,22 +599,67 @@
     tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
     tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people();});
     $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
-    const list = ordered();
-    $("people").innerHTML = list.map(c=>{
-      const links = [];
-      if(c.ig) links.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}@${esc(c.ig)}</a>`);
-      links.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Plano no TSE</a>`);
-      if(c.sabatina) links.push(`<a href="${esc(c.sabatina)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
-      return `<article class="person">
-        <div class="top"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" loading="lazy" width="64" height="64">
-          <div><h3>${esc(c.n)}</h3><div class="meta">${esc(c.p)} · <span class="num">${esc(c.num)}</span></div></div></div>
-        ${c.poll!=null?`<div class="poll"><span>pesquisa</span><span class="m"><i style="width:${Math.min(100,c.poll)}%"></i></span><b>${pc(c.poll)}</b></div>`:""}
-        ${c.status?`<span class="tag">${esc(c.status)}</span>`:""}
-        ${c.props.length?`<details><summary>Propostas</summary><ul>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></details>`:""}
-        <div class="links">${links.join("")}</div></article>`;
+    LIST = ordered();
+    $("people").innerHTML = LIST.map((c,i)=>{
+      const out = FORA.test(c.status||"");
+      return `<button type="button" class="thumb${out?" out":""}" data-i="${i}" style="${cvars(c.p)}" aria-label="${esc(c.n)}, ${esc(c.p)}, número ${esc(c.num)}. Abrir ficha">
+        <span class="ring"><img src="img/${esc(c.foto)}.jpg" alt="" loading="lazy" width="78" height="78"></span>
+        <b>${esc(c.n)}</b><small>${esc(c.p)} · <strong>${esc(c.num)}</strong></small>
+        ${c.status?`<em>${esc(out?"fora da disputa":"com recurso")}</em>`:""}</button>`;
     }).join("");
     $("c-note").textContent = (D.notas||{})[CR] || "";
   }
+  $("people").addEventListener("click", e=>{ const t=e.target.closest(".thumb"); if(t) ficha(+t.dataset.i); });
+
+  /* ficha técnica */
+  const FICHA = $("ficha"); let FI = 0;
+  function ficha(i){
+    FI = (i+LIST.length)%LIST.length; const c = LIST[FI];
+    const out = FORA.test(c.status||""), q = ((D.corridas[CR]||{}).pesquisas||[])[0];
+    const cargo = CR==="senado" ? "Senado · DF" : "Governo do DF";
+    const acts = [`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`];
+    if(c.ig) acts.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}Instagram</a>`);
+    acts.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Plano no TSE</a>`);
+    if(c.sabatina) acts.push(`<a href="${esc(c.sabatina)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
+    if(!out) acts.push(`<button type="button" data-a="cola">${PEN}Anotar na colinha</button>`);
+    $("fx").setAttribute("style", cvars(c.p));
+    $("fx").innerHTML = `<div class="band"></div><button type="button" class="fclose" data-a="close" aria-label="Fechar">×</button>
+      <div class="fh"><span class="ring"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" width="96" height="96"></span>
+        <div><span class="eyebrow">${cargo}</span><h3 id="f-nome">${esc(c.n)}</h3></div></div>
+      <div class="facts">
+        <div><small>Número</small><b>${esc(c.num)}</b></div>
+        <div><small>Partido</small><b><i></i>${esc(c.p)}</b></div>
+        <div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b>${c.poll!=null&&q?`<span class="pv">${esc(q.instituto)} ${esc(q.campo)}</span>`:""}</div>
+      </div>
+      ${c.status?`<span class="ftag">${esc(c.status)}</span>`:""}
+      <div class="acts">${acts.join("")}</div>
+      <div class="plist" id="f-props" hidden>${c.props.length?`<ol>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ol><small>Resumo feito a partir do plano de governo e de entrevistas. O texto completo tá no site oficial.</small>`:`<small style="margin:0">Ainda não achamos propostas detalhadas desse candidato na imprensa. Veja o plano de governo registrado no TSE.</small>`}</div>
+      <p class="ftoast" id="f-toast" role="status"></p>
+      <div class="fnav"><button type="button" data-a="prev">← Anterior</button><span>${FI+1} de ${LIST.length}</span><button type="button" data-a="next">Próximo →</button></div>`;
+    if(!FICHA.open){ if(FICHA.showModal) FICHA.showModal(); else FICHA.setAttribute("open",""); document.documentElement.classList.add("lock"); }
+    FICHA.scrollTop = 0;
+  }
+  function closeFicha(){ if(FICHA.close) FICHA.close(); else FICHA.removeAttribute("open"); }
+  FICHA.addEventListener("close", ()=>{ document.documentElement.classList.remove("lock"); const t=$("people").querySelector(`[data-i="${FI}"]`); if(t) t.focus({preventScroll:true}); });
+  FICHA.addEventListener("click", e=>{
+    if(e.target===FICHA){ closeFicha(); return; }
+    const b = e.target.closest("[data-a]"); if(!b) return;
+    const a = b.dataset.a;
+    if(a==="close") closeFicha();
+    else if(a==="prev") ficha(FI-1);
+    else if(a==="next") ficha(FI+1);
+    else if(a==="props"){ const pl=$("f-props"); pl.hidden=!pl.hidden; b.setAttribute("aria-expanded",String(!pl.hidden)); }
+    else if(a==="cola"){
+      const c = LIST[FI], num = String(c.num); let id, lbl;
+      if(CR==="governador"){ id="v-gv"; lbl="Governador(a)"; }
+      else { const s1=$("v-s1").value, s2=$("v-s2").value;
+        if(s1===num||s2===num){ $("f-toast").textContent="Esse número já tá na tua colinha."; return; }
+        if(!s1){ id="v-s1"; lbl="Senado 1º voto"; } else { id="v-s2"; lbl="Senado 2º voto"; } }
+      $(id).value = num; store.set("vsf-"+id, num);
+      $("f-toast").textContent = `Anotado em ${lbl}. Dá pra mudar lá na Colinha.`;
+    }
+  });
+  FICHA.addEventListener("keydown", e=>{ if(e.key==="ArrowRight") ficha(FI+1); if(e.key==="ArrowLeft") ficha(FI-1); });
   people();
 
   /* pesquisas */
