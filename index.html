@@ -47,24 +47,40 @@
   .muted{color:var(--ink-2)}
   .tiny{font-size:.78rem;color:var(--ink-3)}
 
-  /* topo */
-  header{padding-block:22px 0}
-  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .brand{display:flex;align-items:center;text-decoration:none}
-  .brand img{display:block;height:40px;width:auto}
-  .status{font-size:.78rem;color:var(--ink-3);display:flex;align-items:center;gap:6px}
-  .status i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-
-  .hero{padding-block:44px 36px;display:grid;grid-template-columns:1fr auto;gap:12px 32px;align-items:center}
-  .hero > *{grid-column:1}
-  .hero .urna{grid-column:2;grid-row:1/span 4;align-self:center;width:230px;height:auto;transform:rotate(3deg);filter:drop-shadow(0 10px 18px rgba(42,23,18,.15))}
-  .hero h1{font:400 clamp(2.9rem,9vw,5.4rem)/.95 var(--poster);text-transform:uppercase;letter-spacing:.005em;max-width:15ch}
-  .hero h1 span{display:inline-block;white-space:nowrap;background:var(--stk-bg);color:var(--stk-fg);padding:.16em .22em .1em;margin:.04em 0 0 -.04em;transform:rotate(-1.5deg);clip-path:polygon(1% 6%,34% 0,72% 3%,99% 0,100% 90%,68% 100%,30% 96%,0 100%)}
-  .hero p{margin:18px 0 0;max-width:60ch;color:var(--ink-2);font-size:1.05rem;line-height:1.65}
-  .count{margin-top:26px;justify-self:start;display:inline-flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:14px;background:var(--screen);color:#F6EFE6;box-shadow:0 0 0 3px var(--line)}
-  .count b{font:400 1.9rem/1 var(--poster);color:var(--stk-fg);font-variant-numeric:tabular-nums;letter-spacing:.02em}
-  .count span{font-size:.88rem;color:#E9DCCB}
-  @media (max-width:720px){ .hero{grid-template-columns:1fr} .hero .urna{grid-column:1;grid-row:auto;order:-1;width:130px;transform:rotate(-2deg);margin-bottom:4px} }
+  /* capa */
+  .status{font-size:.78rem;color:var(--ink-3);display:inline-flex;align-items:center;gap:6px}
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--olive)}
+  .cover{min-height:100svh;display:grid;align-items:center;padding:56px 20px 40px;background:
+    radial-gradient(circle at 12% 18%,var(--sun-soft) 0 90px,transparent 91px),
+    radial-gradient(circle at 92% 78%,var(--accent-soft) 0 120px,transparent 121px),var(--bg)}
+  .cv{width:100%;max-width:640px;margin:0 auto;display:grid;justify-items:center;text-align:center;gap:18px}
+  .cv-logo{width:min(340px,72vw);height:auto;filter:drop-shadow(0 12px 22px rgba(42,23,18,.14));animation:pop .6s cubic-bezier(.2,1.4,.4,1) both}
+  @keyframes pop{from{transform:scale(.85) rotate(-4deg);opacity:0}to{transform:none;opacity:1}}
+  .cv-h1{font:400 clamp(1.6rem,5.4vw,2.3rem)/1.05 var(--poster);text-transform:uppercase;letter-spacing:.01em;margin-top:-4px}
+  .cv-h1 span{display:inline-block;white-space:nowrap;background:var(--stk-bg);color:var(--stk-fg);padding:.14em .24em .08em;transform:rotate(-1.5deg);clip-path:polygon(1% 6%,34% 0,72% 3%,99% 0,100% 90%,68% 100%,30% 96%,0 100%)}
+  .cv-meta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 16px}
+  .count{display:inline-flex;align-items:center;gap:12px;padding:10px 16px 10px 14px;border-radius:14px;background:var(--screen);color:#F6EFE6;box-shadow:0 0 0 3px var(--line)}
+  .count b{font:400 1.7rem/1 var(--poster);color:var(--stk-fg);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .count span{font-size:.86rem;color:#E9DCCB}
+  .cv-about{width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:20px 20px 18px;display:grid;justify-items:center;gap:10px;box-shadow:4px 4px 0 var(--stk-bg)}
+  .cv-about p{margin:0;color:var(--ink-2);font-size:1rem;line-height:1.6;max-width:52ch}
+  .cv-about b{color:var(--ink)}
+  .cv-tag{font:400 1.25rem/1 var(--poster)!important;text-transform:uppercase;color:var(--accent)!important;letter-spacing:.02em}
+  .cv-go{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cv-go a{display:grid;justify-items:start;text-align:left;gap:2px;padding:14px 14px 13px;border-radius:18px;background:var(--surface);border:1.5px solid var(--line);color:var(--ink);text-decoration:none;transition:transform .15s,box-shadow .15s,border-color .15s}
+  .cv-go a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--stk-bg);border-color:var(--stk-bg)}
+  .cv-go svg{width:22px;height:22px;color:var(--accent);margin-bottom:6px}
+  .cv-go b{font:400 1.12rem/1.05 var(--poster);text-transform:uppercase;letter-spacing:.02em}
+  .cv-go small{font-size:.76rem;color:var(--ink-3)}
+  .cv-go a.pri{background:var(--stk-bg);border-color:var(--stk-bg);color:var(--stk-fg)}
+  .cv-go a.pri svg{color:var(--stk-fg)} .cv-go a.pri small{color:#D6E3FA}
+  .cv-go a.pri:hover{box-shadow:4px 4px 0 var(--stk-fg)}
+  .cv-down{font-size:.86rem;color:var(--ink-3);text-decoration:none;margin-top:4px}
+  .cv-down span{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(4px)}}
+  @media (max-width:560px){ .cv-go{grid-template-columns:1fr 1fr} .cover{padding:32px 16px 28px} .cv{gap:14px} .cv-logo{width:min(250px,62vw)} .cv-about{padding:16px 16px 14px} .cv-about p{font-size:.93rem;line-height:1.55} .cv-tag{font-size:1.1rem!important} }
+  @media (max-width:720px){ .cover{min-height:calc(100svh - 64px)} }
+  @media (prefers-reduced-motion:reduce){ .cv-logo,.cv-down span{animation:none} }
 
   nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
@@ -211,8 +227,7 @@
 
   /* selo da Netlify: vai pro topo e rola junto com a página */
   #nl-badge-frame{position:absolute!important;top:0!important;bottom:auto!important}
-  html:has(#nl-badge-frame) header .wrap{flex-direction:column;align-items:flex-start;gap:6px}
-  html:has(#nl-badge-frame) header{padding-top:18px}
+  html:has(#nl-badge-frame) .cover{padding-top:76px}
 
   .note{margin:16px 0 0;font-size:.84rem;color:var(--ink-3);max-width:70ch}
 
@@ -327,27 +342,36 @@
     #c-tabs button{padding:.6rem .75rem;font-size:.86rem}
     .row{grid-template-columns:96px 1fr 2.6rem;gap:8px;font-size:.8rem}
     .cola .f{grid-template-columns:1fr 92px}
-    .status .long{display:none}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="brand" href="#topo" aria-label="Voto Sem Filtro DF, início"><img src="img/wordmark.png" alt="Voto Sem Filtro." width="82" height="40"></a>
-    <span class="status"><i aria-hidden="true"></i><span class="long">atualiza todo dia · </span><span id="upd">—</span></span>
+<section class="cover" id="topo" aria-label="Capa">
+  <div class="cv">
+    <img class="cv-logo" src="img/logo.png" alt="Voto Sem Filtro." width="560" height="526">
+    <h1 class="cv-h1">Eleição 2026 no DF, <span>sem enrolação.</span></h1>
+    <div class="cv-meta">
+      <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
+      <span class="status"><i aria-hidden="true"></i>atualiza todo dia · <span id="upd">—</span></span>
+    </div>
+    <div class="cv-about">
+      <span class="eyebrow">O que é</span>
+      <p>Um guia <b>apartidário</b> das Eleições 2026 no Distrito Federal. Aqui tem todos os candidatos, do Presidente ao deputado distrital, com número, propostas e redes oficiais, as pesquisas registradas no TSE e tudo o que você precisa pro dia 4/10. Tudo com fonte.</p>
+      <p class="cv-tag">A gente explica. Você decide.</p>
+    </div>
+    <nav class="cv-go" aria-label="Ir para">
+      <a href="#candidatos" class="pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg><b>Candidatos do DF</b><small>Governo, Senado e deputados</small></a>
+      <a href="#presidente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><b>Presidente</b><small>Os 13 candidatos</small></a>
+      <a href="#pesquisas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>Pesquisas</b><small>Registradas no TSE</small></a>
+      <a href="#primeiro-voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><b>Primeiro voto</b><small>Passo a passo</small></a>
+      <a href="#agenda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><b>Datas</b><small>O que muda até 4/10</small></a>
+      <a href="#colinha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><b>Colinha</b><small>Monta a tua pra urna</small></a>
+    </nav>
+    <a class="cv-down" href="#resumo">Ou rola pra ver tudo <span aria-hidden="true">↓</span></a>
   </div>
-</header>
-
-<div class="wrap hero" id="topo">
-  <img class="urna" src="img/urna.png" alt="" width="230" height="114">
-  <span class="eyebrow">A gente explica. Você decide.</span>
-  <h1 style="margin-top:14px">Eleição 2026 no DF, <span>sem enrolação.</span></h1>
-  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador, ao Senado e à Presidência, com foto, número de urna, propostas, Instagram e site oficial, e ainda acha qualquer candidato a deputado federal ou distrital. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
-  <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
-</div>
+</section>
 
 <nav class="jump" aria-label="Seções">
   <div class="wrap">
