@@ -97,6 +97,23 @@
   .thumb.out{opacity:.6}
   .legend{margin:14px 0 0;font-size:.8rem;color:var(--ink-3)}
 
+  /* busca distrital */
+  .busca{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
+  .busca label{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:.92rem;margin-bottom:10px}
+  .busca label span{font-size:.76rem;color:var(--ink-3)}
+  .busca input{width:100%;font:500 1rem var(--body);color:var(--ink);background:var(--soft);border:1px solid transparent;border-radius:12px;padding:.75rem .9rem}
+  .busca input:focus{outline:none;border-color:var(--accent)}
+  .res{list-style:none;margin:10px 0 0;padding:0;display:grid}
+  .res li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 2px;border-top:1px solid var(--line);font-size:.9rem}
+  .res li:first-child{border-top:0}
+  .res .who small{display:block;font-size:.76rem;color:var(--ink-3)}
+  .res .who b{font-weight:600}
+  .res .ra{display:flex;gap:6px}
+  .res .ra a,.res .ra button{font:500 .78rem/1 var(--body);padding:.5rem .7rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap}
+  .res .ra button:hover,.res .ra a:hover{border-color:var(--accent);color:var(--accent)}
+  .res .hint{display:block;color:var(--ink-3);font-size:.84rem;border:0}
+  .facts b.sm{font-size:1rem;line-height:1.35}
+
   /* ficha técnica */
   html.lock{overflow:hidden}
   dialog.ficha{border:0;padding:0;margin:auto;width:min(460px,calc(100vw - 32px));max-height:88vh;overflow:auto;overscroll-behavior:contain;background:var(--surface);color:var(--ink);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
@@ -280,7 +297,7 @@
 <div class="wrap hero" id="topo">
   <span class="eyebrow">A gente explica. Você decide.</span>
   <h1 style="margin-top:12px">Eleição 2026 no DF, <span>sem enrolação</span>.</h1>
-  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador e ao Senado, com foto, número de urna, propostas, Instagram e site oficial. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
+  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador, ao Senado e à Presidência, com foto, número de urna, propostas, Instagram e site oficial, e ainda acha qualquer candidato a deputado distrital. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
   <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
 </div>
 
@@ -305,12 +322,17 @@
   </section>
 
   <section id="candidatos">
-    <div class="sh"><span class="eyebrow">Governo e Senado</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
+    <div class="sh"><span class="eyebrow">Governo, Senado e Câmara Legislativa</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
     <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
     <div class="order"><div class="tabs" id="c-ord" role="group" aria-label="Ordem"></div><span id="c-ord-t"></span></div>
     <div class="people" id="people"></div>
     <p class="legend">Toca na foto pra abrir a ficha. O contorno usa as cores oficiais de cada partido, só pra identificar.</p>
     <p class="note" id="c-note"></p>
+    <div class="busca" id="d-busca" hidden>
+      <label for="d-q"><b>Procura qualquer candidato a distrital</b><span id="d-tot"></span></label>
+      <input id="d-q" type="search" placeholder="Nome, partido ou número" autocomplete="off" inputmode="search">
+      <ul class="res" id="d-res" aria-live="polite"></ul>
+    </div>
     <dialog class="ficha" id="ficha" aria-labelledby="f-nome"><div class="fx" id="fx" tabindex="-1"></div></dialog>
   </section>
 
@@ -327,8 +349,9 @@
   </section>
 
   <section id="presidente">
-    <div class="sh"><span class="eyebrow">Brasil</span><h2>Presidente</h2><p>Os principais nomes e o que cada um propõe. Os números da pesquisa estão na seção acima.</p></div>
-    <div class="faq" id="pres" style="margin-top:0"></div>
+    <div class="sh"><span class="eyebrow">Brasil</span><h2>Presidente</h2><p>Todos os 13 candidatos, com a foto oficial do TSE. Toca pra ver número, pesquisa, propostas e links.</p></div>
+    <div class="people" id="pres-grid"></div>
+    <p class="note" id="pres-note"></p>
   </section>
 
   <section id="basico">
@@ -411,134 +434,1322 @@
 <!-- DADOS: este bloco é atualizado automaticamente. Mantenha JSON válido. -->
 <script type="application/json" id="dados">
 {
-  "meta": {
-    "atualizadoEm": "2026-09-26T21:00:00-03:00",
-    "verificadoEm": "2026-09-26T21:00:00-03:00",
-    "marcos": [
-      {"label": "até o 1º turno · 4/10", "iso": "2026-10-04T08:00:00-03:00"},
-      {"label": "até o 2º turno · 25/10", "iso": "2026-10-25T08:00:00-03:00"}
-    ],
-    "historico": [
-      {"data": "2026-09-26", "nota": "Versão minimalista, com fotos oficiais e redes dos candidatos do DF. Arruda barrado pelo TSE em 24/9."}
-    ]
-  },
-  "resumo": [
-    {"cargo": "presidente", "rotulo": "Presidente", "status": "tie", "statusTxt": "Empate técnico", "titulo": "Lula 40% × Flávio Bolsonaro 36% (Datafolha). A diferença tá dentro da margem, e no 2º turno também dá empate.", "ticker": ""},
-    {"cargo": "governador", "rotulo": "Governo do DF", "status": "lead", "statusTxt": "Liderança", "titulo": "Celina Leão tem 42% e Leandro Grass, 23%, no cenário sem Arruda, que foi barrado pelo TSE.", "ticker": ""},
-    {"cargo": "senado", "rotulo": "Senado DF · 2 vagas", "status": "tie", "statusTxt": "2ª vaga aberta", "titulo": "Michelle Bolsonaro na frente. Leila, Bia Kicis e Erika Kokay empatam pela outra vaga.", "ticker": ""}
+ "meta": {
+  "atualizadoEm": "2026-09-26T21:00:00-03:00",
+  "verificadoEm": "2026-09-26T21:00:00-03:00",
+  "marcos": [
+   {
+    "label": "até o 1º turno · 4/10",
+    "iso": "2026-10-04T08:00:00-03:00"
+   },
+   {
+    "label": "até o 2º turno · 25/10",
+    "iso": "2026-10-25T08:00:00-03:00"
+   }
   ],
-  "corridas": {
-    "presidente": {
-      "nome": "Presidente",
-      "alerta": "",
-      "pesquisas": [
-        {"instituto": "Datafolha", "campo": "22–23/9", "amostra": "2.002", "margem": 2, "registro": "BR-00304/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
-         "cenarios": {"Estimulado": {"total": [["Lula","PT",40],["Flávio Bolsonaro","PL",36],["Augusto Cury","Avante",5],["Ronaldo Caiado","PSD",4],["Renan Santos","Missão",3],["Romeu Zema","Novo",1],["Samara Martins","UP",1]], "outros": [["Branco / nulo",5],["Indecisos",2]], "validos": null}},
-         "segundoTurno": [["Lula",47,"Flávio Bolsonaro",45,8],["Lula",46,"Ronaldo Caiado",44,10],["Lula",46,"Augusto Cury",43,10]]},
-        {"instituto": "Quaest", "campo": "17–20/9", "amostra": "2.004", "margem": 2, "registro": "BR-06004/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
-         "cenarios": {"Estimulado": {"total": [["Lula","PT",37],["Flávio Bolsonaro","PL",33],["Augusto Cury","Avante",6],["Ronaldo Caiado","PSD",4],["Renan Santos","Missão",3],["Romeu Zema","Novo",1],["Samara Martins","UP",1]], "outros": [["Branco / nulo",7],["Indecisos",8]], "validos": null}},
-         "segundoTurno": [["Flávio Bolsonaro",42,"Lula",41,17],["Lula",41,"Ronaldo Caiado",39,20],["Lula",39,"Augusto Cury",35,26]]}
-      ]
-    },
-    "governador": {
-      "nome": "Governo do DF",
-      "alerta": "O TSE manteve, em 24/9, a decisão que barrou a candidatura de Arruda. Por isso o cenário que vale é o sem Arruda.",
-      "pesquisas": [
-        {"instituto": "Datafolha", "campo": "22–24/9", "amostra": "910", "margem": 3, "registro": "DF-01888/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
-         "cenarios": {"Sem Arruda": {"total": [["Celina Leão","PP",42],["Leandro Grass","PT",23],["Paula Belmonte","PSDB",7],["Ricardo Cappelli","PSB",5],["Samara Mineiro","UP",2],["Professor Robson","PSTU",1],["Kiko Caputo","Novo",1]], "outros": [["Branco / nulo",11],["Não sabe",6]], "validos": [["Celina Leão","PP",51],["Leandro Grass","PT",27],["Paula Belmonte","PSDB",9],["Ricardo Cappelli","PSB",6],["Samara Mineiro","UP",3],["Professor Robson","PSTU",2],["Kiko Caputo","Novo",2]]}},
-         "segundoTurno": [["Celina Leão",53,"Leandro Grass",34,13]]},
-        {"instituto": "Quaest", "campo": "19–22/9", "amostra": "1.104", "margem": 3, "registro": "DF-02596/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
-         "cenarios": {"Sem Arruda": {"total": [["Celina Leão","PP",34],["Leandro Grass","PT",23],["Paula Belmonte","PSDB",7],["Kiko Caputo","Novo",3],["Ricardo Cappelli","PSB",2],["Samara Mineiro","UP",1]], "outros": [["Branco / nulo",15],["Indecisos",15]], "validos": null}},
-         "segundoTurno": [["Celina Leão",48,"Leandro Grass",30,22]]}
-      ]
-    },
-    "senado": {
-      "nome": "Senado DF",
-      "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno.",
-      "pesquisas": [
-        {"instituto": "Datafolha", "campo": "22–24/9", "amostra": "910", "margem": 3, "registro": "DF-01888/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
-         "cenarios": {"1º + 2º voto": {"total": [["Michelle Bolsonaro","PL",22],["Leila do Vôlei","PDT",19],["Bia Kicis","PL",15],["Erika Kokay","PT",15],["Sebastião Coelho","Novo",2],["Ronaldo Fonseca","PSD",2]], "outros": [["Branco / nulo",10],["Não sabe",10]], "validos": null}},
-         "segundoTurno": []},
-        {"instituto": "Quaest", "campo": "19–22/9", "amostra": "1.104", "margem": 3, "registro": "DF-02596/2026", "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
-         "cenarios": {"1º + 2º voto": {"total": [["Michelle Bolsonaro","PL",26],["Leila do Vôlei","PDT",19],["Bia Kicis","PL",15],["Erika Kokay","PT",15],["Sebastião Coelho","Novo",2],["Ronaldo Fonseca","PSD",1]], "outros": [["Branco / nulo",9],["Indecisos",11]], "validos": null}},
-         "segundoTurno": []}
-      ]
-    }
+  "historico": [
+   {
+    "data": "2026-09-26",
+    "nota": "Versão minimalista, com fotos oficiais e redes dos candidatos do DF. Arruda barrado pelo TSE em 24/9."
+   }
+  ]
+ },
+ "resumo": [
+  {
+   "cargo": "presidente",
+   "rotulo": "Presidente",
+   "status": "tie",
+   "statusTxt": "Empate técnico",
+   "titulo": "Lula 40% × Flávio Bolsonaro 36% (Datafolha). A diferença tá dentro da margem, e no 2º turno também dá empate.",
+   "ticker": ""
   },
-  "candidatos": {
-    "governador": [
-      {"n":"Celina Leão","p":"PP","num":"11","foto":"70002553055","poll":42,"status":"",
-       "props":["Novo Hospital de Ceilândia e mais UPAs","Metrô em Ceilândia e Samambaia e Linha 2 até o Gama","Mais escolas em tempo integral","Regularização fundiária mais rápida"],
-       "ig":"celinaleao","site":"https://celina11.com","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478141-celina-reconhece-avancos-mas-critica-gestao-anterior.html"},
-      {"n":"Leandro Grass","p":"PT","num":"13","foto":"70002552496","poll":23,"status":"",
-       "props":["Ampliar a escola em tempo integral","Priorizar metrô e transporte sobre trilhos","Brasília como polo de tecnologia","Auditoria e transparência no BRB"],
-       "ig":"leandrograss","site":"https://leandrograss.com/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477822-brasilia-precisa-de-um-governo-a-altura-da-capital-do-pais-defende-grass.html"},
-      {"n":"Paula Belmonte","p":"PSDB","num":"45","foto":"70002552965","poll":7,"status":"",
-       "props":["Tempo integral com educação financeira e tecnologia","Gabinete anticorrupção desde o 1º dia","Governo digital e participativo"],
-       "ig":"paulabelmonteoficial","site":"https://www.paulabelmonte.com.br","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478118-paula-belmonte-psdb-propoe-governo-participativo-e-transparente.html"},
-      {"n":"Ricardo Cappelli","p":"PSB","num":"40","foto":"70002551557","poll":5,"status":"",
-       "props":["\"Fila Zero\" na saúde, com contratação emergencial","\"Tolerância Zero\" e mais de 7 mil policiais","Aumento do salário dos professores","Recuperar os desvios do BRB"],
-       "ig":"cappelli.ricardo","site":"https://www.cappelli40.com/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478144-ricardo-cappelli-psb-defende-choque-de-ordem-na-gestao.html"},
-      {"n":"Samara Mineiro","p":"UP","num":"80","foto":"70002537111","poll":2,"status":"",
-       "props":["Política ampla para mulheres: moradia, emprego e transporte","Mais profissionais na educação","Fundo Constitucional direcionado para saúde e educação"],
-       "ig":"","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477845-samara-mineiro-up-promete-ampliar-quadro-de-profissionais-da-educacao.html"},
-      {"n":"Professor Robson","p":"PSTU","num":"16","foto":"70002535930","poll":1,"status":"",
-       "props":["Fim do Iges-DF, com saúde 100% pública","Reestatizar a CEB e a Rodoviária","Fim dos cargos comissionados"],
-       "ig":"prof_robson_pstu","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478026-robson-raymundo-pstu-defende-modelo-de-armamento-coletivo.html"},
-      {"n":"Kiko Caputo","p":"Novo","num":"30","foto":"70002547775","poll":1,"status":"",
-       "props":["Menos secretarias e menos cargos comissionados","Valorizar os servidores de carreira","Metrô revitalizado e transporte sobre trilhos"],
-       "ig":"kiko_caputo","site":"http://www.kikocaputo.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478053-kiko-caputo-defende-choque-de-gestao-na-administracao-do-distrito-federal.html"},
-      {"n":"Expedito Mendonça","p":"PCO","num":"29","foto":"70002552341","poll":0,"status":"",
-       "props":["Estatizar setores estratégicos","Administradores regionais eleitos pelo voto","Orçamento com participação popular"],
-       "ig":"mexpedito","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477695-expedito-mendonca-rejeita-uso-de-terras-para-sanar-divida-do-brb.html"},
-      {"n":"Elisson","p":"Agir","num":"36","foto":"70002551298","poll":0,"status":"Candidatura indeferida, com recurso",
-       "props":["Governo com \"100% de transparência\"","Planejamento de Brasília até 2060"],
-       "ig":"souelisson36","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7478117-elisson-ferreira-agir-promete-governo-com-100-de-transparencia.html"},
-      {"n":"Rico Pinheiro","p":"PRTB","num":"28","foto":"70002553982","poll":0,"status":"Candidatura indeferida, com recurso",
-       "props":["Mais suporte à saúde mental","Concursos na saúde","Solução para o transporte público"],
-       "ig":"","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477818-rico-pinheiro-prtb-o-transporte-publico-precisa-de-solucao.html"},
-      {"n":"José Roberto Arruda","p":"PSD","num":"55","foto":"70002552586","poll":null,"status":"Barrado pelo TSE em 24/9",
-       "props":["Faixa azul para motos e nova licitação dos ônibus","Metrô por PPP e via Interbairros","Hospital em Ceilândia/Sol Nascente"],
-       "ig":"arruda.df","site":"https://arrudagovernador2026.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477804-jose-roberto-arruda-psd-diz-que-volta-a-disputa-para-resgatar-brasilia.html"}
-    ],
-    "senado": [
-      {"n":"Michelle Bolsonaro","p":"PL","num":"222","foto":"70002552936","poll":22,"status":"",
-       "props":["Um \"Senado forte\" diante do STF","Atuação pelos presos do 8 de janeiro","Pautas de mulheres e pessoas com deficiência"],
-       "ig":"michellebolsonaro","site":"https://michellebolsonaro222.com.br/","sabatina":"https://ncnews.com.br/2026/08/30/michelle-bolsonaro-promete-lutar-por-presos-do-8-de-janeiro-caso-seja-eleita-ao-senado/"},
-      {"n":"Leila do Vôlei","p":"PDT","num":"123","foto":"70002552492","poll":19,"status":"",
-       "props":["Proteger o Fundo Constitucional do DF","Hospitais em São Sebastião e Ceilândia","Lei Maria da Penha mais forte e delegacias 24h","Metrô expandido e integrado ao Entorno"],
-       "ig":"leiladovolei","site":"https://leiladovolei.com/propostas/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/09/7499674-o-foco-do-meu-trabalho-e-brasilia-diz-leila-do-volei.html"},
-      {"n":"Bia Kicis","p":"PL","num":"223","foto":"70002552934","poll":15,"status":"",
-       "props":["Fortalecer o Legislativo frente ao STF","Liberdade de expressão","Segurança e saúde no DF como prioridade"],
-       "ig":"biakicis","site":"http://www.biakicis.com.br/","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/08/7477256-bia-kicis-fala-sobre-prioridades-caso-seja-eleita-senadora.html"},
-      {"n":"Erika Kokay","p":"PT","num":"131","foto":"70002552490","poll":15,"status":"",
-       "props":["Fim da escala 6x1","Isenção de IR até R$ 5 mil","Proibir parentes como suplentes no Senado"],
-       "ig":"erikakokay","site":"","sabatina":"https://www.correiobraziliense.com.br/cidades-df/2026/09/7502387-erika-kokay-defende-fim-da-escala-6x1-e-reforca-pautas-trabalhistas.html"},
-      {"n":"Sebastião Coelho","p":"Novo","num":"300","foto":"70002548624","poll":2,"status":"","props":[],"ig":"","site":"","sabatina":""},
-      {"n":"Ronaldo Fonseca","p":"PSD","num":"555","foto":"70002553751","poll":2,"status":"","props":[],"ig":"ronaldofonseca.oficial","site":"https://www.ronaldofonseca.com.br/","sabatina":""},
-      {"n":"Professor Guilherme Amorim","p":"UP","num":"800","foto":"70002537112","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
-      {"n":"Marley","p":"Avante","num":"700","foto":"70002552582","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
-      {"n":"Zanata","p":"PSTU","num":"161","foto":"70002536445","poll":1,"status":"","props":[],"ig":"","site":"","sabatina":""},
-      {"n":"Tiago","p":"Agir","num":"360","foto":"70002551323","poll":1,"status":"Candidatura indeferida, com recurso","props":[],"ig":"tiago360_senador_df","site":"","sabatina":""},
-      {"n":"Guto Felício dos Santos","p":"PSDB","num":"456","foto":"70002553296","poll":0,"status":"","props":[],"ig":"gutofeliciodossantos","site":"","sabatina":""},
-      {"n":"David Horn","p":"PCO","num":"290","foto":"70002551426","poll":0,"status":"","props":[],"ig":"","site":"https://candidatos.pco.org.br","sabatina":""}
-    ],
-    "presidente": [
-      {"n":"Lula","p":"PT","props":["Salário mínimo sempre acima da inflação","Isenção de impostos da cesta básica","Criar o Ministério da Segurança Pública","Farmácia Popular com exames gratuitos","Mais institutos federais e creches"],"site":"https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo","entrevista":"https://tvtnews.com.br/lula-na-globo-sabatina-no-jornal-nacional/"},
-      {"n":"Flávio Bolsonaro","p":"PL","props":["Facções tratadas como narcoterroristas","Maioridade penal de 14 anos para crimes hediondos","Corte de gastos e menos imposto em energia e combustível","Cortar 10 ministérios","Vouchers para creches e escolas cívico-militares"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca","entrevista":"https://tvtnews.com.br/acompanhe-a-entrevista-de-flavio-bolsonaro-na-globo/"},
-      {"n":"Augusto Cury","p":"Avante","props":["Semipresidencialismo","Ministério do Empreendedorismo","Programa nacional de prevenção ao suicídio","Gestão da emoção no currículo escolar"],"site":"https://www.band.com.br/politica/eleicoes/eleicoes-2026-conheca-as-propostas-e-o-perfil-de-augusto-cury-avante","entrevista":"https://www.agencialupa.org/checagem/2026/08/29/ao-vivo-checagem-da-entrevista-de-augusto-cury-ao-jornal-nacional/"},
-      {"n":"Ronaldo Caiado","p":"PSD","props":["Ministério da Segurança Pública","Facções tratadas como grupos terroristas","Investimento de 17% para 25% do PIB","Toda criança lendo e fazendo contas até o 2º ano"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/caiado-promete-governo-transformador-e-reformas-estruturais","entrevista":"https://www.agencialupa.org/checagem/2026/08/25/ao-vivo-checagem-da-entrevista-de-ronaldo-caiado-ao-jornal-nacional/"},
-      {"n":"Renan Santos","p":"Missão","props":["Nova reforma da Previdência","Bolsa Família substituído por trabalho comunitário pago","Fim das cotas","Ferrovias de 30 mil para 40 mil km"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/renan-propoe-cortes-na-previdencia-e-alterar-pisos-da-saude-e-educacao","entrevista":"https://www.agencialupa.org/checagem/2026/08/26/ao-vivo-checagem-da-entrevista-de-renan-santos-ao-jornal-nacional/"},
-      {"n":"Romeu Zema","p":"Novo","props":["Privatizar todas as estatais, incluindo a Petrobras","Limitar os poderes do STF","Sair do Brics e entrar na OCDE","R$ 1 mil para cada recém-nascido"],"site":"https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/zema-propoe-saida-do-brics-e-reducao-de-supersalarios-e-de-impostos","entrevista":"https://www.agencialupa.org/checagem/2026/08/24/ao-vivo-checagem-da-entrevista-de-romeu-zema-ao-jornal-nacional/"}
-    ]
+  {
+   "cargo": "governador",
+   "rotulo": "Governo do DF",
+   "status": "lead",
+   "statusTxt": "Liderança",
+   "titulo": "Celina Leão tem 42% e Leandro Grass, 23%, no cenário sem Arruda, que foi barrado pelo TSE.",
+   "ticker": ""
   },
-  "notas": {
-    "governador": "Arruda aparece por último porque teve a candidatura barrada. Elisson e Rico Pinheiro ainda recorrem.",
-    "senado": "Números da pesquisa: Datafolha 22–24/9. Candidatos sem propostas detalhadas na imprensa: veja o perfil no TSE.",
-    "presidente": "Também concorrem Samara Martins (UP), Hertz Dias (PSTU), Leonardo Avalanche (PRTB), Rui Costa Pimenta (PCO), Wilson Grassi (Democrata), Edmilson Costa (PCB) e Clariana Barão (DC)."
+  {
+   "cargo": "senado",
+   "rotulo": "Senado DF · 2 vagas",
+   "status": "tie",
+   "statusTxt": "2ª vaga aberta",
+   "titulo": "Michelle Bolsonaro na frente. Leila, Bia Kicis e Erika Kokay empatam pela outra vaga.",
+   "ticker": ""
   }
+ ],
+ "corridas": {
+  "presidente": {
+   "nome": "Presidente",
+   "alerta": "",
+   "pesquisas": [
+    {
+     "instituto": "Datafolha",
+     "campo": "22–23/9",
+     "amostra": "2.002",
+     "margem": 2,
+     "registro": "BR-00304/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
+     "cenarios": {
+      "Estimulado": {
+       "total": [
+        [
+         "Lula",
+         "PT",
+         40
+        ],
+        [
+         "Flávio Bolsonaro",
+         "PL",
+         36
+        ],
+        [
+         "Augusto Cury",
+         "Avante",
+         5
+        ],
+        [
+         "Ronaldo Caiado",
+         "PSD",
+         4
+        ],
+        [
+         "Renan Santos",
+         "Missão",
+         3
+        ],
+        [
+         "Romeu Zema",
+         "Novo",
+         1
+        ],
+        [
+         "Samara Martins",
+         "UP",
+         1
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         5
+        ],
+        [
+         "Indecisos",
+         2
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": [
+      [
+       "Lula",
+       47,
+       "Flávio Bolsonaro",
+       45,
+       8
+      ],
+      [
+       "Lula",
+       46,
+       "Ronaldo Caiado",
+       44,
+       10
+      ],
+      [
+       "Lula",
+       46,
+       "Augusto Cury",
+       43,
+       10
+      ]
+     ]
+    },
+    {
+     "instituto": "Quaest",
+     "campo": "17–20/9",
+     "amostra": "2.004",
+     "margem": 2,
+     "registro": "BR-06004/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
+     "cenarios": {
+      "Estimulado": {
+       "total": [
+        [
+         "Lula",
+         "PT",
+         37
+        ],
+        [
+         "Flávio Bolsonaro",
+         "PL",
+         33
+        ],
+        [
+         "Augusto Cury",
+         "Avante",
+         6
+        ],
+        [
+         "Ronaldo Caiado",
+         "PSD",
+         4
+        ],
+        [
+         "Renan Santos",
+         "Missão",
+         3
+        ],
+        [
+         "Romeu Zema",
+         "Novo",
+         1
+        ],
+        [
+         "Samara Martins",
+         "UP",
+         1
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         7
+        ],
+        [
+         "Indecisos",
+         8
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": [
+      [
+       "Flávio Bolsonaro",
+       42,
+       "Lula",
+       41,
+       17
+      ],
+      [
+       "Lula",
+       41,
+       "Ronaldo Caiado",
+       39,
+       20
+      ],
+      [
+       "Lula",
+       39,
+       "Augusto Cury",
+       35,
+       26
+      ]
+     ]
+    }
+   ]
+  },
+  "governador": {
+   "nome": "Governo do DF",
+   "alerta": "O TSE manteve, em 24/9, a decisão que barrou a candidatura de Arruda. Por isso o cenário que vale é o sem Arruda.",
+   "pesquisas": [
+    {
+     "instituto": "Datafolha",
+     "campo": "22–24/9",
+     "amostra": "910",
+     "margem": 3,
+     "registro": "DF-01888/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
+     "cenarios": {
+      "Sem Arruda": {
+       "total": [
+        [
+         "Celina Leão",
+         "PP",
+         42
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         23
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         7
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         5
+        ],
+        [
+         "Samara Mineiro",
+         "UP",
+         2
+        ],
+        [
+         "Professor Robson",
+         "PSTU",
+         1
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         1
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         11
+        ],
+        [
+         "Não sabe",
+         6
+        ]
+       ],
+       "validos": [
+        [
+         "Celina Leão",
+         "PP",
+         51
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         27
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         9
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         6
+        ],
+        [
+         "Samara Mineiro",
+         "UP",
+         3
+        ],
+        [
+         "Professor Robson",
+         "PSTU",
+         2
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         2
+        ]
+       ]
+      }
+     },
+     "segundoTurno": [
+      [
+       "Celina Leão",
+       53,
+       "Leandro Grass",
+       34,
+       13
+      ]
+     ]
+    },
+    {
+     "instituto": "Quaest",
+     "campo": "19–22/9",
+     "amostra": "1.104",
+     "margem": 3,
+     "registro": "DF-02596/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+     "cenarios": {
+      "Sem Arruda": {
+       "total": [
+        [
+         "Celina Leão",
+         "PP",
+         34
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         23
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         7
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         3
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         2
+        ],
+        [
+         "Samara Mineiro",
+         "UP",
+         1
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         15
+        ],
+        [
+         "Indecisos",
+         15
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": [
+      [
+       "Celina Leão",
+       48,
+       "Leandro Grass",
+       30,
+       22
+      ]
+     ]
+    }
+   ]
+  },
+  "senado": {
+   "nome": "Senado DF",
+   "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno.",
+   "pesquisas": [
+    {
+     "instituto": "Datafolha",
+     "campo": "22–24/9",
+     "amostra": "910",
+     "margem": 3,
+     "registro": "DF-01888/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026-2/",
+     "cenarios": {
+      "1º + 2º voto": {
+       "total": [
+        [
+         "Michelle Bolsonaro",
+         "PL",
+         22
+        ],
+        [
+         "Leila do Vôlei",
+         "PDT",
+         19
+        ],
+        [
+         "Bia Kicis",
+         "PL",
+         15
+        ],
+        [
+         "Erika Kokay",
+         "PT",
+         15
+        ],
+        [
+         "Sebastião Coelho",
+         "Novo",
+         2
+        ],
+        [
+         "Ronaldo Fonseca",
+         "PSD",
+         2
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         10
+        ],
+        [
+         "Não sabe",
+         10
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": []
+    },
+    {
+     "instituto": "Quaest",
+     "campo": "19–22/9",
+     "amostra": "1.104",
+     "margem": 3,
+     "registro": "DF-02596/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+     "cenarios": {
+      "1º + 2º voto": {
+       "total": [
+        [
+         "Michelle Bolsonaro",
+         "PL",
+         26
+        ],
+        [
+         "Leila do Vôlei",
+         "PDT",
+         19
+        ],
+        [
+         "Bia Kicis",
+         "PL",
+         15
+        ],
+        [
+         "Erika Kokay",
+         "PT",
+         15
+        ],
+        [
+         "Sebastião Coelho",
+         "Novo",
+         2
+        ],
+        [
+         "Ronaldo Fonseca",
+         "PSD",
+         1
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         9
+        ],
+        [
+         "Indecisos",
+         11
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": []
+    }
+   ]
+  }
+ },
+ "candidatos": {
+  "governador": [
+   {
+    "n": "Celina Leão",
+    "p": "PP",
+    "num": "11",
+    "foto": "70002553055",
+    "poll": 42,
+    "status": "",
+    "props": [
+     "Novo Hospital de Ceilândia e mais UPAs",
+     "Metrô em Ceilândia e Samambaia e Linha 2 até o Gama",
+     "Mais escolas em tempo integral",
+     "Regularização fundiária mais rápida"
+    ],
+    "ig": "celinaleao",
+    "site": "https://celina11.com",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478141-celina-reconhece-avancos-mas-critica-gestao-anterior.html"
+   },
+   {
+    "n": "Leandro Grass",
+    "p": "PT",
+    "num": "13",
+    "foto": "70002552496",
+    "poll": 23,
+    "status": "",
+    "props": [
+     "Ampliar a escola em tempo integral",
+     "Priorizar metrô e transporte sobre trilhos",
+     "Brasília como polo de tecnologia",
+     "Auditoria e transparência no BRB"
+    ],
+    "ig": "leandrograss",
+    "site": "https://leandrograss.com/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477822-brasilia-precisa-de-um-governo-a-altura-da-capital-do-pais-defende-grass.html"
+   },
+   {
+    "n": "Paula Belmonte",
+    "p": "PSDB",
+    "num": "45",
+    "foto": "70002552965",
+    "poll": 7,
+    "status": "",
+    "props": [
+     "Tempo integral com educação financeira e tecnologia",
+     "Gabinete anticorrupção desde o 1º dia",
+     "Governo digital e participativo"
+    ],
+    "ig": "paulabelmonteoficial",
+    "site": "https://www.paulabelmonte.com.br",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478118-paula-belmonte-psdb-propoe-governo-participativo-e-transparente.html"
+   },
+   {
+    "n": "Ricardo Cappelli",
+    "p": "PSB",
+    "num": "40",
+    "foto": "70002551557",
+    "poll": 5,
+    "status": "",
+    "props": [
+     "\"Fila Zero\" na saúde, com contratação emergencial",
+     "\"Tolerância Zero\" e mais de 7 mil policiais",
+     "Aumento do salário dos professores",
+     "Recuperar os desvios do BRB"
+    ],
+    "ig": "cappelli.ricardo",
+    "site": "https://www.cappelli40.com/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478144-ricardo-cappelli-psb-defende-choque-de-ordem-na-gestao.html"
+   },
+   {
+    "n": "Samara Mineiro",
+    "p": "UP",
+    "num": "80",
+    "foto": "70002537111",
+    "poll": 2,
+    "status": "",
+    "props": [
+     "Política ampla para mulheres: moradia, emprego e transporte",
+     "Mais profissionais na educação",
+     "Fundo Constitucional direcionado para saúde e educação"
+    ],
+    "ig": "",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477845-samara-mineiro-up-promete-ampliar-quadro-de-profissionais-da-educacao.html"
+   },
+   {
+    "n": "Professor Robson",
+    "p": "PSTU",
+    "num": "16",
+    "foto": "70002535930",
+    "poll": 1,
+    "status": "",
+    "props": [
+     "Fim do Iges-DF, com saúde 100% pública",
+     "Reestatizar a CEB e a Rodoviária",
+     "Fim dos cargos comissionados"
+    ],
+    "ig": "prof_robson_pstu",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478026-robson-raymundo-pstu-defende-modelo-de-armamento-coletivo.html"
+   },
+   {
+    "n": "Kiko Caputo",
+    "p": "Novo",
+    "num": "30",
+    "foto": "70002547775",
+    "poll": 1,
+    "status": "",
+    "props": [
+     "Menos secretarias e menos cargos comissionados",
+     "Valorizar os servidores de carreira",
+     "Metrô revitalizado e transporte sobre trilhos"
+    ],
+    "ig": "kiko_caputo",
+    "site": "http://www.kikocaputo.com.br/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478053-kiko-caputo-defende-choque-de-gestao-na-administracao-do-distrito-federal.html"
+   },
+   {
+    "n": "Expedito Mendonça",
+    "p": "PCO",
+    "num": "29",
+    "foto": "70002552341",
+    "poll": 0,
+    "status": "",
+    "props": [
+     "Estatizar setores estratégicos",
+     "Administradores regionais eleitos pelo voto",
+     "Orçamento com participação popular"
+    ],
+    "ig": "mexpedito",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477695-expedito-mendonca-rejeita-uso-de-terras-para-sanar-divida-do-brb.html"
+   },
+   {
+    "n": "Elisson",
+    "p": "Agir",
+    "num": "36",
+    "foto": "70002551298",
+    "poll": 0,
+    "status": "Candidatura indeferida, com recurso",
+    "props": [
+     "Governo com \"100% de transparência\"",
+     "Planejamento de Brasília até 2060"
+    ],
+    "ig": "souelisson36",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478117-elisson-ferreira-agir-promete-governo-com-100-de-transparencia.html"
+   },
+   {
+    "n": "Rico Pinheiro",
+    "p": "PRTB",
+    "num": "28",
+    "foto": "70002553982",
+    "poll": 0,
+    "status": "Candidatura indeferida, com recurso",
+    "props": [
+     "Mais suporte à saúde mental",
+     "Concursos na saúde",
+     "Solução para o transporte público"
+    ],
+    "ig": "",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477818-rico-pinheiro-prtb-o-transporte-publico-precisa-de-solucao.html"
+   },
+   {
+    "n": "José Roberto Arruda",
+    "p": "PSD",
+    "num": "55",
+    "foto": "70002552586",
+    "poll": null,
+    "status": "Barrado pelo TSE em 24/9",
+    "props": [
+     "Faixa azul para motos e nova licitação dos ônibus",
+     "Metrô por PPP e via Interbairros",
+     "Hospital em Ceilândia/Sol Nascente"
+    ],
+    "ig": "arruda.df",
+    "site": "https://arrudagovernador2026.com.br/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477804-jose-roberto-arruda-psd-diz-que-volta-a-disputa-para-resgatar-brasilia.html"
+   }
+  ],
+  "senado": [
+   {
+    "n": "Michelle Bolsonaro",
+    "p": "PL",
+    "num": "222",
+    "foto": "70002552936",
+    "poll": 22,
+    "status": "",
+    "props": [
+     "Um \"Senado forte\" diante do STF",
+     "Atuação pelos presos do 8 de janeiro",
+     "Pautas de mulheres e pessoas com deficiência"
+    ],
+    "ig": "michellebolsonaro",
+    "site": "https://michellebolsonaro222.com.br/",
+    "sabatina": "https://ncnews.com.br/2026/08/30/michelle-bolsonaro-promete-lutar-por-presos-do-8-de-janeiro-caso-seja-eleita-ao-senado/"
+   },
+   {
+    "n": "Leila do Vôlei",
+    "p": "PDT",
+    "num": "123",
+    "foto": "70002552492",
+    "poll": 19,
+    "status": "",
+    "props": [
+     "Proteger o Fundo Constitucional do DF",
+     "Hospitais em São Sebastião e Ceilândia",
+     "Lei Maria da Penha mais forte e delegacias 24h",
+     "Metrô expandido e integrado ao Entorno"
+    ],
+    "ig": "leiladovolei",
+    "site": "https://leiladovolei.com/propostas/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/09/7499674-o-foco-do-meu-trabalho-e-brasilia-diz-leila-do-volei.html"
+   },
+   {
+    "n": "Bia Kicis",
+    "p": "PL",
+    "num": "223",
+    "foto": "70002552934",
+    "poll": 15,
+    "status": "",
+    "props": [
+     "Fortalecer o Legislativo frente ao STF",
+     "Liberdade de expressão",
+     "Segurança e saúde no DF como prioridade"
+    ],
+    "ig": "biakicis",
+    "site": "http://www.biakicis.com.br/",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477256-bia-kicis-fala-sobre-prioridades-caso-seja-eleita-senadora.html"
+   },
+   {
+    "n": "Erika Kokay",
+    "p": "PT",
+    "num": "131",
+    "foto": "70002552490",
+    "poll": 15,
+    "status": "",
+    "props": [
+     "Fim da escala 6x1",
+     "Isenção de IR até R$ 5 mil",
+     "Proibir parentes como suplentes no Senado"
+    ],
+    "ig": "erikakokay",
+    "site": "",
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/09/7502387-erika-kokay-defende-fim-da-escala-6x1-e-reforca-pautas-trabalhistas.html"
+   },
+   {
+    "n": "Sebastião Coelho",
+    "p": "Novo",
+    "num": "300",
+    "foto": "70002548624",
+    "poll": 2,
+    "status": "",
+    "props": [],
+    "ig": "",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "Ronaldo Fonseca",
+    "p": "PSD",
+    "num": "555",
+    "foto": "70002553751",
+    "poll": 2,
+    "status": "",
+    "props": [],
+    "ig": "ronaldofonseca.oficial",
+    "site": "https://www.ronaldofonseca.com.br/",
+    "sabatina": ""
+   },
+   {
+    "n": "Professor Guilherme Amorim",
+    "p": "UP",
+    "num": "800",
+    "foto": "70002537112",
+    "poll": 1,
+    "status": "",
+    "props": [],
+    "ig": "",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "Marley",
+    "p": "Avante",
+    "num": "700",
+    "foto": "70002552582",
+    "poll": 1,
+    "status": "",
+    "props": [],
+    "ig": "",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "Zanata",
+    "p": "PSTU",
+    "num": "161",
+    "foto": "70002536445",
+    "poll": 1,
+    "status": "",
+    "props": [],
+    "ig": "",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "Tiago",
+    "p": "Agir",
+    "num": "360",
+    "foto": "70002551323",
+    "poll": 1,
+    "status": "Candidatura indeferida, com recurso",
+    "props": [],
+    "ig": "tiago360_senador_df",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "Guto Felício dos Santos",
+    "p": "PSDB",
+    "num": "456",
+    "foto": "70002553296",
+    "poll": 0,
+    "status": "",
+    "props": [],
+    "ig": "gutofeliciodossantos",
+    "site": "",
+    "sabatina": ""
+   },
+   {
+    "n": "David Horn",
+    "p": "PCO",
+    "num": "290",
+    "foto": "70002551426",
+    "poll": 0,
+    "status": "",
+    "props": [],
+    "ig": "",
+    "site": "https://candidatos.pco.org.br",
+    "sabatina": ""
+   }
+  ],
+  "presidente": [
+   {
+    "n": "Lula",
+    "p": "PT",
+    "props": [
+     "Salário mínimo sempre acima da inflação",
+     "Isenção de impostos da cesta básica",
+     "Criar o Ministério da Segurança Pública",
+     "Farmácia Popular com exames gratuitos",
+     "Mais institutos federais e creches"
+    ],
+    "site": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo",
+    "entrevista": "https://tvtnews.com.br/lula-na-globo-sabatina-no-jornal-nacional/",
+    "num": 13,
+    "foto": "280002542548",
+    "ig": "lulaoficial",
+    "oficial": "https://lula.com.br",
+    "poll": 40
+   },
+   {
+    "n": "Flávio Bolsonaro",
+    "p": "PL",
+    "props": [
+     "Facções tratadas como narcoterroristas",
+     "Maioridade penal de 14 anos para crimes hediondos",
+     "Corte de gastos e menos imposto em energia e combustível",
+     "Cortar 10 ministérios",
+     "Vouchers para creches e escolas cívico-militares"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca",
+    "entrevista": "https://tvtnews.com.br/acompanhe-a-entrevista-de-flavio-bolsonaro-na-globo/",
+    "num": 22,
+    "foto": "280002551544",
+    "ig": "flaviobolsonaro",
+    "oficial": "https://flaviobolsonaro.com.br",
+    "poll": 36
+   },
+   {
+    "n": "Augusto Cury",
+    "p": "Avante",
+    "props": [
+     "Semipresidencialismo",
+     "Ministério do Empreendedorismo",
+     "Programa nacional de prevenção ao suicídio",
+     "Gestão da emoção no currículo escolar"
+    ],
+    "site": "https://www.band.com.br/politica/eleicoes/eleicoes-2026-conheca-as-propostas-e-o-perfil-de-augusto-cury-avante",
+    "entrevista": "https://www.agencialupa.org/checagem/2026/08/29/ao-vivo-checagem-da-entrevista-de-augusto-cury-ao-jornal-nacional/",
+    "num": 70,
+    "foto": "280002551547",
+    "ig": "augustocury",
+    "oficial": "https://augustocurypresidente.com.br/",
+    "poll": 5
+   },
+   {
+    "n": "Ronaldo Caiado",
+    "p": "PSD",
+    "props": [
+     "Ministério da Segurança Pública",
+     "Facções tratadas como grupos terroristas",
+     "Investimento de 17% para 25% do PIB",
+     "Toda criança lendo e fazendo contas até o 2º ano"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/caiado-promete-governo-transformador-e-reformas-estruturais",
+    "entrevista": "https://www.agencialupa.org/checagem/2026/08/25/ao-vivo-checagem-da-entrevista-de-ronaldo-caiado-ao-jornal-nacional/",
+    "num": 55,
+    "foto": "280002551932",
+    "ig": "ronaldocaiado",
+    "oficial": "https://ronaldocaiado.com.br/",
+    "poll": 4
+   },
+   {
+    "n": "Renan Santos",
+    "p": "Missão",
+    "props": [
+     "Nova reforma da Previdência",
+     "Bolsa Família substituído por trabalho comunitário pago",
+     "Fim das cotas",
+     "Ferrovias de 30 mil para 40 mil km"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/renan-propoe-cortes-na-previdencia-e-alterar-pisos-da-saude-e-educacao",
+    "entrevista": "https://www.agencialupa.org/checagem/2026/08/26/ao-vivo-checagem-da-entrevista-de-renan-santos-ao-jornal-nacional/",
+    "num": 14,
+    "foto": "280002540694",
+    "ig": "renansantosmbl",
+    "oficial": "https://renanpresidente.com.br",
+    "poll": 3
+   },
+   {
+    "n": "Romeu Zema",
+    "p": "Novo",
+    "props": [
+     "Privatizar todas as estatais, incluindo a Petrobras",
+     "Limitar os poderes do STF",
+     "Sair do Brics e entrar na OCDE",
+     "R$ 1 mil para cada recém-nascido"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/zema-propoe-saida-do-brics-e-reducao-de-supersalarios-e-de-impostos",
+    "entrevista": "https://www.agencialupa.org/checagem/2026/08/24/ao-vivo-checagem-da-entrevista-de-romeu-zema-ao-jornal-nacional/",
+    "num": 30,
+    "foto": "280002539826",
+    "ig": "romeuzemaoficial",
+    "oficial": "https://www.zema30.com.br/",
+    "poll": 1
+   },
+   {
+    "n": "Samara Martins",
+    "p": "UP",
+    "num": 80,
+    "foto": "280002538811",
+    "ig": "samaramartinsup",
+    "oficial": "https://unidadepopular.org.br/",
+    "poll": 1,
+    "props": [
+     "Dobrar o salário mínimo, de R$ 1.621 para R$ 3.242",
+     "Trocar a escala 6x1 pela 4x3 para todos os trabalhadores",
+     "Reestatizar 100% da Petrobras e da Eletrobras",
+     "Suspender o pagamento da dívida pública e fazer auditoria cidadã"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/samara-martins-propoe-dobrar-salario-minimo-e-instituir-escala-4x3",
+    "entrevista": "https://almapreta.com.br/sessao/politica/samara-martins-entrevista-eleicoes-2026/"
+   },
+   {
+    "n": "Hertz Dias",
+    "p": "PSTU",
+    "num": 16,
+    "foto": "280002541457",
+    "ig": "hertzdiaspstu",
+    "oficial": "",
+    "poll": null,
+    "props": [
+     "Acabar com a escala 6x1 e adotar 36 horas semanais sem cortar salário",
+     "Revogar as reformas trabalhista e da Previdência",
+     "Parar as privatizações e reverter as já feitas",
+     "Transporte público com tarifa zero"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/fim-da-escala-6x1-e-de-privatizacoes-e-prioridade-de-hertz-dias",
+    "entrevista": "https://almapreta.com.br/sessao/politica/hertz-dias-entrevista-eleicoes/"
+   },
+   {
+    "n": "Leonardo Avalanche",
+    "p": "PRTB",
+    "num": 28,
+    "foto": "280002554479",
+    "ig": "leonardoavalanche",
+    "oficial": "",
+    "poll": null,
+    "props": [
+     "Imposto único de 3,5% no lugar de ICMS, ISS, IR, INSS e outros",
+     "Zerar a fila do SUS com mutirões, telemedicina e hospitais privados",
+     "IPVA fixo de R$ 50 por mês, com isenção para caminhoneiros",
+     "Sistema nacional de segurança com reconhecimento facial"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/leonardo-avalanche-quer-reduzir-impostos-e-zerar-fila-do-sus",
+    "entrevista": ""
+   },
+   {
+    "n": "Rui Costa Pimenta",
+    "p": "PCO",
+    "num": 29,
+    "foto": "280002552487",
+    "ig": "ruicpimenta",
+    "oficial": "https://candidatos.pco.org.br",
+    "poll": null,
+    "props": [
+     "Baixar o preço dos combustíveis em 50% na hora",
+     "Anular todas as privatizações",
+     "Jornada máxima de 35 horas: 7 horas por dia, 5 dias",
+     "Estatizar as escolas particulares e acabar com o vestibular"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/rui-costa-pimenta-quer-ampliar-direitos-trabalhistas-e-verbas-da-saude",
+    "entrevista": "https://www.youtube.com/watch?v=Kf70ybt-JCQ"
+   },
+   {
+    "n": "Wilson Grassi",
+    "p": "Democrata",
+    "num": 35,
+    "foto": "280002548139",
+    "ig": "veterinariowilsongrassioficial",
+    "oficial": "https://veterinariowilsongrassi.com.br",
+    "poll": null,
+    "props": [
+     "Imposto federal único no lugar de nove tributos federais",
+     "Isenção de IR pra quem ganha até cinco salários mínimos",
+     "Plebiscito sobre prisões em massa no modelo de El Salvador",
+     "Fila nacional pública pra cirurgias e exames eletivos"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/wilson-grassi-defende-imposto-unico-e-mais-rigor-contra-faccoes",
+    "entrevista": "https://www.poder360.com.br/poder-eleicoes-2026/wilson-grassi-do-democrata-defende-faxineiras-no-stf-e-novas-moedas/"
+   },
+   {
+    "n": "Edmilson Costa",
+    "p": "PCB",
+    "num": 21,
+    "foto": "280002551975",
+    "ig": "edpcb",
+    "oficial": "https://pcb.org.br/portal2/",
+    "poll": null,
+    "props": [
+     "Jornada de 30 horas semanais sem reduzir salário e fim da 6x1",
+     "Salário mínimo calculado pelo Dieese",
+     "Estatizar setores estratégicos, como água, energia e saneamento",
+     "Acabar com o arcabouço fiscal"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/edmilson-costa-defende-jornada-de-30-horas-e-fim-da-escala-6x1",
+    "entrevista": "https://www.poder360.com.br/poder-eleicoes/banco-central-nao-pode-ter-independencia-diz-edmilson-costa/"
+   },
+   {
+    "n": "Clariana Barão",
+    "p": "DC",
+    "num": 27,
+    "foto": "280002552484",
+    "ig": "",
+    "oficial": "",
+    "poll": null,
+    "props": [
+     "Rede nacional de proteção contra a violência a mulheres",
+     "Primeira infância como prioridade nacional",
+     "Simplificar regras e digitalizar a abertura de empresas",
+     "Reforma do sistema prisional pra reduzir a reincidência"
+    ],
+    "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/clariana-barao-prioriza-propostas-de-protecao-mulher-e-infancia",
+    "entrevista": "https://www.poder360.com.br/poder-eleicoes-2026/clariana-barao-do-dc-defende-reforma-no-stf-e-fim-da-6-x-1/"
+   }
+  ],
+  "distrital": [
+   {
+    "n": "Chico Vigilante",
+    "p": "PT",
+    "num": 13100,
+    "foto": "70002540503",
+    "ig": "chicovigilanteoficial",
+    "site": "https://chicovigilante.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/chico-vigilante-70002540503/"
+   },
+   {
+    "n": "Max Maciel",
+    "p": "PSOL",
+    "num": 50100,
+    "foto": "70002533394",
+    "ig": "maxmacieldf",
+    "site": "https://www.maxmaciel50100.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/max-maciel-70002533394/"
+   },
+   {
+    "n": "Martins Machado",
+    "p": "Republicanos",
+    "num": 10123,
+    "foto": "70002540817",
+    "ig": "martinsmachadodf",
+    "site": "https://www.martinsmachado.com.br",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/martins-machado-70002540817/"
+   },
+   {
+    "n": "Robério Negreiros",
+    "p": "PODE",
+    "num": 20000,
+    "foto": "70002541286",
+    "ig": "",
+    "site": "https://www.roberionegreiros.com",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roberio-negreiros-70002541286/"
+   },
+   {
+    "n": "Jorge Vianna",
+    "p": "Democrata",
+    "num": 35192,
+    "foto": "70002546972",
+    "ig": "jorgeviannadf",
+    "site": "https://www.jorgevianna.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jorge-vianna-70002546972/"
+   },
+   {
+    "n": "Jaqueline Silva",
+    "p": "MDB",
+    "num": 15900,
+    "foto": "70002538800",
+    "ig": "jaquelinesilvadf",
+    "site": "https://jaquelinesilva.com.br",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/jaqueline-silva-70002538800/"
+   },
+   {
+    "n": "Eduardo Pedrosa",
+    "p": "União",
+    "num": 44000,
+    "foto": "70002538493",
+    "ig": "eduardowpedrosa",
+    "site": "https://eduardopedrosa.com.br",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/eduardo-pedrosa-70002538493/"
+   },
+   {
+    "n": "Joaquim Roriz Neto",
+    "p": "PL",
+    "num": 22000,
+    "foto": "70002550019",
+    "ig": "joaquimrorizneto",
+    "site": "https://joaquimroriz.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joaquim-roriz-neto-70002550019/"
+   },
+   {
+    "n": "Iolando",
+    "p": "MDB",
+    "num": 15000,
+    "foto": "70002538799",
+    "ig": "iolandooficial",
+    "site": "https://iolando.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/iolando-70002538799/"
+   },
+   {
+    "n": "Pastor Daniel de Castro",
+    "p": "PP",
+    "num": 11133,
+    "foto": "70002538488",
+    "ig": "pastordanieldecastro",
+    "site": "https://www.pastordanieldecastro.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pastor-daniel-de-castro-70002538488/"
+   },
+   {
+    "n": "Hermeto",
+    "p": "MDB",
+    "num": 15190,
+    "foto": "70002538796",
+    "ig": "hermeto.oficial",
+    "site": "",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/hermeto-70002538796/"
+   },
+   {
+    "n": "Roosevelt Vilela",
+    "p": "PL",
+    "num": 22193,
+    "foto": "70002550009",
+    "ig": "deputadoroosevelt",
+    "site": "https://www.rooseveltvilela.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/roosevelt-vilela-70002550009/"
+   },
+   {
+    "n": "Delegada Doutora Jane",
+    "p": "Republicanos",
+    "num": 10555,
+    "foto": "70002540813",
+    "ig": "doutorajanedf",
+    "site": "http://www.doutorajanedf.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/delegada-doutora-jane-70002540813/"
+   },
+   {
+    "n": "Gabriel Magno",
+    "p": "PT",
+    "num": 13131,
+    "foto": "70002540525",
+    "ig": "gabrielmagno_13",
+    "site": "https://gabrielmagno.com.br",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/gabriel-magno-70002540525/"
+   },
+   {
+    "n": "João Cardoso",
+    "p": "PL",
+    "num": 22888,
+    "foto": "70002550000",
+    "ig": "joaocardosobrasilia",
+    "site": "https://joaocardoso.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/joao-cardoso-70002550000/"
+   },
+   {
+    "n": "Ricardo Vale",
+    "p": "PT",
+    "num": 13013,
+    "foto": "70002540512",
+    "ig": "ricardovalebsb",
+    "site": "",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/ricardo-vale-70002540512/"
+   },
+   {
+    "n": "Wellington Luiz",
+    "p": "MDB",
+    "num": 15123,
+    "foto": "70002538797",
+    "ig": "wellingtonluizdf",
+    "site": "https://wellingtonluiz.com.br",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/wellington-luiz-70002538797/"
+   },
+   {
+    "n": "Dayse Amarilio",
+    "p": "PSB",
+    "num": 40222,
+    "foto": "70002542507",
+    "ig": "dayseamarilio",
+    "site": "https://dayseamarilio.com",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/dayse-amarilio-70002542507/"
+   },
+   {
+    "n": "Rogério Morro da Cruz",
+    "p": "PSD",
+    "num": 55123,
+    "foto": "70002537382",
+    "ig": "rogeriomorrodacruz",
+    "site": "https://rogeriomorrodacruz.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/rogerio-morro-da-cruz-70002537382/"
+   },
+   {
+    "n": "Pepa",
+    "p": "PP",
+    "num": 11011,
+    "foto": "70002538486",
+    "ig": "deputadopepa",
+    "site": "https://deputadopepa.com.br/",
+    "props": [],
+    "status": "",
+    "perfil": "https://candidatos.nexojornal.com.br/2026/df/pepa-70002538486/"
+   }
+  ]
+ },
+ "notas": {
+  "governador": "Arruda aparece por último porque teve a candidatura barrada. Elisson e Rico Pinheiro ainda recorrem.",
+  "senado": "Números da pesquisa: Datafolha 22–24/9. Candidatos sem propostas detalhadas na imprensa: veja o perfil no TSE.",
+  "presidente": "Os 13 candidatos à Presidência, todos no mesmo formato. Propostas resumidas dos planos de governo registrados no TSE e de reportagens da Agência Brasil. Instagram e site são os que cada um registrou no TSE.",
+  "distrital": "Aqui estão os 20 deputados distritais eleitos em 2022 que concorrem de novo à Câmara Legislativa. O critério é só esse: estar aqui não é recomendação. Os outros candidatos estão na busca abaixo."
+ }
 }
 </script>
+
+<!-- Todos os candidatos a deputado distrital no DF (fonte: TSE via Nexo Jornal). -->
+<script type="application/json" id="distritais">[["Abel Santos","PSOL",50444,"abel-santos-70002533406"],["Adalberto Carvalho","PSDB",45190,"adalberto-carvalho-70002550878"],["Aderval","Solidariedade",77123,"aderval-70002538126"],["Agenildo Neri","Mobiliza",33733,"agenildo-neri-70002542546"],["Ailude Máximo","NOVO",30777,"ailude-maximo-70002531346"],["Akilla Marinho","PSD",55033,"akilla-marinho-70002536813"],["Alcivânio Bomfim","Democrata",35100,"alcivanio-bomfim-70002546952"],["Alessandro Cardoso","PSD",55055,"alessandro-cardoso-70002536811"],["Alessandro Mito","PODE",20022,"alessandro-mito-70002541279"],["Alessandro Paiva","PL",22123,"alessandro-paiva-70002550007"],["Alex Galvão","PODE",20100,"alex-galvao-70002541288"],["Alex Oliveira","NOVO",30456,"alex-oliveira-70002531328"],["Alexa","NOVO",30230,"alexa-70002531327"],["Alexandre Oliver","DC",27222,"alexandre-oliver-70002543434"],["Aline Sá","PDT",12777,"aline-sa-70002546910"],["Aline Vesely","PSD",55575,"aline-vesely-70002553995"],["Amanda Camargo","Missão",14714,"amanda-camargo-70002545057"],["Ana Maria","PP",11022,"ana-maria-70002538489"],["Ana Paula Marra","PODE",20123,"ana-paula-marra-70002541298"],["Anderson Guiné","Avante",70777,"anderson-guine-70002546743"],["Anderson Vieira","PSDB",45200,"anderson-vieira-70002550996"],["Andrea Espanha","Republicanos",10110,"andrea-espanha-70002540814"],["Andrea Pontes","PL",22001,"andrea-pontes-70002550018"],["Andreia Bombom","Democrata",35017,"andreia-bombom-70002546961"],["Andreia Salles","PSD",55200,"andreia-salles-70002553994"],["Andrey Lemos","PT",13012,"andrey-lemos-70002540514"],["André Kubitschek","PL",22022,"andre-kubitschek-70002550001"],["André Pilla","PRD",25190,"andre-pilla-70002554148"],["André Pires","PDT",12110,"andre-pires-70002546919"],["Andréia Moura","PL",22333,"andreia-moura-70002550010"],["Angelica","Avante",70022,"angelica-70002546723"],["Angelina Nardelli","REDE",18018,"angelina-nardelli-70002533397"],["Anna Sebba","PL",22061,"anna-sebba-70002549999"],["Anthony Ribas","Missão",14321,"anthony-ribas-70002545058"],["Arcanjo Magalhães","Democrata",35111,"arcanjo-magalhaes-70002546969"],["Arilson de Oliveira","PDT",12333,"arilson-de-oliveira-70002547153"],["Arthur Gurgel","Missão",14014,"arthur-gurgel-70002545056"],["Artur Cezar","PODE",20001,"artur-cezar-70002541291"],["Bartiria Coletivo Nossa Gente","REDE",18123,"bartiria-coletivo-nossa-gente-70002533409"],["Bartolomeu Bartô Rodrigues","PSB",40023,"bartolomeu-barto-rodrigues-70002542510"],["Bebeto","Mobiliza",33033,"bebeto-70002542532"],["Benedito da Vozinha","PSDB",45222,"benedito-da-vozinha-70002550877"],["Bernardo Moreira","PSB",40100,"bernardo-moreira-70002542504"],["Berê Darc","Pcdob",65180,"bere-darc-70002540516"],["Bethania Kelly","Solidariedade",77000,"bethania-kelly-70002548153"],["Betinho Guariroba","REDE",18180,"betinho-guariroba-70002536167"],["Bispo Renato Andrade","Republicanos",10100,"bispo-renato-andrade-70002540821"],["Bispo Weldon","DC",27012,"bispo-weldon-70002543439"],["Bito Ramos","DC",27391,"bito-ramos-70002543427"],["Brunelli","PRD",25444,"brunelli-70002554468"],["Bárbara Calista","UP",80110,"barbara-calista-70002537108"],["Cabo Vitorio","Avante",70190,"cabo-vitorio-70002546742"],["Caiafa","DC",27027,"caiafa-70002543445"],["Camargo Minha Capital","Mobiliza",33333,"camargo-minha-capital-70002542535"],["Capitão Aderivaldo Cardoso","PODE",20333,"capitao-aderivaldo-cardoso-70002541284"],["Carlos Penna","PSDB",45000,"carlos-penna-70002550983"],["Carlos Sá","PSD",55333,"carlos-sa-70002553992"],["Carlos Xavier","DC",27127,"carlos-xavier-70002543440"],["Carlão Reclamão","Democrata",35180,"carlao-reclamao-70002546956"],["Carol Força da Mulher","Mobiliza",33003,"carol-forca-da-mulher-70002542543"],["Carol Kalil","PL",22122,"carol-kalil-70002550017"],["Carvalho Rio Melchior","PSDB",45888,"carvalho-rio-melchior-70002550879"],["Castelo","PRD",25555,"castelo-70002538119"],["Caçuleci Pacheco","NOVO",30700,"caculeci-pacheco-70002531340"],["Chico Vigilante","PT",13100,"chico-vigilante-70002540503"],["Christian Rodrigues Sena","UP",80123,"christian-rodrigues-sena-70002537109"],["Claudeci Luart","DC",27321,"claudeci-luart-70002543436"],["Claudio Abrantes","União",44123,"claudio-abrantes-70002538504"],["Clea Torres","PSDB",45155,"clea-torres-70002550993"],["Cleber Df Aguasclaras","PSD",55888,"cleber-df-aguasclaras-70002536808"],["Cleia Araújo","Mobiliza",33337,"cleia-araujo-70002542527"],["Cleidiane Vitalino","PODE",20456,"cleidiane-vitalino-70002541281"],["Clemilton","Avante",70456,"clemilton-70002546722"],["Cláudia Lapa","PODE",20111,"claudia-lapa-70002541300"],["Cláudio Borcem","PODE",20061,"claudio-borcem-70002541296"],["Cláudio Ferreira Domingues","Democrata",35456,"claudio-ferreira-domingues-70002546954"],["Comandante Alan","PODE",20193,"comandante-alan-70002541289"],["Conceição da Agricultura","PSOL",50257,"conceicao-da-agricultura-70002533411"],["Conceição do Maranhão","MDB",15888,"conceicao-do-maranhao-70002538807"],["Conde","Republicanos",10101,"conde-70002540823"],["Coronel Michello","PODE",20122,"coronel-michello-70002541292"],["Coronel Neviton Sangue Bom","DC",27190,"coronel-neviton-sangue-bom-70002543425"],["Corretor Nogueira","Mobiliza",33007,"corretor-nogueira-70002542545"],["Cricia Cantora de Pentecostes","Mobiliza",33777,"cricia-cantora-de-pentecostes-70002542540"],["Cris Mourão","NOVO",30303,"cris-mourao-70002531345"],["Cris Nardes","Republicanos",10987,"cris-nardes-70002540815"],["Cristiane Carvalho","Solidariedade",77810,"cristiane-carvalho-70002538114"],["Cristiano Araújo","MDB",15015,"cristiano-araujo-70002538805"],["Cristiano Severo","União",44070,"cristiano-severo-70002538495"],["Daiane dos Santos","NOVO",30500,"daiane-dos-santos-70002531341"],["Daniel Barros","PT",13197,"daniel-barros-70002540526"],["Daniel Radar","Avante",70000,"daniel-radar-70002546726"],["Daniela Ciriaco","PSDB",45555,"daniela-ciriaco-70002550876"],["Dataniel Duarte","PSDB",45045,"dataniel-duarte-70002550874"],["Dayse Amarilio","PSB",40222,"dayse-amarilio-70002542507"],["Dayse Hansa","PT",13056,"dayse-hansa-70002540504"],["Defensor Kleber","NOVO",30030,"defensor-kleber-70002531332"],["Deise Andrade","Mobiliza",33180,"deise-andrade-70002542538"],["Delegada Doutora Jane","Republicanos",10555,"delegada-doutora-jane-70002540813"],["Delegada Karen","União",44180,"delegada-karen-70002538500"],["Delegado Fernando Fernandes","Republicanos",10190,"delegado-fernando-fernandes-70002540822"],["Delegado Jonatas","MDB",15777,"delegado-jonatas-70002538810"],["Delegado Laercio","Avante",70255,"delegado-laercio-70002546738"],["Delegado Pablo Aguiar","PSD",55000,"delegado-pablo-aguiar-70002536809"],["Delmasso","Republicanos",10456,"delmasso-70002540827"],["Denise Franco","Republicanos",10888,"denise-franco-70002540819"],["Dennis Web","PSB",40567,"dennis-web-70002542503"],["Deo do Mandala","PODE",20002,"deo-do-mandala-70002541295"],["Deusdete Filho","Solidariedade",77111,"deusdete-filho-70002538112"],["Dhiogo Bacurau","PDT",12344,"dhiogo-bacurau-70002546917"],["Diego Locutor","Solidariedade",77077,"diego-locutor-70002538122"],["Diolan Rocha","Democrata",35353,"diolan-rocha-70002546958"],["Diógenes Bastos","Republicanos",10111,"diogenes-bastos-70002554039"],["Donny Silva","DC",27022,"donny-silva-70002543432"],["Dr Caio Gracco","Avante",70999,"dr-caio-gracco-70002546730"],["Dr Jacinto","NOVO",30007,"dr-jacinto-70002531344"],["Dr Wendel Moreira","Mobiliza",33192,"dr-wendel-moreira-70002542533"],["Dr. Candido Teles","MDB",15678,"dr-candido-teles-70002538794"],["Dr. Carolina Maia","Missão",14100,"dr-carolina-maia-70002545063"],["Dr. Eric Gustavo","NOVO",30022,"dr-eric-gustavo-70002531337"],["Dr. Gutemberg","DC",27123,"dr-gutemberg-70002543442"],["Dr. Helio Gomes","Avante",70122,"dr-helio-gomes-70002546737"],["Dr. Klebes Rezende","PODE",20033,"dr-klebes-rezende-70002541294"],["Dr. Lucimir","Democrata",35355,"dr-lucimir-70002546968"],["Dr. Petrus","NOVO",30111,"dr-petrus-70002531343"],["Dr. Vicenzo","PSD",55678,"dr-vicenzo-70002536812"],["Dra Cris","PL",22221,"dra-cris-70002550005"],["Dra Suzana Lima","União",44101,"dra-suzana-lima-70002538490"],["Dra. Angélica Caraíba","Democrata",35678,"dra-angelica-caraiba-70002546949"],["Dra. Atena Oliveira","NOVO",30026,"dra-atena-oliveira-70002554355"],["Dra. Fabi","União",44222,"dra-fabi-70002538509"],["Dra. Kellen Guerra","PL",22010,"dra-kellen-guerra-70002550013"],["Dra. Lucilene Fernandes","PSDB",45755,"dra-lucilene-fernandes-70002550986"],["Dra. Mônica","Democrata",35888,"dra-monica-70002546967"],["Dra. Natália Matias","PSOL",50500,"dra-natalia-matias-70002533396"],["Dra.tânia Soster","NOVO",30555,"dra-tania-soster-70002531347"],["Edem Alexandre","Solidariedade",77777,"edem-alexandre-70002538115"],["Edison Ceilândia","PSOL",50133,"edison-ceilandia-70002533413"],["Edson Cordeiro","Solidariedade",77222,"edson-cordeiro-70002538113"],["Edson Sol Nascente","MDB",15551,"edson-sol-nascente-70002538801"],["Edu Santos","Missão",14123,"edu-santos-70002545067"],["Eduardo Brandão","PV",43000,"eduardo-brandao-70002540522"],["Eduardo Pedrosa","União",44000,"eduardo-pedrosa-70002538493"],["Eduardo Torres","PL",22222,"eduardo-torres-70002550003"],["Eliana Emerick","PODE",20555,"eliana-emerick-70002541297"],["Eliana Veterinária","REDE",18486,"eliana-veterinaria-70002533404"],["Elias Santos","Democrata",35800,"elias-santos-70002546964"],["Elisson Franklin","DC",27024,"elisson-franklin-70002543438"],["Elizeu Síndico","Democrata",35250,"elizeu-sindico-70002546966"],["Elke Pimentel","PV",43123,"elke-pimentel-70002540506"],["Emanuel S.o.s","Republicanos",10505,"emanuel-s-o-s-70002540826"],["Emanuell Resolve","Mobiliza",33088,"emanuell-resolve-70002542539"],["Emanuelle","Missão",14149,"emanuelle-70002545066"],["Enfermeira Lidia","PSD",55655,"enfermeira-lidia-70002537377"],["Engenheiro Valter Saboia","NOVO",30300,"engenheiro-valter-saboia-70002531334"],["Ericka Filippelli","NOVO",30100,"ericka-filippelli-70002531330"],["Ericson Gomes","Republicanos",10193,"ericson-gomes-70002540818"],["Erivelton","PSD",55444,"erivelton-70002537380"],["Estefane Sampaio","Republicanos",10222,"estefane-sampaio-70002540832"],["Esteffany","Democrata",35333,"esteffany-70002546973"],["Eugênio Magalhães","Solidariedade",77023,"eugenio-magalhaes-70002538123"],["Evaldo Lobato","Avante",70555,"evaldo-lobato-70002546739"],["Evandro Araujo","PL",22522,"evandro-araujo-70002549997"],["Fabiano Trompetista","PT",13007,"fabiano-trompetista-70002540511"],["Fabio de Morais","Solidariedade",77007,"fabio-de-morais-70002538125"],["Fatima Có","PSD",55500,"fatima-co-70002537375"],["Fernanda França","NOVO",30530,"fernanda-franca-70002531326"],["Fernanda Mateus","MDB",15156,"fernanda-mateus-70002538804"],["Fernando Caixeta","PL",22321,"fernando-caixeta-70002550014"],["Fernando Freitas","PSB",40123,"fernando-freitas-70002542500"],["Fernando do Resgate","DC",27777,"fernando-do-resgate-70002543446"],["Flavinha Ceilandia","Solidariedade",77122,"flavinha-ceilandia-70002538117"],["Flavio Potiguar","Avante",70369,"flavio-potiguar-70002546725"],["Francimar Nava","Mobiliza",33323,"francimar-nava-70002542523"],["Francisca Côrte","PDT",12122,"francisca-corte-70002547145"],["Fátima Rôla","PT",13321,"fatima-rola-70002540505"],["Gabriel Luna","PSDB",45345,"gabriel-luna-70002550880"],["Gabriel Magno","PT",13131,"gabriel-magno-70002540525"],["Gabriela Freire","Avante",70100,"gabriela-freire-70002546729"],["Gaby","PDT",12321,"gaby-70002547146"],["Gigante da Federal","PRD",25123,"gigante-da-federal-70002538116"],["Gilberto Eliazario de Camargos","Avante",70333,"gilberto-eliazario-de-camargos-70002551996"],["Giulianno Cartaxo","Republicanos",10020,"giulianno-cartaxo-70002540831"],["Giza Tea","Mobiliza",33133,"giza-tea-70002542544"],["Glória Vale","PSDB",45456,"gloria-vale-70002550995"],["Guarda Janio","Democrata",35000,"guarda-janio-70002546957"],["Guilherme Carvalho Emanar","PSB",40800,"guilherme-carvalho-emanar-70002542501"],["Gustavo Aires","MDB",15133,"gustavo-aires-70002538798"],["Gutemberg Rios","Mobiliza",33700,"gutemberg-rios-70002542541"],["Hamilton Tatu","PL",22555,"hamilton-tatu-70002550002"],["Helvídio Nunes","PRD",25001,"helvidio-nunes-70002538118"],["Henrique Durães","Missão",14141,"henrique-duraes-70002545061"],["Hermeto","MDB",15190,"hermeto-70002538796"],["Igor Saraiva","Democrata",35444,"igor-saraiva-70002546970"],["Ilene Almeida","PRD",25025,"ilene-almeida-70002538124"],["Inês Armand","DC",27272,"ines-armand-70002543424"],["Iolando","MDB",15000,"iolando-70002538799"],["Ipaminona dos Inquilinos","Solidariedade",77200,"ipaminona-dos-inquilinos-70002554142"],["Iracema Durão","PRD",25500,"iracema-durao-70002538128"],["Isa Lustosa","Democrata",35007,"isa-lustosa-70002546951"],["Israel Presença","PP",11123,"israel-presenca-70002538496"],["Issa","Avante",70007,"issa-70002546736"],["Italo Miranda","Mobiliza",33456,"italo-miranda-70002542530"],["Iuri Marques","PP",11410,"iuri-marques-70002538501"],["Izadora Coimbra","PSD",55026,"izadora-coimbra-70002537385"],["Izaquiel Souza","DC",27700,"izaquiel-souza-70002543444"],["Jabá Arruda","PSD",55190,"jaba-arruda-70002537379"],["Jacy Afonso","PT",13001,"jacy-afonso-70002540519"],["Jadiel da Construção","PSD",55255,"jadiel-da-construcao-70002553993"],["Jair dos Aplicativos","PDT",12112,"jair-dos-aplicativos-70002547144"],["James Mayner","PSDB",45678,"james-mayner-70002550994"],["Japa da Bike","Democrata",35777,"japa-da-bike-70002546971"],["Jaqueline Silva","MDB",15900,"jaqueline-silva-70002538800"],["Jean da Cultura","PV",43222,"jean-da-cultura-70002540507"],["Joaquim Roriz Neto","PL",22000,"joaquim-roriz-neto-70002550019"],["Joe Valle da Malunga","PDT",12345,"joe-valle-da-malunga-70002547149"],["Jonathan Araújo","PSD",55661,"jonathan-araujo-70002553991"],["Jorge Farias Rodoviário","Mobiliza",33111,"jorge-farias-rodoviario-70002542526"],["Jorge Vianna","Democrata",35192,"jorge-vianna-70002546972"],["Joseflay Josias","PDT",12022,"joseflay-josias-70002547148"],["Jovita Rosa","PDT",12000,"jovita-rosa-70002546913"],["João Alexandre","PL",22224,"joao-alexandre-70002550016"],["João Cardoso","PL",22888,"joao-cardoso-70002550000"],["João Dito","DC",27500,"joao-dito-70002543437"],["João Favorito","PT",13061,"joao-favorito-70002540513"],["João Terra","PSDB",45300,"joao-terra-70002554511"],["Julia Lucy","PL",22190,"julia-lucy-70002550015"],["Juliana Cândida","PSDB",45100,"juliana-candida-70002550989"],["Jézer Júnior","NOVO",30061,"jezer-junior-70002531336"],["Jô Assistente Social","MDB",15444,"jo-assistente-social-70002542494"],["Keka Bagno","PSOL",50123,"keka-bagno-70002533401"],["Kevin Vem","Democrata",35222,"kevin-vem-70002546950"],["Lací Marinho","União",44197,"laci-marinho-70002538508"],["Lau de Paula","Avante",70700,"lau-de-paula-70002546746"],["Laureano de Faria","PT",13193,"laureano-de-faria-70002540508"],["Lauricio Radiosaude","Avante",70234,"lauricio-radiosaude-70002546744"],["Lenne Evangelista","PSB",40044,"lenne-evangelista-70002542508"],["Letícia Sampaio","Mobiliza",33122,"leticia-sampaio-70002542536"],["Lgm","NOVO",30000,"lgm-70002531329"],["Lorruana Medeiros","DC",27100,"lorruana-medeiros-70002543426"],["Luciana Lima","PSDB",45123,"luciana-lima-70002550982"],["Luciana Mendina","NOVO",30321,"luciana-mendina-70002531349"],["Luciene Daniel da Segurança","Solidariedade",77190,"luciene-daniel-da-seguranca-70002538120"],["Lucijaine Vilar","União",44007,"lucijaine-vilar-70002538502"],["Luís Miranda","Democrata",35555,"luis-miranda-70002546959"],["Luíza do Clezão","PL",22822,"luiza-do-clezao-70002550006"],["Lyly do Avante","Avante",70707,"lyly-do-avante-70002546731"],["Léo Goleiro","PP",11010,"leo-goleiro-70002538494"],["Léo Rezende","PSD",55321,"leo-rezende-70002537386"],["Lúcia Carvalho","PT",13111,"lucia-carvalho-70002540523"],["Lúcia Lucimar","PDT",12369,"lucia-lucimar-70002547141"],["Madu K","PSOL",50700,"madu-k-70002533400"],["Maggie Margarida Chaulet","DC",27333,"maggie-margarida-chaulet-70002543443"],["Mano Lima","PSOL",50060,"mano-lima-70002533392"],["Manuela Andrade","PODE",20101,"manuela-andrade-70002541282"],["Mara Marçal","PDT",12126,"mara-marcal-70002547142"],["Marcel Uber Black","Democrata",35035,"marcel-uber-black-70002546960"],["Marcela Passamani","MDB",15555,"marcela-passamani-70002538806"],["Marcele Mama","Avante",70789,"marcele-mama-70002546740"],["Marcelinho Carioca","Republicanos",10777,"marcelinho-carioca-70002540812"],["Marcelinho Nunes","PP",11777,"marcelinho-nunes-70002538491"],["Marcelo Izidoro","PL",22777,"marcelo-izidoro-70002549998"],["Marcelo Trator","Republicanos",10000,"marcelo-trator-70002540811"],["Marcos Marshal","MDB",15151,"marcos-marshal-70002542493"],["Marcos Porto","Republicanos",10722,"marcos-porto-70002553398"],["Mari Jow","PSB",40233,"mari-jow-70002542497"],["Mari Teixeira","Avante",70870,"mari-teixeira-70002546733"],["Maria Duclerio","PSDB",45130,"maria-duclerio-70002550872"],["Maria Jose","PSDB",45525,"maria-jose-70002550873"],["Mariana Rosa","PT",13333,"mariana-rosa-70002540517"],["Marlene","Solidariedade",77137,"marlene-70002538129"],["Marquim do Tropa","PDT",12071,"marquim-do-tropa-70002546918"],["Martha Eliene","PP",11112,"martha-eliene-70002538499"],["Martins Machado","Republicanos",10123,"martins-machado-70002540817"],["Matheus Fernandes","NOVO",30033,"matheus-fernandes-70002531333"],["Matheus Marques","Missão",14114,"matheus-marques-70002545059"],["Max Maciel","PSOL",50100,"max-maciel-70002533394"],["Mc Jenny","Republicanos",10010,"mc-jenny-70002540820"],["Mercione","PDT",12061,"mercione-70002547152"],["Michel Platini","PSOL",50000,"michel-platini-70002533402"],["Miguel da 26","Republicanos",10026,"miguel-da-26-70002540829"],["Miranda Gomes","REDE",18081,"miranda-gomes-70002533408"],["Missionária Eudes","Mobiliza",33000,"missionaria-eudes-70002542525"],["Moustafa","PSOL",50511,"moustafa-70002533414"],["Múcio","PSB",40061,"mucio-70002542499"],["Nanda Batista","Democrata",35500,"nanda-batista-70002546953"],["Natal Furucho","PODE",20777,"natal-furucho-70002541283"],["Natanry Osorio","PSDB",45617,"natanry-osorio-70002550992"],["Natty Vieira","PSOL",50180,"natty-vieira-70002533403"],["Natália Reis","PP",11211,"natalia-reis-70002538498"],["Nay do Acarajé","PSB",40333,"nay-do-acaraje-70002542512"],["Nelson Neto","PSD",55155,"nelson-neto-70002536810"],["Nery Charlie","Solidariedade",77135,"nery-charlie-70002538110"],["Neto Rodrigues","PODE",20020,"neto-rodrigues-70002541280"],["Newton dos Esportes","Solidariedade",77321,"newton-dos-esportes-70002538109"],["Noemia T Bispo","NOVO",30888,"noemia-t-bispo-70002531339"],["Orion Oliveira","Solidariedade",77843,"orion-oliveira-70002538121"],["Pablo Feitosa","PSB",40420,"pablo-feitosa-70002542509"],["Pardim","PT",13405,"pardim-70002540510"],["Pastor Anderson Silva","PSD",55111,"pastor-anderson-silva-70002537378"],["Pastor Daniel de Castro","PP",11133,"pastor-daniel-de-castro-70002538488"],["Pastor Dácio Cordeiro","MDB",15153,"pastor-dacio-cordeiro-70002542496"],["Pastor Leiber","União",44190,"pastor-leiber-70002538497"],["Pastor Rafael","DC",27000,"pastor-rafael-70002543431"],["Pastor Roberto","Solidariedade",77277,"pastor-roberto-70002538111"],["Pastora Allana","Democrata",35999,"pastora-allana-70002546962"],["Pastora Luzinete","PT",13556,"pastora-luzinete-70002540520"],["Pastora Márcia","Republicanos",10060,"pastora-marcia-70002540828"],["Patricia da Feira","Avante",70077,"patricia-da-feira-70002546741"],["Patrícia Helena","PODE",20028,"patricia-helena-70002541299"],["Patty Ramiro","PSOL",50050,"patty-ramiro-70002533393"],["Paulinho Campello","PDT",12105,"paulinho-campello-70002546914"],["Paulo César (pc)","PSOL",50321,"paulo-cesar-pc-70002533399"],["Paulo Mineiro","NOVO",30123,"paulo-mineiro-70002531338"],["Pedro Mecânico Coletivo","Mobiliza",33789,"pedro-mecanico-coletivo-70002542537"],["Pedro Oliveira","União",44555,"pedro-oliveira-70002538492"],["Pedro Payne","NOVO",30444,"pedro-payne-70002531348"],["Pedro do Ovo","União",44044,"pedro-do-ovo-70002538507"],["Pepa","PP",11011,"pepa-70002538486"],["Perita Tirotti","Missão",14444,"perita-tirotti-70002545068"],["Pikineia","PSOL",50200,"pikineia-70002533410"],["Pinho","Republicanos",10022,"pinho-70002540816"],["Policial João Renato","PL",22422,"policial-joao-renato-70002550012"],["Pr. João de Deus","PODE",20700,"pr-joao-de-deus-70002541277"],["Pr. Sidney","PDT",12101,"pr-sidney-70002546915"],["Preta Praiana","Democrata",35135,"preta-praiana-70002546965"],["Priscila Baccile","PODE",20088,"priscila-baccile-70002541293"],["Prof Wesley","Avante",70222,"prof-wesley-70002546724"],["Prof. Altaci Kokama","PT",13133,"prof-altaci-kokama-70002540524"],["Prof. Cristiano Luz","PDT",12012,"prof-cristiano-luz-70002546912"],["Prof. Nilvan de Vasconcellos","PDT",12456,"prof-nilvan-de-vasconcellos-70002546920"],["Profa. Keila Sanches","PT",13613,"profa-keila-sanches-70002540509"],["Professor Aharom","PSB",40120,"professor-aharom-70002542506"],["Professor Diego Gomes","PSDB",45145,"professor-diego-gomes-70002550985"],["Professor Douglas Gomes/o Divo","PSB",40109,"professor-douglas-gomes-o-divo-70002542513"],["Professor Elias","Pcdob",65123,"professor-elias-70002540518"],["Professor Fernando Moura","PDT",12123,"professor-fernando-moura-70002547147"],["Professor Fernando Sousa","PDT",12361,"professor-fernando-sousa-70002547151"],["Professor Gustavo Salles","PSDB",45013,"professor-gustavo-salles-70002550981"],["Professor Ivan Moraes","PSD",55777,"professor-ivan-moraes-70002537383"],["Professor Jairon","PDT",12555,"professor-jairon-70002547143"],["Professor Jordenes","PSD",55555,"professor-jordenes-70002537384"],["Professor Willian Comunidade","DC",27277,"professor-willian-comunidade-70002543441"],["Professor Álvaro Domingues","NOVO",30999,"professor-alvaro-domingues-70002531350"],["Professora Godoi","PSDB",45321,"professora-godoi-70002550990"],["Professora Jéssica Motta","PSB",40140,"professora-jessica-motta-70002542502"],["Professora Ray","PSOL",50020,"professora-ray-70002533405"],["Raad","Mobiliza",33100,"raad-70002542547"],["Rachel Doces","DC",27999,"rachel-doces-70002543430"],["Raphael Sebba","PSB",40200,"raphael-sebba-70002542505"],["Regis Machado","NOVO",30333,"regis-machado-70002531342"],["Reinaldo Araujo","DC",27300,"reinaldo-araujo-70002543435"],["Rejane Costa","PP",11001,"rejane-costa-70002538510"],["Renata Daguiar","Republicanos",10789,"renata-daguiar-70002540824"],["Renato Silveira Barbosa","Avante",70193,"renato-silveira-barbosa-70002546734"],["Rhailler Santos","Missão",14040,"rhailler-santos-70002545060"],["Ricardo Castanheira","PL",22002,"ricardo-castanheira-70002550008"],["Ricardo Castro","NOVO",30222,"ricardo-castro-70002531331"],["Ricardo Vale","PT",13013,"ricardo-vale-70002540512"],["Robério Melo Tx","Democrata",35123,"roberio-melo-tx-70002546955"],["Robério Negreiros","PODE",20000,"roberio-negreiros-70002541286"],["Rodrigo Dantas","PL",22100,"rodrigo-dantas-70002550021"],["Rodrigo Dias","PSB",40400,"rodrigo-dias-70002542511"],["Rogerio Morro da Cruz","PSD",55123,"rogerio-morro-da-cruz-70002537382"],["Rogério Ulysses","Avante",70321,"rogerio-ulysses-70002546727"],["Romário Leal","PSOL",50777,"romario-leal-70002533398"],["Roosevelt Vilela","PL",22193,"roosevelt-vilela-70002550009"],["Rosi Costa","PT",13000,"rosi-costa-70002540521"],["Rôney Nemer","PP",11111,"roney-nemer-70002538503"],["Salvador Castro","Democrata",35026,"salvador-castro-70002546963"],["Samara Brito","MDB",15100,"samara-brito-70002538802"],["Sami Yassine","REDE",18222,"sami-yassine-70002533395"],["Samuel Gaúcho","PL",22722,"samuel-gaucho-70002550011"],["Sandra Bacelar","PSD",55100,"sandra-bacelar-70002537381"],["Sandra Silva","Avante",70770,"sandra-silva-70002546728"],["Sandro Bilks","PSD",55533,"sandro-bilks-70002553990"],["Saphira","PSDB",45777,"saphira-70002550984"],["Sardinha","Mobiliza",33123,"sardinha-70002542534"],["Sargento Elizalda","Solidariedade",77330,"sargento-elizalda-70002548154"],["Sargento Paulo Roberto","PODE",20226,"sargento-paulo-roberto-70002541278"],["Scooby Ube","Republicanos",10061,"scooby-ube-70002540830"],["Sgt Roksinaidy","Mobiliza",33001,"sgt-roksinaidy-70002542542"],["Sgt. Luciano Baglogui","PODE",20090,"sgt-luciano-baglogui-70002541285"],["Silene da Saúde","Avante",70111,"silene-da-saude-70002546735"],["Silvinho Almeida","União",44567,"silvinho-almeida-70002538487"],["Simone Magalhães","PSD",55855,"simone-magalhaes-70002537376"],["Soraya Costa","PSDB",45451,"soraya-costa-70002550991"],["Sorriso","PDT",12307,"sorriso-70002546909"],["Subtenente Geraldo Alves","PODE",20190,"subtenente-geraldo-alves-70002541301"],["Sueli Líder Guerreira","PDT",12331,"sueli-lider-guerreira-70002547150"],["Suzele Veloso","PODE",20200,"suzele-veloso-70002541287"],["Tabanez","Mobiliza",33222,"tabanez-70002542529"],["Taniel Macedo","Missão",14777,"taniel-macedo-70002545065"],["Telma Rufino","PODE",20222,"telma-rufino-70002541290"],["Thays Mãe do Gabriel","Mobiliza",33663,"thays-mae-do-gabriel-70002542524"],["Tia Lu","DC",27727,"tia-lu-70002543429"],["Tia Maria","DC",27555,"tia-maria-70002543423"],["Tomaz","PSD",55222,"tomaz-70002537374"],["Ulisses Dias","Mobiliza",33190,"ulisses-dias-70002542531"],["Valdecy Líder Comunitário","PSDB",45163,"valdecy-lider-comunitario-70002550875"],["Valdelino Barcelos","PP",11234,"valdelino-barcelos-70002538506"],["Victor Jansen","PL",22322,"victor-jansen-70002550004"],["Virgílio Neto","PP",11122,"virgilio-neto-70002538505"],["Weila Almeida","PDT",12222,"weila-almeida-70002546911"],["Wellington Campos","Missão",14001,"wellington-campos-70002545062"],["Wellington Luiz","MDB",15123,"wellington-luiz-70002538797"],["Wellington Mega","DC",27888,"wellington-mega-70002543428"],["Wilson Amigão","Avante",70123,"wilson-amigao-70002546732"],["Xandão Leleco","PL",22478,"xandao-leleco-70002550020"],["Xandão do Povão","Mobiliza",33355,"xandao-do-povao-70002542528"],["Yuri Kaioli","Missão",14000,"yuri-kaioli-70002545069"],["Zaqueu Engraxate","PDT",12300,"zaqueu-engraxate-70002546916"],["Zuleika do Blog","DC",27234,"zuleika-do-blog-70002543447"],["Zé Alencar","MDB",15166,"ze-alencar-70002538795"],["Zé do Coco","PT",13123,"ze-do-coco-70002540515"],["Ágatha Lopes","DC",27111,"agatha-lopes-70002543433"],["Ândrea Estevam","MDB",15222,"andrea-estevam-70002538803"]]</script>
 
 <script>
 (function(){
@@ -579,11 +1790,18 @@
     el.onclick = e=>{const b=e.target.closest("button"); if(!b) return; el.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); fn(b.dataset.v);};
   }
 
-  /* candidatos do DF */
-  let CR = store.get("vsf-cargo")==="senado" ? "senado" : "governador";
-  let LIST = [];
+  /* candidatos (DF e Presidente) */
+  const CRS = ["governador","senado","distrital"];
+  let CR = CRS.includes(store.get("vsf-cargo")) ? store.get("vsf-cargo") : "governador";
+  const CTX = {
+    governador:{cargo:"Governo do DF", race:"governador", grid:"people"},
+    senado:{cargo:"Senado · DF", race:"senado", grid:"people"},
+    distrital:{cargo:"Deputado(a) distrital · DF", race:null, grid:"people"},
+    presidente:{cargo:"Presidência da República", race:"presidente", grid:"pres-grid"}
+  };
+  const LISTS = {};
   /* cores oficiais dos partidos (fonte: ficha de cada partido na Wikipédia). Só identificação. */
-  const CORES = {PP:["#2E4E77","#54B8EA"],PT:["#C0122D"],PSDB:["#0F2BC5","#F0BC36"],PSB:["#FFCC00"],UP:["#000000"],PSTU:["#C92127","#FFFF00"],Novo:["#EC671C","#1A2644"],PCO:["#CE1920","#FEED01"],Agir:["#01369E"],PRTB:["#0047AB"],PSD:["#002F6C","#64A70B","#FFA300"],PL:["#015AAA","#00A54F","#FED304"],PDT:["#0C3F7E","#E70641"],Avante:["#2EABB1"]};
+  const CORES = {PP:["#2E4E77","#54B8EA"],PT:["#C0122D"],PSDB:["#0F2BC5","#F0BC36"],PSB:["#FFCC00"],UP:["#000000"],PSTU:["#C92127","#FFFF00"],Novo:["#EC671C","#1A2644"],PCO:["#CE1920","#FEED01"],Agir:["#01369E"],PRTB:["#0047AB"],PSD:["#002F6C","#64A70B","#FFA300"],PL:["#015AAA","#00A54F","#FED304"],PDT:["#0C3F7E","#E70641"],Avante:["#2EABB1"],PSOL:["#FBE106","#E2202A","#68018D"],MDB:["#50B747","#F5D709","#D21E25"],Republicanos:["#009E3D","#FDC300","#005CA9"],PODE:["#00D663","#0097FD","#673796"],Podemos:["#00D663","#0097FD","#673796"],Democrata:["#3DA564"],"União":["#1A428A","#00A0DF","#FAD209"],PCB:["#A8231C","#E6CE2E"],DC:["#0065CB","#0009A8","#C89721"],"Missão":["#000000","#FDBF35"]};
   function cvars(p){
     const k = Object.keys(CORES).find(x=>x.toLowerCase()===String(p).toLowerCase());
     const c = k ? CORES[k] : ["#8A958E"];
@@ -596,80 +1814,117 @@
   const FORA = /barrad|cassad|renunci|desist/i;
   const SORTE = {};
   function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
-  function ordered(){
-    const all = D.candidatos[CR], dentro = all.filter(c=>!FORA.test(c.status||"")), fora = all.filter(c=>FORA.test(c.status||""));
+  function ordered(k){
+    const all = D.candidatos[k]||[], dentro = all.filter(c=>!FORA.test(c.status||"")), fora = all.filter(c=>FORA.test(c.status||""));
     let l;
     if(ORD==="az") l = dentro.slice().sort((a,b)=>a.n.localeCompare(b.n,"pt-BR"));
-    else { const key = dentro.map(c=>c.n).join("|"); if(!SORTE[CR] || SORTE[CR].key!==key) SORTE[CR] = {key, l:shuffle(dentro)}; l = SORTE[CR].l; }
+    else { const key = dentro.map(c=>c.n).join("|"); if(!SORTE[k] || SORTE[k].key!==key) SORTE[k] = {key, l:shuffle(dentro)}; l = SORTE[k].l; }
     return l.concat(fora);
   }
-  function people(){
-    tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
-    tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people();});
-    $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
-    LIST = ordered();
-    $("people").innerHTML = LIST.map((c,i)=>{
+  function grid(k){
+    LISTS[k] = ordered(k);
+    $(CTX[k].grid).innerHTML = LISTS[k].map((c,i)=>{
       const out = FORA.test(c.status||"");
-      return `<button type="button" class="thumb${out?" out":""}" data-i="${i}" style="${cvars(c.p)}" aria-label="${esc(c.n)}, ${esc(c.p)}, número ${esc(c.num)}. Abrir ficha">
+      return `<button type="button" class="thumb${out?" out":""}" data-k="${k}" data-i="${i}" style="${cvars(c.p)}" aria-label="${esc(c.n)}, ${esc(c.p)}, número ${esc(c.num)}. Abrir ficha">
         <span class="ring"><img src="img/${esc(c.foto)}.jpg" alt="" loading="lazy" width="78" height="78"></span>
         <b>${esc(c.n)}</b><small>${esc(c.p)} · <strong>${esc(c.num)}</strong></small>
         ${c.status?`<em>${esc(out?"fora da disputa":"com recurso")}</em>`:""}</button>`;
     }).join("");
-    $("c-note").textContent = (D.notas||{})[CR] || "";
   }
-  $("people").addEventListener("click", e=>{ const t=e.target.closest(".thumb"); if(t) ficha(+t.dataset.i); });
+  function people(){
+    tabs($("c-tabs"), [["governador","Governador(a)"],["senado","Senado"],["distrital","Distrital"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
+    tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people(); grid("presidente");});
+    $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
+    grid(CR);
+    $("c-note").textContent = (D.notas||{})[CR] || "";
+    $("d-busca").hidden = CR!=="distrital";
+  }
+  function onThumb(e){ const t=e.target.closest(".thumb"); if(t) ficha(t.dataset.k, +t.dataset.i); }
+  $("people").addEventListener("click", onThumb);
+  $("pres-grid").addEventListener("click", onThumb);
 
   /* ficha técnica */
-  const FICHA = $("ficha"); let FI = 0;
-  function ficha(i){
-    FI = (i+LIST.length)%LIST.length; const c = LIST[FI];
-    const out = FORA.test(c.status||""), q = ((D.corridas[CR]||{}).pesquisas||[])[0];
-    const cargo = CR==="senado" ? "Senado · DF" : "Governo do DF";
-    const acts = [`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`];
+  const FICHA = $("ficha"); let FI = 0, FK = "governador";
+  function ficha(k, i){
+    FK = k; const L = LISTS[k];
+    FI = (i+L.length)%L.length; const c = L[FI];
+    const out = FORA.test(c.status||""), ctx = CTX[k];
+    const q = ctx.race ? ((D.corridas[ctx.race]||{}).pesquisas||[])[0] : null;
+    const props = c.props||[];
+    const acts = [];
+    if(props.length || k!=="distrital") acts.push(`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`);
     if(c.ig) acts.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}Instagram</a>`);
-    acts.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Plano no TSE</a>`);
-    if(c.sabatina) acts.push(`<a href="${esc(c.sabatina)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
+    if(k==="presidente"){
+      if(c.oficial) acts.push(`<a href="${esc(c.oficial)}" target="_blank" rel="noopener">${WEB}Site oficial</a>`);
+      if(c.site) acts.push(`<a href="${esc(c.site)}" target="_blank" rel="noopener">${LIST_I}Plano resumido</a>`);
+    } else acts.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Perfil no TSE</a>`);
+    const ent = c.sabatina || c.entrevista;
+    if(ent) acts.push(`<a href="${esc(ent)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
+    if(c.perfil) acts.push(`<a href="${esc(c.perfil)}" target="_blank" rel="noopener">${WEB}Ficha completa</a>`);
     if(!out) acts.push(`<button type="button" data-a="cola">${PEN}Anotar na colinha</button>`);
+    let third, pv;
+    if(k==="distrital"){ third = `<div><small>Mandato</small><b class="sm">Tenta a reeleição</b></div>`; pv = "Eleito(a) distrital em 2022. Candidatos a deputado não têm pesquisa registrada no DF."; }
+    else { third = `<div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b></div>`;
+      pv = c.poll!=null&&q ? `Pesquisa ${esc(q.instituto)}, ${esc(q.campo)}. Detalhes e margem de erro em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.` : out ? "Fora das pesquisas por ter a candidatura barrada." : "Não aparece com número próprio na pesquisa mais recente."; }
     $("fx").setAttribute("style", cvars(c.p));
     $("fx").innerHTML = `<div class="band"></div><button type="button" class="fclose" data-a="close" aria-label="Fechar">×</button>
       <div class="fh"><span class="ring"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" width="96" height="96"></span>
-        <div><span class="eyebrow">${cargo}</span><h3 id="f-nome">${esc(c.n)}</h3></div></div>
+        <div><span class="eyebrow">${ctx.cargo}</span><h3 id="f-nome">${esc(c.n)}</h3></div></div>
       <div class="facts">
         <div><small>Número</small><b>${esc(c.num)}</b></div>
         <div><small>Partido</small><b><i></i>${esc(c.p)}</b></div>
-        <div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b></div>
+        ${third}
       </div>
-      <p class="pv">${c.poll!=null&&q?`Pesquisa ${esc(q.instituto)}, ${esc(q.campo)}. Detalhes e margem de erro em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.`:out?"Fora das pesquisas por ter a candidatura barrada.":"Sem número na pesquisa mais recente."}</p>
+      <p class="pv">${pv}</p>
       ${c.status?`<span class="ftag">${esc(c.status)}</span>`:""}
       <div class="acts">${acts.join("")}</div>
-      <div class="plist" id="f-props" hidden>${c.props.length?`<ol>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ol><small>Resumo feito a partir do plano de governo e de entrevistas. O texto completo tá no site oficial.</small>`:`<small style="margin:0">Ainda não achamos propostas detalhadas desse candidato na imprensa. Veja o plano de governo registrado no TSE.</small>`}</div>
+      <div class="plist" id="f-props" hidden>${props.length?`<ol>${props.map(p=>`<li>${esc(p)}</li>`).join("")}</ol><small>Resumo feito a partir do plano de governo e de entrevistas. O texto completo tá no site oficial.</small>`:`<small style="margin:0">Ainda não achamos propostas detalhadas desse candidato na imprensa. Veja o plano de governo registrado no TSE.</small>`}</div>
       <p class="ftoast" id="f-toast" role="status"></p>
-      <div class="fnav"><button type="button" data-a="prev">← Anterior</button><span>${FI+1} de ${LIST.length}</span><button type="button" data-a="next">Próximo →</button></div>`;
+      <div class="fnav"><button type="button" data-a="prev">← Anterior</button><span>${FI+1} de ${L.length}</span><button type="button" data-a="next">Próximo →</button></div>`;
     if(!FICHA.open){ if(FICHA.showModal) FICHA.showModal(); else FICHA.setAttribute("open",""); document.documentElement.classList.add("lock"); }
     FICHA.scrollTop = 0; $("fx").focus({preventScroll:true});
   }
   function closeFicha(){ if(FICHA.close) FICHA.close(); else FICHA.removeAttribute("open"); }
-  FICHA.addEventListener("close", ()=>{ document.documentElement.classList.remove("lock"); const t=$("people").querySelector(`[data-i="${FI}"]`); if(t) t.focus({preventScroll:true}); });
+  const COLA = {governador:["v-gv","Governador(a)"], presidente:["v-pr","Presidente"], distrital:["v-dd","Deputado(a) distrital"]};
+  function anotar(k, num){
+    num = String(num); let id, lbl;
+    if(k==="senado"){ const s1=$("v-s1").value, s2=$("v-s2").value;
+      if(s1===num||s2===num) return "Esse número já tá na tua colinha.";
+      if(!s1){ id="v-s1"; lbl="Senado 1º voto"; } else { id="v-s2"; lbl="Senado 2º voto"; } }
+    else [id,lbl] = COLA[k];
+    $(id).value = num; store.set("vsf-"+id, num);
+    return `Anotado em ${lbl}. Dá pra mudar lá na Colinha.`;
+  }
+  FICHA.addEventListener("close", ()=>{ document.documentElement.classList.remove("lock"); const t=document.querySelector(`.thumb[data-k="${FK}"][data-i="${FI}"]`); if(t) t.focus({preventScroll:true}); });
   FICHA.addEventListener("click", e=>{
     if(e.target===FICHA){ closeFicha(); return; }
     const b = e.target.closest("[data-a]"); if(!b) return;
     const a = b.dataset.a;
     if(a==="close") closeFicha();
-    else if(a==="prev") ficha(FI-1);
-    else if(a==="next") ficha(FI+1);
+    else if(a==="prev") ficha(FK, FI-1);
+    else if(a==="next") ficha(FK, FI+1);
     else if(a==="props"){ const pl=$("f-props"); pl.hidden=!pl.hidden; b.setAttribute("aria-expanded",String(!pl.hidden)); }
-    else if(a==="cola"){
-      const c = LIST[FI], num = String(c.num); let id, lbl;
-      if(CR==="governador"){ id="v-gv"; lbl="Governador(a)"; }
-      else { const s1=$("v-s1").value, s2=$("v-s2").value;
-        if(s1===num||s2===num){ $("f-toast").textContent="Esse número já tá na tua colinha."; return; }
-        if(!s1){ id="v-s1"; lbl="Senado 1º voto"; } else { id="v-s2"; lbl="Senado 2º voto"; } }
-      $(id).value = num; store.set("vsf-"+id, num);
-      $("f-toast").textContent = `Anotado em ${lbl}. Dá pra mudar lá na Colinha.`;
-    }
+    else if(a==="cola") $("f-toast").textContent = anotar(FK, LISTS[FK][FI].num);
   });
-  FICHA.addEventListener("keydown", e=>{ if(e.key==="ArrowRight") ficha(FI+1); if(e.key==="ArrowLeft") ficha(FI-1); });
-  people();
+  FICHA.addEventListener("keydown", e=>{ if(e.key==="ArrowRight") ficha(FK, FI+1); if(e.key==="ArrowLeft") ficha(FK, FI-1); });
+  people(); grid("presidente");
+  $("pres-note").textContent = (D.notas||{}).presidente || "";
+
+  /* busca de distritais */
+  let TODOS = []; try{ TODOS = JSON.parse($("distritais").textContent); }catch(e){}
+  const norm = x => String(x).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+  const IDX = TODOS.map(([n,p,num])=>norm(n+" "+p+" "+num));
+  $("d-tot").textContent = TODOS.length ? `${TODOS.length} candidatos · dados do TSE` : "";
+  function busca(){
+    const q = norm($("d-q").value.trim());
+    if(q.length<2){ $("d-res").innerHTML = `<li class="hint">Digita pelo menos 2 letras ou números. Tem ${TODOS.length} candidatos disputando 24 vagas.</li>`; return; }
+    const ws = q.split(/\s+/), hits = [];
+    for(let i=0;i<TODOS.length && hits.length<40;i++) if(ws.every(w=>IDX[i].includes(w))) hits.push(TODOS[i]);
+    $("d-res").innerHTML = hits.length ? hits.map(([n,p,num,slug])=>`<li><span class="who"><b>${esc(n)}</b><small>${esc(p)} · ${esc(num)}</small></span><span class="ra"><a href="https://candidatos.nexojornal.com.br/2026/df/${esc(slug)}/" target="_blank" rel="noopener">Perfil</a><button type="button" data-num="${esc(num)}">Anotar</button></span></li>`).join("") + (hits.length===40?`<li class="hint">Mostrando os 40 primeiros. Refina a busca.</li>`:"")
+      : `<li class="hint">Nada encontrado. Tenta outro nome ou o número.</li>`;
+  }
+  $("d-q").addEventListener("input", busca); busca();
+  $("d-res").addEventListener("click", e=>{ const b=e.target.closest("button[data-num]"); if(!b) return; anotar("distrital", b.dataset.num); b.textContent="Anotado ✓"; setTimeout(()=>{b.textContent="Anotar";},2200); });
 
   /* pesquisas */
   const RACES = [["governador","Governo DF"],["senado","Senado DF"],["presidente","Presidente"]];
@@ -694,8 +1949,6 @@
   }
   poll();
 
-  /* presidente */
-  $("pres").innerHTML = D.candidatos.presidente.map(c=>`<details><summary>${esc(c.n)}<span class="tiny">${esc(c.p)}</span></summary><ul style="margin:0 0 10px;padding-left:1.1rem;display:grid;gap:5px;font-size:.9rem;color:var(--ink-2)">${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ul><div class="links" style="padding:0 0 14px"><a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Plano / propostas</a>${c.entrevista?`<a href="${esc(c.entrevista)}" target="_blank" rel="noopener">${MIC}Sabatina no JN</a>`:""}</div></details>`).join("") + `<p class="note">${esc((D.notas||{}).presidente||"")}</p>`;
 
   /* o básico */
   const CARGOS = [
