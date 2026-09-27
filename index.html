@@ -104,21 +104,28 @@
   dialog.ficha::backdrop{background:rgba(8,12,10,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
   @keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
   .fx{position:relative;padding:0 20px 20px}
-  .band{height:74px;margin:0 -20px;background:var(--band);opacity:.9}
-  .fclose{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
-  .fh{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:end;margin-top:-42px}
-  .fh .ring{width:96px;height:96px;margin:0}
+  .band{position:relative;height:78px;margin:0 -20px;background:var(--c1)}
+  .band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--stripe)}
+  .fclose{position:absolute;z-index:2;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.3);color:#fff;font-size:1.25rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+  .fclose:focus{outline:none}
+  .fclose:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .fx:focus{outline:none}
+  .fh{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:end;margin-top:-40px}
+  .fh .ring{width:96px;height:96px;margin:0;box-shadow:0 0 0 4px var(--surface)}
+  .fh > div{padding-bottom:4px;min-width:0}
   .fh h3{font-size:1.45rem;margin-top:4px}
   .fh .eyebrow{display:block;margin-bottom:2px}
-  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
   .facts div{background:var(--soft);border-radius:14px;padding:10px 12px}
   .facts small{display:block;font-size:.7rem;color:var(--ink-3)}
   .facts b{font:700 1.35rem/1.15 var(--display);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
-  .facts b i{width:10px;height:10px;border-radius:50%;background:var(--band);flex:none}
-  .facts .pv{font-size:.68rem;color:var(--ink-3);display:block;margin-top:2px}
-  .ftag{display:inline-block;font-size:.8rem;padding:.35rem .7rem;border-radius:8px;background:var(--warn-soft);color:var(--warn);margin-bottom:12px}
-  .acts{display:flex;flex-wrap:wrap;gap:8px}
-  .acts a,.acts button{font:500 .86rem/1 var(--body);text-decoration:none;display:inline-flex;align-items:center;gap:7px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+  .facts b i{width:10px;height:10px;border-radius:50%;background:var(--ring);flex:none}
+  .pv{margin:0 0 14px;font-size:.74rem;color:var(--ink-3)}
+  .ftag{display:block;font-size:.8rem;padding:.45rem .7rem;border-radius:10px;background:var(--warn-soft);color:var(--warn);margin-bottom:12px}
+  .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .acts > :first-child{grid-column:1/-1}
+  .acts > :last-child:nth-child(even){grid-column:1/-1}
+  .acts a,.acts button{font:500 .88rem/1 var(--body);text-decoration:none;display:flex;justify-content:center;align-items:center;gap:7px;padding:.8rem .6rem;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;white-space:nowrap}
   .acts a:hover,.acts button:hover{border-color:var(--accent);color:var(--accent)}
   .acts .pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
   .acts .pri:hover{color:var(--bg);opacity:.9}
@@ -127,7 +134,7 @@
   .plist ol{margin:0;padding-left:1.2rem;display:grid;gap:8px;font-size:.9rem;color:var(--ink-2)}
   .plist small{display:block;margin-top:10px;font-size:.76rem;color:var(--ink-3)}
   .ftoast{font-size:.82rem;color:var(--accent);min-height:1.2em;margin:10px 0 0}
-  .fnav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-3)}
+  .fnav{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:12px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-3)}
   .fnav button{font:500 .85rem var(--body);background:none;border:0;color:var(--ink-2);cursor:pointer;padding:.4rem .2rem}
   .fnav button:hover{color:var(--accent)}
   @media (max-width:560px){
@@ -304,7 +311,7 @@
     <div class="people" id="people"></div>
     <p class="legend">Toca na foto pra abrir a ficha. O contorno usa as cores oficiais de cada partido, só pra identificar.</p>
     <p class="note" id="c-note"></p>
-    <dialog class="ficha" id="ficha" aria-labelledby="f-nome"><div class="fx" id="fx"></div></dialog>
+    <dialog class="ficha" id="ficha" aria-labelledby="f-nome"><div class="fx" id="fx" tabindex="-1"></div></dialog>
   </section>
 
   <section id="pesquisas">
@@ -582,7 +589,8 @@
     const c = k ? CORES[k] : ["#8A958E"];
     const ring = c.length===1 ? c[0] : `conic-gradient(${c.map((x,i)=>`${x} ${i/c.length*360}deg ${(i+1)/c.length*360}deg`).join(",")})`;
     const band = c.length===1 ? c[0] : `linear-gradient(90deg,${c.join(",")})`;
-    return `--c1:${c[0]};--ring:${ring};--band:${band}`;
+    const r = c.slice(1); const stripe = !r.length ? "transparent" : `linear-gradient(90deg,${r.map((x,i)=>`${x} ${i/r.length*100}% ${(i+1)/r.length*100}%`).join(",")})`;
+    return `--c1:${c[0]};--ring:${ring};--band:${band};--stripe:${stripe}`;
   }
   let ORD = store.get("vsf-ordem")==="az" ? "az" : "sorteio";
   const FORA = /barrad|cassad|renunci|desist/i;
@@ -629,15 +637,16 @@
       <div class="facts">
         <div><small>Número</small><b>${esc(c.num)}</b></div>
         <div><small>Partido</small><b><i></i>${esc(c.p)}</b></div>
-        <div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b>${c.poll!=null&&q?`<span class="pv">${esc(q.instituto)} ${esc(q.campo)}</span>`:""}</div>
+        <div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b></div>
       </div>
+      <p class="pv">${c.poll!=null&&q?`Pesquisa ${esc(q.instituto)}, ${esc(q.campo)}. Detalhes e margem de erro em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.`:out?"Fora das pesquisas por ter a candidatura barrada.":"Sem número na pesquisa mais recente."}</p>
       ${c.status?`<span class="ftag">${esc(c.status)}</span>`:""}
       <div class="acts">${acts.join("")}</div>
       <div class="plist" id="f-props" hidden>${c.props.length?`<ol>${c.props.map(p=>`<li>${esc(p)}</li>`).join("")}</ol><small>Resumo feito a partir do plano de governo e de entrevistas. O texto completo tá no site oficial.</small>`:`<small style="margin:0">Ainda não achamos propostas detalhadas desse candidato na imprensa. Veja o plano de governo registrado no TSE.</small>`}</div>
       <p class="ftoast" id="f-toast" role="status"></p>
       <div class="fnav"><button type="button" data-a="prev">← Anterior</button><span>${FI+1} de ${LIST.length}</span><button type="button" data-a="next">Próximo →</button></div>`;
     if(!FICHA.open){ if(FICHA.showModal) FICHA.showModal(); else FICHA.setAttribute("open",""); document.documentElement.classList.add("lock"); }
-    FICHA.scrollTop = 0;
+    FICHA.scrollTop = 0; $("fx").focus({preventScroll:true});
   }
   function closeFicha(){ if(FICHA.close) FICHA.close(); else FICHA.removeAttribute("open"); }
   FICHA.addEventListener("close", ()=>{ document.documentElement.classList.remove("lock"); const t=$("people").querySelector(`[data-i="${FI}"]`); if(t) t.focus({preventScroll:true}); });
