@@ -4,30 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Voto Sem Filtro DF</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<meta name="theme-color" content="#0A53C4">
+<meta property="og:image" content="img/logo.png">
 <meta name="description" content="Guia apartidário das Eleições 2026 no DF: candidatos a Governador e Senado com foto, número, propostas, Instagram e site; pesquisas do TSE atualizadas todo dia; Presidente; o que cada cargo faz e colinha pro dia 4/10.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
 <style>
   :root{
-    --bg:#F6F7F3; --surface:#FFFFFF; --soft:#EEF1EB; --ink:#18201B; --ink-2:#56625B; --ink-3:#8A958E;
-    --line:#E2E6DF; --accent:#0B7F45; --accent-soft:#E1F1E7; --sun:#E9B616; --sun-soft:#FBF1CF;
-    --bar:#18201B; --warn:#8A5A00; --warn-soft:#FBF1CF;
+    --bg:#FBF7EC; --surface:#FFFFFF; --soft:#F3EDDD; --ink:#2A1712; --ink-2:#5E4A42; --ink-3:#8C7B72;
+    --line:#E8DFCB; --accent:#0A53C4; --accent-soft:#E2EBFA; --sun:#F9CF00; --sun-soft:#FFF3BD;
+    --olive:#5B6B1E; --bar:#2A1712; --warn:#7A5300; --warn-soft:#FFF1B8;
+    --stk-bg:#0A53C4; --stk-fg:#FFD60A; --screen:#2A1712;
+    --poster:"Anton",Impact,"Arial Narrow Bold",sans-serif;
     --display:"Bricolage Grotesque",ui-rounded,"Segoe UI",sans-serif;
     --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
     color-scheme:light;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#101512; --surface:#171E1A; --soft:#1E2621; --ink:#E7ECE8; --ink-2:#A8B3AC; --ink-3:#77837C;
-      --line:#27302B; --accent:#5ACF8F; --accent-soft:#1B3326; --sun:#F2C94C; --sun-soft:#352C10;
-      --bar:#E7ECE8; --warn:#F2C94C; --warn-soft:#352C10; color-scheme:dark;
+      --bg:#17100D; --surface:#221915; --soft:#2E231E; --ink:#F6EFE6; --ink-2:#CDBFB4; --ink-3:#998980;
+      --line:#3B2E28; --accent:#79A8FF; --accent-soft:#1B2B48; --sun:#FFD60A; --sun-soft:#3A3010;
+      --olive:#A9BD55; --bar:#F6EFE6; --warn:#FFD60A; --warn-soft:#3A3010; --screen:#0F0A08; color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#101512; --surface:#171E1A; --soft:#1E2621; --ink:#E7ECE8; --ink-2:#A8B3AC; --ink-3:#77837C;
-    --line:#27302B; --accent:#5ACF8F; --accent-soft:#1B3326; --sun:#F2C94C; --sun-soft:#352C10;
-    --bar:#E7ECE8; --warn:#F2C94C; --warn-soft:#352C10; color-scheme:dark;
+    --bg:#17100D; --surface:#221915; --soft:#2E231E; --ink:#F6EFE6; --ink-2:#CDBFB4; --ink-3:#998980;
+    --line:#3B2E28; --accent:#79A8FF; --accent-soft:#1B2B48; --sun:#FFD60A; --sun-soft:#3A3010;
+    --olive:#A9BD55; --bar:#F6EFE6; --warn:#FFD60A; --warn-soft:#3A3010; --screen:#0F0A08; color-scheme:dark;
   }
   *{box-sizing:border-box}
   [hidden]{display:none!important}
@@ -35,6 +41,7 @@
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
   a{color:inherit}
   h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;font-weight:700;letter-spacing:-.015em}
+  ::selection{background:var(--stk-fg);color:#2A1712}
   .wrap{max-width:880px;margin:0 auto;padding-inline:20px}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
   .muted{color:var(--ink-2)}
@@ -43,29 +50,33 @@
   /* topo */
   header{padding-block:22px 0}
   header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .brand{font:700 1rem/1 var(--display);text-decoration:none;display:flex;align-items:center;gap:8px}
-  .brand i{width:10px;height:10px;border-radius:3px;background:var(--accent);transform:rotate(45deg);box-shadow:0 0 0 3px var(--sun-soft)}
+  .brand{display:flex;align-items:center;text-decoration:none}
+  .brand img{display:block;height:40px;width:auto}
   .status{font-size:.78rem;color:var(--ink-3);display:flex;align-items:center;gap:6px}
   .status i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 
-  .hero{padding-block:56px 36px}
-  .hero h1{font-size:clamp(2.4rem,7vw,4rem);max-width:15ch}
-  .hero h1 span{color:var(--accent)}
+  .hero{padding-block:44px 36px;display:grid;grid-template-columns:1fr auto;gap:12px 32px;align-items:center}
+  .hero > *{grid-column:1}
+  .hero .urna{grid-column:2;grid-row:1/span 4;align-self:center;width:230px;height:auto;transform:rotate(3deg);filter:drop-shadow(0 10px 18px rgba(42,23,18,.15))}
+  .hero h1{font:400 clamp(2.9rem,9vw,5.4rem)/.95 var(--poster);text-transform:uppercase;letter-spacing:.005em;max-width:15ch}
+  .hero h1 span{display:inline-block;white-space:nowrap;background:var(--stk-bg);color:var(--stk-fg);padding:.16em .22em .1em;margin:.04em 0 0 -.04em;transform:rotate(-1.5deg);clip-path:polygon(1% 6%,34% 0,72% 3%,99% 0,100% 90%,68% 100%,30% 96%,0 100%)}
   .hero p{margin:18px 0 0;max-width:60ch;color:var(--ink-2);font-size:1.05rem;line-height:1.65}
-  .count{margin-top:28px;display:inline-flex;align-items:baseline;gap:10px;padding:12px 18px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
-  .count b{font:700 1.6rem/1 var(--display);font-variant-numeric:tabular-nums}
-  .count span{font-size:.9rem;color:var(--ink-2)}
+  .count{margin-top:26px;justify-self:start;display:inline-flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:14px;background:var(--screen);color:#F6EFE6;box-shadow:0 0 0 3px var(--line)}
+  .count b{font:400 1.9rem/1 var(--poster);color:var(--stk-fg);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .count span{font-size:.88rem;color:#E9DCCB}
+  @media (max-width:720px){ .hero{grid-template-columns:1fr} .hero .urna{grid-column:1;grid-row:auto;order:-1;width:130px;transform:rotate(-2deg);margin-bottom:4px} }
 
   nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
   nav.jump a{flex:0 0 auto;font-size:.88rem;text-decoration:none;color:var(--ink-2);padding:.45rem .8rem;border-radius:999px}
-  nav.jump a:hover,nav.jump a.on{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+  nav.jump a:hover{color:var(--ink)}
+  nav.jump a.on{background:var(--stk-bg);color:var(--stk-fg);font-weight:600}
 
   section{padding-block:64px 0;scroll-margin-top:60px}
   .sh{margin-bottom:24px;display:grid;gap:8px}
-  .sh h2{font-size:clamp(1.7rem,4.5vw,2.3rem)}
+  .sh h2{font:400 clamp(2.1rem,6vw,3rem)/1 var(--poster);text-transform:uppercase;letter-spacing:.005em}
   .sh p{margin:0;color:var(--ink-2);max-width:56ch}
-  .eyebrow{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.02em}
+  .eyebrow{justify-self:start;display:inline-block;width:max-content;max-width:100%;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--stk-fg);background:var(--stk-bg);padding:.32rem .6rem .28rem;border-radius:6px;transform:rotate(-1deg)}
 
   /* resumo */
   .sum{display:grid;gap:10px}
@@ -80,13 +91,13 @@
   /* abas */
   .tabs{display:inline-flex;gap:4px;padding:4px;background:var(--soft);border-radius:999px;margin-bottom:22px;flex-wrap:wrap}
   .tabs button{font:500 .9rem/1 var(--body);border:0;background:transparent;color:var(--ink-2);padding:.6rem 1rem;border-radius:999px;cursor:pointer}
-  .tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .tabs button[aria-pressed="true"]{background:var(--stk-bg);color:var(--stk-fg);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
   .tabs button:disabled{opacity:.4;cursor:default}
 
   /* candidatos: miniaturas */
   .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
   .thumb{all:unset;box-sizing:border-box;cursor:pointer;display:grid;justify-items:center;text-align:center;gap:2px;padding:16px 8px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--line);transition:transform .15s,border-color .15s}
-  .thumb:hover{border-color:var(--c1);transform:translateY(-2px)}
+  .thumb:hover{border-color:var(--c1);transform:translateY(-2px);box-shadow:3px 3px 0 var(--c1)}
   .thumb:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .ring{display:block;width:78px;height:78px;border-radius:50%;padding:3px;background:var(--ring);margin-bottom:8px;box-shadow:0 0 0 1px var(--line)}
   .ring img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 18%;border:3px solid var(--surface);background:var(--soft)}
@@ -115,7 +126,7 @@
   .vfoot a{color:var(--accent)}
   .vstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
   .vstats div{background:var(--soft);border-radius:14px;padding:10px 12px}
-  .vstats b{display:block;font:700 1.4rem/1.1 var(--display);font-variant-numeric:tabular-nums}
+  .vstats b{display:block;font:400 1.6rem/1.1 var(--poster);letter-spacing:.01em;font-variant-numeric:tabular-nums}
   .vstats small{font-size:.72rem;color:var(--ink-3)}
   .vsub{font:600 .82rem var(--body);color:var(--ink-2);margin:18px 0 10px}
   .split{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--soft)}
@@ -168,7 +179,7 @@
   .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
   .facts div{background:var(--soft);border-radius:14px;padding:10px 12px}
   .facts small{display:block;font-size:.7rem;color:var(--ink-3)}
-  .facts b{font:700 1.35rem/1.15 var(--display);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+  .facts b{font:400 1.5rem/1.1 var(--poster);letter-spacing:.01em;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
   .facts b i{width:10px;height:10px;border-radius:50%;background:var(--ring);flex:none}
   .pv{margin:0 0 14px;font-size:.74rem;color:var(--ink-3)}
   .ftag{display:block;font-size:.8rem;padding:.45rem .7rem;border-radius:10px;background:var(--warn-soft);color:var(--warn);margin-bottom:12px}
@@ -177,8 +188,8 @@
   .acts > :last-child:nth-child(even){grid-column:1/-1}
   .acts a,.acts button{font:500 .88rem/1 var(--body);text-decoration:none;display:flex;justify-content:center;align-items:center;gap:7px;padding:.8rem .6rem;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;white-space:nowrap}
   .acts a:hover,.acts button:hover{border-color:var(--accent);color:var(--accent)}
-  .acts .pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .acts .pri:hover{color:var(--bg);opacity:.9}
+  .acts .pri{background:var(--stk-bg);color:var(--stk-fg);border-color:var(--stk-bg);font-weight:700}
+  .acts .pri:hover{color:var(--stk-fg);opacity:.92}
   .acts svg{width:16px;height:16px}
   .plist{margin:14px 0 0;background:var(--soft);border-radius:16px;padding:14px 16px}
   .plist ol{margin:0;padding-left:1.2rem;display:grid;gap:8px;font-size:.9rem;color:var(--ink-2)}
@@ -247,7 +258,7 @@
   .cola label small{display:block;font-size:.74rem;color:var(--ink-3)}
   .cola input{font:600 1.05rem var(--body);letter-spacing:.18em;text-align:center;background:var(--soft);border:1px solid transparent;border-radius:10px;color:var(--ink);padding:.5rem .3rem;width:100%}
   .cola input:focus{outline:none;border-color:var(--accent)}
-  .btn{justify-self:start;font:600 .92rem/1 var(--body);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.85rem 1.3rem;cursor:pointer;margin-top:6px}
+  .btn{justify-self:start;font:700 .92rem/1 var(--body);background:var(--stk-bg);color:var(--stk-fg);border:0;border-radius:999px;padding:.85rem 1.3rem;cursor:pointer;margin-top:6px}
   .toast{font-size:.84rem;color:var(--accent);min-height:1.3em}
   #cola-txt{width:100%;min-height:110px;font:500 .82rem ui-monospace,monospace;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:10px}
 
@@ -255,13 +266,14 @@
   .src{display:grid;gap:6px;margin:0;padding-left:1.1rem;font-size:.86rem;color:var(--ink-2)}
   .src a{color:var(--accent)}
 
-  footer{margin-top:80px;border-top:1px solid var(--line);padding-block:36px 48px}
+  footer{margin-top:80px;padding-block:40px 52px;background:var(--stk-bg);color:#FFFFFF}
+  footer .flogo{display:block;width:150px;height:auto;margin-bottom:22px}
   .author{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
   .author p{margin:0;font-size:.95rem}
-  .author b{font-family:var(--display)}
-  .author a.ig{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;padding:.6rem 1rem;border-radius:999px;background:var(--ink);color:var(--bg)}
+  .author b{font:400 1.25rem/1 var(--poster);text-transform:uppercase;color:var(--stk-fg);letter-spacing:.02em}
+  .author a.ig{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;padding:.65rem 1.05rem;border-radius:999px;background:var(--stk-fg);color:#2A1712}
   .author a.ig svg{width:16px;height:16px}
-  .fine{margin-top:20px;font-size:.78rem;color:var(--ink-3);max-width:70ch}
+  .fine{margin-top:20px;font-size:.78rem;color:#D6E3FA;max-width:70ch}
 
   /* primeiro voto */
   .prog{display:flex;align-items:center;gap:12px;font-size:.84rem;color:var(--ink-2);margin-bottom:12px;max-width:620px}
@@ -270,14 +282,15 @@
   .check{display:grid;gap:8px;max-width:620px}
   .check label{display:grid;grid-template-columns:24px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer}
   .check input{appearance:none;-webkit-appearance:none;width:22px;height:22px;margin:1px 0 0;border:2px solid var(--ink-3);border-radius:7px;display:grid;place-content:center;cursor:pointer}
-  .check input:checked{background:var(--accent);border-color:var(--accent)}
+  .check input:checked{background:var(--olive);border-color:var(--olive)}
   .check input:checked::after{content:"";width:6px;height:11px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
   .check b{display:block;font-weight:600}
   .check span span{display:block;font-size:.88rem;color:var(--ink-2);margin-top:2px}
   .check a{color:var(--accent)}
   .check label:has(input:checked) b{color:var(--ink-3);text-decoration:line-through}
-  .decide{margin:18px 0 0;font:700 1.3rem/1.2 var(--display);color:var(--ink-3);transition:color .3s}
+  .decide{margin:18px 0 0;font:400 1.7rem/1.1 var(--poster);text-transform:uppercase;color:var(--ink-3);transition:color .3s}
   .decide.ok{color:var(--accent)}
+  .decide.ok::after{content:" ✓";color:var(--olive)}
 
   /* agenda */
   .ag{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:620px}
@@ -323,15 +336,16 @@
 <body>
 <header>
   <div class="wrap">
-    <a class="brand" href="#topo"><i aria-hidden="true"></i>Voto Sem Filtro DF</a>
+    <a class="brand" href="#topo" aria-label="Voto Sem Filtro DF, início"><img src="img/wordmark.png" alt="Voto Sem Filtro." width="82" height="40"></a>
     <span class="status"><i aria-hidden="true"></i><span class="long">atualiza todo dia · </span><span id="upd">—</span></span>
   </div>
 </header>
 
 <div class="wrap hero" id="topo">
+  <img class="urna" src="img/urna.png" alt="" width="230" height="114">
   <span class="eyebrow">A gente explica. Você decide.</span>
-  <h1 style="margin-top:12px">Eleição 2026 no DF, <span>sem enrolação</span>.</h1>
-  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador, ao Senado e à Presidência, com foto, número de urna, propostas, Instagram e site oficial, e ainda acha qualquer candidato a deputado distrital. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
+  <h1 style="margin-top:14px">Eleição 2026 no DF, <span>sem enrolação.</span></h1>
+  <p>Um guia apartidário e direto ao ponto pra quem vota no Distrito Federal. Aqui você conhece todos os candidatos a Governador, ao Senado e à Presidência, com foto, número de urna, propostas, Instagram e site oficial, e ainda acha qualquer candidato a deputado federal ou distrital. Também acompanha as pesquisas registradas no TSE, que são atualizadas todo dia, confere o que propõem os principais nomes à Presidência, entende o que cada cargo faz, segue o passo a passo do primeiro voto, vê as datas que importam e monta sua colinha pro dia 4/10. Tudo com fonte.</p>
   <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
 </div>
 
@@ -356,7 +370,7 @@
   </section>
 
   <section id="candidatos">
-    <div class="sh"><span class="eyebrow">Governo, Senado, Câmara e Câmara Legislativa</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
+    <div class="sh"><span class="eyebrow">Governo, Senado e deputados</span><h2>Candidatos do DF</h2><p>Toca em alguém pra ver o resumão: número, partido, pesquisa, propostas e links oficiais.</p></div>
     <div class="tabs" id="c-tabs" role="group" aria-label="Cargo"></div>
     <div class="order"><div class="tabs" id="c-ord" role="group" aria-label="Ordem"></div><span id="c-ord-t"></span></div>
     <div class="viz" id="viz"></div>
@@ -451,6 +465,7 @@
 
 <footer>
   <div class="wrap">
+    <img class="flogo" src="img/wordmark.png" alt="" width="150" height="73">
     <div class="author">
       <p>Criado por <b>Oliver</b>, de forma autoral.</p>
       <a class="ig" href="https://www.instagram.com/oliver.calvt/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@oliver.calvt</a>
