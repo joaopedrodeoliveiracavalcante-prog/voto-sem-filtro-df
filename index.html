@@ -238,8 +238,7 @@
   @keyframes sheet{from{transform:translateY(100%)}to{transform:none}}
 
   /* selo da Netlify: vai pro topo e rola junto com a página */
-  #nl-badge-frame{position:absolute!important;top:0!important;bottom:auto!important}
-  html:has(#nl-badge-frame) .cover{padding-top:76px}
+  #nl-badge-frame,#nl-hud-frame{display:none!important}
 
   .note{margin:16px 0 0;font-size:.84rem;color:var(--ink-3);max-width:70ch}
 
