@@ -59,6 +59,14 @@
   .muted{color:var(--ink-2)}
   .tiny{font-size:.78rem;color:var(--ink-3)}
 
+  /* aviso de véspera / dia de votação */
+  .aviso{width:100%;background:var(--stk-bg);color:#fff;border-radius:22px;padding:18px 18px 16px;text-align:left;box-shadow:5px 5px 0 var(--stk-fg);display:grid;gap:8px;transform:rotate(-.5deg)}
+  .av-tag{justify-self:start;font:400 1.05rem/1 var(--poster);text-transform:uppercase;letter-spacing:.04em;background:var(--stk-fg);color:#160622;padding:.4rem .65rem .32rem;border-radius:8px}
+  .av-t{margin:0;font:700 1.08rem/1.35 var(--body);color:#fff}
+  .av-s{margin:0;font-size:.88rem;line-height:1.45;color:#E3D6FA}
+  .av-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .av-go a{font:700 .9rem/1 var(--body);text-decoration:none;padding:.75rem 1rem;border-radius:999px;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+  .av-go a.pri{background:var(--stk-fg);color:#160622;box-shadow:none}
   /* capa */
   .status{font-size:.78rem;color:var(--ink-3);display:inline-flex;align-items:center;gap:6px}
   .status i{width:7px;height:7px;border-radius:50%;background:var(--olive)}
@@ -382,6 +390,12 @@
 <body>
 <section class="cover" id="topo" aria-label="Capa">
   <div class="cv">
+    <div class="aviso" id="aviso" hidden role="region" aria-label="Aviso do dia da votação">
+      <span class="av-tag" id="av-tag">Amanhã é dia de votar</span>
+      <p class="av-t" id="av-t">Monte sua colinha, faça o checklist e vote com responsabilidade.</p>
+      <p class="av-s" id="av-s">Celular não entra na cabine: leve os números no papel. Votação das 8h às 17h.</p>
+      <div class="av-go"><a href="#colinha" class="pri">Montar minha colinha</a><a href="#primeiro-voto">Fazer o checklist</a></div>
+    </div>
     <img class="cv-logo" src="img/logo.png" alt="Voto Sem Filtro." width="560" height="526">
     <h1 class="cv-h1">Eleição 2026 no DF, <span>sem enrolação.</span></h1>
     <div class="cv-meta">
@@ -2052,6 +2066,25 @@
   const TSE = "https://divulgacandcontas.tse.jus.br/";
   const LIST_I = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>';
   const PEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>';
+
+  /* aviso de véspera / dia de votação */
+  (function(){
+    const DIAS = [["2026-10-04","1º turno"],["2026-10-25","2º turno"]];
+    const agora = new Date(), hoje = agora.toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"});
+    const hora = +agora.toLocaleString("en-US",{timeZone:"America/Sao_Paulo",hour:"2-digit",hour12:false});
+    const amanha = new Date(agora.getTime()+864e5).toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"});
+    let modo=null, turno="";
+    for(const [d,t] of DIAS){ if(d===hoje && hora<17){modo="hoje";turno=t;} else if(d===amanha){modo="vespera";turno=t;} }
+    if(!modo) return;
+    $("aviso").hidden=false;
+    if(modo==="hoje"){
+      $("av-tag").textContent = `Hoje é dia de votar · ${turno}`;
+      $("av-t").textContent = "Confira sua colinha, leve um documento com foto e vote com responsabilidade.";
+      $("av-s").textContent = "A votação vai até as 17h, horário de Brasília. Celular não entra na cabine: leve os números no papel.";
+    } else {
+      $("av-tag").textContent = `Amanhã é dia de votar · ${turno}`;
+    }
+  })();
 
   /* status + contagem */
   const d = new Date(D.meta.verificadoEm || D.meta.atualizadoEm);
