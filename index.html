@@ -573,8 +573,8 @@
 <script type="application/json" id="dados">
 {
  "meta": {
-  "atualizadoEm": "2026-10-02T12:00:00-03:00",
-  "verificadoEm": "2026-10-04T12:00:00-03:00",
+  "atualizadoEm": "2026-10-03T23:45:00-03:00",
+  "verificadoEm": "2026-10-03T23:45:00-03:00",
   "marcos": [
    {
     "label": "até o 1º turno · 4/10",
@@ -597,6 +597,10 @@
    {
     "data": "2026-09-26",
     "nota": "Versão minimalista, com fotos oficiais e redes dos candidatos do DF."
+   },
+   {
+    "data": "2026-10-03",
+    "nota": "Pesquisas da véspera, em votos válidos: Datafolha Presidente (3/10), Lula 45% e Flávio Bolsonaro 42%; Datafolha DF (2–3/10), Celina Leão 55% e Leandro Grass 27%; Senado, Michelle Bolsonaro 30%, Bia Kicis 24%, Leila do Vôlei 21% e Erika Kokay 18%; Quaest DF (2–3/10) também atualizada."
    }
   ]
  },
@@ -606,7 +610,7 @@
    "rotulo": "Presidente",
    "status": "tie",
    "statusTxt": "Empate técnico",
-   "titulo": "Lula 40% × Flávio Bolsonaro 36% (Datafolha). A diferença tá dentro da margem, e no 2º turno também dá empate.",
+   "titulo": "Na véspera, Lula tem 45% e Flávio Bolsonaro, 42% dos votos válidos (Datafolha). A diferença tá dentro da margem, e no 2º turno dá 47% × 46%.",
    "ticker": ""
   },
   {
@@ -614,7 +618,7 @@
    "rotulo": "Governo do DF",
    "status": "lead",
    "statusTxt": "Liderança",
-   "titulo": "Celina Leão tem 46% e Leandro Grass, 22%, segundo o Datafolha (53% × 26% dos votos válidos).",
+   "titulo": "Celina Leão tem 55% dos votos válidos e Leandro Grass, 27% (Datafolha da véspera).",
    "ticker": ""
   },
   {
@@ -622,39 +626,34 @@
    "rotulo": "Senado DF · 2 vagas",
    "status": "tie",
    "statusTxt": "2ª vaga aberta",
-   "titulo": "Michelle Bolsonaro tem 23%; Leila do Vôlei e Bia Kicis, 18% cada; Erika Kokay, 13% (Datafolha).",
+   "titulo": "Michelle Bolsonaro tem 30% dos votos válidos; Bia Kicis, 24%; Leila do Vôlei, 21%; Erika Kokay, 18% (Datafolha da véspera).",
    "ticker": ""
   }
  ],
  "corridas": {
   "presidente": {
    "nome": "Presidente",
-   "alerta": "",
+   "alerta": "Pesquisa da véspera divulgada em votos válidos, que excluem brancos, nulos e indecisos.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
-     "campo": "22–23/9",
-     "amostra": "2.002",
+     "campo": "3/10",
+     "amostra": "4.006",
      "margem": 2,
-     "registro": "BR-00304/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
+     "registro": "BR-01708/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-vespera-1-turno/",
      "cenarios": {
-      "Estimulado": {
+      "Votos válidos": {
        "total": [
         [
          "Lula",
          "PT",
-         40
+         45
         ],
         [
          "Flávio Bolsonaro",
          "PL",
-         36
-        ],
-        [
-         "Augusto Cury",
-         "Avante",
-         5
+         42
         ],
         [
          "Ronaldo Caiado",
@@ -667,27 +666,49 @@
          3
         ],
         [
+         "Augusto Cury",
+         "Avante",
+         3
+        ],
+        [
          "Romeu Zema",
          "Novo",
          1
+        ]
+       ],
+       "outros": [],
+       "validos": [
+        [
+         "Lula",
+         "PT",
+         45
         ],
         [
-         "Samara Martins",
-         "UP",
+         "Flávio Bolsonaro",
+         "PL",
+         42
+        ],
+        [
+         "Ronaldo Caiado",
+         "PSD",
+         4
+        ],
+        [
+         "Renan Santos",
+         "Missão",
+         3
+        ],
+        [
+         "Augusto Cury",
+         "Avante",
+         3
+        ],
+        [
+         "Romeu Zema",
+         "Novo",
          1
         ]
-       ],
-       "outros": [
-        [
-         "Branco / nulo",
-         5
-        ],
-        [
-         "Indecisos",
-         2
-        ]
-       ],
-       "validos": null
+       ]
       }
      },
      "segundoTurno": [
@@ -695,22 +716,8 @@
        "Lula",
        47,
        "Flávio Bolsonaro",
-       45,
-       8
-      ],
-      [
-       "Lula",
        46,
-       "Ronaldo Caiado",
-       44,
-       10
-      ],
-      [
-       "Lula",
-       46,
-       "Augusto Cury",
-       43,
-       10
+       7
       ]
      ]
     },
@@ -810,70 +817,27 @@
   },
   "governador": {
    "nome": "Governo do DF",
-   "alerta": "",
+   "alerta": "Pesquisas da véspera divulgadas em votos válidos, que excluem brancos, nulos e indecisos.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
-     "campo": "28/9–1/10",
-     "amostra": "910",
-     "margem": 3,
-     "registro": "DF-00905/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-outubro-2026/",
+     "campo": "2–3/10",
+     "amostra": "1.620",
+     "margem": 2,
+     "registro": "DF-07243/2026",
+     "fonte": "https://www.terra.com.br/noticias/brasil/politica/pesquisa-datafolha-no-df-votos-validos-celina-leao-tem-55-grass-27-e-belmonte-10,6667e27d4579f33e507ef0de87d07d4772r4v0yy.html",
      "cenarios": {
-      "Estimulado": {
+      "Votos válidos": {
        "total": [
         [
          "Celina Leão",
          "PP",
-         46
+         55
         ],
         [
          "Leandro Grass",
          "PT",
-         22
-        ],
-        [
-         "Paula Belmonte",
-         "PSDB",
-         9
-        ],
-        [
-         "Ricardo Cappelli",
-         "PSB",
-         3
-        ],
-        [
-         "Kiko Caputo",
-         "Novo",
-         3
-        ],
-        [
-         "Samara Mineiro",
-         "UP",
-         1
-        ],
-        [
-         "Professor Robson",
-         "PSTU",
-         1
-        ]
-       ],
-       "outros": [
-        [
-         "Branco / nulo",
-         9
-        ]
-       ],
-       "validos": [
-        [
-         "Celina Leão",
-         "PP",
-         53
-        ],
-        [
-         "Leandro Grass",
-         "PT",
-         26
+         27
         ],
         [
          "Paula Belmonte",
@@ -881,23 +845,61 @@
          10
         ],
         [
-         "Ricardo Cappelli",
-         "PSB",
-         3
-        ],
-        [
          "Kiko Caputo",
          "Novo",
-         3
+         4
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         2
+        ],
+        [
+         "Professor Robson",
+         "PSTU",
+         1
         ],
         [
          "Samara Mineiro",
          "UP",
          1
+        ]
+       ],
+       "outros": [],
+       "validos": [
+        [
+         "Celina Leão",
+         "PP",
+         55
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         27
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         10
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         4
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         2
         ],
         [
          "Professor Robson",
          "PSTU",
+         1
+        ],
+        [
+         "Samara Mineiro",
+         "UP",
          1
         ]
        ]
@@ -907,37 +909,37 @@
     },
     {
      "instituto": "Quaest",
-     "campo": "19–22/9",
-     "amostra": "1.104",
-     "margem": 3,
-     "registro": "DF-02596/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+     "campo": "2–3/10",
+     "amostra": "2.652",
+     "margem": 2,
+     "registro": "DF-04089/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quest-governador-senador-distrito-federal-outubro-2026/",
      "cenarios": {
-      "Estimulado": {
+      "Votos válidos": {
        "total": [
         [
          "Celina Leão",
          "PP",
-         34
+         53
         ],
         [
          "Leandro Grass",
          "PT",
-         23
+         32
         ],
         [
          "Paula Belmonte",
          "PSDB",
-         7
-        ],
-        [
-         "Kiko Caputo",
-         "Novo",
-         3
+         10
         ],
         [
          "Ricardo Cappelli",
          "PSB",
+         2
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
          2
         ],
         [
@@ -946,25 +948,54 @@
          1
         ]
        ],
-       "outros": [
+       "outros": [],
+       "validos": [
         [
-         "Branco / nulo",
-         15
+         "Celina Leão",
+         "PP",
+         53
         ],
         [
-         "Indecisos",
-         15
+         "Leandro Grass",
+         "PT",
+         32
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         10
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         2
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         2
+        ],
+        [
+         "Samara Mineiro",
+         "UP",
+         1
         ]
-       ],
-       "validos": null
+       ]
       }
      },
      "segundoTurno": [
       [
        "Celina Leão",
-       48,
+       50,
        "Leandro Grass",
-       30,
+       33,
+       17
+      ],
+      [
+       "Celina Leão",
+       47,
+       "Paula Belmonte",
+       31,
        22
       ]
      ]
@@ -973,37 +1004,37 @@
   },
   "senado": {
    "nome": "Senado DF",
-   "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno.",
+   "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno. Números da véspera em votos válidos.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
-     "campo": "28/9–1/10",
-     "amostra": "910",
-     "margem": 3,
-     "registro": "DF-00905/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-outubro-2026/",
+     "campo": "2–3/10",
+     "amostra": "1.620",
+     "margem": 2,
+     "registro": "DF-07243/2026",
+     "fonte": "https://www.terra.com.br/noticias/brasil/politica/pesquisa-datafolha-no-df-votos-validos-celina-leao-tem-55-grass-27-e-belmonte-10,6667e27d4579f33e507ef0de87d07d4772r4v0yy.html",
      "cenarios": {
-      "1º + 2º voto": {
+      "Votos válidos": {
        "total": [
         [
          "Michelle Bolsonaro",
          "PL",
-         23
-        ],
-        [
-         "Leila do Vôlei",
-         "PDT",
-         18
+         30
         ],
         [
          "Bia Kicis",
          "PL",
-         18
+         24
+        ],
+        [
+         "Leila do Vôlei",
+         "PDT",
+         21
         ],
         [
          "Erika Kokay",
          "PT",
-         13
+         18
         ],
         [
          "Sebastião Coelho",
@@ -1024,23 +1055,9 @@
          "Tiago",
          "Agir",
          1
-        ],
-        [
-         "Marley",
-         "Avante",
-         1
         ]
        ],
-       "outros": [
-        [
-         "Branco / nulo",
-         10
-        ],
-        [
-         "Não sabe",
-         8
-        ]
-       ],
+       "outros": [],
        "validos": null
       }
      },
@@ -1048,55 +1065,36 @@
     },
     {
      "instituto": "Quaest",
-     "campo": "19–22/9",
-     "amostra": "1.104",
-     "margem": 3,
-     "registro": "DF-02596/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+     "campo": "2–3/10",
+     "amostra": "2.652",
+     "margem": 2,
+     "registro": "DF-04089/2026",
+     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quest-governador-senador-distrito-federal-outubro-2026/",
      "cenarios": {
-      "1º + 2º voto": {
+      "Votos válidos": {
        "total": [
         [
          "Michelle Bolsonaro",
          "PL",
-         26
+         31
         ],
         [
          "Leila do Vôlei",
          "PDT",
-         19
+         27
         ],
         [
          "Bia Kicis",
          "PL",
-         15
+         24
         ],
         [
          "Erika Kokay",
          "PT",
-         15
-        ],
-        [
-         "Sebastião Coelho",
-         "Novo",
-         2
-        ],
-        [
-         "Ronaldo Fonseca",
-         "PSD",
-         1
+         17
         ]
        ],
-       "outros": [
-        [
-         "Branco / nulo",
-         9
-        ],
-        [
-         "Indecisos",
-         11
-        ]
-       ],
+       "outros": [],
        "validos": null
       }
      },
@@ -1112,7 +1110,7 @@
     "p": "PP",
     "num": "11",
     "foto": "70002553055",
-    "poll": 46,
+    "poll": 55,
     "status": "",
     "props": [
      "Novo Hospital de Ceilândia e mais UPAs",
@@ -1129,7 +1127,7 @@
     "p": "PT",
     "num": "13",
     "foto": "70002552496",
-    "poll": 22,
+    "poll": 27,
     "status": "",
     "props": [
      "Ampliar a escola em tempo integral",
@@ -1146,7 +1144,7 @@
     "p": "PSDB",
     "num": "45",
     "foto": "70002552965",
-    "poll": 9,
+    "poll": 10,
     "status": "",
     "props": [
      "Tempo integral com educação financeira e tecnologia",
@@ -1162,7 +1160,7 @@
     "p": "PSB",
     "num": "40",
     "foto": "70002551557",
-    "poll": 3,
+    "poll": 2,
     "status": "",
     "props": [
      "\"Fila Zero\" na saúde, com contratação emergencial",
@@ -1211,7 +1209,7 @@
     "p": "Novo",
     "num": "30",
     "foto": "70002547775",
-    "poll": 3,
+    "poll": 4,
     "status": "",
     "props": [
      "Menos secretarias e menos cargos comissionados",
@@ -1276,7 +1274,7 @@
     "p": "PL",
     "num": "222",
     "foto": "70002552936",
-    "poll": 23,
+    "poll": 30,
     "status": "",
     "props": [
      "Um \"Senado forte\" diante do STF",
@@ -1292,7 +1290,7 @@
     "p": "PDT",
     "num": "123",
     "foto": "70002552492",
-    "poll": 18,
+    "poll": 21,
     "status": "",
     "props": [
      "Proteger o Fundo Constitucional do DF",
@@ -1309,7 +1307,7 @@
     "p": "PL",
     "num": "223",
     "foto": "70002552934",
-    "poll": 18,
+    "poll": 24,
     "status": "",
     "props": [
      "Fortalecer o Legislativo frente ao STF",
@@ -1325,7 +1323,7 @@
     "p": "PT",
     "num": "131",
     "foto": "70002552490",
-    "poll": 13,
+    "poll": 18,
     "status": "",
     "props": [
      "Fim da escala 6x1",
@@ -1377,7 +1375,7 @@
     "p": "Avante",
     "num": "700",
     "foto": "70002552582",
-    "poll": 1,
+    "poll": 0,
     "status": "",
     "props": [],
     "ig": "",
@@ -1450,7 +1448,7 @@
     "foto": "280002542548",
     "ig": "lulaoficial",
     "oficial": "https://lula.com.br",
-    "poll": 40
+    "poll": 45
    },
    {
     "n": "Flávio Bolsonaro",
@@ -1468,7 +1466,7 @@
     "foto": "280002551544",
     "ig": "flaviobolsonaro",
     "oficial": "https://flaviobolsonaro.com.br",
-    "poll": 36
+    "poll": 42
    },
    {
     "n": "Augusto Cury",
@@ -1485,7 +1483,7 @@
     "foto": "280002551547",
     "ig": "augustocury",
     "oficial": "https://augustocurypresidente.com.br/",
-    "poll": 5
+    "poll": 3
    },
    {
     "n": "Ronaldo Caiado",
@@ -1545,7 +1543,7 @@
     "foto": "280002538811",
     "ig": "samaramartinsup",
     "oficial": "https://unidadepopular.org.br/",
-    "poll": 1,
+    "poll": 0,
     "props": [
      "Dobrar o salário mínimo, de R$ 1.621 para R$ 3.242",
      "Trocar a escala 6x1 pela 4x3 para todos os trabalhadores",
@@ -1562,7 +1560,7 @@
     "foto": "280002541457",
     "ig": "hertzdiaspstu",
     "oficial": "",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Acabar com a escala 6x1 e adotar 36 horas semanais sem cortar salário",
      "Revogar as reformas trabalhista e da Previdência",
@@ -1579,7 +1577,7 @@
     "foto": "280002554479",
     "ig": "leonardoavalanche",
     "oficial": "",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Imposto único de 3,5% no lugar de ICMS, ISS, IR, INSS e outros",
      "Zerar a fila do SUS com mutirões, telemedicina e hospitais privados",
@@ -1596,7 +1594,7 @@
     "foto": "280002552487",
     "ig": "ruicpimenta",
     "oficial": "https://candidatos.pco.org.br",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Baixar o preço dos combustíveis em 50% na hora",
      "Anular todas as privatizações",
@@ -1613,7 +1611,7 @@
     "foto": "280002548139",
     "ig": "veterinariowilsongrassioficial",
     "oficial": "https://veterinariowilsongrassi.com.br",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Imposto federal único no lugar de nove tributos federais",
      "Isenção de IR pra quem ganha até cinco salários mínimos",
@@ -1630,7 +1628,7 @@
     "foto": "280002551975",
     "ig": "edpcb",
     "oficial": "https://pcb.org.br/portal2/",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Jornada de 30 horas semanais sem reduzir salário e fim da 6x1",
      "Salário mínimo calculado pelo Dieese",
@@ -1647,7 +1645,7 @@
     "foto": "280002552484",
     "ig": "",
     "oficial": "",
-    "poll": null,
+    "poll": 0,
     "props": [
      "Rede nacional de proteção contra a violência a mulheres",
      "Primeira infância como prioridade nacional",
@@ -2279,7 +2277,7 @@
     $("p-2t").hidden = !t2.length;
     $("p-2t").innerHTML = t2.length ? `<span class="tiny">Se tiver 2º turno</span>` + t2.map(([a,va,b,vb,rest])=>{const tie=Math.abs(va-vb)<=2*q.margem;return `<div class="duel"><div class="l"><span>${esc(a)} <b>${pc(va)}</b></span><span><b>${pc(vb)}</b> ${esc(b)}</span></div><div class="s" aria-hidden="true"><i style="width:${va}%"></i><i style="width:${vb}%"></i></div><small>${tie?"empate técnico":esc(a)+" à frente"} · brancos, nulos e indecisos: ${rest}%</small></div>`;}).join("") : "";
     let note = race.alerta || "";
-    if(sc.validos){ const l=sc.validos[0]; note += (note?" ":"") + (l[2]>50 ? `Nos votos válidos, ${l[0]} tem ${pc(l[2])}. Se isso se repetir na urna, a eleição acaba no 1º turno, mas a margem de erro ainda deixa a disputa em aberto.` : `Ninguém passa de 50% dos votos válidos, então teria 2º turno.`); }
+    if(sc.validos){ const l=sc.validos[0]; note += (note?" ":"") + (l[2]>50 ? `Nos votos válidos, ${l[0]} tem ${pc(l[2])}. Se isso se repetir na urna, a eleição acaba no 1º turno${l[2]-q.margem>50?'. Mesmo descontando a margem de erro, fica acima de 50%.':', mas a margem de erro ainda deixa a disputa em aberto.'}` : `Ninguém passa de 50% dos votos válidos, então teria 2º turno.`); }
     $("p-note").textContent = note;
   }
   poll();
