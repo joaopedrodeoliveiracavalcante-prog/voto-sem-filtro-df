@@ -587,8 +587,8 @@
 <script type="application/json" id="dados">
 {
  "meta": {
-  "atualizadoEm": "2026-10-03T23:45:00-03:00",
-  "verificadoEm": "2026-10-03T23:45:00-03:00",
+  "atualizadoEm": "2026-10-05T12:00:00-03:00",
+  "verificadoEm": "2026-10-05T12:00:00-03:00",
   "marcos": [
    {
     "label": "até o 1º turno · 4/10",
@@ -601,6 +601,14 @@
   ],
   "historico": [
    {
+    "data": "2026-10-05",
+    "nota": "Resultados do 1º turno (TSE): Presidente, Flávio Bolsonaro 47,50% e Lula 44,61% (96,6% apurado), 2º turno em 25/10; DF, Celina Leão 49,93% e Leandro Grass 34,47%, 2º turno; Senado DF, Michelle Bolsonaro e Bia Kicis eleitas."
+   },
+   {
+    "data": "2026-10-03",
+    "nota": "Pesquisas da véspera, em votos válidos: Datafolha Presidente (3/10), Lula 45% e Flávio Bolsonaro 42%; Datafolha DF (2–3/10), Celina Leão 55% e Leandro Grass 27%; Senado, Michelle Bolsonaro 30%, Bia Kicis 24%, Leila do Vôlei 21% e Erika Kokay 18%; Quaest DF (2–3/10) também atualizada."
+   },
+   {
     "data": "2026-10-02",
     "nota": "Novo Datafolha do DF (28/9–1/10): Governo, Celina Leão 46% e Leandro Grass 22%; Senado, Michelle Bolsonaro 23%, Leila do Vôlei 18%, Bia Kicis 18% e Erika Kokay 13%."
    },
@@ -611,10 +619,6 @@
    {
     "data": "2026-09-26",
     "nota": "Versão minimalista, com fotos oficiais e redes dos candidatos do DF."
-   },
-   {
-    "data": "2026-10-03",
-    "nota": "Pesquisas da véspera, em votos válidos: Datafolha Presidente (3/10), Lula 45% e Flávio Bolsonaro 42%; Datafolha DF (2–3/10), Celina Leão 55% e Leandro Grass 27%; Senado, Michelle Bolsonaro 30%, Bia Kicis 24%, Leila do Vôlei 21% e Erika Kokay 18%; Quaest DF (2–3/10) também atualizada."
    }
   ]
  },
@@ -622,32 +626,32 @@
   {
    "cargo": "presidente",
    "rotulo": "Presidente",
-   "status": "tie",
-   "statusTxt": "Empate técnico",
-   "titulo": "Na véspera, Lula tem 45% e Flávio Bolsonaro, 42% dos votos válidos (Datafolha). A diferença tá dentro da margem, e no 2º turno dá 47% × 46%.",
+   "status": "lead",
+   "statusTxt": "2º turno em 25/10",
+   "titulo": "Resultado do 1º turno (TSE, 96,6% das urnas apuradas): Flávio Bolsonaro 47,50% e Lula 44,61% dos votos válidos. Os dois vão ao 2º turno em 25/10.",
    "ticker": ""
   },
   {
    "cargo": "governador",
    "rotulo": "Governo do DF",
    "status": "lead",
-   "statusTxt": "Liderança",
-   "titulo": "Celina Leão tem 55% dos votos válidos e Leandro Grass, 27% (Datafolha da véspera).",
+   "statusTxt": "2º turno em 25/10",
+   "titulo": "Resultado do 1º turno (TSE, 100% apurado): Celina Leão 49,93% e Leandro Grass 34,47% dos votos válidos. Os dois vão ao 2º turno em 25/10.",
    "ticker": ""
   },
   {
    "cargo": "senado",
    "rotulo": "Senado DF · 2 vagas",
-   "status": "tie",
-   "statusTxt": "2ª vaga aberta",
-   "titulo": "Michelle Bolsonaro tem 30% dos votos válidos; Bia Kicis, 24%; Leila do Vôlei, 21%; Erika Kokay, 18% (Datafolha da véspera).",
+   "status": "lead",
+   "statusTxt": "Eleitas",
+   "titulo": "Resultado do 1º turno (TSE): Michelle Bolsonaro (28,99%) e Bia Kicis (27,41%) foram eleitas para as 2 vagas do Senado pelo DF.",
    "ticker": ""
   }
  ],
  "corridas": {
   "presidente": {
    "nome": "Presidente",
-   "alerta": "Pesquisa da véspera divulgada em votos válidos, que excluem brancos, nulos e indecisos.",
+   "alerta": "Resultado oficial do 1º turno (4/10): nenhum candidato passou de 50% dos votos válidos, então Flávio Bolsonaro e Lula disputam o 2º turno em 25/10. Percentuais com 96,6% das urnas apuradas.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
@@ -831,7 +835,7 @@
   },
   "governador": {
    "nome": "Governo do DF",
-   "alerta": "Pesquisas da véspera divulgadas em votos válidos, que excluem brancos, nulos e indecisos.",
+   "alerta": "Resultado oficial do 1º turno (4/10): ninguém passou de 50% dos votos válidos (Celina Leão ficou com 49,93%), então Celina Leão e Leandro Grass disputam o 2º turno em 25/10.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
@@ -1018,7 +1022,7 @@
   },
   "senado": {
    "nome": "Senado DF",
-   "alerta": "Cada eleitor vota em 2 nomes. Os dois mais votados ficam com as vagas, e não tem 2º turno. Números da véspera em votos válidos.",
+   "alerta": "Resultado oficial do 1º turno (4/10): Michelle Bolsonaro e Bia Kicis foram eleitas senadoras pelo DF. Não tem 2º turno para o Senado.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
@@ -1125,7 +1129,7 @@
     "num": "11",
     "foto": "70002553055",
     "poll": 55,
-    "status": "",
+    "status": "Vai ao 2º turno (25/10)",
     "props": [
      "Novo Hospital de Ceilândia e mais UPAs",
      "Metrô em Ceilândia e Samambaia e Linha 2 até o Gama",
@@ -1142,7 +1146,7 @@
     "num": "13",
     "foto": "70002552496",
     "poll": 27,
-    "status": "",
+    "status": "Vai ao 2º turno (25/10)",
     "props": [
      "Ampliar a escola em tempo integral",
      "Priorizar metrô e transporte sobre trilhos",
@@ -1289,7 +1293,7 @@
     "num": "222",
     "foto": "70002552936",
     "poll": 30,
-    "status": "",
+    "status": "Eleita",
     "props": [
      "Um \"Senado forte\" diante do STF",
      "Atuação pelos presos do 8 de janeiro",
@@ -1322,7 +1326,7 @@
     "num": "223",
     "foto": "70002552934",
     "poll": 24,
-    "status": "",
+    "status": "Eleita",
     "props": [
      "Fortalecer o Legislativo frente ao STF",
      "Liberdade de expressão",
@@ -1462,7 +1466,8 @@
     "foto": "280002542548",
     "ig": "lulaoficial",
     "oficial": "https://lula.com.br",
-    "poll": 45
+    "poll": 45,
+    "status": "Vai ao 2º turno (25/10)"
    },
    {
     "n": "Flávio Bolsonaro",
@@ -1480,7 +1485,8 @@
     "foto": "280002551544",
     "ig": "flaviobolsonaro",
     "oficial": "https://flaviobolsonaro.com.br",
-    "poll": 42
+    "poll": 42,
+    "status": "Vai ao 2º turno (25/10)"
    },
    {
     "n": "Augusto Cury",
