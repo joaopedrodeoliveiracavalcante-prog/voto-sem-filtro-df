@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Voto Sem Filtro DF">
 <meta property="og:title" content="Voto Sem Filtro DF · Eleição 2026 sem enrolação">
-<meta property="og:description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos com foto, número e propostas, pesquisas do TSE e colinha pro dia 4/10.">
+<meta property="og:description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos com foto, número e propostas, pesquisas, propostas dos finalistas do 2º turno e colinha pro dia 25/10.">
 <meta property="og:url" content="https://votosemfiltrodf.netlify.app/">
 <meta property="og:image" content="https://votosemfiltrodf.netlify.app/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9029510748113978"
      crossorigin="anonymous"></script>
-<meta name="description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos, do Presidente ao deputado distrital, com foto, número e propostas; pesquisas do TSE atualizadas todo dia; primeiro voto, datas e colinha pro dia 4/10.">
+<meta name="description" content="Guia apartidário das Eleições 2026 no DF: todos os candidatos, do Presidente ao deputado distrital, com foto, número e propostas; pesquisas do TSE atualizadas todo dia; 2º turno em 25/10 com as propostas dos finalistas, primeiro voto, datas e colinha.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap">
@@ -269,6 +269,32 @@
   .duel .s i:first-child{background:var(--bar)} .duel .s i:last-child{background:var(--accent);margin-left:auto}
   .duel small{color:var(--ink-3);font-size:.76rem}
 
+  /* 2º turno */
+  .cv-go a.wide{grid-column:1/-1}
+  .s2{display:grid;gap:18px;margin-top:18px}
+  .s2-duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .s2-c{display:grid;justify-items:center;text-align:center;gap:2px;padding:18px 10px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--c1);box-shadow:3px 3px 0 var(--c1)}
+  .s2-c b{font:700 1.05rem/1.2 var(--display)}
+  .s2-c small{font-size:.76rem;color:var(--ink-3)}
+  .s2-c small strong{color:var(--ink);font-weight:600}
+  .s2-v{font:400 2rem/1 var(--poster);letter-spacing:.01em;margin-top:8px;font-variant-numeric:tabular-nums}
+  .s2-pl{margin-top:8px;font-size:.78rem;color:var(--accent);text-underline-offset:3px}
+  .s2-h{font:400 1.5rem/1 var(--poster);text-transform:uppercase;letter-spacing:.01em;margin:10px 0 -4px}
+  .s2-ph{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
+  .s2-ph b{font-size:.92rem}
+  .s2-warn{margin:0 0 16px;font-size:.86rem;color:var(--warn);background:var(--warn-soft);padding:.6rem .8rem;border-radius:12px}
+  .s2-pend{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .s2-pend ul{margin:6px 0 0;padding-left:1.1rem;display:grid;gap:6px;font-size:.86rem;color:var(--ink-2)}
+  .s2-t h3{font-size:1.1rem;margin-bottom:14px}
+  .s2-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .s2-col{background:var(--soft);border-radius:16px;padding:14px 14px 16px;border-top:4px solid var(--c1)}
+  .s2-n{display:flex;align-items:center;gap:8px;font:700 .95rem/1.2 var(--display);margin-bottom:10px}
+  .s2-n i{width:10px;height:10px;border-radius:50%;background:var(--ring);flex:none}
+  .s2-col ul{margin:0;padding-left:1.05rem;display:grid;gap:8px;font-size:.88rem;color:var(--ink-2)}
+  .s2-src{margin:8px 0 0;padding-left:1.1rem;font-size:.84rem;display:grid;gap:4px}
+  .s2-src a{color:var(--accent)}
+  @media (max-width:640px){ .s2-cols{grid-template-columns:1fr} }
+
   /* 101 */
   .cargos{display:grid;gap:10px}
   .cargo{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
@@ -399,16 +425,17 @@
     <img class="cv-logo" src="img/logo.png" alt="Voto Sem Filtro." width="560" height="526">
     <h1 class="cv-h1">Eleição 2026 no DF, <span>sem enrolação.</span></h1>
     <div class="cv-meta">
-      <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 1º turno · 4/10</span></div>
+      <div class="count" aria-live="polite"><b id="cd">—</b><span id="cd-l">até o 2º turno · 25/10</span></div>
       <span class="status"><i aria-hidden="true"></i>atualiza todo dia · <span id="upd">—</span></span>
     </div>
     <div class="cv-about">
       <span class="eyebrow">O que é</span>
-      <p>Um guia <b>apartidário</b> das Eleições 2026 no Distrito Federal. Aqui tem todos os candidatos, do Presidente ao deputado distrital, com número, propostas e redes oficiais, as pesquisas registradas no TSE e tudo o que você precisa pro dia 4/10. Tudo com fonte.</p>
+      <p>Um guia <b>apartidário</b> das Eleições 2026 no Distrito Federal. Aqui tem todos os candidatos, do Presidente ao deputado distrital, com número, propostas e redes oficiais, as pesquisas registradas no TSE e tudo o que você precisa pro 2º turno, em 25/10. Tudo com fonte.</p>
       <p class="cv-tag">A gente explica. Você decide.</p>
     </div>
     <nav class="cv-go" aria-label="Ir para">
-      <a href="#candidatos" class="pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg><b>Candidatos do DF</b><small>Governo, Senado e deputados</small></a>
+      <a href="#segundo-turno" class="pri wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l-2 5a3 3 0 0 0 4 0zM19 8l-2 5a3 3 0 0 0 4 0zM5 8h14M8 21h8"/></svg><b>2º turno · 25/10</b><small>Propostas e pesquisas: Presidente e Governo do DF</small></a>
+      <a href="#candidatos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg><b>Candidatos do DF</b><small>Governo, Senado e deputados</small></a>
       <a href="#presidente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><b>Presidente</b><small>Os 13 candidatos</small></a>
       <a href="#pesquisas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>Pesquisas</b><small>Registradas no TSE</small></a>
       <a href="#primeiro-voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><b>Primeiro voto</b><small>Passo a passo</small></a>
@@ -422,6 +449,7 @@
 <nav class="jump" aria-label="Seções">
   <div class="wrap">
     <a href="#resumo">Resumo</a>
+    <a href="#segundo-turno">2º turno</a>
     <a href="#candidatos">Candidatos do DF</a>
     <a href="#pesquisas">Pesquisas</a>
     <a href="#presidente">Presidente</a>
@@ -437,6 +465,12 @@
   <section id="resumo">
     <div class="sh"><span class="eyebrow">Hoje, em 20 segundos</span><h2>Como tá a disputa</h2></div>
     <div class="sum" id="sum"></div>
+  </section>
+
+  <section id="segundo-turno">
+    <div class="sh"><span class="eyebrow">25 de outubro</span><h2>2º turno</h2><p>Quem está na disputa, o que as pesquisas mostram e o que cada candidato propõe, tema por tema. A ordem dos candidatos muda a cada visita, ninguém fica em primeiro de propósito.</p></div>
+    <div class="tabs" id="s2-race" role="group" aria-label="Cargo"></div>
+    <div class="s2" id="s2"></div>
   </section>
 
   <section id="candidatos">
@@ -475,7 +509,7 @@
   </section>
 
   <section id="basico">
-    <div class="sh"><span class="eyebrow">O básico</span><h2>O que você vota em 4/10</h2><p>São 6 votos pra 5 cargos, nessa ordem na urna.</p></div>
+    <div class="sh"><span class="eyebrow">O básico</span><h2>O que você vota em 25/10</h2><p>No 2º turno são 2 votos, nessa ordem na urna: governador e presidente.</p></div>
     <div class="cargos" id="cargos"></div>
     <div class="faq" id="faq"></div>
   </section>
@@ -496,7 +530,7 @@
   <section id="colinha">
     <div class="sh"><span class="eyebrow">Pro dia</span><h2>Monte sua colinha</h2><p>Celular não entra na cabine. Digite os números (ou use "Anotar na colinha" nas fichas) e veja quem é cada um. Depois copie e passe pro papel. Fica salvo só no seu aparelho.</p></div>
     <form class="cola" id="cola" autocomplete="off">
-      <div class="cola-h"><b>Minha colinha</b><span>Eleições 2026 · DF · 4/10</span></div>
+      <div class="cola-h"><b>Minha colinha</b><span>2º turno · 25/10</span></div>
       <div class="f">
         <label for="v-df">Deputado(a) federal<small>4 dígitos</small></label>
         <input id="v-df" inputmode="numeric" maxlength="4" placeholder="0000" aria-describedby="v-df-c">
@@ -587,8 +621,8 @@
 <script type="application/json" id="dados">
 {
  "meta": {
-  "atualizadoEm": "2026-10-08T12:00:00-03:00",
-  "verificadoEm": "2026-10-08T12:00:00-03:00",
+  "atualizadoEm": "2026-10-08T15:40:00-03:00",
+  "verificadoEm": "2026-10-08T15:40:00-03:00",
   "marcos": [
    {
     "label": "até o 1º turno · 4/10",
@@ -600,6 +634,10 @@
    }
   ],
   "historico": [
+   {
+    "data": "2026-10-08",
+    "nota": "Nova seção do 2º turno (25/10): Presidente, Lula e Flávio Bolsonaro; Governo do DF, Celina Leão e Leandro Grass. Propostas dos quatro lado a lado, tema por tema, e pesquisas de 2º turno de Datafolha, Quaest e AtlasIntel. Nenhuma pesquisa feita depois de 4/10 tinha sido divulgada até as 15h. O Datafolha de 2º turno sai ainda hoje e o AtlasIntel, amanhã."
+   },
    {
     "data": "2026-10-08",
     "nota": "Presidente: totalização final do 1º turno (100% das seções), Flávio Bolsonaro 47,03% e Lula 45,16% dos votos válidos. Ainda sem pesquisa de 2º turno registrada após o 1º turno."
@@ -655,7 +693,7 @@
  "corridas": {
   "presidente": {
    "nome": "Presidente",
-   "alerta": "Resultado oficial do 1º turno (4/10), com 100% das seções totalizadas: nenhum candidato passou de 50% dos votos válidos (Flávio Bolsonaro 47,03% e Lula 45,16%), então os dois disputam o 2º turno em 25/10.",
+   "alerta": "Resultado oficial do 1º turno (4/10), com 100% das seções totalizadas: nenhum candidato passou de 50% dos votos válidos (Flávio Bolsonaro 47,03% e Lula 45,16%), então os dois disputam o 2º turno em 25/10. As pesquisas abaixo foram feitas antes da votação. As primeiras de 2º turno saem a partir de 8/10, veja em 2º turno.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
@@ -741,7 +779,8 @@
        46,
        7
       ]
-     ]
+     ],
+     "fim": "2026-10-03"
     },
     {
      "instituto": "Quaest",
@@ -833,13 +872,79 @@
        30,
        24
       ]
+     ],
+     "fim": "2026-09-27"
+    },
+    {
+     "instituto": "AtlasIntel",
+     "campo": "23–28/9",
+     "fim": "2026-09-28",
+     "amostra": "5.005",
+     "margem": 1,
+     "registro": "BR-04391/2026",
+     "fonte": "https://tvtnews.com.br/atlasintel-29-9-pesquisa-presidente-2026/",
+     "cenarios": {
+      "Estimulado": {
+       "total": [
+        [
+         "Lula",
+         "PT",
+         45.3
+        ],
+        [
+         "Flávio Bolsonaro",
+         "PL",
+         42.2
+        ],
+        [
+         "Renan Santos",
+         "Missão",
+         5.2
+        ],
+        [
+         "Augusto Cury",
+         "Avante",
+         2.0
+        ],
+        [
+         "Ronaldo Caiado",
+         "PSD",
+         1.8
+        ],
+        [
+         "Romeu Zema",
+         "Novo",
+         0.9
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo",
+         0.9
+        ],
+        [
+         "Não souberam",
+         1.2
+        ]
+       ],
+       "validos": null
+      }
+     },
+     "segundoTurno": [
+      [
+       "Flávio Bolsonaro",
+       47.7,
+       "Lula",
+       47.6,
+       4.7
+      ]
      ]
     }
    ]
   },
   "governador": {
    "nome": "Governo do DF",
-   "alerta": "Resultado oficial do 1º turno (4/10): ninguém passou de 50% dos votos válidos (Celina Leão ficou com 49,93%), então Celina Leão e Leandro Grass disputam o 2º turno em 25/10.",
+   "alerta": "Resultado oficial do 1º turno (4/10): ninguém passou de 50% dos votos válidos (Celina Leão ficou com 49,93%), então Celina Leão e Leandro Grass disputam o 2º turno em 25/10. As pesquisas abaixo foram feitas antes da votação. As primeiras de 2º turno saem a partir de 8/10, veja em 2º turno.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
@@ -927,7 +1032,8 @@
        ]
       }
      },
-     "segundoTurno": []
+     "segundoTurno": [],
+     "fim": "2026-10-03"
     },
     {
      "instituto": "Quaest",
@@ -1020,6 +1126,94 @@
        31,
        22
       ]
+     ],
+     "fim": "2026-10-03"
+    },
+    {
+     "instituto": "AtlasIntel",
+     "campo": "27/9–2/10",
+     "fim": "2026-10-02",
+     "amostra": "1.211",
+     "margem": 3,
+     "registro": "DF-04297/2026",
+     "fonte": "https://www.metropoles.com/distrito-federal/atlasintel-celina-lidera-com-453-no-1o-turno-e-com-569-no-2o-turno",
+     "cenarios": {
+      "Votos válidos": {
+       "total": [
+        [
+         "Celina Leão",
+         "PP",
+         45.3
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         34.0
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         11.7
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         5.4
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         2.1
+        ],
+        [
+         "Outros candidatos",
+         "",
+         1.5
+        ]
+       ],
+       "outros": [],
+       "validos": [
+        [
+         "Celina Leão",
+         "PP",
+         45.3
+        ],
+        [
+         "Leandro Grass",
+         "PT",
+         34.0
+        ],
+        [
+         "Paula Belmonte",
+         "PSDB",
+         11.7
+        ],
+        [
+         "Ricardo Cappelli",
+         "PSB",
+         5.4
+        ],
+        [
+         "Kiko Caputo",
+         "Novo",
+         2.1
+        ],
+        [
+         "Outros candidatos",
+         "",
+         1.5
+        ]
+       ]
+      }
+     },
+     "segundoTurno": [
+      [
+       "Celina Leão",
+       56.9,
+       "Leandro Grass",
+       43.1,
+       0
+      ]
      ]
     }
    ]
@@ -1083,7 +1277,8 @@
        "validos": null
       }
      },
-     "segundoTurno": []
+     "segundoTurno": [],
+     "fim": "2026-10-03"
     },
     {
      "instituto": "Quaest",
@@ -1120,7 +1315,8 @@
        "validos": null
       }
      },
-     "segundoTurno": []
+     "segundoTurno": [],
+     "fim": "2026-10-03"
     }
    ]
   }
@@ -1136,13 +1332,19 @@
     "status": "Vai ao 2º turno (25/10)",
     "props": [
      "Novo Hospital de Ceilândia e mais UPAs",
+     "Expresso da Saúde, com telemedicina e inteligência artificial",
      "Metrô em Ceilândia e Samambaia e Linha 2 até o Gama",
+     "Tarifa Zero pra população de baixa renda",
      "Mais escolas em tempo integral",
+     "Primeiras Letras: toda criança lendo e escrevendo até o fim do 2º ano",
+     "Bolsa pra alunos do ensino médio (Futuro Agora) e Bolsa Universitária DF",
+     "Defender o BRB e não aumentar impostos",
      "Regularização fundiária mais rápida"
     ],
     "ig": "celinaleao",
     "site": "https://celina11.com",
-    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478141-celina-reconhece-avancos-mas-critica-gestao-anterior.html"
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7478141-celina-reconhece-avancos-mas-critica-gestao-anterior.html",
+    "res1t": 49.93
    },
    {
     "n": "Leandro Grass",
@@ -1152,14 +1354,21 @@
     "poll": 27,
     "status": "Vai ao 2º turno (25/10)",
     "props": [
+     "Consulta com especialista e exame em até 30 dias",
+     "Fila Zero na creche",
      "Ampliar a escola em tempo integral",
+     "Tarifa Zero progressiva e ônibus depois das 22h",
      "Priorizar metrô e transporte sobre trilhos",
-     "Brasília como polo de tecnologia",
-     "Auditoria e transparência no BRB"
+     "Auditoria e transparência no BRB",
+     "Moradia mais barata, com foco no aluguel",
+     "Restaurantes comunitários com refeição a R$ 1",
+     "Brasília como polo de tecnologia"
     ],
     "ig": "leandrograss",
     "site": "https://leandrograss.com/",
-    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477822-brasilia-precisa-de-um-governo-a-altura-da-capital-do-pais-defende-grass.html"
+    "sabatina": "https://www.correiobraziliense.com.br/cidades-df/2026/08/7477822-brasilia-precisa-de-um-governo-a-altura-da-capital-do-pais-defende-grass.html",
+    "res1t": 34.47,
+    "plano": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/70017113505"
    },
    {
     "n": "Paula Belmonte",
@@ -1460,9 +1669,13 @@
     "props": [
      "Salário mínimo sempre acima da inflação",
      "Isenção de impostos da cesta básica",
+     "Fim da escala 6x1 e jornada de 40 horas",
      "Criar o Ministério da Segurança Pública",
+     "R$ 10 bilhões pra estados e municípios contra o crime organizado",
      "Farmácia Popular com exames gratuitos",
-     "Mais institutos federais e creches"
+     "Alfabetização na idade certa: meta de 80% das crianças",
+     "Mais institutos federais e creches",
+     "Minha Casa Minha Vida em todas as faixas de renda"
     ],
     "site": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo",
     "entrevista": "https://tvtnews.com.br/lula-na-globo-sabatina-no-jornal-nacional/",
@@ -1471,17 +1684,23 @@
     "ig": "lulaoficial",
     "oficial": "https://lula.com.br",
     "poll": 45,
-    "status": "Vai ao 2º turno (25/10)"
+    "status": "Vai ao 2º turno (25/10)",
+    "res1t": 45.16,
+    "plano": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf"
    },
    {
     "n": "Flávio Bolsonaro",
     "p": "PL",
     "props": [
-     "Facções tratadas como narcoterroristas",
+     "Facções e milícias tratadas como narcoterroristas",
      "Maioridade penal de 14 anos para crimes hediondos",
-     "Corte de gastos e menos imposto em energia e combustível",
-     "Cortar 10 ministérios",
-     "Vouchers para creches e escolas cívico-militares"
+     "Corte de gastos e de 10 ministérios",
+     "Menos imposto em energia e combustível",
+     "Retomar privatizações",
+     "Método fônico de alfabetização",
+     "Vouchers para creches e mais escolas cívico-militares",
+     "Flexibilizar o licenciamento ambiental e liberar o fracking",
+     "Retomar o Casa Verde e Amarela, com meta de 2,5 milhões de moradias"
     ],
     "site": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca",
     "entrevista": "https://tvtnews.com.br/acompanhe-a-entrevista-de-flavio-bolsonaro-na-globo/",
@@ -1490,7 +1709,8 @@
     "ig": "flaviobolsonaro",
     "oficial": "https://flaviobolsonaro.com.br",
     "poll": 42,
-    "status": "Vai ao 2º turno (25/10)"
+    "status": "Vai ao 2º turno (25/10)",
+    "res1t": 47.03
    },
    {
     "n": "Augusto Cury",
@@ -2051,6 +2271,345 @@
   "presidente": "Os 13 candidatos à Presidência, todos no mesmo formato. Propostas resumidas dos planos de governo registrados no TSE e de reportagens da Agência Brasil. Instagram e site são os que cada um registrou no TSE.",
   "distrital": "Aqui estão os 20 deputados distritais eleitos em 2022 que concorrem de novo à Câmara Legislativa. Fábio Felix, Daniel Donizet e Thiago Manzoni agora disputam vaga federal (aba Federal). O critério é só esse: estar aqui não é recomendação. Os outros candidatos estão na busca abaixo.",
   "federal": "Aqui estão os 10 candidatos que já têm mandato de deputado: 7 deputados federais do DF que tentam a reeleição e 3 deputados distritais que agora disputam uma vaga federal (Fábio Felix, Daniel Donizet e Thiago Manzoni). O critério é só esse: estar aqui não é recomendação. Os outros estão na busca abaixo."
+ },
+ "segundoTurno": {
+  "presidente": {
+   "rotulo": "Presidente",
+   "nota1t": "Resultado oficial do 1º turno (TSE, 100% das seções), em votos válidos. Ninguém passou de 50%.",
+   "candidatos": [
+    {
+     "n": "Lula",
+     "p": "PT",
+     "num": "13",
+     "foto": "280002542548",
+     "v1": 45.16,
+     "plano": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+     "planoTxt": "Plano de governo"
+    },
+    {
+     "n": "Flávio Bolsonaro",
+     "p": "PL",
+     "num": "22",
+     "foto": "280002551544",
+     "v1": 47.03,
+     "plano": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca",
+     "planoTxt": "Plano resumido"
+    }
+   ],
+   "avisoPesq": "Ainda não saiu nenhuma pesquisa de 2º turno feita depois da votação de 4/10. As pesquisas abaixo foram feitas antes do 1º turno: servem de referência, não mostram como a disputa está hoje.",
+   "pendentes": [
+    "Datafolha: entrevistas de 6 a 8/10, 2.520 pessoas, margem de 2 pontos, registro BR-02949/2026. Divulgação em 8/10, com análise ao vivo às 18h45.",
+    "AtlasIntel: divulgação prevista pra 9/10, com cerca de 5 mil entrevistas e margem de 1 ponto.",
+    "Quaest, Paraná Pesquisas e Real Time Big Data: sem data confirmada até 6/10."
+   ],
+   "temas": [
+    {
+     "t": "Economia e impostos",
+     "i": [
+      [
+       "Manter o arcabouço fiscal e a valorização real do salário mínimo",
+       "Seguir a reforma tributária já aprovada, que troca cinco tributos por dois (CBS e IBS)",
+       "Manter a isenção de Imposto de Renda já em vigor pra quem ganha até R$ 5 mil",
+       "Fim da escala 6x1 e jornada de 40 horas (consta no índice do plano, p. 73 a 77)",
+       "Desenrola Brasil, pra renegociar dívidas, e crédito pra micro e pequenas empresas"
+      ],
+      [
+       "Cortar gastos públicos, com reforma administrativa e corte de 10 ministérios",
+       "Usar o corte de gastos como principal caminho pra derrubar os juros",
+       "Reduzir impostos sobre energia elétrica e combustíveis e revisar a reforma tributária",
+       "Retomar privatizações e digitalizar a economia",
+       "Revisar o pacto federativo com estados e municípios",
+       "Corredores logísticos pra baratear o transporte de alimentos, mais armazenagem de safra e fertilizantes nacionais"
+      ]
+     ]
+    },
+    {
+     "t": "Segurança pública",
+     "i": [
+      [
+       "Criar o Ministério da Segurança Pública, depois da aprovação da PEC",
+       "Programa Brasil Contra o Crime Organizado: R$ 10 bilhões do FIIS pra estados e municípios",
+       "Asfixia financeira do crime organizado e controle de armas de fogo (consta no índice do plano)",
+       "Ampliar o Celular Seguro, que já tem mais de 4 milhões de usuários",
+       "Câmeras corporais com padrão nacional e metas do Plano Pena Justa no sistema prisional"
+      ],
+      [
+       "Declarar facções criminosas e milícias como organizações narcoterroristas",
+       "Criar uma tropa de elite das Forças Armadas pra patrulhar as fronteiras e combater a entrada de drogas",
+       "Reduzir a idade penal de 18 pra 14 anos em crimes hediondos, como estupro, tráfico, tortura e assassinato",
+       "Mais penas e mais encarceramento"
+      ]
+     ]
+    },
+    {
+     "t": "Educação",
+     "i": [
+      [
+       "Alfabetização na idade certa: meta de 80% das crianças (eram 66% em 2025)",
+       "Tempo integral como prioridade, sem meta de matrículas",
+       "Ampliar os Institutos Federais: o plano fala em mais 111 unidades, com campi em 106 municípios",
+       "Universalizar a conexão das escolas (hoje 75% estão conectadas)",
+       "Manter o Pé-de-Meia, pra nenhum jovem pobre sair da escola por falta de renda"
+      ],
+      [
+       "Trocar o método de alfabetização pelo método fônico",
+       "Voucher pra famílias pagarem mensalidade em creches privadas",
+       "Pagar alunos que deem aula de reforço a colegas",
+       "Mais escolas cívico-militares",
+       "Economia digital e robótica no currículo, e escolas abertas nas férias",
+       "Passar o ensino superior do MEC pro Ministério da Ciência, Tecnologia e Inovação"
+      ]
+     ]
+    },
+    {
+     "t": "Saúde",
+     "i": [
+      [
+       "Farmácia Popular 100% gratuita, com 41 medicamentos e exames de hipertensão e diabetes",
+       "Manter o Mais Médicos e o Agora Tem Especialistas, com fila digital única e inteligência artificial",
+       "Universalizar a saúde bucal (Brasil Sorridente)",
+       "Recuperar as coberturas de vacinação"
+      ],
+      [
+       "Digitalizar os serviços, começando pelos prontuários de saúde",
+       "Compartilhar prontuários com hospitais privados",
+       "Atendimento por telefone ou aplicativo onde faltam médicos ou as filas pra especialista são longas",
+       "Manter a imunização, sem detalhar como"
+      ]
+     ]
+    },
+    {
+     "t": "Moradia e programas sociais",
+     "i": [
+      [
+       "Minha Casa Minha Vida em todas as faixas de renda, com Compra Assistida",
+       "Periferia Viva: concluir as 85 obras retomadas e atender 59 novas propostas",
+       "Concluir 30 Casas da Mulher Brasileira e 15 Centros de Referência",
+       "Levar o PADI Brasil, de cuidado com idosos, pro país inteiro",
+       "Cuidotecas pra crianças de 3 a 12 anos"
+      ],
+      [
+       "Retomar o Casa Verde e Amarela, com meta de 2,5 milhões de moradias vendidas com a menor taxa de juros possível",
+       "Acelerar concessões e parcerias privadas no saneamento, levar água às escolas e fechar lixões",
+       "Transferência de renda: a reportagem da Agência Brasil não encontrou detalhes no plano"
+      ]
+     ]
+    },
+    {
+     "t": "Meio ambiente e energia",
+     "i": [
+      [
+       "Atualizar as metas de redução de emissões do Acordo de Paris, sem valores definidos",
+       "Investigação financeira obrigatória nas ações contra mineração ilegal",
+       "Biogás e biometano no tratamento de resíduos e esgoto"
+      ],
+      [
+       "Flexibilizar o licenciamento ambiental, com autolicenciamento quando o prazo da licença vence",
+       "Ampliar a produção de petróleo e gás, inclusive liberando o fracking",
+       "Acabar com a sobreposição de atribuições entre Funai e Ibama",
+       "Acelerar projetos de mineração, com mais capital estrangeiro",
+       "Incentivos pra combustível sustentável de aviação"
+      ]
+     ]
+    }
+   ],
+   "notaFontes": "Lula: plano registrado no TSE (a gente leu o texto até a página 50, e os itens das páginas seguintes vêm do índice do plano). Flávio Bolsonaro: resumo da Agência Brasil sobre o plano \"Para o Brasil Vencer o Atraso\". A quantidade de itens muda porque cada plano tem um nível de detalhe diferente, e isso não diz qual é melhor. Em alguns pontos o plano de um candidato não tem proposta nas fontes que a gente consultou, e isso está marcado.",
+   "fontes": [
+    [
+     "Plano de governo de Lula, registrado no TSE (PDF)",
+     "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf"
+    ],
+    [
+     "Agência Brasil: propostas de Flávio Bolsonaro",
+     "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-bolsonaro-propoe-enxugar-estado-e-endurecer-acoes-de-seguranca"
+    ],
+    [
+     "TSE: resultado do 1º turno pra Presidência",
+     "https://tse.jus.br/comunicacao/noticias/2026/Outubro/flavio-bolsonaro-e-lula-vao-disputar-o-2o-turno-para-a-presidencia-da-republica"
+    ],
+    [
+     "Brasil de Fato: calendário das pesquisas de 2º turno",
+     "https://www.brasildefato.com.br/2026/10/06/datafolha-quaest-atlasintel-quando-saem-as-pesquisas-de-2o-turno-entre-lula-e-flavio/"
+    ]
+   ]
+  },
+  "governador": {
+   "rotulo": "Governo do DF",
+   "nota1t": "Resultado oficial do 1º turno (TSE), em votos válidos. Ninguém passou de 50%.",
+   "candidatos": [
+    {
+     "n": "Celina Leão",
+     "p": "PP",
+     "num": "11",
+     "foto": "70002553055",
+     "v1": 49.93,
+     "plano": "https://www.metropoles.com/distrito-federal/celina-e-grass-veja-o-que-os-planos-de-governo-propoem-para-4-areas-chave",
+     "planoTxt": "Comparação dos planos"
+    },
+    {
+     "n": "Leandro Grass",
+     "p": "PT",
+     "num": "13",
+     "foto": "70002552496",
+     "v1": 34.47,
+     "plano": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/70017113505",
+     "planoTxt": "Programa de governo"
+    }
+   ],
+   "avisoPesq": "Ainda não saiu nenhuma pesquisa de 2º turno do DF feita depois da votação de 4/10. As pesquisas abaixo foram feitas antes do 1º turno: servem de referência, não mostram como a disputa está hoje.",
+   "pendentes": [
+    "Datafolha: o 2º turno do DF sai junto com o nacional, em 8/10, com análise ao vivo às 18h45.",
+    "Outros institutos: sem data confirmada pro 2º turno do DF nas fontes que a gente consultou."
+   ],
+   "temas": [
+    {
+     "t": "Saúde",
+     "i": [
+      [
+       "Criar o Expresso da Saúde, pra reduzir a espera por consultas, exames e procedimentos, com telemedicina e inteligência artificial",
+       "Fortalecer o Opera-DF, das cirurgias eletivas",
+       "Concluir o Hospital Ortopédico do Guará, os hospitais de São Sebastião, Ceilândia e Recanto das Emas e o Hospital Oncológico",
+       "Construir 7 novas UPAs",
+       "Prontuário eletrônico unificado",
+       "CAPS em todas as regiões administrativas",
+       "Reestruturar as carreiras da saúde, com concursos",
+       "Ampliar a rede de saúde da mulher"
+      ],
+      [
+       "Consulta com especialista e exame em até 30 dias, ao fim do mandato",
+       "Mutirão permanente de consultas, exames e cirurgias, usando a capacidade ociosa das redes pública, privada e filantrópica",
+       "Cobertura de 100% da atenção primária (hoje 74,6%)",
+       "Concurso de especialistas e convocação de 5 mil enfermeiros aprovados",
+       "Devolver o comando do Iges-DF à Secretaria de Saúde",
+       "Concluir o Hospital Oncológico, os hospitais do Recanto das Emas e de São Sebastião, o Ortopédico do Guará e as 7 UPAs contratadas",
+       "Psicólogo em todas as UBS e ao menos um CAPS por região de saúde",
+       "Transplante de medula óssea na rede pública"
+      ]
+     ]
+    },
+    {
+     "t": "Educação",
+     "i": [
+      [
+       "Primeiras Letras: toda criança lendo e escrevendo até o fim do 2º ano",
+       "Ampliar a Escola em Tempo Integral",
+       "Futuro Agora: bolsa pra alunos do ensino médio, ligada a frequência e desempenho",
+       "Criar o Bolsa Universitária DF",
+       "Ampliar as escolas cívico-militares",
+       "Distribuir tablets",
+       "Trocar o Educa-DF e o Cartão PDAF por soluções com inteligência artificial"
+      ],
+      [
+       "Primeira meta: zerar a fila de creche e universalizar a pré-escola",
+       "Tempo integral em toda a rede, começando pelas regiões mais vulneráveis",
+       "Metas de aprendizagem por escola e por região administrativa",
+       "Piso salarial pra profissionais da educação, inclusive temporários, e recomposição da carreira docente",
+       "Reservar um terço da jornada pra atividades extraclasse",
+       "Reduzir a dependência de contratos temporários",
+       "Ampliar a educação profissional e tecnológica"
+      ]
+     ]
+    },
+    {
+     "t": "Mobilidade",
+     "i": [
+      [
+       "Tarifa Zero pra população de baixa renda",
+       "Expandir a Linha 1 do Metrô, com 4 novas estações pra Ceilândia e Samambaia",
+       "Implantar a Linha 2 do Metrô, que chegaria ao Gama",
+       "Anel viário no DF",
+       "Comprar novos trens pro Metrô-DF",
+       "Articular com a União e Goiás um trem entre Brasília e Luziânia"
+      ],
+      [
+       "Tarifa Zero de forma progressiva e gradual",
+       "Mais ônibus nas periferias e zonas rurais, e ônibus depois das 22h",
+       "Novos trens pro Metrô",
+       "BRT nos eixos Norte, Oeste e Sudoeste",
+       "Trens ligando o Entorno",
+       "Reduzir à metade as mortes no trânsito"
+      ]
+     ]
+    },
+    {
+     "t": "Segurança pública",
+     "i": [
+      [
+       "Modernizar o DF 360 e o CIOB com inteligência artificial",
+       "Ampliar o policiamento preventivo",
+       "Criar delegacias e batalhões nas regiões administrativas que não têm",
+       "Defender isonomia salarial entre a Polícia Civil do DF e a Polícia Federal",
+       "Modernizar o sistema penitenciário pra impedir comandos criminosos dentro das unidades, com meta de 100% dos presos trabalhando"
+      ],
+      [
+       "Manter o DF 360, com foco em analisar imagens e agir, e não no número de câmeras",
+       "Rede Sentinela: salas regionais de análise 24 horas, com inteligência artificial e decisão humana",
+       "Comitê independente pra supervisionar o reconhecimento facial",
+       "Reverter a alta do feminicídio e dos crimes violentos letais",
+       "Pacto contra o Feminicídio nos primeiros 100 dias",
+       "Pesquisa periódica de vitimização e meta de reduzir a desigualdade racial nos homicídios"
+      ]
+     ]
+    },
+    {
+     "t": "BRB e contas públicas",
+     "i": [
+      [
+       "Manter o BRB como banco regional e defendê-lo no governo",
+       "Diz que sempre foi contra a compra do Banco Master e que assumiu as negociações com o Fundo Garantidor de Créditos",
+       "O GDF acionou o STF pra viabilizar garantias federais a um empréstimo de até R$ 6,6 bilhões ao banco (ação em andamento)",
+       "Não aumentar impostos, combatendo a sonegação e ampliando a base de contribuintes"
+      ],
+      [
+       "Auditoria pública do acordo BRB/Master em 90 dias",
+       "Resgatar o BRB como banco público, com gestão técnica",
+       "Plano plurianual pra equacionar o endividamento e renegociar o socorro ao BRB, protegendo saúde e educação",
+       "Pagar fornecedores em dia e acabar com os restos a pagar empurrados pro ano seguinte",
+       "Painel público a cada quadrimestre com déficit, restos a pagar e caixa",
+       "Compromisso de não privatizar Caesb, Metrô-DF e CEB Iluminação"
+      ]
+     ]
+    },
+    {
+     "t": "Moradia e custo de vida",
+     "i": [
+      [
+       "Regularização fundiária mais rápida, sem meta detalhada nas fontes que a gente consultou"
+      ],
+      [
+       "Moradia mais barata, com foco no déficit de 100 mil moradias e no custo do aluguel",
+       "DF Mais Barato: restaurantes comunitários com refeição a R$ 1, farmácias populares e sacolões",
+       "Desenrola DF, pra renegociar dívidas",
+       "Rua por Rua: central única de zeladoria, com prazo de resposta e responsável nominal",
+       "Orçamento Participativo e Conselhos Comunitários em todas as regiões administrativas"
+      ]
+     ]
+    }
+   ],
+   "notaFontes": "Celina Leão: cobertura da imprensa sobre o plano e as sabatinas (a gente não encontrou o texto integral do plano dela). Leandro Grass: programa de governo registrado no TSE, lido até o capítulo 7, com os demais temas vindos do resumo do programa e da comparação do Metrópoles. A quantidade de itens muda porque as fontes têm níveis de detalhe diferentes, e isso não diz qual plano é melhor.",
+   "fontes": [
+    [
+     "Metrópoles: o que os planos de Celina e Grass propõem pra 4 áreas-chave",
+     "https://www.metropoles.com/distrito-federal/celina-e-grass-veja-o-que-os-planos-de-governo-propoem-para-4-areas-chave"
+    ],
+    [
+     "Programa de governo de Leandro Grass, registrado no TSE",
+     "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/70017113505"
+    ],
+    [
+     "Alô Brasília: Celina Leão em sabatina, BRB e propostas",
+     "https://www.alobrasilia.com.br/2026/09/celina-leao-defende-gestao-promete.html"
+    ],
+    [
+     "F5 Política: propostas de Celina Leão pra Ceilândia",
+     "https://www.f5politica.com.br/2026/09/celina-leao-apresenta-propostas-para.html"
+    ],
+    [
+     "TSE: Celina Leão e Leandro Grass disputam o 2º turno",
+     "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/celina-leao-pp-e-leandro-grass-pt-disputam-o-2o-turno-no-distrito-federal"
+    ]
+   ]
+  }
  }
 }
 </script>
@@ -2111,8 +2670,8 @@
   tick(); setInterval(tick, 60000);
 
   /* resumo */
-  $("sum").innerHTML = D.resumo.map(r=>`<a href="#pesquisas" data-race="${esc(r.cargo)}"><small>${esc(r.rotulo)}</small><strong>${esc(r.titulo)}</strong><span class="pill ${r.status==="lead"?"lead":"tie"}">${esc(r.statusTxt)}</span></a>`).join("");
-  $("sum").addEventListener("click",e=>{const a=e.target.closest("[data-race]"); if(a) setRace(a.dataset.race);});
+  $("sum").innerHTML = D.resumo.map(r=>`<a href="${r.cargo==="presidente"||r.cargo==="governador"?"#segundo-turno":"#pesquisas"}" data-race="${esc(r.cargo)}"><small>${esc(r.rotulo)}</small><strong>${esc(r.titulo)}</strong><span class="pill ${r.status==="lead"?"lead":"tie"}">${esc(r.statusTxt)}</span></a>`).join("");
+  $("sum").addEventListener("click",e=>{const a=e.target.closest("[data-race]"); if(!a) return; const r=a.dataset.race; if(r==="presidente"||r==="governador"){ S2.race=r; st2(); } else setRace(r);});
 
   function tabs(el, items, cur, fn){
     el.innerHTML = items.map(([v,l])=>`<button type="button" data-v="${esc(v)}" aria-pressed="${v===cur}">${esc(l)}</button>`).join("");
@@ -2163,7 +2722,7 @@
   }
   function people(){
     tabs($("c-tabs"), [["governador","Governo"],["senado","Senado"],["federal","Federal"],["distrital","Distrital"]], CR, v=>{CR=v; store.set("vsf-cargo",v); people();});
-    tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people(); grid("presidente");});
+    tabs($("c-ord"), [["sorteio","Sorteada"],["az","A–Z"]], ORD, v=>{ORD=v; store.set("vsf-ordem",v); people(); grid("presidente"); st2();});
     $("c-ord-t").textContent = ORD==="az" ? "Ordem alfabética." : "A ordem muda a cada visita, ninguém fica em primeiro de propósito.";
     grid(CR);
     viz(CR, $("viz"));
@@ -2224,9 +2783,10 @@
     const acts = [];
     if(props.length || CTX[k].race) acts.push(`<button type="button" class="pri" data-a="props" aria-expanded="false">${LIST_I}Propostas</button>`);
     if(c.ig) acts.push(`<a href="https://www.instagram.com/${esc(c.ig)}/" target="_blank" rel="noopener">${IG}Instagram</a>`);
+    if(c.plano) acts.push(`<a href="${esc(c.plano)}" target="_blank" rel="noopener">${LIST_I}Plano completo</a>`);
     if(k==="presidente"){
       if(c.oficial) acts.push(`<a href="${esc(c.oficial)}" target="_blank" rel="noopener">${WEB}Site oficial</a>`);
-      if(c.site) acts.push(`<a href="${esc(c.site)}" target="_blank" rel="noopener">${LIST_I}Plano resumido</a>`);
+      if(c.site && !c.plano) acts.push(`<a href="${esc(c.site)}" target="_blank" rel="noopener">${LIST_I}Plano resumido</a>`);
     } else acts.push(c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${WEB}Site oficial</a>` : `<a href="${TSE}" target="_blank" rel="noopener">${WEB}Perfil no TSE</a>`);
     const ent = c.sabatina || c.entrevista;
     if(ent) acts.push(`<a href="${esc(ent)}" target="_blank" rel="noopener">${MIC}Entrevista</a>`);
@@ -2234,6 +2794,8 @@
     if(!out) acts.push(`<button type="button" data-a="cola">${PEN}Anotar na colinha</button>`);
     let third, pv;
     if(!ctx.race){ third = `<div><small>Mandato</small><b class="sm">${esc(c.mandato||"")}</b></div>`; pv = k==="distrital" ? "Eleito(a) distrital em 2022. Candidatos a deputado não têm pesquisa registrada no DF." : (/distrital/i.test(c.mandato||"") ? "Eleito(a) distrital em 2022, agora disputa a Câmara dos Deputados. Candidatos a deputado não têm pesquisa registrada no DF." : "Deputado(a) federal pelo DF. Candidatos a deputado não têm pesquisa registrada no DF."); }
+    else if(c.res1t!=null){ third = `<div><small>1º turno</small><b>${pc(c.res1t)}</b></div>`;
+      pv = `Resultado oficial do TSE no 1º turno, em votos válidos. As pesquisas estão em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.`; }
     else { third = `<div><small>Pesquisa</small><b>${c.poll!=null?pc(c.poll):"—"}</b></div>`;
       pv = c.poll!=null&&q ? `Pesquisa ${esc(q.instituto)}, ${esc(q.campo)}. Detalhes e margem de erro em <a href="#pesquisas" data-a="close" style="color:var(--accent)">Pesquisas</a>.` : out ? "Fora das pesquisas por ter a candidatura barrada." : "Não aparece com número próprio na pesquisa mais recente."; }
     $("fx").setAttribute("style", cvars(c.p));
@@ -2318,12 +2880,38 @@
     $("p-bars").innerHTML = `<div class="bars">${rows.map(r=>{const lo=Math.max(0,r.v-q.margem);return `<div class="row ${r.o?"o":""}"><span>${esc(r.n)}</span><span class="t"><span class="f" style="width:${r.v/top*100}%"></span>${!r.o&&r.v>0?`<span class="e" style="left:${lo/top*100}%;width:${(r.v+q.margem-lo)/top*100}%"></span>`:""}</span><span class="v">${pc(r.v)}</span></div>`;}).join("")}</div>`;
     const t2 = q.segundoTurno||[];
     $("p-2t").hidden = !t2.length;
-    $("p-2t").innerHTML = t2.length ? `<span class="tiny">Se tiver 2º turno</span>` + t2.map(([a,va,b,vb,rest])=>{const tie=Math.abs(va-vb)<=2*q.margem;return `<div class="duel"><div class="l"><span>${esc(a)} <b>${pc(va)}</b></span><span><b>${pc(vb)}</b> ${esc(b)}</span></div><div class="s" aria-hidden="true"><i style="width:${va}%"></i><i style="width:${vb}%"></i></div><small>${tie?"empate técnico":esc(a)+" à frente"} · brancos, nulos e indecisos: ${rest}%</small></div>`;}).join("") : "";
+    $("p-2t").innerHTML = t2.length ? `<span class="tiny">Se tiver 2º turno</span>` + t2.map(([a,va,b,vb,rest])=>{const tie=Math.abs(va-vb)<=2*q.margem;return `<div class="duel"><div class="l"><span>${esc(a)} <b>${pc(va)}</b></span><span><b>${pc(vb)}</b> ${esc(b)}</span></div><div class="s" aria-hidden="true"><i style="width:${va}%"></i><i style="width:${vb}%"></i></div><small>${tie?"empate técnico":esc(a)+" à frente"} · ${rest?`brancos, nulos e indecisos: ${pc(rest)}`:"só votos válidos"}</small></div>`;}).join("") : "";
     let note = race.alerta || "";
     if(sc.validos){ const l=sc.validos[0]; note += (note?" ":"") + (l[2]>50 ? `Nos votos válidos, ${l[0]} tem ${pc(l[2])}. Se isso se repetir na urna, a eleição acaba no 1º turno${l[2]-q.margem>50?'. Mesmo descontando a margem de erro, fica acima de 50%.':', mas a margem de erro ainda deixa a disputa em aberto.'}` : `Ninguém passa de 50% dos votos válidos, então teria 2º turno.`); }
     $("p-note").textContent = note;
   }
   poll();
+
+  /* 2º turno */
+  const S2 = {race:"presidente", o:{}};
+  function st2(){
+    const R = (D.segundoTurno||{})[S2.race]; if(!R) return;
+    tabs($("s2-race"), [["presidente","Presidente"],["governador","Governo do DF"]], S2.race, v=>{S2.race=v; st2();});
+    const idx = R.candidatos.map((_,i)=>i);
+    let ord;
+    if(ORD==="az") ord = idx.slice().sort((a,b)=>R.candidatos[a].n.localeCompare(R.candidatos[b].n,"pt-BR"));
+    else { if(!S2.o[S2.race]) S2.o[S2.race] = shuffle(idx); ord = S2.o[S2.race]; }
+    const C = ord.map(i=>R.candidatos[i]);
+    const head = `<div class="s2-duo">${C.map(c=>`<div class="s2-c" style="${cvars(c.p)}"><span class="ring"><img src="img/${esc(c.foto)}.jpg" alt="Foto oficial de ${esc(c.n)}" width="78" height="78" loading="lazy"></span><b>${esc(c.n)}</b><small>${esc(c.p)} · <strong>${esc(c.num)}</strong></small><span class="s2-v">${pc(c.v1)}</span><small>no 1º turno</small>${c.plano?`<a class="s2-pl" href="${esc(c.plano)}" target="_blank" rel="noopener">${esc(c.planoTxt||"Plano")}</a>`:""}</div>`).join("")}</div><p class="note" style="margin-top:0">${esc(R.nota1t)}</p>`;
+    const names = R.candidatos.map(c=>c.n), rows = [];
+    ((D.corridas[S2.race]||{}).pesquisas||[]).forEach(q=>(q.segundoTurno||[]).forEach(r=>{ if(names.includes(r[0])&&names.includes(r[2])) rows.push({q,r}); }));
+    rows.sort((a,b)=>String(b.q.fim||"").localeCompare(String(a.q.fim||"")));
+    const duel = ({q,r})=>{
+      let [a,va,b,vb,rest] = r; if(a!==C[0].n){ [a,va,b,vb] = [b,vb,a,va]; }
+      const tie = Math.abs(va-vb)<=2*q.margem, antes = String(q.fim||"")<"2026-10-05";
+      return `<div class="duel"><div class="s2-ph"><b>${esc(q.instituto)}</b><span class="tiny">campo ${esc(q.campo)} · ±${q.margem} pontos · ${esc(q.amostra)} entrevistas${antes?" · feita antes do 1º turno":""}</span></div><div class="l"><span>${esc(a)} <b>${pc(va)}</b></span><span><b>${pc(vb)}</b> ${esc(b)}</span></div><div class="s" aria-hidden="true"><i style="width:${va}%"></i><i style="width:${vb}%"></i></div><small>${tie?"empate técnico":esc(va>vb?a:b)+" à frente"} · ${rest?`brancos, nulos e indecisos: ${pc(rest)}`:"só votos válidos"} · <a href="${esc(q.fonte)}" target="_blank" rel="noopener" style="color:var(--accent)">fonte</a></small></div>`;
+    };
+    const pesq = `<div class="card"><div class="card-h"><h3>Pesquisas de 2º turno</h3><span class="tiny">margem de erro em cada pesquisa</span></div><p class="s2-warn">${esc(R.avisoPesq)}</p><div class="duels" style="margin-top:0;padding-top:0;border-top:0">${rows.map(duel).join("")}</div><div class="s2-pend"><span class="tiny">Chegando</span><ul>${(R.pendentes||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div></div>`;
+    const temas = R.temas.map(t=>`<div class="card s2-t"><h3>${esc(t.t)}</h3><div class="s2-cols">${ord.map(i=>{ const c=R.candidatos[i], it=(t.i||[])[i]||[]; return `<div class="s2-col" style="${cvars(c.p)}"><b class="s2-n"><i></i>${esc(c.n)}</b>${it.length?`<ul>${it.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:`<p class="tiny" style="margin:0">Sem proposta detalhada nas fontes que a gente consultou.</p>`}</div>`; }).join("")}</div></div>`).join("");
+    const fontes = `<p class="note">${esc(R.notaFontes)}</p><ul class="s2-src">${R.fontes.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("")}</ul>`;
+    $("s2").innerHTML = head + pesq + `<h3 class="s2-h">Propostas, tema por tema</h3>` + temas + fontes;
+  }
+  st2();
 
 
   /* o básico */
@@ -2331,16 +2919,15 @@
     ["4","dígitos","Deputado(a) federal","Faz as leis do país na Câmara. O DF elege 8, pra mandato de 4 anos."],
     ["5","dígitos","Deputado(a) distrital","Faz as leis do DF na Câmara Legislativa. Só existe aqui, porque o DF não tem vereador. São 24 vagas."],
     ["3","dígitos ×2","Senador(a)","Aprova leis, sabatina ministros do STF e julga impeachment. Mandato de 8 anos. Esse ano você vota em 2 pessoas diferentes."],
-    ["2","dígitos","Governador(a)","Comanda o GDF: hospitais, escolas, polícia, metrô e ônibus. Mandato de 4 anos, pode ter 2º turno."],
-    ["2","dígitos","Presidente","Comanda o governo federal, a economia, o SUS nacional e os programas sociais. Mandato de 4 anos, pode ter 2º turno."]
+    ["2","dígitos","Governador(a)","Comanda o GDF: hospitais, escolas, polícia, metrô e ônibus. Mandato de 4 anos. No DF, o 2º turno é entre Celina Leão e Leandro Grass."],
+    ["2","dígitos","Presidente","Comanda o governo federal, a economia, o SUS nacional e os programas sociais. Mandato de 4 anos. O 2º turno é entre Lula e Flávio Bolsonaro."]
   ];
-  $("cargos").innerHTML = CARGOS.map(([n,s,t,p])=>`<div class="cargo"><span class="d">${n}<small>${s}</small></span><div><h3>${t}</h3><p>${p}</p></div></div>`).join("");
+  $("cargos").innerHTML = CARGOS.slice(3).map(([n,s,t,p])=>`<div class="cargo"><span class="d">${n}<small>${s}</small></span><div><h3>${t}</h3><p>${p}</p></div></div>`).join("");
   const FAQ = [
     ["Voto nulo anula a eleição?","Não. Branco e nulo são descartados e não contam pra ninguém, nem se forem maioria."],
     ["Posso levar colinha?","Pode, em papel. O que não entra na cabine é o celular."],
     ["Preciso levar documento?","Leve um documento oficial com foto ou use o e-Título, se ele tiver a sua foto. Local e seção também aparecem no app."],
     ["Quem é obrigado a votar?","Quem tem de 18 a 69 anos. Com 16 ou 17, ou com 70 ou mais, é opcional. Quem não vota justifica pelo e-Título em até 60 dias."],
-    ["Como funciona o voto de deputado?","É proporcional. Primeiro as vagas são divididas entre os partidos pelo total de votos, e depois entram os mais votados de cada um. Digitar só os 2 primeiros números é voto no partido."],
     ["Quando tomam posse?","Presidente em 5/1/2027, Governador em 6/1/2027, e deputados e senadores em 1/2/2027."]
   ];
   $("faq").innerHTML = FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
@@ -2374,7 +2961,7 @@
   $("cola-limpa").addEventListener("click",()=>{ CAMPOS.forEach(([id])=>{ $(id).value=""; store.set("vsf-"+id,""); colaUpd(id); }); $("cola-toast").textContent="Colinha zerada."; });
   $("cola").addEventListener("submit", async e=>{
     e.preventDefault();
-    const txt = "Minha colinha · Eleições 2026 (DF) · 4/10\n" + CAMPOS.map(([id,l,k])=>{ const v=$(id).value, r=quem(k,v); return `${l}: ${v||"____"}${r&&r.c?` · ${r.c.n} (${r.c.p})`:""}`; }).join("\n");
+    const txt = "Minha colinha · Eleições 2026 (DF) · 2º turno, 25/10\n" + CAMPOS.map(([id,l,k])=>{ const v=$(id).value, r=quem(k,v); return `${l}: ${v||"____"}${r&&r.c?` · ${r.c.n} (${r.c.p})`:""}`; }).join("\n");
     const ta = $("cola-txt"); ta.value = txt;
     try{ await navigator.clipboard.writeText(txt); ta.hidden=true; $("cola-toast").textContent="Copiado. Agora passe pro papel."; }
     catch(err){ ta.hidden=false; ta.select(); $("cola-toast").textContent="Não deu pra copiar automático. O texto tá selecionado aqui embaixo."; }
@@ -2408,7 +2995,7 @@
       x.save(); x.translate(W/2,cy-4); x.rotate(.03); x.fillStyle="rgba(255,201,66,.9)"; x.fillRect(-80,-20,160,40); x.restore();
       x.textBaseline="alphabetic"; x.textAlign="left";
       x.fillStyle=YEL; x.font=`400 ${L.t}px Anton`; x.fillText("MINHA COLINHA", cx+50, cy+L.tY);
-      x.fillStyle="#E3D6FA"; x.font=`500 ${L.sub}px Onest`; x.fillText("Eleições 2026 · Distrito Federal · 4 de outubro", cx+52, cy+L.subY);
+      x.fillStyle="#E3D6FA"; x.font=`500 ${L.sub}px Onest`; x.fillText("Eleições 2026 · DF · 2º turno, 25 de outubro", cx+52, cy+L.subY);
       x.strokeStyle="rgba(255,255,255,.4)"; x.setLineDash([16,12]); x.lineWidth=3; x.beginPath(); x.moveTo(cx+50,cy+L.lineY); x.lineTo(cx+cw-50,cy+L.lineY); x.stroke(); x.setLineDash([]);
       const rowH=L.rowH, top=cy+L.rowTop;
       for(let i=0;i<CAMPOS.length;i++){
@@ -2448,7 +3035,7 @@
   ["cola-img","cola-story"].forEach(id=>$(id).addEventListener("click", e=>colaImagem(e.currentTarget.dataset.fmt, e.currentTarget)));
   $("cola-wa").addEventListener("click", ()=>{
     const linhas = CAMPOS.map(([id,l,k])=>{ const v=$(id).value, r=quem(k,v); return v ? `• ${l}: *${v}*${r&&r.c?` (${r.c.n}, ${r.c.p})`:(r&&/legenda/.test(r.msg||"")?" (voto na legenda)":"")}` : ""; }).filter(Boolean);
-    const msg = (linhas.length ? `Minha colinha pro dia 4/10:\n${linhas.join("\n")}\n\n` : "") + `Monte a sua no Voto Sem Filtro DF, guia apartidário das eleições no DF:\n${SITE}`;
+    const msg = (linhas.length ? `Minha colinha pro 2º turno (25/10):\n${linhas.join("\n")}\n\n` : "") + `Monte a sua no Voto Sem Filtro DF, guia apartidário das eleições no DF:\n${SITE}`;
     window.open("https://wa.me/?text="+encodeURIComponent(msg), "_blank", "noopener");
   });
 
@@ -2459,9 +3046,8 @@
     ["etitulo","Baixe o e-Título","É o app oficial da Justiça Eleitoral. Se tiver a sua foto, ele serve de documento."],
     ["doc","Separe um documento com foto","RG, CNH, passaporte, carteira de trabalho ou de categoria profissional. Título de papel sozinho não basta."],
     ["cand","Conheça os candidatos",'Leia as propostas e abra o site de cada um em <a href="#candidatos">Candidatos do DF</a> e <a href="#presidente">Presidente</a>.'],
-    ["dep","Escolha seus deputados",'São centenas de candidatos a deputado federal e distrital no DF. Pesquise pelo nome ou número no <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener">DivulgaCandContas</a>.'],
     ["cola","Monte a colinha",'Anote os números em <a href="#colinha">Colinha</a> e passe pro papel. Celular não entra na cabine.'],
-    ["dia","Vá votar dia 4/10","Das 8h às 17h, horário de Brasília. A urna pede os votos nesta ordem: federal, distrital, senado (2 votos), governador e presidente."]
+    ["dia","Vá votar dia 25/10","Das 8h às 17h, horário de Brasília. No 2º turno a urna pede só dois votos, nesta ordem: governador e presidente."]
   ];
   $("chk").innerHTML = CHK.map(([k,t,p])=>`<label><input type="checkbox" data-k="${k}"${store.get("vsf-chk-"+k)==="1"?" checked":""}><span><b>${t}</b><span>${p}</span></span></label>`).join("");
   function prog(){
@@ -2490,7 +3076,7 @@
   /* fontes */
   const seen=new Set(), src=[];
   Object.values(D.corridas).forEach(r=>r.pesquisas.forEach(p=>{const k=p.instituto+p.registro; if(!seen.has(k)){seen.add(k); src.push(p);}}));
-  $("src").innerHTML = src.map(p=>`<li>${esc(p.instituto)} · ${esc(p.campo)} · ${esc(p.amostra)} entrevistas · TSE ${esc(p.registro)} · <a href="${esc(p.fonte)}" target="_blank" rel="noopener">ver</a></li>`).join("") + `<li>Resultados oficiais a partir de 4/10: <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>`;
+  $("src").innerHTML = src.map(p=>`<li>${esc(p.instituto)} · ${esc(p.campo)} · ${esc(p.amostra)} entrevistas · TSE ${esc(p.registro)} · <a href="${esc(p.fonte)}" target="_blank" rel="noopener">ver</a></li>`).join("") + `<li>Resultados oficiais: <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>`;
 
   /* chip ativo */
   const chips=[...document.querySelectorAll("nav.jump a, .bnav a")];
