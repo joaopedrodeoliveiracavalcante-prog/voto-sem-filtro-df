@@ -621,8 +621,8 @@
 <script type="application/json" id="dados">
 {
  "meta": {
-  "atualizadoEm": "2026-10-08T15:40:00-03:00",
-  "verificadoEm": "2026-10-08T15:40:00-03:00",
+  "atualizadoEm": "2026-10-09T12:00:00-03:00",
+  "verificadoEm": "2026-10-09T12:00:00-03:00",
   "marcos": [
    {
     "label": "até o 1º turno · 4/10",
@@ -634,6 +634,10 @@
    }
   ],
   "historico": [
+   {
+    "data": "2026-10-09",
+    "nota": "Presidente: primeira pesquisa de 2º turno depois do 1º turno, Datafolha (6–8/10, 2.520 entrevistas, margem de 2 pontos, BR-02949/2026): Flávio Bolsonaro 49% e Lula 45% (52% a 48% nos votos válidos)."
+   },
    {
     "data": "2026-10-08",
     "nota": "Nova seção do 2º turno (25/10): Presidente, Lula e Flávio Bolsonaro; Governo do DF, Celina Leão e Leandro Grass. Propostas dos quatro lado a lado, tema por tema, e pesquisas de 2º turno de Datafolha, Quaest e AtlasIntel. Nenhuma pesquisa feita depois de 4/10 tinha sido divulgada até as 15h. O Datafolha de 2º turno sai ainda hoje e o AtlasIntel, amanhã."
@@ -693,94 +697,63 @@
  "corridas": {
   "presidente": {
    "nome": "Presidente",
-   "alerta": "Resultado oficial do 1º turno (4/10), com 100% das seções totalizadas: nenhum candidato passou de 50% dos votos válidos (Flávio Bolsonaro 47,03% e Lula 45,16%), então os dois disputam o 2º turno em 25/10. As pesquisas abaixo foram feitas antes da votação. As primeiras de 2º turno saem a partir de 8/10, veja em 2º turno.",
+   "alerta": "Resultado oficial do 1º turno (4/10), com 100% das seções totalizadas: nenhum candidato passou de 50% dos votos válidos (Flávio Bolsonaro 47,03% e Lula 45,16%), então os dois disputam o 2º turno em 25/10. A primeira pesquisa de 2º turno, o Datafolha de 6 a 8/10, mostra Flávio Bolsonaro com 49% e Lula com 45% (52% a 48% nos votos válidos), diferença de 4 pontos, margem de 2. Veja em 2º turno.",
    "pesquisas": [
     {
      "instituto": "Datafolha",
-     "campo": "3/10",
-     "amostra": "4.006",
+     "campo": "6–8/10",
+     "amostra": "2.520",
      "margem": 2,
-     "registro": "BR-01708/2026",
-     "fonte": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-vespera-1-turno/",
+     "registro": "BR-02949/2026",
+     "fonte": "https://www.brasildefato.com.br/2026/10/08/datafolha-segundo-turno-flavio-bolsonaro-49-lula-45/",
      "cenarios": {
-      "Votos válidos": {
+      "2º turno": {
        "total": [
+        [
+         "Flávio Bolsonaro",
+         "PL",
+         49
+        ],
         [
          "Lula",
          "PT",
          45
+        ]
+       ],
+       "outros": [
+        [
+         "Branco / nulo / nenhum",
+         5
         ],
         [
-         "Flávio Bolsonaro",
-         "PL",
-         42
-        ],
-        [
-         "Ronaldo Caiado",
-         "PSD",
-         4
-        ],
-        [
-         "Renan Santos",
-         "Missão",
-         3
-        ],
-        [
-         "Augusto Cury",
-         "Avante",
-         3
-        ],
-        [
-         "Romeu Zema",
-         "Novo",
+         "Indecisos",
          1
         ]
        ],
-       "outros": [],
        "validos": [
-        [
-         "Lula",
-         "PT",
-         45
-        ],
         [
          "Flávio Bolsonaro",
          "PL",
-         42
+         52
         ],
         [
-         "Ronaldo Caiado",
-         "PSD",
-         4
-        ],
-        [
-         "Renan Santos",
-         "Missão",
-         3
-        ],
-        [
-         "Augusto Cury",
-         "Avante",
-         3
-        ],
-        [
-         "Romeu Zema",
-         "Novo",
-         1
+         "Lula",
+         "PT",
+         48
         ]
        ]
       }
      },
      "segundoTurno": [
       [
-       "Lula",
-       47,
        "Flávio Bolsonaro",
-       46,
-       7
+       49,
+       "Lula",
+       45,
+       6
       ]
      ],
-     "fim": "2026-10-03"
+     "fim": "2026-10-08"
     },
     {
      "instituto": "Quaest",
@@ -1708,7 +1681,7 @@
     "foto": "280002551544",
     "ig": "flaviobolsonaro",
     "oficial": "https://flaviobolsonaro.com.br",
-    "poll": 42,
+    "poll": 49,
     "status": "Vai ao 2º turno (25/10)",
     "res1t": 47.03
    },
@@ -1727,7 +1700,7 @@
     "foto": "280002551547",
     "ig": "augustocury",
     "oficial": "https://augustocurypresidente.com.br/",
-    "poll": 3
+    "poll": null
    },
    {
     "n": "Ronaldo Caiado",
@@ -1744,7 +1717,7 @@
     "foto": "280002551932",
     "ig": "ronaldocaiado",
     "oficial": "https://ronaldocaiado.com.br/",
-    "poll": 4
+    "poll": null
    },
    {
     "n": "Renan Santos",
@@ -1761,7 +1734,7 @@
     "foto": "280002540694",
     "ig": "renansantosmbl",
     "oficial": "https://renanpresidente.com.br",
-    "poll": 3
+    "poll": null
    },
    {
     "n": "Romeu Zema",
@@ -1778,7 +1751,7 @@
     "foto": "280002539826",
     "ig": "romeuzemaoficial",
     "oficial": "https://www.zema30.com.br/",
-    "poll": 1
+    "poll": null
    },
    {
     "n": "Samara Martins",
@@ -1787,7 +1760,7 @@
     "foto": "280002538811",
     "ig": "samaramartinsup",
     "oficial": "https://unidadepopular.org.br/",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Dobrar o salário mínimo, de R$ 1.621 para R$ 3.242",
      "Trocar a escala 6x1 pela 4x3 para todos os trabalhadores",
@@ -1804,7 +1777,7 @@
     "foto": "280002541457",
     "ig": "hertzdiaspstu",
     "oficial": "",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Acabar com a escala 6x1 e adotar 36 horas semanais sem cortar salário",
      "Revogar as reformas trabalhista e da Previdência",
@@ -1821,7 +1794,7 @@
     "foto": "280002554479",
     "ig": "leonardoavalanche",
     "oficial": "",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Imposto único de 3,5% no lugar de ICMS, ISS, IR, INSS e outros",
      "Zerar a fila do SUS com mutirões, telemedicina e hospitais privados",
@@ -1838,7 +1811,7 @@
     "foto": "280002552487",
     "ig": "ruicpimenta",
     "oficial": "https://candidatos.pco.org.br",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Baixar o preço dos combustíveis em 50% na hora",
      "Anular todas as privatizações",
@@ -1855,7 +1828,7 @@
     "foto": "280002548139",
     "ig": "veterinariowilsongrassioficial",
     "oficial": "https://veterinariowilsongrassi.com.br",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Imposto federal único no lugar de nove tributos federais",
      "Isenção de IR pra quem ganha até cinco salários mínimos",
@@ -1872,7 +1845,7 @@
     "foto": "280002551975",
     "ig": "edpcb",
     "oficial": "https://pcb.org.br/portal2/",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Jornada de 30 horas semanais sem reduzir salário e fim da 6x1",
      "Salário mínimo calculado pelo Dieese",
@@ -1889,7 +1862,7 @@
     "foto": "280002552484",
     "ig": "",
     "oficial": "",
-    "poll": 0,
+    "poll": null,
     "props": [
      "Rede nacional de proteção contra a violência a mulheres",
      "Primeira infância como prioridade nacional",
@@ -2296,9 +2269,8 @@
      "planoTxt": "Plano resumido"
     }
    ],
-   "avisoPesq": "Ainda não saiu nenhuma pesquisa de 2º turno feita depois da votação de 4/10. As pesquisas abaixo foram feitas antes do 1º turno: servem de referência, não mostram como a disputa está hoje.",
+   "avisoPesq": "Já saiu a primeira pesquisa de 2º turno feita depois da votação de 4/10 (Datafolha, 6 a 8/10). As demais abaixo foram feitas antes do 1º turno: servem de referência.",
    "pendentes": [
-    "Datafolha: entrevistas de 6 a 8/10, 2.520 pessoas, margem de 2 pontos, registro BR-02949/2026. Divulgação em 8/10, com análise ao vivo às 18h45.",
     "AtlasIntel: divulgação prevista pra 9/10, com cerca de 5 mil entrevistas e margem de 1 ponto.",
     "Quaest, Paraná Pesquisas e Real Time Big Data: sem data confirmada até 6/10."
    ],
